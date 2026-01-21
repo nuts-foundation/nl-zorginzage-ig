@@ -13,7 +13,7 @@ This section provides technical implementation details for the Zorginzage profil
 ### Data Formats
 - **JSON** for structured data
 - **JWT** (RFC 7519) for tokens
-- **FHIR R4** for healthcare resources
+- **FHIR R4** for healthcare resources.
 
 ### Authorization
 - **OAuth 2.0** (RFC 6749, RFC 7523)
