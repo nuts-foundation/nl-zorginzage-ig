@@ -56,29 +56,17 @@ pages:
   index.md:
     title: Home
     
-  introduction.md:
-    title: Introduction
-  
-  actors-transactions.md:
-    title: Actors and Transactions
-    
-  process-flow.md:
-    title: Process Flow
-    process-publishing.md:
-      title: Publishing
-    process-consulting.md:
-      title: Consulting
-    
-  security-considerations.md:
-    title: Security
-    
-  specifications.md:
-    title: Technical Specifications
-    access-policy.md:
-      title: Access Policy
+  vol1.md:
+    title: Volume 1
 
-  appendix-legislation.md:
-    title: "Appendix: Legislation"
+  vol2a.md:
+    title: Volume 2a
+
+  vol2b.md:
+    title: Volume 2b
+  
+  vol3.md:
+    title: Volume 3
 
   history.md:
     title: History
