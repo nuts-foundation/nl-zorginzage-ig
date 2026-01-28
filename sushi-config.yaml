@@ -120,17 +120,17 @@ parameters:
 menu:
   Home: index.html
   Volume 1:
-    Inleiding: vol1.html#Inleiding
-    Overview: vol1.html#Overview
-    Actoren: vol1.html#Actoren
-    Use cases: vol1.html#Use-cases
+    Inleiding: vol1.html#1
+    Overview: vol1.html#2
+    Actoren: vol1.html#3
+    Use cases: vol1.html#4
   Volume 2a:
-    Exchange patterns: vol2a.html#Exchange-pattern
-    Identification: vol2a.html#Identification
-    Authentication: vol2a.html#Authentication
-    Localization: vol2a.html#Localization
-    Addressing: vol2a.html#Addressing
-    Authorization: vol2a.html#Addressing
+    Exchange patterns: vol2a.html#1
+    Identification: vol2a.html#2
+    Authentication: vol2a.html#3
+    Localization: vol2a.html#4
+    Addressing: vol2a.html#5
+    Authorization: vol2a.html#6
     Consent: vol2a.html#Consent
   Volume 2b:
     Register data at NVI: vol2b.html#Register-data-at-NVI
