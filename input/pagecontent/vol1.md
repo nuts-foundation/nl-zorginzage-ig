@@ -1,14 +1,14 @@
-# Volume 1 #
+# Volume 1
 
-## Inleiding ##
+## Inleiding
 
 Deze implementatiegids Zorginzage bevat de generieke afspraken en specificaties die nodig zijn voor use cases die gebruikmaken van de [communicatiepatronen](https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws) 'Gericht bevragen' en 'Geïndexeerd bevragen'. Het doel van deze implementatiegids is het versnellen van de realisatie van use cases. Deze implementatiegids draagt hieraan bij door hergebruik van afspraken en specifcaties te vereenvoudigen.
 
-## Overview ##
+## Overview
 datagebruiker
 datahouder
 
-## Use cases ##
+## Use cases
 
 Deze specificatie vormt de basis voor een aantal verschillende use cases.
 

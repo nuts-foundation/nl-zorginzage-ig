@@ -120,12 +120,12 @@ parameters:
 menu:
   Home: index.html
   Volume 1:
-    Inleiding: vol1.html#1
+    Inleiding: vol1.html
     Overview: vol1.html#2
     Actoren: vol1.html#3
     Use cases: vol1.html#4
   Volume 2a:
-    Exchange patterns: vol2a.html#1
+    Exchange patterns: vol2a.html
     Identification: vol2a.html#2
     Authentication: vol2a.html#3
     Localization: vol2a.html#4
@@ -133,33 +133,15 @@ menu:
     Authorization: vol2a.html#6
     Consent: vol2a.html#Consent
   Volume 2b:
-    Register data at NVI: vol2b.html#Register-data-at-NVI
+    Register data at NVI: vol2b.html
     Search data holders at NVI: vol2b.html#Search
     Indexed pull: vol2b.html#indexedpull
     Pull: vol2b.html#Pull
   Volume 3:
-    Inleiding: vol3.html#Inleiding
+    Inleiding: vol3.html
     Use cases: vol3.html#Use-cases
   Artifacts: artifacts.html
   History: history.html
-  Archive:
-    Introduction: introduction.html
-    Actors & Transactions: actors-transactions.html
-    Process Flow: process-flow.html
-    Security: security-considerations.html
-    Specifications:
-      Overview: specifications.html
-      Care Services: care-services.html
-      Routing: routing.html
-      Localization: localization.html
-      Consent: consent.html
-      Identification: identification.html
-      Authentication: authentication.html
-      Access Policy: access-policy.html
-    Appendix: appendix-legislation.html
-    
-  
-
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │
 # │  resource. These properties are less commonly needed than those above.                         │
