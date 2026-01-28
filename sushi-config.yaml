@@ -119,22 +119,46 @@ parameters:
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
   Home: index.html
-  Introduction: introduction.html
-  Actors & Transactions: actors-transactions.html
-  Process Flow: process-flow.html
-  Security: security-considerations.html
-  Specifications:
-    Overview: specifications.html
-    Care Services: care-services.html
-    Routing: routing.html
-    Localization: localization.html
-    Consent: consent.html
-    Identification: identification.html
-    Authentication: authentication.html
-    Access Policy: access-policy.html
-  Appendix: appendix-legislation.html
+  Volume 1:
+    Inleiding: vol1.html#Inleiding
+    Overview: vol1.html#Overview
+    Actoren: vol1.html#Actoren
+    Use cases: vol1.html#Use%20cases
+  Volume 2a:
+    Exchange patterns: vol2a.html#Exchange%20pattern
+    Identification: vol2a.html#Identification
+    Authentication: vol2a.html#Authentication
+    Localization: vol2a.html#Localization
+    Addressing: vol2a.html#Addressing
+    Authorization: vol2a.html#Addressing
+    Consent: vol2a.html#Consent
+  Volume 2b:
+    Register data at NVI: vol2b.html#Register%20data%20%at%20NVI
+    Search data holders at NVI: vol2b.html#Search
+    Indexed pull: vol2b.html#indexedpull
+    Pull: vol2b.html#Pull
+  Volume 3:
+    Inleiding: vol3.html#Inleiding
+    Use cases: vol3.html#Use%20cases
   Artifacts: artifacts.html
   History: history.html
+  Archive:
+    Introduction: introduction.html
+    Actors & Transactions: actors-transactions.html
+    Process Flow: process-flow.html
+    Security: security-considerations.html
+    Specifications:
+      Overview: specifications.html
+      Care Services: care-services.html
+      Routing: routing.html
+      Localization: localization.html
+      Consent: consent.html
+      Identification: identification.html
+      Authentication: authentication.html
+      Access Policy: access-policy.html
+    Appendix: appendix-legislation.html
+    
+  
 
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │
