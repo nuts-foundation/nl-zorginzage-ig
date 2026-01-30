@@ -109,7 +109,7 @@ menu:
   Home: index.html
   Volume 1:
     Inleiding: vol1.html
-    Overview: vol1.html
+    Overview: vol1.html#overview
     Actoren: vol1.html#actoren
     Use cases: vol1.html#use-cases
   Volume 2a:

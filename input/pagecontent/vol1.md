@@ -8,6 +8,10 @@ Deze implementatiegids Zorginzage bevat de generieke afspraken en specificaties 
 datagebruiker
 datahouder
 
+#### Actoren
+datagebruiker
+datahouder
+
 #### Use cases
 
 Deze specificatie vormt de basis voor een aantal verschillende use cases.
