@@ -1,41 +1,51 @@
 #### Addressing
 
-Voor het uitwisselen van gegevens tussen zorgorganisaties die niet vooraf bekend bij elkaar zijn, moet het mogelijk zijn
-om adresgegevens in het zorgnetwerk te ontdekken. Adresgegevens zijn gegevens die de topologie van een organisatie
-omschrijven en de verschillende manieren waarop een organisatie bereikbaar is. Dit kunnen zowel fysieke, digitale of
-logische entiteiten zijn.
+To exchange data between healthcare organisations that are not previously known to each other, it must be possible to
+discover addressing information within the healthcare network. Address information is data that describe an
+organisation's
+topology and the various ways an organisation can be reached. These can be physical, digital, or logical entities.
 
-Voor alle toepassingen is het beginpunt het vinden van de juiste endpoints bijvoorbeeld voor het aanvragen van een
-access token of het toesturen van een taak. In de Nuts community wordt daarvoor een zogenaamde discovery service
-gebruikt. Helaas is dat protocol niet compatible met de aankomende landelijke generieke functie adressering welke
-gebruik maakt van een centraal register, het LRZA, voor het publiceren van alle adresgegevens in de zorg in Nederland.
+For all use cases, the starting point is finding the correct endpoints, for example, to request an access token or to
+send a task. The Nuts community uses a so-called discovery service for this purpose.
 
-Om de transitie naar de landelijk generieke functie zo klein mogelijk te maken, stellen we voor te werken met een
-centraal register in de vorm van een FHIR4 resource server welke voldoet aan het datamodel omschreven in de [door VWS
-opgestelde specificaties](https://minvws.github.io/generiekefuncties-docs/care-services.html#entities).
+[A complete description of the Discovery Service](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery)
+can be found on the Nuts Wiki.
 
-Toegang tot het register wordt verleend op basis van mTLS op basis van een PKI overheid certificaat.
+In terms of required credentials, we use two different types: an X509Credential and a DiscoveryRegistrationCredential.
 
-#### Synchronisatie
+##### X509Credential
 
-Deelnemers worden verwacht alle adresgegevens te synchroniseren naar een lokale query directory zoals omschreven
-in de specificatie van het ministerie. Het (tijdelijk en uiteindelijke) landelijke centrale register hebben daarom
-slechts
-beperkte query capabilities. Deze capabilities zijn vastgelegd in FHIR capability statements.
+This is an X509Credential in accordance
+with [Nuts RFC023](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023), signed with a
+UZI server certificate.
 
-Voor de implementatie van het synchronisatie-process aan de deelnemer kant kan gebruik worden gemaakt van een van de
-open source implementaties beschikbaar uit het pilottraject landelijke generieke functies zoals bijvoorbeeld [de update
-client in het Nuts Knooppunt](https://github.com/nuts-foundation/nuts-knooppunt/blob/main/docs/DEPLOYMENT.md#addressing).
+It can be created, for example, with
+the [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main) or
+the [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java/). It has been decided to include the
+chain closest to the leaf certificate as the issuer.
 
-#### Beheer adresgegevens
+Searches can be performed by DID name, organisation name, organisation type, location & URA.
 
-Voor het beheer van adresgegevens kan er worden geschreven naar het centrale adresboek. Het centrale adresboek draagt
-er zorg voor dat inkomende gegevens worden gevalideerd zodat er geen oneigenlijk adresgegevens kunnen worden gepubliceerd.
+##### DiscoveryRegistrationCredential
+
+This is a DiscoveryRegistrationCredential as explained on
+the [Nuts Wiki page about Service Discovery](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration).
+
+A field named fhirBaseURL has been added to the credentialSubject. This can be used by users of the Discovery Service to
+know where the actual FHIR data can be retrieved.
+
+It is important to include the organisation type when registering with the Discovery Service, so that a distinction can
+be made between a nursing/care institution and a GP. The HL7 organisation type Code List is used for
+this: https://zibs.nl/wiki/Zorgaanbieder-v3.4(2020NL)#OrganisatieTypeCodelijst
+
+### Todo
+
+- Who will host the discovery service?
+- How to request one for a new use case?
+- Who signs the DiscoveryRegistrationCredential?
 
 #### Roadmap
 
-Alternatief: statische data set tot dat het werkelijk LRZA er is?
-
 - GF addressing is coming
-- National implementation starts end 2026
-- Linkie naar vws IG pagina adressering
+- National implementation starts at the end of 2026
+- Link to VWS IG addressing page
