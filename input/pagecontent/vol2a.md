@@ -23,3 +23,12 @@ The following guidelines should be taken into account when designing new policie
   - for read interactions the resource should have a direct link to a patient (for example through a patient field)
 - patient consent should be checked in a local system or Mitz before returning the data
 - check on active treatment relation, optionally in context of specific use case
+
+### Todo
+
+- What will be the process for sharing and updating policies?
+- To what extent do we want to use PIP calls versus vs passing data in credentials?
+
+#### Roadmap
+
+- GF authorization might be coming some day
