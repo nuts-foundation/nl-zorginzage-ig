@@ -1,29 +1,26 @@
-#### Exchange patterns: pull and indexed pull JORRIT
+### Exchange patterns: pull and indexed pull
 
-This specification is aimed at data exchanges that use the exchange pattern "pull" or the exchange pattern "indexed pull". See https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws.
+This specification describes data exchanges that use the exchange pattern "pull" or the exchange pattern "indexed pull". See https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws.
 
->>TO DO verplaats het volgende stukje naar Vol 2b sequenties
 In short this means that fetching data globally consists of the following steps: 
 
-1. Localization: Localising the data holders
-   1. Exchange pattern "indexed pull": Localization is done by using an index outside the data holder (for instance NVI)
-   2. Exchange pattern "pull": Localization is done by using an index maintained by the data holder (for instance a CareTeam)
-2. Addressing: Find the addresses of the FHIR- and OAuth-endpoints of each data holder 
-3. Getting access token: Data user organization gets each from each data holder
-4. Data request: actually reuqesting the data at each known data holder.
->>
+1. Addressing: The data user finds the addresses of the FHIR- and OAuth-endpoints of each (possible) data holder.
+2. Authentication: The data user authenticates (organisation and person level)
+3. Localisation: The data user finds the data holders that have data about a patient (in a specific context)
+    1. Patient search request: The data user performs a patient search at each possible data holder, using bsn as parameter.
+    2. Patient search reponse: When the data user has data about the requested patient, it returns the internal technical identifier of the requested patient.
+4. Data request: The data user performs data requests at each possible data holder, using the technical identifier of the requested patient as parameter.
+5. Authorisation: The data holder authorizes the incoming data request.
+    1. Check consent: As part of the authorization process the data holder can check the presence of patient consent, locally or at Mitz.
 
-#### Principles
+### Principles
 
 This specification uses the following principles:
-- This specification makes use of Nuts v6, meaning it is based on the use of the did:web and verifiable credentials
-- This specification is aimed at making data available and requestingt data via FHIR API's
-- This specification will only contain dependencies when they are available in real-life production environments
-- This specification incrementally and iteratively evolve to replace all Nuts-specific elements with the nationally specified generic functions
-- This specification will have a maximum of 2 major releases per year
+- This specification makes use of did:web and verifiable credentials (commonly referred to as "Nuts v6")
+- This specification makes use of FHIR API's
 
-### Section 2
+### Network security
 
-### Section 3
-
-### Consent
+1. Production environments: Vendor organizations use server- and client-authentication (mutual TLS) based on PKIoverheid-certificates.
+2. Acceptance environments: Vendor organizations use server- and client-authentication (mutual TLS) based on PKIoverheid-certificates.
+3. Test environments: Vendor organizations use server- and client-authentication (mutual TLS) based on PKIoverheid-certificates or any public trust certificates.
