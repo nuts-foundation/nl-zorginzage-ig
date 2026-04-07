@@ -1,4 +1,4 @@
-#### Addressing
+### Addressing
 
 To exchange data between healthcare organisations that are not previously known to each other, it must be possible to
 discover addressing information within the healthcare network. Address information is data that describe an
@@ -63,4 +63,4 @@ A complete use case contains:
 - An authorization policy
 - Discover service presentation definition 
 
-Use cases are scoped to a version of this implementation guide and review by Actiz.
+Use cases are scoped to a version of this implementation guide and reviewed by Actiz.
