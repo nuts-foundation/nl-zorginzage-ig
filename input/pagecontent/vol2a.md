@@ -11,10 +11,14 @@ send a task. The Nuts community uses their discovery service for this purpose.
 [A complete description of the Discovery Service](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery)
 can be found on the Nuts Wiki.
 
-In terms of required credentials, we use two different types during the discovery process: an X509Credential and a
-DiscoveryRegistrationCredential. These credentials are when registering and requesting addressing information.
+In terms of required credentials, we use three different types during the discovery process: an X509Credential, a
+DiscoveryRegistrationCredential and a HealthcareProviderRoleTypeCredential. These credentials are used when registering
+and requesting addressing information.
 
 Searches can be performed by organisation URA, organisation type and use case.
+
+Actiz is organisationally responsible for hosting the discovery service. One discovery service will be used for all
+specific applications-on-Nuts that are based on the generic application-on-Nuts Zorginzage.
 
 ##### X509Credential
 
@@ -29,6 +33,11 @@ the [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/t
 the [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java/). It has been decided to include the
 chain closest to the leaf certificate as the issuer.
 
+##### HealthcareProviderRoleTypeCredential
+
+A self-signed HealthcareProviderRoleTypeCredential has to be presented when registering at the discovery service. This
+can be used by users of the Discovery Service to look up the HealthcareProviderRoleType of an organisation.
+
 ##### DiscoveryRegistrationCredential
 
 The DiscoveryRegistrationCredential is a temporary credential that communicates the information for making a new
@@ -37,24 +46,21 @@ registration in the discovery service.
 This is a DiscoveryRegistrationCredential as explained on
 the [Nuts Wiki page about Service Discovery](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration).
 
-A field named `fhirBaseURL` has been added to the credentialSubject. This can be used by users of the Discovery Service to
-know where the actual FHIR data can be retrieved.
+A field named `fhirBaseURL` has been added to the credentialSubject. This can be used by users of the Discovery Service
+to know where the actual FHIR data can be retrieved.
 
 A field named `authorization_server_url` has been added to the credentialSubject. This can be used by users of the
 Discovery Service to look up the access token request endpoint.
 
-It is important to include the organisation type when registering with the Discovery Service, so that a distinction can
-be made between a nursing/care institution and a GP. The HL7 organisation type Code List is used for
-this: https://zibs.nl/wiki/Zorgaanbieder-v3.4(2020NL)#OrganisatieTypeCodelijst
+### Registering a new use case
 
-### Todo
+New use cases can be registered by providing a pull request to
+the [nl-zorginzage-resources repository](https://github.com/nuts-foundation/nl-zorginzage-resources).
 
-- Who will host the discovery service?
-- How to request one for a new use case?
-- Who signs the DiscoveryRegistrationCredential?
+A complete use case contains:
 
-#### Roadmap
+- The Nuts policy
+- An authorization policy
+- Discover service presentation definition 
 
-- GF addressing is coming
-- National implementation starts at the end of 2026
-- Link to VWS IG addressing page
+Use cases are scoped to a version of this implementation guide and review by Actiz.
