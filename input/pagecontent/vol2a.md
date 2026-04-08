@@ -21,7 +21,7 @@ Rationale
 ##### HealthcareProviderRoleType
 Healthcare organisations use a HealthcareProviderRoleType attribute to express which type(s) of healthcare organisations they are.
 
-Raionale
+Rationale
 - In indexed pull scenarios, OTV-consents (online toestemmingsvoorziening, Mitz) are relevant. The use of OTV-consents requires uniform communication of the type of healthcare organisation of both data user organisation and data holder organisation.
 - The type of healthcare organisation is a useful attribute in  authorisation and localisation processes.
 - The HealthcareProviderRoleType is self-issued by each healthcare organisation. No trusted third party issuer is active at the moment.
