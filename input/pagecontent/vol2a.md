@@ -1,29 +1,24 @@
-#### Localization
+### Localization
 
-Localization is the process of finding out which organisation have data on a patient.
+Localization is the process of finding out which organisations have data on a patient.
 
-In the absence of a generic localization service, localization is handled locally. This means that the systems
-themselves keep track of where data can be retrieved. For example, by explicitly recording the VVT (nursing, care, and
-home care) institution where the patient is being treated in the HIS (General Practitioner Information System). Or, in
-the case of access to the GP record, by recording the relevant GP in the ECD (Electronic Care Record) within the file.
+The generic function localisation is not yet available in production environments. This specification uses bsn
+broadcasting using the Nuts Discovery Service for indexed pull scenarios. This means that organisations that implement
+this specification perform bsn broadcasting and accept incoming bsn-based patient searches and matches.
 
-A national index based using pseudonymisation technology is being worked on but for the time being we will have to rely
-on local registration of the patient-provider relationships.
+This method is the only viable way to localise without external dependencies, however it requires an appropriate legal
+basis to be in place.
 
-#### Alternative: Pseudonym broadcasting
+In practice the BSN broadcast is realised by searching for a patient record with an identifier.
 
-The ministry of health is developing a national pseudonymisation service which will make it so that there is a national
-standerd for creating pseudonyms of BSN's. Using this method it will be possible to poll other organisations for patient
-data without revealing the BSN itself.
+```http request
+GET https://examples.http-server.net/Patient?identifier=bsn|618359710&_elements=id
+```
 
-Practically this would mean that every XIS keeps an index of the of pseudonym to BSN using the national OPRF service.
-The requesting party can now broadcast a pseudonym to all other parties in the network to determine patient-provider
-relationship without while preserving the privacy of the patient.
+- Requestor must pre-filter resources servers that the BSN is broadcasted to by use case and organisation type during
+  addressing
+- Requestor must provide the `_elements` & `identifier=` query parameters when searching the patient
+- Data holder must only return patient ID's when there is data available for the specific use case 
 
-#### Todo
-
-- Discuss options
-  - Local registration
-  - Pseudonym broadcasting
-  - National NVI (ready in spring?)
-  - Use CareTeam/ CareTeams as index
+The aim is to replace localisation in the next version of this spec with either pseudonym broadcasting or the GF
+localisation. **Always make sure to check the legal basis before broadcasting any BSN's.**
