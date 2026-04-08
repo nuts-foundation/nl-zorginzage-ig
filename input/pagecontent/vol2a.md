@@ -12,7 +12,10 @@ basis to be in place.
 In practice the BSN broadcast is realised by searching for a patient record with an identifier.
 
 ```http request
-GET https://examples.http-server.net/Patient?identifier=bsn|618359710&_elements=id
+POST /fhir/Patient/_search
+Content-Type: application/x-www-form-urlencoded
+
+identifier=http://fhir.nl/fhir/NamingSystem/bsn|618359710&_elements=id
 ```
 
 - Requestor must pre-filter resources servers that the BSN is broadcasted to by use case and organisation type during
