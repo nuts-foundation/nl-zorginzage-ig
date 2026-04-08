@@ -2,6 +2,16 @@
 
 Deze implementatiegids Zorginzage bevat de generieke afspraken en specificaties die nodig zijn voor use cases die gebruikmaken van de [communicatiepatronen](https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws) 'Gericht bevragen' en 'Geïndexeerd bevragen'. Het doel van deze implementatiegids is het versnellen van de realisatie van use cases. Deze implementatiegids draagt hieraan bij door het hergebruik van afspraken en specifcaties te vereenvoudigen.
 
+### Procesbeschrijving
+
+Met deze bolt ondersteunen we het proces van Zorginzage. Dat proces bestaat enerzijds uit het interoperabel, toegankelijk, vindbaar en herbruikbaar (FAIR) maken van dossiergegevens door een bronhouder ('publiceren') en anderzijds uit het daadwerkelijk inzien van dossiergegevens door een afnemer ('raadplegen'). Door Zorginzage zijn zorgverleners in staat het voor hen relevante deel van het zorgtraject van de betrokkene te volgen dat zich bij andere zorgaanbieders afspeelt.
+
+Voorbeelden:
+- Een thuiszorgdossier dat wordt bijgehouden door de thuiszorgorganisatie en wordt ingezien door de huisarts. Observaties en metingen worden verricht door verplegend en verzorgend personeel van de thuiszorgorganisatie en deze kunnen specifiek en gericht worden ingezien door de betrokken huisarts.
+- De integrale geboortezorg waarbij verschillende zorgaanbieders (eerstelijns verloskundepraktijken, ziekenhuizen, echoscopiepraktijken, kraamzorgorganisaties, jeugdgezondheidszorgorganisaties) in onderlinge samenwerking de juiste zorg voor de betrokkene en diens omgeving leveren. Alle betrokken zorgverleners dienen (wanneer dat voor hen relevant is en wanneer daarvoor een grondslag is) inzage te hebben in de observaties, metingen en andere zorggegevens die zijn geregistreerd door personeel van andere betrokken zorgaanbieders.
+- Het opvragen van de Basisgegevensset Zorg (BgZ) binnen de medisch-specialistische zorg . Zorgverleners dienen (wanneer dat voor hen relevant is en wanneer daarvoor een grondslag is) inzage te hebben in de Basisgegevensset Zorg die is geregistreerd door een eerdere behandelaar.
+- Het actueel medicatieoverzicht (AMO). Zorgverleners dienen (wanneer dat voor hen relevant is en wanneer daarvoor een grondslag is) inzage te hebben in de medicatie-informatie die is ingevoerd door andere zorgaanbieders.
+
 ### Principes
 
 1. Deze specificatie heeft als scope het door een datagebruiker inzien van data die bij andere zorgorganisaties is opgeslagen en het hiervoor benodigde door een datahouder beschikbaar stellen van data aan andere zorgorganisaties.
@@ -9,6 +19,17 @@ Deze implementatiegids Zorginzage bevat de generieke afspraken en specificaties 
 3. Deze specificatie ontwikkelt incrementeel en iterarief door. 
 4. Deze specificatie adopteert incrementeel en iterarief de door het Ministerie van VWS beheerde landelijke afspraken en specifcaties voor generieke functies. Deze landelijke afspraken en specificaties vervangen incremenenteel en iteratief alle zorginzage-specifieke afspraken en specificaties.
 5. Van deze specificatie zullen maximaal twee release per jaar uitkomen die invloed hebben op de functionaliteit.
+
+### Use cases
+
+Deze specificatie vormt de basis voor een aantal verschillende use cases.
+
+Use case | Specficatie | Opmerking
+---------|-------------|----------
+360-graden cliëntbeeld | n.t.b. | De specficatie van deze use case maakt gebruik van Zorginzage 2026
+Geboortezorg | [link](https://babyconnect.atlassian.net/wiki/spaces/VBC/pages/906166273/Zorgtoepassingprofiel+Geboortezorg)  | De specficatie van deze use case maakt nog geen gebruik van Zorginzage 2026
+Huisartsinzage | [link](https://wiki.nuts.nl/books/samenwerken-huisarts-en-thuiszorg/page/zorgtoepassing-ha-vvt-inzage-dossier-v10) | De specficatie van deze use case maakt nog geen gebruik van Zorginzage 2026
+PZP | [link](https://wiki.nuts.nl/books/pzp) | De specficatie van deze use case maakt nog geen gebruik van Zorginzage 2026
 
 ### Rollen en verantwoordelijkheden
 
@@ -38,17 +59,6 @@ Rol | Uitvoerder
 Eigenaar van de specificatie | ActiZ
 Deelnemer | XIS-leverancier
 Eigenaar Discovery Service | ActiZ
-
-### Use cases
-
-Deze specificatie vormt de basis voor een aantal verschillende use cases.
-
-Use case | Specficatie | Opmerking
----------|-------------|----------
-360-graden cliëntbeeld | n.t.b. | De specficatie van deze use case maakt gebruik van Zorginzage 2026
-Geboortezorg | [link](https://babyconnect.atlassian.net/wiki/spaces/VBC/pages/906166273/Zorgtoepassingprofiel+Geboortezorg)  | De specficatie van deze use case maakt nog geen gebruik van Zorginzage 2026
-Huisartsinzage | [link](https://wiki.nuts.nl/books/samenwerken-huisarts-en-thuiszorg/page/zorgtoepassing-ha-vvt-inzage-dossier-v10) | De specficatie van deze use case maakt nog geen gebruik van Zorginzage 2026
-PZP | [link](https://wiki.nuts.nl/books/pzp) | De specficatie van deze use case maakt nog geen gebruik van Zorginzage 2026
 
 ### Roadmap
 

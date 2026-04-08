@@ -18,9 +18,9 @@ releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | re
 license: EUPL-1.2 # https://www.hl7.org/fhir/valueset-spdx-license.html
 jurisdiction: urn:iso:std:iso:3166#NL "Netherlands" # https://www.hl7.org/fhir/valueset-jurisdiction.html
 publisher:
-  name: Stichting Nuts
-  url: https://www.nuts.nl
-  # email: test@example.org
+  name: Stichting ActiZ
+  url: https://www.actiz.nl
+  email: DigitaalDenkenenDoen@Actiz.nl
 
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
@@ -28,7 +28,7 @@ publisher:
 # use cases, the value can be an object with keys for id, uri, and version.
 dependencies:
   nictiz.fhir.nl.r4.nl-core: 0.12.0-beta.4
-  nictiz.fhir.nl.r4.zib2020: 0.12.0-beta.4
+  # nictiz.fhir.nl.r4.zib2020: 0.12.0-beta.4
   # hl7.fhir.eu.base: 0.1.0-ballot # Depending on discussion with Nictiz if we want to base our profiles on this or not
 #
 #
@@ -55,35 +55,17 @@ dependencies:
 pages:
   index.md:
     title: Home
-    
   vol1.md:
     title: Volume 1
-
   vol2a.md:
     title: Volume 2a
-
   vol2b.md:
     title: Volume 2b
-  
   vol3.md:
     title: Volume 3
-
   history.md:
     title: History
 
-  # usecase-enrollment.md:
-  #   title: Use cases - Enroll patient in home monitoring
-  # usecase-view-all-data.md:
-  #   title: Use cases - Get data for home care
-  # usecase-nursing-handoff.md:
-  #   title: Use cases - How execute a nursing referral
-#   implementation.xml:
-#   examples.xml:
-#     title: Examples Overview
-#     simpleExamples.xml:
-#     complexExamples.xml:
-
-#
 # The parameters property represents IG.definition.parameter. Rather
 # than a list of code/value pairs (as in the ImplementationGuide
 # resource), the code is the YAML key. If a parameter allows repeating
@@ -109,27 +91,28 @@ menu:
   Home: index.html
   Volume 1:
     Inleiding: vol1.html
-    Overview: vol1.html#overview
+    Procesbeschrijving: vol1.html#procesbeschrijving
+    Principes: vol1.html#principes
     Actoren: vol1.html#actoren
     Use cases: vol1.html#use-cases
   Volume 2a:
     Exchange patterns: vol2a.html
     Identification: vol2a.html#identification
-    Authentication: vol2a.html#3
-    Localization: vol2a.html#4
-    Addressing: vol2a.html#5
-    Authorization: vol2a.html#6
-    Consent: vol2a.html#Consent
+    Authentication: vol2a.html#authentication
+    Localisation: vol2a.html#localisation
+    Addressing: vol2a.html#addressing
+    Authorization: vol2a.html#authorisation
+    Consent: vol2a.html#consent
+    Network security: vol2a.html#network-security
   Volume 2b:
-    Register data at NVI: vol2b.html
-    Search data holders at NVI: vol2b.html#Search
-    Indexed pull: vol2b.html#indexedpull
-    Pull: vol2b.html#Pull
+    Indexed pull: vol2b.html#indexed-pull
+    Pull: vol2b.html#pull
   Volume 3:
-    Inleiding: vol3.html
-    Use cases: vol3.html#Use-cases
-  Artifacts: artifacts.html
+    Data set definitions: vol3.html#data-set-definitions
+    Individual resource requests: vol3.html#individual-resource-requests
+    Patient context: vol3.html#patient-context
   History: history.html
+
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │
 # │  resource. These properties are less commonly needed than those above.                         │
