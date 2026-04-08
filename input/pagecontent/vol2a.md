@@ -162,7 +162,7 @@ identifier=http://fhir.nl/fhir/NamingSystem/bsn|618359710&_elements=id
 The aim is to replace localisation in the next version of this spec with either pseudonym broadcasting or the GF
 localisation. **Always make sure to check the legal basis before broadcasting any BSN's.**
 
-### Authorization
+### Authorisation
 
 For authorization, we prefer a fine-grained policy based access model over a role based model. Whether a requestor gets
 access to the data they are requesting depends on whether they pass the access-polices of the source (bronhouder).
