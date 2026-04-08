@@ -7,8 +7,8 @@ Volume 3 of this specifcation describes the agreements and specifcations about c
 - The use case specific specifications that are based on zorginzage have to specify the relevant data set.
 
 ### Individual resource requests
-- Read-requests are only allowed on individual resource instances (excluding the use of compositions)
-- Search-requests are only allowed on individual resource types (excluding the use of compositions)
+- Read-requests are not allowed on List-, Composition- and Bundle-resources.
+- Search-requests are only allowed on individual resource types, excluding List-, Composition- and Bundle-resources.
 
 ### Patient Context
 
