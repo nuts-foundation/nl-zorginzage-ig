@@ -1,61 +1,16 @@
-# Netherlands Zorginzage Implementation Guide
+### Overview
 
-## Overview
+Zorginzage bevat de generieke afspraken en specificaties die het mogelijk maken dat zorgverleners patientdata die zijn opgeslagen bij andere zorgorganisaties op een gebruiksvriendelijke, veilige en schaalbare manier kunnen inzien.
 
-The Zorginzage (Healthcare Viewing) Implementation Guide enables healthcare professionals to securely view patient data across organizational boundaries using FHIR, OAuth 2.0, and decentralized trust infrastructure.
+### Organization of This Guide
 
-## Key Features
+Deze specificatie is in lijn met de IHE-profielen en de Twiin-zorgtoepassingen opgedeeld in de volgende volumes:
+- [Volume 1](vol1.html) geeft een functioneel overzicht van de zorgtoepassing PZP en de daarbij behorende eisen (in Dutch)
+- [Volume 2a](vol2a.html) bevat de technische afspraken voor de zorgtoepassing PZP (in English)
+- [Volume 2b](vol2b.html) bevat alle losse transacties die gebruikt worden voor de zorgtoepassing PZP (in English)
+- [Volume 3](vol3.html) bevat afsoraken en specificaties over content (informatie en data) (in English)
 
-- **Secure Access**: Healthcare professionals view data from other organizations with proper authorization
-- **Patient Control**: Patients control access through consent management  
-- **Standards-Based**: FHIR R4, OAuth 2.0, Nuts decentralized network
-- **Pull Architecture**: Data retrieved on-demand, not pushed
-- **Comprehensive Auditing**: NEN7513 compliant logging
+### Ondersteuning
 
-## Quick Start
+Voor ondersteuning bij de interpretatie en implementatie van deze specificatie kunt u zich wenden tot [ActiZ](mailto:DigitaalDenkenenDoen@Actiz.nl).
 
-1. **[Introduction](introduction.html)** - Scope, use cases, and key concepts
-2. **[Actors & Transactions](actors-transactions.html)** - System roles and interactions
-3. **[Process Flow](process-flow.html)** - Publishing and consulting workflows
-4. **[Security](security-considerations.html)** - Authentication and authorization
-5. **[Specifications](specifications.html)** - Technical implementation details
-
-## Core Concepts
-
-### Authorization Records
-Machine-readable credentials specifying who can access what data for which patient and purpose.
-
-### Care Applications  
-Domain-specific profiles (maternity care, medication overview, etc.) with their own governance and access policies.
-
-### Actors
-- **Data Holder**: Maintains and provides access to patient data
-- **Consumer**: Retrieves patient data on behalf of users
-- **Authorization Registry**: Stores and syncs authorization records
-- **OAuth Server**: Issues access tokens
-
-## Standards Used
-
-**International**: FHIR R4, OAuth 2.0, JWT, mTLS, Verifiable Credentials
-
-**Dutch National**: ZIBs (Healthcare Information Building Blocks), Nictiz FHIR profiles, Nuts network, UZI/IRMA authentication, NEN7513 audit logging
-
-## Implementation
-
-Systems must implement:
-- Authorization record creation/validation
-- User authentication (UZI or IRMA)
-- OAuth 2.0 token flow
-- FHIR R4 API
-- Mutual TLS
-- NEN7513 audit logging
-
-## Support
-
-- **Nuts Community**: [nuts.nl](https://nuts.nl)
-- **Nictiz Standards**: [nictiz.nl](https://nictiz.nl)
-- **Technical Docs**: [Nuts RFCs](https://nuts-foundation.gitbook.io/drafts)
-
----
-
-**Version**: 0.1.0 (Draft) | **License**: EUPL 1.2 | **Publisher**: Stichting Nuts
