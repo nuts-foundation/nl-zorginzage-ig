@@ -1,3 +1,24 @@
+### Exchange patterns: pull and indexed pull
+
+This specification describes data exchanges that use the exchange pattern "pull" or the exchange pattern "indexed pull". See https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws.
+
+In short this means that fetching data globally consists of the following steps: 
+
+1. Addressing: The data user finds the addresses of the FHIR- and OAuth-endpoints of each (possible) data holder.
+2. Authentication: The data user authenticates (organisation and person level)
+3. Localisation: The data user finds the data holders that have data about a patient (in a specific context)
+    1. Patient search request: The data user performs a patient search at each possible data holder, using bsn as parameter.
+    2. Patient search reponse: When the data user has data about the requested patient, it returns the internal technical identifier of the requested patient.
+4. Data request: The data user performs data requests at each possible data holder, using the technical identifier of the requested patient as parameter.
+5. Authorisation: The data holder authorizes the incoming data request.
+    1. Check consent: As part of the authorization process the data holder can check the presence of patient consent, locally or at Mitz.
+
+### Principles
+
+This specification uses the following principles:
+- This specification makes use of did:web and verifiable credentials (commonly referred to as "Nuts v6")
+- This specification makes use of FHIR API's
+
 ### Addressing
 
 To exchange data between healthcare organisations that are not previously known to each other, it must be possible to
@@ -44,19 +65,6 @@ to know where the actual FHIR data can be retrieved.
 A field named `authorization_server_url` has been added to the credentialSubject. This can be used by users of the
 Discovery Service to look up the access token request endpoint.
 
-### Registering a new use case
-
-New use cases can be registered by providing a pull request to
-the [nl-zorginzage-resources repository](https://github.com/nuts-foundation/nl-zorginzage-resources).
-
-A complete use case contains:
-
-- The Nuts policy
-- An authorization policy
-- Discover service presentation definition 
-
-Use cases are scoped to a version of this implementation guide and reviewed by Actiz.
-
 ### Authorization
 
 For authorization, we prefer a fine-grained policy based access model over a role based model. Whether a requestor gets
@@ -98,3 +106,22 @@ For data requests in which explicit consent is not checked, one of the following
 
 The treatment relation of the data holder organisation with the patient may be checked technically by the data holder
 organisation.
+
+### Network security
+
+1. Production environments: Vendor organizations use server- and client-authentication (mutual TLS) based on PKIoverheid-certificates.
+2. Acceptance environments: Vendor organizations use server- and client-authentication (mutual TLS) based on PKIoverheid-certificates.
+3. Test environments: Vendor organizations use server- and client-authentication (mutual TLS) based on PKIoverheid-certificates or any public trust certificates.
+
+### Registering a new use case
+
+New use cases can be registered by providing a pull request to
+the [nl-zorginzage-resources repository](https://github.com/nuts-foundation/nl-zorginzage-resources).
+
+A complete use case contains:
+
+- The Nuts policy
+- An authorization policy
+- Discover service presentation definition 
+
+Use cases are scoped to a version of this implementation guide and reviewed by Actiz.
