@@ -19,6 +19,8 @@ Voorbeelden:
 3. Deze specificatie ontwikkelt incrementeel en iterarief door. 
 4. Deze specificatie adopteert incrementeel en iterarief de door het Ministerie van VWS beheerde landelijke afspraken en specifcaties voor generieke functies. Deze landelijke afspraken en specificaties vervangen incremenenteel en iteratief alle zorginzage-specifieke afspraken en specificaties.
 5. Van deze specificatie zullen maximaal twee release per jaar uitkomen die invloed hebben op de functionaliteit.
+6. Wederkerigheid. Deelnemers aan zorginzage stellen alleen data beschikbaar aan partijen die ook conform deze specificatie data beschikbaar stellen. 
+7. Commitment. De zorginzage-specificatie wordt de komende jaren doorontwikkeld. Deelnemers committeren zich aan de implementatie van volgende versies. 
 
 ### Use cases
 
@@ -30,6 +32,14 @@ Use case | Specficatie | Opmerking
 Geboortezorg | [link](https://babyconnect.atlassian.net/wiki/spaces/VBC/pages/906166273/Zorgtoepassingprofiel+Geboortezorg)  | De specficatie van deze use case maakt nog geen gebruik van Zorginzage 2026
 Huisartsinzage | [link](https://wiki.nuts.nl/books/samenwerken-huisarts-en-thuiszorg/page/zorgtoepassing-ha-vvt-inzage-dossier-v10) | De specficatie van deze use case maakt nog geen gebruik van Zorginzage 2026
 PZP | [link](https://wiki.nuts.nl/books/pzp) | De specficatie van deze use case maakt nog geen gebruik van Zorginzage 2026
+
+### Wederkerigheid
+
+Deelnemers aan zorginzage stellen alleen data beschikbaar aan partijen die ook conform deze specificatie data beschikbaar stellen. Om dit te bereiken dienen deelnemers aan zorginzage naast de rol datagebruiker (data user) ook de rol datahouder (data holder) te implementeren.
+
+### Commitment
+
+De zorginzage-specificatie wordt de komende jaren doorontwikkeld. Deelnemers aan zorginzage committeren zich aan de tijdige implementatie van de versies die in 2026, 2027 en 2028 zullen worden gepubliceerd.
 
 ### Rollen en verantwoordelijkheden
 
