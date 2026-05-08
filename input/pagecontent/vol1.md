@@ -64,36 +64,50 @@ Eigenaar Discovery Service | ActiZ
 
 Release zorginzage-specificatie | juni 2026 | najaar 2026 | voorjaar 2027 | najaar 2027
 -----|------|------|------|------
-adressering | zorginzage-specifiek | generieke functie adressering | generieke functie adressering | generieke functie adressering
-lokalisatie | zorginzage-specifiek | generieke functie lokalisatie | generieke functie lokalisatie | generieke functie lokalisatie 
-authenticatie van organisaties | zorginzage-specifiek | zorginzage-specifiek | generieke functie authenticatie | generieke functie authenticatie
+adressering | zorginzage-specifiek | zorginzage-specifiek | generieke functie adressering | generieke functie adressering
+lokalisatie | zorginzage-specifiek | zorginzage-specifiek | generieke functie lokalisatie | generieke functie lokalisatie 
+authenticatie van organisaties | zorginzage-specifiek | zorginzage-specifiek | zorginzage-specifiek | generieke functie authenticatie
 authenticatie van personen | zorginzage-specifiek | zorginzage-specifiek | dezi | dezi
 autorisatie | zorginzage-specifiek | zorginzage-specifiek | zorginzage-specifiek | generieke functie autorisatie 
 
 ### Releasebeleid
 
-De zorginzage-specificatie zal zich de komende jaren doorontwikkelen. Ontwikkelingen binnen en rondom zorginzage, zoals de ontwikkelingen aangaande generieke functies, kunnen aanleiding geven om afspraken en specificaties te wijzigen. De eigenaar van de specificatie spant zich ervoor in om te borgen dat ontwikkelingen zo goed mogelijk worden verwerkt in de zorginzage-specificatie door middel van het uitbrengen van nieuwe releases. 
+De zorginzage-specificatie zal zich de komende jaren doorontwikkelen. Ontwikkelingen binnen en rondom zorginzage, zoals
+de ontwikkelingen aangaande generieke functies, kunnen aanleiding geven om afspraken en specificaties te wijzigen. De
+eigenaar van de specificatie spant zich ervoor in om te borgen dat ontwikkelingen zo goed mogelijk worden verwerkt in de
+zorginzage-specificatie door middel van het uitbrengen van nieuwe releases.
 
 #### Releasecriteria
 
 Releases voor de specficatie worden als volgt aangeduid:
+
 - Major: Wijzigingen die invloed hebben op de functionaliteit en niet backwards compatible zijn.
 - Minor: Wijzigingen die invloed hebben op de functionaliteit en backwards compatible zijn.
 - Patch: Wijzigingen die geen invloed hebben op de functionaliteit en backwards compatible zijn.
 
 #### Releasefrequentie
 
-- De eigenaar van de specificatie publiceert maximaal tweemaal (2) per jaar een nieuwe release met impact voor de Deelnemers (major of minor release) volgens een vooraf aangekondigde planning.
-- De eigenaar van de specificatie kan op ieder moment patch releases uitbrengen als dat nodig is, zoals voor het herstellen van fouten.
+- De eigenaar van de specificatie publiceert maximaal tweemaal (2) per jaar een nieuwe release met impact voor de
+  Deelnemers (major of minor release) volgens een vooraf aangekondigde planning.
+- De eigenaar van de specificatie kan op ieder moment patch releases uitbrengen als dat nodig is, zoals voor het
+  herstellen van fouten.
 
 #### Geldigheid
 
-De actuele release is geldig. Daarnaast is de voorlaatste release (ook wel n-1 genoemd) tot 3 maanden na publicatie van de actuele release geldig. Dit betekent dat deelnemers aan zorginzage vanaf het moment van publicatie maximaal drie (3) maanden de tijd hebben om de actuele release te implementeren.
+De actuele release is geldig. Daarnaast is de voorlaatste release (ook wel n-1 genoemd) tot 3 maanden na publicatie van
+de actuele release geldig. Dit betekent dat deelnemers aan zorginzage vanaf het moment van publicatie maximaal drie (3)
+maanden de tijd hebben om de actuele release te implementeren.
+
+In de release worden elementen opgenomen die productie klaar zijn voor een pilot. Na een succesvolle implementatie
+zullen die in de volgende release definitief worden gemaakt.  
 
 #### Versiebeheer
 
-De eigenaar van de specificatie hanteert de Semantic Versioning-specificatie voor het versiebeheer, zie https://semver.org. Dit betekent dat het versienummer wordt weergegeven door 3 nummers die met een punt zijn gescheiden (x.y.z waarbij x de majorrelease is, y de minor en z de patch).
+De eigenaar van de specificatie hanteert de Semantic Versioning-specificatie voor het versiebeheer,
+zie https://semver.org. Dit betekent dat het versienummer wordt weergegeven door 3 nummers die met een punt zijn
+gescheiden (x.y.z waarbij x de majorrelease is, y de minor en z de patch).
 
 #### Besluitvorming
 
-De eigenaar van de specificatie besluit na overleg met de deelnemers aan zorginzage over het vaststellen van een nieuwe release en over de ‘Release roadmap’ met de onderwerpen voor een eerstvolgende release.
+De eigenaar van de specificatie besluit na overleg met de deelnemers aan zorginzage over het vaststellen van een nieuwe
+release en over de ‘Release roadmap’ met de onderwerpen voor een eerstvolgende release.
