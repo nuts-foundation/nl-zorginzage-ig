@@ -122,7 +122,7 @@ Een release kan twee soorten elementen bevatten:
 Voor pilot-elementen geldt:
 
 - Pilot-elementen zijn als zodanig herkenbaar in de specificatie via een expliciete
-  status-aanduiding bij het betreffende element.
+  status-aanduiding bij het betreffende element. Het betreft de aanduiding 'trial-use'.
 - Pilot-elementen mogen door deelnemers in productie worden geïmplementeerd; daarmee dragen
   zij bij aan de beproeving.
 - Een pilot-element wordt in een volgende release definitief gemaakt wanneer er ten minste
