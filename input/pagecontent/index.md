@@ -5,10 +5,10 @@ Zorginzage bevat de generieke afspraken en specificaties die het mogelijk maken 
 ### Organization of This Guide
 
 Deze specificatie is in lijn met de IHE-profielen en de Twiin-zorgtoepassingen opgedeeld in de volgende volumes:
-- [Volume 1](vol1.html) geeft een functioneel overzicht van de zorgtoepassing PZP en de daarbij behorende eisen (in Dutch)
-- [Volume 2a](vol2a.html) bevat de technische afspraken voor de zorgtoepassing PZP (in English)
-- [Volume 2b](vol2b.html) bevat alle losse transacties die gebruikt worden voor de zorgtoepassing PZP (in English)
-- [Volume 3](vol3.html) bevat afsoraken en specificaties over content (informatie en data) (in English)
+- [Volume 1](vol1.html) geeft een functioneel overzicht en beschrijft de benodigde organisatorische afspraken (in Dutch)
+- [Volume 2a](vol2a.html) bevat de technische afspraken (in English)
+- [Volume 2b](vol2b.html) bevat alle losse transacties die worden gebruikt (in English)
+- [Volume 3](vol3.html) bevat afspraken en specificaties over content (informatie en data) (in English)
 
 ### Ondersteuning
 

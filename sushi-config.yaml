@@ -93,20 +93,25 @@ menu:
     Inleiding: vol1.html
     Procesbeschrijving: vol1.html#procesbeschrijving
     Principes: vol1.html#principes
-    Actoren: vol1.html#actoren
     Use cases: vol1.html#use-cases
+    Rollen en verantwoordelijkheden: vol1.html#rollen-en-verantwoordelijkheden
+    Rollen en uitvoerders: vol1.html#rollen-en-uitvoerders
+    Roadmap: vol1.html#roadmap
+    Releasebeleid: vol1.html#releasebeleid
   Volume 2a:
     Exchange patterns: vol2a.html
+    Principles: vol2a.html#principles
     Identification: vol2a.html#identification
     Authentication: vol2a.html#authentication
-    Localisation: vol2a.html#localisation
     Addressing: vol2a.html#addressing
-    Authorization: vol2a.html#authorisation
+    Localisation: vol2a.html#localisation
+    Authorisation: vol2a.html#authorisation
     Consent: vol2a.html#consent
     Network security: vol2a.html#network-security
+    Registering a new use case: vol2a.html#registering-a-new-use-case
   Volume 2b:
-    Indexed pull: vol2b.html#indexed-pull
     Pull: vol2b.html#pull
+    Indexed pull: vol2b.html#indexed-pull
   Volume 3:
     Data set definitions: vol3.html#data-set-definitions
     Individual resource requests: vol3.html#individual-resource-requests
