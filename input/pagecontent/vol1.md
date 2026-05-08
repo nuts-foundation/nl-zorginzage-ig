@@ -72,38 +72,83 @@ Eigenaar Discovery Service | ActiZ
 
 ### Roadmap
 
-Release zorginzage-specificatie | juni 2026 | najaar 2026 | voorjaar 2027 | najaar 2027
------|------|------|------|------
-adressering | zorginzage-specifiek | generieke functie adressering | generieke functie adressering | generieke functie adressering
-lokalisatie | zorginzage-specifiek | generieke functie lokalisatie | generieke functie lokalisatie | generieke functie lokalisatie 
-authenticatie van organisaties | zorginzage-specifiek | zorginzage-specifiek | generieke functie authenticatie | generieke functie authenticatie
-authenticatie van personen | zorginzage-specifiek | zorginzage-specifiek | dezi | dezi
-autorisatie | zorginzage-specifiek | zorginzage-specifiek | zorginzage-specifiek | generieke functie autorisatie 
+Release zorginzage-specificatie | juni 2026 | najaar 2026 | voorjaar 2027                            | najaar 2027
+-----|------|------|------------------------------------------|------
+adressering | zorginzage-specifiek | generieke functie adressering (trial-use) | generieke functie adressering | generieke functie adressering
+lokalisatie | zorginzage-specifiek | generieke functie adressering (trial-use) | generieke functie lokalisatie            | generieke functie lokalisatie 
+authenticatie van organisaties | zorginzage-specifiek | zorginzage-specifiek | generieke functie adressering (trial-use)                     | generieke functie authenticatie
+toestemming | zorginzage-specifiek | zorginzage-specifiek | generieke functie toestemming (trial-use) | generieke functie toestemming
+authenticatie van personen | zorginzage-specifiek | zorginzage-specifiek | dezi                                     | dezi
+autorisatie | zorginzage-specifiek | zorginzage-specifiek | generieke functie adressering (trial-use)                     | generieke functie autorisatie
+
 
 ### Releasebeleid
 
-De zorginzage-specificatie zal zich de komende jaren doorontwikkelen. Ontwikkelingen binnen en rondom zorginzage, zoals de ontwikkelingen aangaande generieke functies, kunnen aanleiding geven om afspraken en specificaties te wijzigen. De eigenaar van de specificatie spant zich ervoor in om te borgen dat ontwikkelingen zo goed mogelijk worden verwerkt in de zorginzage-specificatie door middel van het uitbrengen van nieuwe releases. 
+De zorginzage-specificatie zal zich de komende jaren doorontwikkelen. Ontwikkelingen binnen en rondom zorginzage, zoals
+de ontwikkelingen aangaande generieke functies, kunnen aanleiding geven om afspraken en specificaties te wijzigen. De
+eigenaar van de specificatie spant zich ervoor in om te borgen dat ontwikkelingen zo goed mogelijk worden verwerkt in de
+zorginzage-specificatie door middel van het uitbrengen van nieuwe releases.
 
 #### Releasecriteria
 
 Releases voor de specficatie worden als volgt aangeduid:
+
 - Major: Wijzigingen die invloed hebben op de functionaliteit en niet backwards compatible zijn.
 - Minor: Wijzigingen die invloed hebben op de functionaliteit en backwards compatible zijn.
 - Patch: Wijzigingen die geen invloed hebben op de functionaliteit en backwards compatible zijn.
 
 #### Releasefrequentie
 
-- De eigenaar van de specificatie publiceert maximaal tweemaal (2) per jaar een nieuwe release met impact voor de Deelnemers (major of minor release) volgens een vooraf aangekondigde planning.
-- De eigenaar van de specificatie kan op ieder moment patch releases uitbrengen als dat nodig is, zoals voor het herstellen van fouten.
+- De eigenaar van de specificatie publiceert maximaal tweemaal (2) per jaar een nieuwe release met impact voor de
+  Deelnemers (major of minor release) volgens een vooraf aangekondigde planning.
+- De eigenaar van de specificatie kan op ieder moment patch releases uitbrengen als dat nodig is, zoals voor het
+  herstellen van fouten.
 
 #### Geldigheid
 
-De actuele release is geldig. Daarnaast is de voorlaatste release (ook wel n-1 genoemd) tot 3 maanden na publicatie van de actuele release geldig. Dit betekent dat deelnemers aan zorginzage vanaf het moment van publicatie maximaal drie (3) maanden de tijd hebben om de actuele release te implementeren.
+De actuele release is altijd geldig. Voor de voorlaatste release (ook wel n-1 genoemd) geldt:
+
+- Na een **major release** blijft de n-1 release nog zes (6) maanden na publicatie van de
+  actuele release geldig. Deelnemers gebruiken deze periode om over te stappen. Na afloop is
+  de n-1 release niet langer geldig.
+- Na een **minor release** is de n-1 release per definitie compatibel met de actuele release.
+  Deelnemers kunnen op n-1 blijven en dienen uiterlijk bij de eerstvolgende major release te
+  zijn overgestapt.
+- Een **patch release** verandert de geldigheidstermijn van n-1 niet.
+
+Deelnemers die op een release ouder dan n-1 zitten, voldoen niet aan de specificatie. De
+eigenaar van de specificatie kan in overleg met deelnemers afwijkende afspraken maken wanneer
+een specifieke major release aantoonbaar meer migratietijd vraagt.
+
+#### Pilot en definitieve elementen
+
+Een release kan twee soorten elementen bevatten:
+
+- **Definitieve elementen**: afspraken en specificaties die productiewaardig zijn vastgesteld
+  en die zonder voorbehoud door deelnemers worden geïmplementeerd.
+- **Pilot-elementen**: nieuwe of gewijzigde afspraken en specificaties die zijn opgenomen om
+  in productie te beproeven, maar nog niet definitief zijn vastgesteld.
+
+Voor pilot-elementen geldt:
+
+- Pilot-elementen zijn als zodanig herkenbaar in de specificatie via een expliciete
+  status-aanduiding bij het betreffende element. Het betreft de aanduiding 'trial-use'.
+- Pilot-elementen mogen door deelnemers in productie worden geïmplementeerd; daarmee dragen
+  zij bij aan de beproeving.
+- Een pilot-element wordt in een volgende release definitief gemaakt wanneer er ten minste
+  één succesvolle productie-implementatie is en de eigenaar van de specificatie en de
+  deelnemers geen blokkerende bezwaren meer hebben.
+- Een pilot-element kan op basis van bevindingen uit de pilot worden gewijzigd of
+  ingetrokken. Wijzigingen aan een pilot-element gelden niet als breaking change voor de
+  versienummering van de specificatie als geheel.
 
 #### Versiebeheer
 
-De eigenaar van de specificatie hanteert de Semantic Versioning-specificatie voor het versiebeheer, zie https://semver.org. Dit betekent dat het versienummer wordt weergegeven door 3 nummers die met een punt zijn gescheiden (x.y.z waarbij x de majorrelease is, y de minor en z de patch).
+De eigenaar van de specificatie hanteert de Semantic Versioning-specificatie voor het versiebeheer,
+zie https://semver.org. Dit betekent dat het versienummer wordt weergegeven door 3 nummers die met een punt zijn
+gescheiden (x.y.z waarbij x de majorrelease is, y de minor en z de patch).
 
 #### Besluitvorming
 
-De eigenaar van de specificatie besluit na overleg met de deelnemers aan zorginzage over het vaststellen van een nieuwe release en over de ‘Release roadmap’ met de onderwerpen voor een eerstvolgende release.
+De eigenaar van de specificatie besluit na overleg met de deelnemers aan zorginzage over het vaststellen van een nieuwe
+release en over de ‘Release roadmap’ met de onderwerpen voor een eerstvolgende release.
