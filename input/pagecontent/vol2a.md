@@ -199,7 +199,7 @@ For data requests in which explicit consent is not checked, one of the following
 - The treatment relation of the data user organisation with the patient is checked technically by the data holder
   organisation (e.g. using a PatientEnrollmentCredential). This treatment relation can be scoped to a
   specific context (e.g. a use case).
-- A legal construction has been created in which explicit consent is not necessary. This is not be checked technically.
+- A legal basis has been created in which explicit consent is not necessary. This is not be checked technically.
 
 The treatment relation of the data holder organisation with the patient may be checked technically by the data holder
 organisation.
@@ -207,14 +207,17 @@ organisation.
 ### Consent
 
 - It is up to the data holder organisation to decide whether to use explicit consent and/or another legal basis when authorizing an incoming data request.
-- When using explicit consent, it is up to the data holder organisation to decide whether to use a locally stored consent record or an OTV-consent (Mitz).
+- When using explicit consent, it is up to the data holder organisation to decide whether to use a local consent or an OTV-consent (e.g. Mitz).
 - When using implicit consent, it is up to the data holder organisation to decide how to implement this (e.g. by expressing that implicit consent in a FHIR Consent resource or not).
-- A locally stored consent record minimally contains the following elements:
-    - URA of data holder organisation
-    - URA of intended data user organisation
+- The data holder can use one or more of the following attributes for the consent check.  
+    - URA of data user organisation
+      - sourced from the X509Credential based on UZI server certificate 
+    - Organisation type
+      - sourced from the HealthcareProviderRoleTypeCredential
     - BSN of client/ patient
-    - A standardized way to express the context (e.g. using a use case identifier)
-- The first release of the zorginzage specifcation after Mitz being production ready for all zorginzage participants will make the "Mitz gesloten vraag" mandatory when no locally stored consent record is available.
+      - sourced from the incoming FHIR query or other patient context
+    - A use case identifier
+      - sourced from the authorization scope
 
 ### Network security
 
