@@ -67,8 +67,10 @@ Release zorginzage-specificatie | juni 2026 | najaar 2026 | voorjaar 2027       
 adressering | zorginzage-specifiek | generieke functie adressering (trial-use) | generieke functie adressering | generieke functie adressering
 lokalisatie | zorginzage-specifiek | generieke functie adressering (trial-use) | generieke functie lokalisatie            | generieke functie lokalisatie 
 authenticatie van organisaties | zorginzage-specifiek | zorginzage-specifiek | generieke functie adressering (trial-use)                     | generieke functie authenticatie
+toestemming | zorginzage-specifiek | zorginzage-specifiek | generieke functie toestemming (trial-use) | generieke functie toestemming
 authenticatie van personen | zorginzage-specifiek | zorginzage-specifiek | dezi                                     | dezi
-autorisatie | zorginzage-specifiek | zorginzage-specifiek | generieke functie adressering (trial-use)                     | generieke functie autorisatie 
+autorisatie | zorginzage-specifiek | zorginzage-specifiek | generieke functie adressering (trial-use)                     | generieke functie autorisatie
+
 
 ### Releasebeleid
 
