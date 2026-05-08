@@ -94,12 +94,41 @@ Releases voor de specficatie worden als volgt aangeduid:
 
 #### Geldigheid
 
-De actuele release is geldig. Daarnaast is de voorlaatste release (ook wel n-1 genoemd) tot 3 maanden na publicatie van
-de actuele release geldig. Dit betekent dat deelnemers aan zorginzage vanaf het moment van publicatie maximaal drie (3)
-maanden de tijd hebben om de actuele release te implementeren.
+De actuele release is altijd geldig. Voor de voorlaatste release (ook wel n-1 genoemd) geldt:
 
-In de release worden elementen opgenomen die productie klaar zijn voor een pilot. Na een succesvolle implementatie
-zullen die in de volgende release definitief worden gemaakt.  
+- Na een **major release** blijft de n-1 release nog drie (3) maanden na publicatie van de
+  actuele release geldig. Deelnemers gebruiken deze periode om over te stappen. Na afloop is
+  de n-1 release niet langer geldig.
+- Na een **minor release** is de n-1 release per definitie compatibel met de actuele release.
+  Deelnemers kunnen op n-1 blijven en dienen uiterlijk bij de eerstvolgende major release te
+  zijn overgestapt.
+- Een **patch release** verandert de geldigheidstermijn van n-1 niet.
+
+Deelnemers die op een release ouder dan n-1 zitten, voldoen niet aan de specificatie. De
+eigenaar van de specificatie kan in overleg met deelnemers afwijkende afspraken maken wanneer
+een specifieke major release aantoonbaar meer migratietijd vraagt.
+
+#### Pilot en definitieve elementen
+
+Een release kan twee soorten elementen bevatten:
+
+- **Definitieve elementen**: afspraken en specificaties die productiewaardig zijn vastgesteld
+  en die zonder voorbehoud door deelnemers worden geïmplementeerd.
+- **Pilot-elementen**: nieuwe of gewijzigde afspraken en specificaties die zijn opgenomen om
+  in productie te beproeven, maar nog niet definitief zijn vastgesteld.
+
+Voor pilot-elementen geldt:
+
+- Pilot-elementen zijn als zodanig herkenbaar in de specificatie via een expliciete
+  status-aanduiding bij het betreffende element.
+- Pilot-elementen mogen door deelnemers in productie worden geïmplementeerd; daarmee dragen
+  zij bij aan de beproeving.
+- Een pilot-element wordt in een volgende release definitief gemaakt wanneer er ten minste
+  één succesvolle productie-implementatie is en de eigenaar van de specificatie en de
+  deelnemers geen blokkerende bezwaren meer hebben.
+- Een pilot-element kan op basis van bevindingen uit de pilot worden gewijzigd of
+  ingetrokken. Wijzigingen aan een pilot-element gelden niet als breaking change voor de
+  versienummering van de specificatie als geheel.
 
 #### Versiebeheer
 
