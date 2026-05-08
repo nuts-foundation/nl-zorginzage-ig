@@ -207,12 +207,12 @@ organisation.
 ### Consent
 
 - It is up to the data holder organisation to decide whether to use explicit consent and/or another legal basis when authorizing an incoming data request.
-- When using explicit consent, it is up to the data holder organisation to decide whether to use a locally derived consent or an OTV-consent (Mitz).
+- When using explicit consent, it is up to the data holder organisation to decide whether to use a local consent or an OTV-consent (e.g. Mitz).
 - When using implicit consent, it is up to the data holder organisation to decide how to implement this (e.g. by expressing that implicit consent in a FHIR Consent resource or not).
-- The data holder can use the following attributes to do its consent check.  
-    - URA of requestor organisation
-      - sourced from the X509Credential 
-    - Organization type
+- The data holder can use one or more of the following attributes for the consent check.  
+    - URA of data user organisation
+      - sourced from the X509Credential based on UZI server certificate 
+    - Organisation type
       - sourced from the HealthcareProviderRoleTypeCredential
     - BSN of client/ patient
       - sourced from the incoming FHIR query or other patient context
