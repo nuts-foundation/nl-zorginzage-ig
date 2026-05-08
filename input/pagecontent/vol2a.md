@@ -199,7 +199,7 @@ For data requests in which explicit consent is not checked, one of the following
 - The treatment relation of the data user organisation with the patient is checked technically by the data holder
   organisation (e.g. using a PatientEnrollmentCredential). This treatment relation can be scoped to a
   specific context (e.g. a use case).
-- A legal construction has been created in which explicit consent is not necessary. This is not be checked technically.
+- A legal basis has been created in which explicit consent is not necessary. This is not be checked technically.
 
 The treatment relation of the data holder organisation with the patient may be checked technically by the data holder
 organisation.
@@ -210,10 +210,14 @@ organisation.
 - When using explicit consent, it is up to the data holder organisation to decide whether to use a locally derived consent or an OTV-consent (Mitz).
 - When using implicit consent, it is up to the data holder organisation to decide how to implement this (e.g. by expressing that implicit consent in a FHIR Consent resource or not).
 - The data holder can use the following attributes to do its consent check.  
-    - URA of data holder organisation, sourced from the X509Credential 
-    - Organization type, sourced from the HealthcareProviderRoleTypeCredential
-    - BSN of client/ patient, sourced from the incoming FHIR query or other patient context
-    - A standardized way to express the context (e.g. using a use case identifier)
+    - URA of requestor organisation
+      - sourced from the X509Credential 
+    - Organization type
+      - sourced from the HealthcareProviderRoleTypeCredential
+    - BSN of client/ patient
+      - sourced from the incoming FHIR query or other patient context
+    - A use case identifier
+      - sourced from the authorization scope
 
 ### Network security
 
