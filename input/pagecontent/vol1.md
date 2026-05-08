@@ -98,7 +98,7 @@ Releases voor de specficatie worden als volgt aangeduid:
 
 De actuele release is altijd geldig. Voor de voorlaatste release (ook wel n-1 genoemd) geldt:
 
-- Na een **major release** blijft de n-1 release nog drie (3) maanden na publicatie van de
+- Na een **major release** blijft de n-1 release nog zes (6) maanden na publicatie van de
   actuele release geldig. Deelnemers gebruiken deze periode om over te stappen. Na afloop is
   de n-1 release niet langer geldig.
 - Na een **minor release** is de n-1 release per definitie compatibel met de actuele release.
