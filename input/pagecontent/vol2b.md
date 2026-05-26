@@ -1,3 +1,30 @@
+### Registration at discovery service
+
+All data holders have to register themselves at the Discovery Service. This registration takes place in the implementation-phase.
+
+<div width="100%">{% include sequence-diagram-disco.svg %}</div>
+<br clear="all"/>
+
+Number | Remarks
+-------|--------
+1 | Registration request to local Nuts-node (see below)
+2 | 
+3 |
+4 |
+
+#### Step 1 details
+
+Body:
+```
+{
+  "registrationParameters": {
+    "authorization_server_url": "https://example.com/some-endpoint",
+    "fhir_base_url": "https://example.com/some-endpoint",
+  }
+}
+```
+
+
 ### Pull
 
 The sequence for pull scenarios is the following. The numbered transactions are specified in more detail in the table below the sequence diagram.
@@ -31,7 +58,3 @@ Number | Remarks
 22|
 23|
 24|
-
-### Indexed pull
-
-To do. Only the use of an index that is available to the data user is in scope.
