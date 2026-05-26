@@ -145,8 +145,7 @@ during a data exchange. All other described functions depend on this addressing 
 - **Discovery service operator (Actiz)** — hosts a single shared Nuts Discovery Service for all use cases built on
   Zorginzage.
 - **Data holder** — registers its endpoints and credentials, and keeps the registration current.
-- **Data user** — queries the discovery service through its Nuts node to resolve candidate data holders for a given
-  patient context and use case.
+- **Data user** — queries the discovery service for the targeted data holder.
 - **Nuts node (both sides)** — performs registration, presentation verification, and credential exchange on behalf of
   the organisation it serves.
 
@@ -159,17 +158,16 @@ everything for the user to pick, or filter on URA / role type inside the Nuts no
 
 #### Conformance
 
-- The presentation definition for the discovery service **MUST** require the `organization_ura`, `fhir_base_url` and
-  `authorization_server_url` fields.
-- Data holders **MUST** publish `organization_ura`, `fhir_base_url` and `authorization_server_url` in a discovery
-  service registration.
+- The presentation definition for the discovery service **MUST** require the following fields:
+  - `authorization_server_url`
+  - `fhir_base_url`
+  - `organization_facility_type`
+  - `organization_ura`
+- Data holders **MUST** publish the above fields during registration.
 - Data holders **MUST** present a valid X509Credential derived from a UZI server certificate and a self-issued
   HealthcareProviderRoleTypeCredential at registration.
 - Data users **SHOULD** resolve endpoints through the discovery service rather than hard-coding them.
-- Data users **SHOULD** pre-filter discovery results by use case and HealthcareProviderRoleType before any BSN
-  broadcast (
-  see Localisation).
-- Implementations **MAY** apply their own filtering client-side.
+- Data users **MAY NOT** use discovery service for localization or BSN broadcasting 
 
 #### References
 
