@@ -8,7 +8,7 @@ In short this means that fetching data globally consists of the following steps:
 2. Authentication: The data user authenticates (organisation and person level)
 3. Localisation: The data user finds the data holders that have data about a patient (in a specific context)
     1. Patient search request: The data user performs a patient search at each possible data holder, using bsn as parameter.
-    2. Patient search reponse: When the data user has data about the requested patient, it returns the internal technical identifier of the requested patient.
+    2. Patient search response: When the data holder has data about the requested patient, it returns the internal technical identifier of the requested patient.
 4. Data request: The data user performs data requests at each possible data holder, using the technical identifier of the requested patient as parameter.
 5. Authorisation: The data holder authorizes the incoming data request.
     1. Check consent: As part of the authorization process the data holder can check the presence of patient consent, locally or at Mitz.
@@ -82,7 +82,7 @@ The standard did:web-based Nuts-processes for access token requests and introspe
 The parapraph Network Security descibes mTLS-based client and server authentication.
 
 #### Healthcare professionals
-The identity of healthcare professionals is federated from data user organisation to data holder organisatin using a NutsEmployeeCredential.
+The identity of healthcare professionals is federated from data user organisation to data holder organisation using a NutsEmployeeCredential.
 
 Rationale
 - A nation-wide solution for cross-organizational authentication (e.g. Dezi) is not in place.
