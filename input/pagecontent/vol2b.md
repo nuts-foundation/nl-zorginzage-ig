@@ -2,20 +2,20 @@
 
 The sequence for pull scenarios is the following. The numbered transactions are specified in more detail in the table below the sequence diagram.
 
-<div>{% include sequence-diagram-pull.svg %}</div>
+<div width="100%">{% include sequence-diagram-pull.svg %}</div>
 <br clear="all"/>
 
 Number | Remarks
 -------|--------
-1| to do
-2|
-3|
-4|
-5|
-6|
-7|
-8|
-9|
+1 | Local login
+2 | XIS creates user sessions and stores the user info needed for the NutsEmployeeCredential (step 7)
+3 | 
+4 |
+5 | Search data holder organisation by URA-identifier 
+6 |
+7 | Include NutsEmployeeCredential, example request below
+8 |
+9 |
 10|
 11|
 12|
@@ -34,4 +34,4 @@ Number | Remarks
 
 ### Indexed pull
 
-to do
+To do. Only the use of an index that is available to the data user is in scope.
