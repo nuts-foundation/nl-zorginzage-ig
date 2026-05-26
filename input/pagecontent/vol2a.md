@@ -156,18 +156,21 @@ user's Nuts node returns the matching organisations and their addressing informa
 organisation URA, organisation type, and use case; the exact filtering strategy is left to the implementer (return
 everything for the user to pick, or filter on URA / role type inside the Nuts node).
 
+Registration is covered in a separate sequence diagram outside the common request flow
+`sequence-diagram-disco.plantuml`.
+
 #### Conformance
 
 - The presentation definition for the discovery service **MUST** require the following fields:
-  - `authorization_server_url`
-  - `fhir_base_url`
-  - `organization_facility_type`
-  - `organization_ura`
+    - `authorization_server_url`
+    - `fhir_base_url`
+    - `organization_facility_type`
+    - `organization_ura`
 - Data holders **MUST** publish the above fields during registration.
 - Data holders **MUST** present a valid X509Credential derived from a UZI server certificate and a self-issued
   HealthcareProviderRoleTypeCredential at registration.
 - Data users **SHOULD** resolve endpoints through the discovery service rather than hard-coding them.
-- Data users **MAY NOT** use discovery service for localization or BSN broadcasting 
+- Data users **MAY NOT** use discovery service for localization or BSN broadcasting
 
 #### References
 
