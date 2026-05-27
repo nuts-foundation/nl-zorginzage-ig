@@ -146,6 +146,7 @@ Vendor organisation authentication is performed at the transport layer through m
 - [Nuts RFC023 — X509Credential with UZI server certificates](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023)
 - [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main) · [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java/)
 - [UZI servercertificate CPS](https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement)
+- [Nuts RFC019 - Nuts Employeed Identity](https://nuts-foundation.gitbook.io/drafts/rfc/rfc019-employee-identity-means)
 - Volume 2b — Nuts process specifications and sequences
 
 ### Addressing
