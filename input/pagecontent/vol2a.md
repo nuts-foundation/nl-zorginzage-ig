@@ -77,46 +77,76 @@ Rationale
 
 ### Authentication
 
-#### Healthcare organisations
+#### Function
 
-##### X509credential
+Authentication establishes verifiable identity for the parties involved in a data exchange. This specification covers
+authentication at three levels:
 
-The URA number of health organizations is authenticated using a X509credential based on a UZI-servercertificate.
+- **Healthcare organisations** (data user and data holder), identified by URA and authenticated using a credential
+  derived from a UZI servercertificate, together with a self-issued credential expressing the
+  HealthcareProviderRoleType.
+- **Healthcare professionals**, whose identity is federated from the data user organisation to the data holder
+  organisation.
+- **Vendor organisations**, authenticated at the transport layer (see Network Security).
 
-Rationale
+Organisation- and professional-level authentication is performed via the standard did:web-based Nuts processes.
 
-- UZI-servercertificate is issued by a public organization (CIBG)
-  URA-number is contained as attribute in the UZI-servercertificaat,
-  CPS: https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement
-- The URA-number can securely be contained in a X509credential using the open source software did:x509 and
-  X509Credential Toolkit
+#### Preconditions
 
-##### HealthcareProviderRoleTypeCredential
+- Vendor organisations on both sides hold a PKIoverheid certificate suitable for mTLS (see Network Security).
+- The data user has a UZI servercertificate (containing the URA) available for issuing an
+  X509Credential.
+- The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type(s).
+- The data user operates a Nuts node with a did:web identifier and an equivalent set of credentials.
+- The data holder has loaded the applicable Nuts policy its Nuts Node.
 
-The HealthcareProviderRoleType attribute will be authenticated using a self issued HealthcareProviderRoleTypeCredential.
+#### Actors & responsibilities
 
-Rationale
+- **Data user** — presents its X509Credential (URA) and HealthcareProviderRoleTypeCredential during access token
+  requests; issues a NutsEmployeeCredential for each healthcare professional acting on its behalf.
+- **Healthcare professional** — represented by a NutsEmployeeCredential issued by the data user organisation;
+  identified by a local employee identifier, with local employee name and role as non-identifying attributes.
+- **Nuts node (both sides)** — performs the standard Nuts authentication flows (access token requests, introspects and
+  jwt-based data requests) on behalf of the organisation it serves.
 
-- No trusted third party issuer is active at the moment.
+#### Interaction
 
-##### Standard Nuts processes
+The standard did:web-based Nuts processes are used for access token requests, introspects and jwt-based data requests.
+The exact specifications and sequences are described in volume 2b.
 
-The standard did:web-based Nuts-processes for access token requests and introspects, and jwt-based data requests are
-used. The exact specifications and sequences are described in volume 2b.
+Healthcare professional identity is federated by including a NutsEmployeeCredential in the access token request flow;
+the data holder receives the verified professional identity attributes alongside the organisation identity.
 
-#### Vendor organisations
+Vendor organisation authentication is performed at the transport layer through mTLS (see Network Security).
 
-The parapraph Network Security descibes mTLS-based client and server authentication.
+#### Conformance
 
-#### Healthcare professionals
+- Data users **MUST** authenticate the URA using an X509Credential derived from a UZI
+  servercertificate, in line with Nuts RFC023.
+- Data users **MUST** present a self-issued HealthcareProviderRoleTypeCredential expressing their
+  organisation type(s).
+- Data users **MUST** federate healthcare professional identity using a NutsEmployeeCredential.
+- Nuts nodes **MUST** follow the standard did:web-based access token, introspect, and jwt-based data request flows as
+  specified in volume 2b.
+- Vendor organisations **MUST** authenticate connections using mTLS as specified in Network Security.
 
-The identity of healthcare professionals is federated from data user organisation to data holder organisatin using a
-NutsEmployeeCredential.
+#### Rationale
 
-Rationale
+- UZI servercertificates are issued by a public organisation (CIBG) and contain the URA as an attribute; including the
+  URA in an X509Credential gives a cryptographically verifiable organisation identifier without requiring a separate
+  issuer.
+- No trusted third-party issuer is currently active for HealthcareProviderRoleType, so the credential is self-issued.
+- A nation-wide solution for cross-organisational professional authentication (e.g. Dezi) is not yet in place; the
+  NutsEmployeeCredential can be used now and is not dependent on other (national) initiatives.
+- A national healthcare professional identifier and role are not yet available for all professionals, so a local
+  employee identifier with local name and role attributes is used.
 
-- A nation-wide solution for cross-organizational authentication (e.g. Dezi) is not in place.
-- NutsEmployeeCredential can be used now and is not dependent of other (national) initiatives
+#### References
+
+- [Nuts RFC023 — X509Credential with UZI server certificates](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023)
+- [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main) · [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java/)
+- [UZI servercertificate CPS](https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement)
+- Volume 2b — Nuts process specifications and sequences
 
 ### Addressing
 
