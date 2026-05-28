@@ -269,7 +269,7 @@ The following guidelines **MUST** be taken into account when designing new polic
 - When the request is for a FHIR endpoint, conformance to a capability statement **MUST** be evaluated.
 - Patient context is mandatory for accessing patient data:
     - for search interactions, either a patient id or patient bsn **MUST** be derivable from the query;
-    - for read interactions, the requested resource must have a direct link to a patient (for example through a patient
+    - for read interactions, the requested resource **MUST** have a direct link to a patient (for example through a patient- or subject-
       field).
 - For data requests that require explicit consent, patient consent **MUST** be checked in a local system **OR** in Mitz before
   returning the data.
