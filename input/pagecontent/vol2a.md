@@ -277,7 +277,7 @@ The following guidelines **MUST** be taken into account when designing new polic
 
 For data requests in which explicit consent is not checked, one of the following is **mandatory**:
 
-- The treatment relation of the data user organisation with the patient is checked technically by the data holder
+- The treatment relation of the data user organisation with the patient **MUST** be checked technically by the data holder
   organisation (e.g. using a PatientEnrollmentCredential). This treatment relation can be scoped to a specific context
   (e.g. a use case).
 - A legal basis has been created in which explicit consent is not necessary. This is not checked technically.
