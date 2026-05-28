@@ -243,7 +243,7 @@ whether the request passes the access policies of the source (data holder).
 
 #### Actors & responsibilities
 
-- **Data holder (bronhouder)** — defines and enforces the access policies for its data, runs the policy enforcement
+- **Data holder** — defines and enforces the access policies for its data, runs the policy enforcement
   point, and checks consent and/or treatment relation as part of the decision.
 - **Data user** — submits data requests carrying the context required for evaluation (organisation URA, patient
   context, use case scope).
