@@ -22,10 +22,11 @@ All queries that are performed in the context of Zorginzage are patient-specific
 - data holder organisations **MUST** support POST-based Patient search 
 
 Template of POST-based Patient search:
-```
-POST /fhir/Patient/_search
 
-Header: Content-Type = x-www-form-urlencoded (zie https://www.hl7.org/fhir/http.html#search-post)
+```
+POST {fhir_base}/Patient/_search
+
+Header: Content-Type = x-www-form-urlencoded
 
 Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
 ```
