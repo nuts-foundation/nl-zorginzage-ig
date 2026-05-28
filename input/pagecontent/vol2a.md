@@ -210,7 +210,7 @@ sourced from an EHR, or otherwise) is out of scope for this specification.
 
 - The data user **MUST NOT** use the Nuts Discovery Service to broadcast a BSN across all registered data holders for a
   use case (see also the Addressing conformance rules).
-- The data user **MUST** resolve locally, for each patient, the specific data holder(s) it wants to query before initiating any
+- The data user **MUST** resolve locally, for each patient, the specific (possible) data holder(s) it wants to query before initiating
   patient search.
 - The data user uses the addressing function only to look up the FHIR- and authorisation server endpoints of the
   already-known data holder(s).
