@@ -82,7 +82,8 @@ Rationale
 Authentication establishes a verifiable identity for the parties involved in a data exchange. This specification covers
 authentication at three levels:
 
-- **Healthcare organisations** (data user organisation and data holder organisation), identified by URA (UZI register abonneenummer, OID: `2.16.528.1.1007.3.3`) and authenticated using a credential
+- **Healthcare organisations** (data user organisation and data holder organisation), identified by URA (UZI register
+  abonneenummer, OID: `2.16.528.1.1007.3.3`) and authenticated using a credential
   derived from a UZI servercertificate, together with a self-issued credential expressing the
   HealthcareProviderRoleType.
 - **Healthcare professionals**, whose identity is federated from the data user organisation to the data holder
@@ -94,7 +95,8 @@ Organisation- and professional-level authentication is performed via the standar
 #### Preconditions
 
 - Vendor organisations on both sides hold a PKIoverheid certificate suitable for mTLS (see Network Security).
-- The data user has a UZI servercertificate (containing the URA) available for issuing an X509Credential.
+- The data user has a UZI server certificate (containing the URA) and has issued the corresponding X500Credential by
+  following [this manual](https://wiki.nuts.nl/books/implementing-a-nuts-use-case/page/2-issue-x509credential).
 - The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type(s).
 - The data user operates a Nuts node with a did:web identifier and an equivalent set of credentials.
 - The data holder has loaded the applicable Nuts policy its Nuts Node.
@@ -102,10 +104,12 @@ Organisation- and professional-level authentication is performed via the standar
 #### Actors & responsibilities
 
 - **Data user** — presents its X509Credential (URA) and HealthcareProviderRoleTypeCredential during access token
-  requests; issues a NutsEmployeeCredential for the healthcare professional acting on its behalf during access token requests.
+  requests; issues a NutsEmployeeCredential for the healthcare professional acting on its behalf during access token
+  requests.
 - **Healthcare professional** — represented by a NutsEmployeeCredential issued by the data user organisation;
   identified by a local employee identifier, with local employee name and role as non-identifying attributes.
-- **Nuts node (both sides)** — performs the standard Nuts authentication flows (a.o. access token requests and introspects)
+- **Nuts node (both sides)** — performs the standard Nuts authentication flows (a.o. access token requests and
+  introspects)
   jwt-based data requests) on behalf of the organisation it serves.
 
 #### Interaction
