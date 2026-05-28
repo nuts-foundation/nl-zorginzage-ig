@@ -7,15 +7,18 @@ In short this means that fetching data globally consists of the following steps:
 
 1. Addressing: The data user finds the addresses of the FHIR- and OAuth-endpoints of each (possible) data holder.
 2. Authentication: The data user authenticates (organisation and person level)
-3. Localisation: The data user finds the data holders that have data about a patient (in a specific context)
-    1. Patient search request: The data user performs a patient search at each possible data holder, using bsn as
-       parameter.
-    2. Patient search reponse: When the data user has data about the requested patient, it returns the internal
+3. Localisation: This specification does not implement a localisation mechanism. Instead, the data user performs
+   targeted querying ("gericht bevragen") at the possible data holder(s) that are already known.
+   Maintaining this list of data holders is the responsibility of the data user and is out of scope
+   for this specification.
+    1. Patient search request: The data user performs a patient search at each targeted data holder, using bsn as
+       parameter. This step verifies whether this possible data holder actually holds data about the given patient.
+    2. Patient search response: When the data holder has data about the requested patient, it returns the internal
        technical identifier of the requested patient.
-4. Data request: The data user performs data requests at each possible data holder, using the technical identifier of
-   the requested patient as parameter.
+4. Data request: The data user performs data requests at each targeted data holder, using the technical identifier of
+   the requested patient as a parameter.
 5. Authorisation: The data holder authorizes the incoming data request.
-    1. Check consent: As part of the authorization process the data holder can check the presence of patient consent,
+    1. Check consent: As part of the authorization process, the data holder **MAY** check the presence of patient consent,
        locally or at Mitz.
 
 ### Principles
@@ -77,46 +80,79 @@ Rationale
 
 ### Authentication
 
-#### Healthcare organisations
+#### Function
 
-##### X509credential
+Authentication establishes a verifiable identity for the parties involved in a data exchange. This specification covers
+authentication at three levels:
 
-The URA number of health organizations is authenticated using a X509credential based on a UZI-servercertificate.
+- **Healthcare organisations** (data user organisation and data holder organisation), identified by URA (UZI register
+  abonneenummer, OID: `2.16.528.1.1007.3.3`) and authenticated using a credential
+  derived from a UZI servercertificate, together with a self-issued credential expressing the
+  HealthcareProviderRoleType.
+- **Healthcare professionals**, whose identity is federated from the data user organisation to the data holder
+  organisation.
+- **Vendor organisations**, authenticated at the transport layer (see Network Security).
 
-Rationale
+Organisation- and professional-level authentication is performed via the standard did:web-based Nuts processes.
 
-- UZI-servercertificate is issued by a public organization (CIBG)
-  URA-number is contained as attribute in the UZI-servercertificaat,
-  CPS: https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement
-- The URA-number can securely be contained in a X509credential using the open source software did:x509 and
-  X509Credential Toolkit
+#### Preconditions
 
-##### HealthcareProviderRoleTypeCredential
+- Vendor organisations on both sides hold a PKIoverheid certificate suitable for mTLS (see Network Security).
+- The data user has a UZI server certificate (containing the URA) and has issued the corresponding X500Credential by
+  following [this manual](https://wiki.nuts.nl/books/implementing-a-nuts-use-case/page/2-issue-x509credential).
+- The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type(s).
+- The data user operates a Nuts node with a did:web identifier and an equivalent set of credentials.
+- The data holder has loaded the applicable Nuts policy its Nuts Node.
 
-The HealthcareProviderRoleType attribute will be authenticated using a self issued HealthcareProviderRoleTypeCredential.
+#### Actors & responsibilities
 
-Rationale
+- **Data user** — presents its X509Credential (URA) and HealthcareProviderRoleTypeCredential during access token
+  requests; issues a NutsEmployeeCredential for the healthcare professional acting on its behalf during access token
+  requests.
+- **Healthcare professional** — represented by a NutsEmployeeCredential issued by the data user organisation;
+  identified by a local employee identifier, with local employee name and role as non-identifying attributes.
+- **Nuts node (both sides)** — performs the standard Nuts authentication flows (a.o. access token requests and
+  introspects) on behalf of the organisation it serves.
 
-- No trusted third party issuer is active at the moment.
+#### Interaction
 
-##### Standard Nuts processes
+The standard did:web-based Nuts processes are used for access token requests, introspects and jwt-based data requests.
+The exact specifications and sequences are described in volume 2b.
 
-The standard did:web-based Nuts-processes for access token requests and introspects, and jwt-based data requests are
-used. The exact specifications and sequences are described in volume 2b.
+Healthcare professional identity is federated by including a NutsEmployeeCredential in the access token request flow;
+the data holder receives the verified professional identity attributes alongside the organisation identity.
 
-#### Vendor organisations
+Vendor organisation authentication is performed at the transport layer through mTLS (see Network Security).
 
-The parapraph Network Security descibes mTLS-based client and server authentication.
+#### Conformance
 
-#### Healthcare professionals
+- Data users **MUST** authenticate the URA using an [X509Credential derived from a UZI server certificate](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-X509Credential.html) 
+  servercertificate, in line with Nuts RFC023.
+- Data users **MUST** present a self-issued [HealthcareProviderRoleTypeCredential](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-HealthcareProviderRoleTypeCredential.html) expressing their
+  organisation type(s).
+- Data users **MUST** federate healthcare professional identity using a NutsEmployeeCredential.
+- Nuts nodes **MUST** follow the standard did:web-based access token, introspect, and jwt-based data request flows as
+  specified in volume 2b.
+- Vendor organisations **MUST** authenticate connections using mTLS as specified in Network Security.
 
-The identity of healthcare professionals is federated from data user organisation to data holder organisatin using a
-NutsEmployeeCredential.
+#### Rationale
 
-Rationale
+- UZI servercertificates are issued by a public organisation (CIBG) and contain the URA as an attribute; including the
+  URA in an X509Credential gives a cryptographically verifiable organisation identifier without requiring a separate
+  issuer.
+- No trusted third-party issuer is currently active for HealthcareProviderRoleType, so the credential is self-issued.
+- A nation-wide solution for cross-organisational professional authentication (e.g. Dezi) is not yet in place; the
+  NutsEmployeeCredential can be used now and is not dependent on other (national) initiatives.
+- A national healthcare professional identifier and role are not yet available for all professionals, so a local
+  employee identifier with local name and role attributes is used.
 
-- A nation-wide solution for cross-organizational authentication (e.g. Dezi) is not in place.
-- NutsEmployeeCredential can be used now and is not dependent of other (national) initiatives
+#### References
+
+- [Nuts RFC023 — X509Credential with UZI server certificates](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023)
+- [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main) · [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java/)
+- [UZI servercertificate CPS](https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement)
+- [Nuts RFC019 - Nuts Employeed Identity](https://nuts-foundation.gitbook.io/drafts/rfc/rfc019-employee-identity-means)
+- Volume 2b — Nuts process specifications and sequences
 
 ### Addressing
 
@@ -181,16 +217,36 @@ Registration is covered in a separate sequence diagram outside the common reques
 
 ### Localisation
 
+#### Function
+
 Localisation is the process of finding out which organisations have data on a patient.
 
-The generic function localisation is not yet available in production environments. This specification uses bsn
-broadcasting using the Nuts Discovery Service for indexed pull scenarios. This means that organisations that implement
-this specification perform bsn broadcasting and accept incoming bsn-based patient searches and matches.
+#### Interaction
 
-This method is the only viable way to localise without external dependencies, however it requires an appropriate legal
-basis to be in place.
+This specification does **not** implement a localisation mechanism. Instead, data users perform **targeted querying** (
+"gericht bevragen"): the data user only queries possible data holders that are already known by the data user.
 
-In practice the BSN broadcast is realised by searching for a patient record with an identifier.
+This means the data user is responsible for maintaining its own list of healthcare providers that are possible data holder for a specific patient.
+a treatment relation. The way in which this list is built up and kept current (e.g. patient-supplied, referral-based,
+sourced from an EHR, or otherwise) is out of scope for this specification.
+
+#### Rationale
+
+- The generic function localisation is not yet available in production environments. It is very likely that generic
+  function will be trial ready for the next version of this specification.
+- BSN broadcasting (sending the BSN to a wide set of possible data holders to discover where data exists) requires an
+  appropriate legal basis that is not generally in place for the use cases covered by this specification.
+- Targeted querying avoids unnecessary BSN distribution and limits data requests to organisations already known by the data user to possible hold data about a specific patient, 
+  which is consistent with the principles of data minimisation and purpose limitation required by the GDPR.
+
+### Conformance
+
+- The data user **MUST NOT** use the Nuts Discovery Service to broadcast a BSN across all registered data holders for a
+  use case (see also the Addressing conformance rules).
+- The data user **MUST** resolve locally, for each patient, the specific (possible) data holder(s) it wants to query before initiating
+  patient search.
+- The patient search at the targeted data holder is still performed using the BSN as parameter, in order to obtain the
+  data holder's internal technical identifier for the patient:
 
 ```http request
 POST /fhir/Patient/_search
@@ -200,55 +256,78 @@ identifier = http://fhir.nl/fhir/NamingSystem/bsn|618359710 &
 _elements = id
 ```
 
-- Requestor must pre-filter resources servers that the BSN is broadcasted to by use case and organisation type during
-  addressing
-- Requestor must provide the `_elements` & `identifier=` query parameters when searching the patient
-- Data holder must only return patient ID's when there is data available for the specific use case
-
-The aim is to replace localisation in the next version of this spec with either pseudonym broadcasting or the GF
-localisation. **Always make sure to check the legal basis before broadcasting any BSN's.**
-
 ### Authorisation
 
-For authorization, we prefer a fine-grained policy based access model over a role based model. Whether a requestor gets
-access to the data they are requesting depends on whether they pass the access-polices of the source (bronhouder).
+#### Function
 
-To ensure everyone uses the same rulesets express policies in a domain specific language called Rego. The input for
-evaluating the policies is commonly agreed upon information model. A similar model has been described in the proposal
-for the generic function authorization.
+Authorisation determines whether an authenticated requestor may access the data it requests. This specification uses a
+fine-grained, policy-based access model rather than a role-based model: whether a requestor gets access depends on
+whether the request passes the access policies of the source (data holder).
 
-See also: https://nuts-foundation.github.io/nl-generic-functions-ig/authorization.html
+#### Preconditions
 
-Note: Implementors are free to choose to not implement a Rego-interpreter as part of their authorization solution, as
-long as the implemented authorization solution follows the exact same rules as specified in the Rego-policy-file.
+- Authentication has completed, so the data holder knows the URA and HealthcareProviderRoleType of the requesting organisation and, where applicable,
+  the federated professional identity (see Authentication).
+- A use case scope is present from the authentication process; a use-case-identifier connects this scope to the corresponding access policy and
+  authentication policy.
+- The applicable policies are available, version controlled in the Git repository [nl-zorginzage-resources](https://github.com/nuts-foundation/nl-zorginzage-resources) that is controlled by the Nuts Foundation.
+- The data holder operates a policy enforcement point and has access to a policy decision point (e.g. the PDP
+  functionality in the Nuts Knooppunt).
 
-For policy evaluation the PDP functionality in the Nuts Knooppunt can be integrated with any policy enforcement point.
-Policies are version controlled in a Git repository controlled by the Nuts Foundation.
+#### Actors & responsibilities
 
-Policy are selected based on the use case scope provided by the Nuts node as part of the authentication process. A
-single name is used that connects the scope, Nuts policy and authentication policy.
+- **Data holder** — defines and enforces the access policies for its data, runs the policy enforcement
+  point, and checks consent and/or treatment relation as part of the decision.
+- **Data user** — submits data requests carrying the context required for evaluation (a.o. organisation URA, patient
+  context, use case scope).
+- **Policy decision point** — evaluates the selected policy against the request input; the PDP functionality in the
+  Nuts Knooppunt can be integrated with any policy enforcement point.
+- **Nuts Foundation** — maintains the version-controlled policies in Git.
 
-The following guidelines should be taken into account when designing new policies.
+#### Interaction
 
-- ura identifier of requesting organization is mandatory
-- when the request is for FHIR endpoint, evaluate conformance to a capability statement
-- patient context is mandatory for accessing patient data
-    - for search interactions either a patient id or patient bsn must be possible to derive from the query
-    - for read interactions the requested resource should have a direct link to a patient (for example through a patient
-      field)
-- For data requests that require explicit consent, patient consent must be checked in a local system or in Mitz before
-  returning the data
-- check on active treatment relation, optionally in context of specific use case
+The policy is selected based on the use case scope provided by the Nuts access token as part of the authentication process. The
+input for evaluating the policy is a commonly agreed upon information model; the model is described in the
+[this proposal for the generic function authorization](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/authorization.html).
 
-For data requests in which explicit consent is not checked, one of the following is mandatory:
+Policies are expressed in a domain specific language called Rego so that everyone uses the same rulesets. Implementors
+are free not to implement a Rego interpreter as part of their authorisation solution, as long as the implemented
+solution follows the exact same rules as specified in the Rego policy file for that use case.
 
-- The treatment relation of the data user organisation with the patient is checked technically by the data holder
-  organisation (e.g. using a PatientEnrollmentCredential). This treatment relation can be scoped to a
-  specific context (e.g. a use case).
-- A legal basis has been created in which explicit consent is not necessary. This is not be checked technically.
+#### Conformance
 
-The treatment relation of the data holder organisation with the patient may be checked technically by the data holder
-organisation.
+The following guidelines **MUST** be taken into account when designing new policies:
+
+- Presence of the URA identifier of the requesting organisation *MUST* be checked.
+- When the request is for a FHIR endpoint, conformance to a capability statement **MUST** be evaluated.
+- Patient context is mandatory for accessing patient data:
+    - for search interactions, either a patient id or patient bsn **MUST** be derivable from the query;
+    - for read interactions, the requested resource **MUST** have a direct link to a patient (for example through a patient- or subject-
+      field).
+- For data requests that require explicit consent, patient consent **MUST** be checked in a local system **OR** in Mitz before
+  returning the data.
+- An active treatment relation between the patient that is referenced in the request and the data holder **MAY** be checked, optionally in the context of a specific use case.
+
+For data requests in which explicit consent is not checked, one of the following is **mandatory**:
+
+- The treatment relation of the data user organisation with the patient **MUST** be checked technically by the data holder
+  organisation (e.g. using a PatientEnrollmentCredential). This treatment relation can be scoped to a specific context
+  (e.g. a use case).
+- A legal basis *MUST* be present in which explicit consent is not necessary. This is not checked technically.
+
+The treatment relation of the data holder organisation with the patient **MAY** be checked technically by the data
+holder organisation.
+
+#### Rationale
+
+- A fine-grained policy-based model is preferred over a role-based model because access decisions depend on the access
+  policies of the source rather than on a fixed set of roles.
+- Expressing policies in Rego ensures everyone uses the same rulesets, evaluated against a commonly agreed information
+  model.
+
+#### References
+
+- [Generic function authorization (nl-generic-functions-ig)](https://nuts-foundation.github.io/nl-generic-functions-ig/authorization.html)
 
 ### Consent
 
