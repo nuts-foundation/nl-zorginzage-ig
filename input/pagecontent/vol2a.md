@@ -79,7 +79,7 @@ Rationale
 
 #### Function
 
-Authentication establishes verifiable identity for the parties involved in a data exchange. This specification covers
+Authentication establishes a verifiable identity for the parties involved in a data exchange. This specification covers
 authentication at three levels:
 
 - **Healthcare organisations** (data user and data holder), identified by URA and authenticated using a credential
