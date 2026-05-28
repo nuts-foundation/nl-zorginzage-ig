@@ -290,7 +290,7 @@ The data holder can use one or more of the following attributes for the consent 
 - Organisation type of data holder organisation. Required for OTV-consent.
 - BSN of client/patient — sourced from the incoming FHIR query or other patient context. Required for OTV-consent.
 - A use case identifier — sourced from the authorization scope.
-
+When a data holder wants to use OTV-consent during authorisation, it **MUST** implement the 'Gesloten Autorisatievraag' as specified in ["Implementatiehandleiding_OpenGesloten"](https://vzvz.atlassian.net/wiki/spaces/MA11/pages/828314367/Bijlage+Architectuurdocumenten).
 ### Network security
 
 1. Production environments: Vendor organizations use server- and client-authentication (mutual TLS) based on
