@@ -237,7 +237,7 @@ whether the request passes the access policies of the source (data holder).
   the federated professional identity (see Authentication).
 - A use case scope is present from the authentication process; a use-case-identifier connects this scope to the corresponding access policy and
   authentication policy.
-- The applicable policies are available, version controlled in a Git repository controlled by the Nuts Foundation.
+- The applicable policies are available, version controlled in the Git repository [nl-zorginzage-resources](https://github.com/nuts-foundation/nl-zorginzage-resources) that is controlled by the Nuts Foundation.
 - The data holder operates a policy enforcement point and has access to a policy decision point (e.g. the PDP
   functionality in the Nuts Knooppunt).
 
