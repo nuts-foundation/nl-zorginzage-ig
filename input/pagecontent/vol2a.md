@@ -102,7 +102,7 @@ Organisation- and professional-level authentication is performed via the standar
 #### Actors & responsibilities
 
 - **Data user** — presents its X509Credential (URA) and HealthcareProviderRoleTypeCredential during access token
-  requests; issues a NutsEmployeeCredential for each healthcare professional acting on its behalf.
+  requests; issues a NutsEmployeeCredential for the healthcare professional acting on its behalf during access token requests.
 - **Healthcare professional** — represented by a NutsEmployeeCredential issued by the data user organisation;
   identified by a local employee identifier, with local employee name and role as non-identifying attributes.
 - **Nuts node (both sides)** — performs the standard Nuts authentication flows (access token requests, introspects and
