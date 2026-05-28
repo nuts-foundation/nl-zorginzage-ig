@@ -271,7 +271,7 @@ See also Authorisation.
   data request; when using explicit consent, decides whether to use a local consent or an OTV-consent (e.g. Mitz); when
   using implicit consent, decides how to implement it (e.g. by expressing it in a FHIR Consent resource or not); and
   performs the consent check.
-- **OTV (e.g. Mitz)** — provides online consent registration when the data holder uses OTV-consent.
+- **OTV (e.g. Mitz)** — provides online consent registration that is accessible to data holders that use OTV-consent during authorisation.
 - **Data user** — supplies, through authentication and the FHIR query, the attributes the data holder uses for the
   consent check.
 
