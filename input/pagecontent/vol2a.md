@@ -254,7 +254,7 @@ whether the request passes the access policies of the source (data holder).
 #### Interaction
 
 The policy is selected based on the use case scope provided by the Nuts access token as part of the authentication process. The
-input for evaluating the policy is a commonly agreed upon information model; theo model is described in the
+input for evaluating the policy is a commonly agreed upon information model; the model is described in the
 proposal for the generic function authorization.
 
 Policies are expressed in a domain specific language called Rego so that everyone uses the same rulesets. Implementors
