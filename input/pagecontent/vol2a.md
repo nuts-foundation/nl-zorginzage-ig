@@ -82,7 +82,7 @@ Rationale
 Authentication establishes a verifiable identity for the parties involved in a data exchange. This specification covers
 authentication at three levels:
 
-- **Healthcare organisations** (data user and data holder), identified by URA and authenticated using a credential
+- **Healthcare organisations** (data user organisation and data holder organisation), identified by URA (UZI register abonneenummer, OID: `2.16.528.1.1007.3.3`) and authenticated using a credential
   derived from a UZI servercertificate, together with a self-issued credential expressing the
   HealthcareProviderRoleType.
 - **Healthcare professionals**, whose identity is federated from the data user organisation to the data holder
