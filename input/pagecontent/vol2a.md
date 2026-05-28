@@ -331,22 +331,45 @@ holder organisation.
 
 ### Consent
 
-- It is up to the data holder organisation to decide whether to use explicit consent and/or another legal basis when
-  authorizing an incoming data request.
-- When using explicit consent, it is up to the data holder organisation to decide whether to use a local consent or an
-  OTV-consent (e.g. Mitz).
-- When using implicit consent, it is up to the data holder organisation to decide how to implement this (e.g. by
-  expressing that implicit consent in a FHIR Consent resource or not).
-- The data holder can use one or more of the following attributes for the consent check.
-    - URA of data user organisation
-        - sourced from the X509Credential based on UZI server certificate
-    - Organisation type
-        - sourced from the HealthcareProviderRoleTypeCredential
-    - BSN of client/ patient
-        - sourced from the incoming FHIR query or other patient context
-    - A use case identifier
-        - sourced from the authorization scope
+#### Function
 
+Consent (toestemming) verification is part of the authorisation decision. As a legal basis for releasing data, the data
+holder may check that valid patient consent is present for the requested exchange. Consent may be explicit or implicit.
+See also Authorisation.
+
+#### Preconditions
+
+- Authentication has completed, so the URA of the data user organisation, its organisation type and the use case scope
+  are available (see Authentication).
+- Patient context (BSN) is available from the incoming FHIR query or other patient context.
+- When OTV-consent is used, the data holder has access to an online toestemmingsvoorziening (e.g. Mitz).
+
+#### Actors & responsibilities
+
+- **Data holder** — decides whether to use explicit consent, implicit consent and/or another legal basis when authorising an incoming
+  data request; when using explicit consent, decides whether to use a local consent or an OTV-consent (e.g. Mitz); when
+  using implicit consent, decides how to implement it (e.g. by expressing it in a FHIR Consent resource or not); and
+  performs the consent check.
+- **OTV (e.g. Mitz)** — provides online consent registration that is accessible to data holders that use OTV-consent during authorisation.
+- **Data user** — supplies, through authentication and the FHIR query, the attributes the data holder uses for the
+  consent check.
+
+#### Interaction
+
+The consent check is performed by the data holder as part of authorising an incoming data request. The choice of
+consent mechanism (explicit local, explicit OTV, or implicit) is left to the data holder organisation.
+
+#### Conformance
+
+The data holder can use one or more of the following attributes for the consent check:
+
+- URA of data user organisation — sourced from the X509Credential based on UZI server certificate. Required for OTV-consent.
+- Organisation type of data user organisation— sourced from the HealthcareProviderRoleTypeCredential. Required for OTV-consent.
+- URA of data holder organisation. Required for OTV-consent.
+- Organisation type of data holder organisation. Required for OTV-consent.
+- BSN of client/patient — sourced from the incoming FHIR query or other patient context. Required for OTV-consent.
+- A use case identifier — sourced from the authorization scope.
+When a data holder wants to use OTV-consent during authorisation, it **MUST** implement the 'Gesloten Autorisatievraag' as specified in ["Implementatiehandleiding_OpenGesloten"](https://vzvz.atlassian.net/wiki/spaces/MA11/pages/828314367/Bijlage+Architectuurdocumenten).
 ### Network security
 
 1. Production environments: Vendor organizations use server- and client-authentication (mutual TLS) based on
