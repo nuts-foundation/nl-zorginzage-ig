@@ -210,45 +210,76 @@ localisation. **Always make sure to check the legal basis before broadcasting an
 
 ### Authorisation
 
-For authorization, we prefer a fine-grained policy based access model over a role based model. Whether a requestor gets
-access to the data they are requesting depends on whether they pass the access-polices of the source (bronhouder).
+#### Function
 
-To ensure everyone uses the same rulesets express policies in a domain specific language called Rego. The input for
-evaluating the policies is commonly agreed upon information model. A similar model has been described in the proposal
-for the generic function authorization.
+Authorisation determines whether an authenticated requestor may access the data it requests. This specification uses a
+fine-grained, policy-based access model rather than a role-based model: whether a requestor gets access depends on
+whether the request passes the access policies of the source (bronhouder).
 
-See also: https://nuts-foundation.github.io/nl-generic-functions-ig/authorization.html
+#### Preconditions
 
-Note: Implementors are free to choose to not implement a Rego-interpreter as part of their authorization solution, as
-long as the implemented authorization solution follows the exact same rules as specified in the Rego-policy-file.
+- Authentication has completed, so the data holder knows the URA of the requesting organisation and, where applicable,
+  the federated professional identity (see Authentication).
+- A use case scope is present from the authentication process; a single name connects this scope to its Nuts policy and
+  authentication policy.
+- The applicable policies are available, version controlled in a Git repository controlled by the Nuts Foundation.
+- The data holder operates a policy enforcement point and has access to a policy decision point (e.g. the PDP
+  functionality in the Nuts Knooppunt).
 
-For policy evaluation the PDP functionality in the Nuts Knooppunt can be integrated with any policy enforcement point.
-Policies are version controlled in a Git repository controlled by the Nuts Foundation.
+#### Actors & responsibilities
 
-Policy are selected based on the use case scope provided by the Nuts node as part of the authentication process. A
-single name is used that connects the scope, Nuts policy and authentication policy.
+- **Data holder (bronhouder)** — defines and enforces the access policies for its data, runs the policy enforcement
+  point, and checks consent and/or treatment relation as part of the decision.
+- **Data user** — submits data requests carrying the context required for evaluation (organisation URA, patient
+  context, use case scope).
+- **Policy decision point** — evaluates the selected policy against the request input; the PDP functionality in the
+  Nuts Knooppunt can be integrated with any policy enforcement point.
+- **Nuts Foundation** — maintains the version-controlled policies in Git.
 
-The following guidelines should be taken into account when designing new policies.
+#### Interaction
 
-- ura identifier of requesting organization is mandatory
-- when the request is for FHIR endpoint, evaluate conformance to a capability statement
-- patient context is mandatory for accessing patient data
-    - for search interactions either a patient id or patient bsn must be possible to derive from the query
-    - for read interactions the requested resource should have a direct link to a patient (for example through a patient
-      field)
+The policy is selected based on the use case scope provided by the Nuts access token as part of the authentication process. The
+input for evaluating the policy is a commonly agreed upon information model; theo model is described in the
+proposal for the generic function authorization.
+
+Policies are expressed in a domain specific language called Rego so that everyone uses the same rulesets. Implementors
+are free not to implement a Rego interpreter as part of their authorisation solution, as long as the implemented
+solution follows the exact same rules as specified in the Rego policy file for that use case.
+
+#### Conformance
+
+The following guidelines **MUST** be taken into account when designing new policies:
+
+- The URA identifier of the requesting organisation is mandatory.
+- When the request is for a FHIR endpoint, conformance to a capability statement is evaluated.
+- Patient context is mandatory for accessing patient data:
+    - for search interactions, either a patient id or patient bsn must be derivable from the query;
+    - for read interactions, the requested resource must have a direct link to a patient (for example through a patient
+      field).
 - For data requests that require explicit consent, patient consent must be checked in a local system or in Mitz before
-  returning the data
-- check on active treatment relation, optionally in context of specific use case
+  returning the data.
+- An active treatment relation must be checked, optionally in the context of a specific use case.
 
-For data requests in which explicit consent is not checked, one of the following is mandatory:
+For data requests in which explicit consent is not checked, one of the following is **mandatory**:
 
 - The treatment relation of the data user organisation with the patient is checked technically by the data holder
-  organisation (e.g. using a PatientEnrollmentCredential). This treatment relation can be scoped to a
-  specific context (e.g. a use case).
-- A legal basis has been created in which explicit consent is not necessary. This is not be checked technically.
+  organisation (e.g. using a PatientEnrollmentCredential). This treatment relation can be scoped to a specific context
+  (e.g. a use case).
+- A legal basis has been created in which explicit consent is not necessary. This is not checked technically.
 
-The treatment relation of the data holder organisation with the patient may be checked technically by the data holder
-organisation.
+The treatment relation of the data holder organisation with the patient **MAY** be checked technically by the data
+holder organisation.
+
+#### Rationale
+
+- A fine-grained policy-based model is preferred over a role-based model because access decisions depend on the access
+  policies of the source rather than on a fixed set of roles.
+- Expressing policies in Rego ensures everyone uses the same rulesets, evaluated against a commonly agreed information
+  model.
+
+#### References
+
+- [Generic function authorization (nl-generic-functions-ig)](https://nuts-foundation.github.io/nl-generic-functions-ig/authorization.html)
 
 ### Consent
 
