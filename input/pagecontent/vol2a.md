@@ -212,8 +212,6 @@ sourced from an EHR, or otherwise) is out of scope for this specification.
   use case (see also the Addressing conformance rules).
 - The data user **MUST** resolve locally, for each patient, the specific data holder(s) it wants to query before initiating any
   patient search.
-- The data user uses the addressing function only to look up the FHIR- and authorisation server endpoints of the
-  already-known data holder(s).
 - The patient search at the targeted data holder is still performed using the BSN as parameter, in order to obtain the
   data holder's internal technical identifier for the patient:
 
