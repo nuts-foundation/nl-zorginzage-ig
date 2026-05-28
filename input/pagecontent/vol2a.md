@@ -110,7 +110,7 @@ Organisation- and professional-level authentication is performed via the standar
   identified by a local employee identifier, with local employee name and role as non-identifying attributes.
 - **Nuts node (both sides)** — performs the standard Nuts authentication flows (a.o. access token requests and
   introspects)
-  jwt-based data requests) on behalf of the organisation it serves.
+   on behalf of the organisation it serves.
 
 #### Interaction
 
