@@ -204,7 +204,7 @@ sourced from an EHR, or otherwise) is out of scope for this specification.
 - BSN broadcasting (sending the BSN to a wide set of possible data holders to discover where data exists) requires an
   appropriate legal basis that is not generally in place for the use cases covered by this specification.
 - Targeted querying avoids unnecessary BSN distribution and limits data requests to organisations already known by the data user to possible hold data about a specific patient, 
-  treatment relation, which is consistent with the principles of data minimisation and purpose limitation.
+  which is consistent with the principles of data minimisation and purpose limitation required by the GDPR.
 
 ### Conformance
 
