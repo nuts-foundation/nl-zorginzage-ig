@@ -1,25 +1,19 @@
 ### Exchange patterns: pull and indexed pull
 
-This specification describes data exchanges that use the exchange pattern "pull" or the exchange pattern "indexed pull".
-See https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws.
+The Zorginzage-specification describes data exchanges that use the exchange pattern "pull" or the exchange pattern "indexed pull". See [Whitepaper Communicatiepatronen](https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws) by the Ministry of Health (in Dutch).
 
 In short this means that fetching data globally consists of the following steps:
 
 1. Addressing: The data user finds the addresses of the FHIR- and OAuth-endpoints of each (possible) data holder.
 2. Authentication: The data user authenticates (organisation and person level)
-3. Localisation: This specification does not implement a localisation mechanism. Instead, the data user performs
-   targeted querying ("gericht bevragen") at the possible data holder(s) that are already known.
-   Maintaining this list of data holders is the responsibility of the data user and is out of scope
-   for this specification.
+3. Localisation: This version of the Zorginzage-specification does not implement a localisation mechanism. Instead, the data user performs targeted querying ("gericht bevragen") at the possible data holder(s) that are already known. Maintaining this list of data holders is the responsibility of the data user and is out of scope for this specification.
     1. Patient search request: The data user performs a patient search at each targeted data holder, using bsn as
        parameter. This step verifies whether this possible data holder actually holds data about the given patient.
     2. Patient search response: When the data holder has data about the requested patient, it returns the internal
        technical identifier of the requested patient.
-4. Data request: The data user performs data requests at each targeted data holder, using the technical identifier of
-   the requested patient as a parameter.
+4. Data request: The data user performs data requests at each targeted data holder, using the technical identifier of the requested patient as a parameter.
 5. Authorisation: The data holder authorizes the incoming data request.
-    1. Check consent: As part of the authorization process, the data holder **MAY** check the presence of patient consent,
-       locally or at Mitz.
+    1. Check consent: As part of the authorization process, the data holder **MAY** check the presence of patient consent, locally or at Mitz.
 
 ### Principles
 
@@ -39,10 +33,10 @@ Healthcare organisations are identified using URA-number (UZI-Register Abonneenu
 Rationale
 
 - Identification of healthcare organisations by URA conforms to the national information model for health orgnizations (
-  Zorginformatiebouwsteen Zorgaanbieder: https://zibs.nl/wiki/Zorgaanbieder-v3.6(2024NL))
+  Zorginformatiebouwsteen Zorgaanbieder: see [zibs.nl](https://zibs.nl/wiki/Zorgaanbieder-v3.6(2024NL)))
 - The URA-number is issued by a public organization (CIBG)
 - The URA-number is cryptographically verifiable because it is contained in a PKI-certificate (UZI-servercertificaat,
-  CPS: https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement)
+  CPS: see [uziregister.nl](https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement))
 
 ##### HealthcareProviderRoleType
 
@@ -248,13 +242,14 @@ sourced from an EHR, or otherwise) is out of scope for this specification.
 - The patient search at the targeted data holder is still performed using the BSN as parameter, in order to obtain the
   data holder's internal technical identifier for the patient:
 
-```http request
+````
+http request
 POST /fhir/Patient/_search
 Content-Type: application/x-www-form-urlencoded
 
 identifier = http://fhir.nl/fhir/NamingSystem/bsn|618359710 &
 _elements = id
-```
+````
 
 ### Authorisation
 
@@ -369,7 +364,9 @@ The data holder can use one or more of the following attributes for the consent 
 - Organisation type of data holder organisation. Required for OTV-consent.
 - BSN of client/patient — sourced from the incoming FHIR query or other patient context. Required for OTV-consent.
 - A use case identifier — sourced from the authorization scope.
+
 When a data holder wants to use OTV-consent during authorisation, it **MUST** implement the 'Gesloten Autorisatievraag' as specified in ["Implementatiehandleiding_OpenGesloten"](https://vzvz.atlassian.net/wiki/spaces/MA11/pages/828314367/Bijlage+Architectuurdocumenten).
+
 ### Network security
 
 1. Production environments: Vendor organizations use server- and client-authentication (mutual TLS) based on
