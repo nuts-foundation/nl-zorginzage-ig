@@ -229,7 +229,7 @@ _elements = id
 
 Authorisation determines whether an authenticated requestor may access the data it requests. This specification uses a
 fine-grained, policy-based access model rather than a role-based model: whether a requestor gets access depends on
-whether the request passes the access policies of the source (bronhouder).
+whether the request passes the access policies of the source (data holder).
 
 #### Preconditions
 
