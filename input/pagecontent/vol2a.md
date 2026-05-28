@@ -268,7 +268,7 @@ The following guidelines **MUST** be taken into account when designing new polic
 - The URA identifier of the requesting organisation is mandatory.
 - When the request is for a FHIR endpoint, conformance to a capability statement is evaluated.
 - Patient context is mandatory for accessing patient data:
-    - for search interactions, either a patient id or patient bsn must be derivable from the query;
+    - for search interactions, either a patient id or patient bsn **MUST** be derivable from the query;
     - for read interactions, the requested resource must have a direct link to a patient (for example through a patient
       field).
 - For data requests that require explicit consent, patient consent must be checked in a local system or in Mitz before
