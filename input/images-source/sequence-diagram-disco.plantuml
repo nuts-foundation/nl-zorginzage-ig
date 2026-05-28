@@ -1,0 +1,19 @@
+@startuml
+hide footbox
+autonumber
+skinparam BoxPadding 20
+
+box Data holder organisation
+participant XIS as req
+participant "Nuts-node" as rn
+end box
+
+box Disovery Service organisation
+participant "Nuts-node" as dn
+participant "Discovery service" as disco
+end box
+
+req -> rn: /internal/discovery/v1/{serviceID}/{subjectID of Data user organisation}
+rn <--> dn : nuts-nodes handle registration request
+dn <--> disco: registration
+rn -> req: 200 
