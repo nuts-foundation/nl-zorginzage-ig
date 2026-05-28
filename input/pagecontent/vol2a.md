@@ -242,14 +242,13 @@ sourced from an EHR, or otherwise) is out of scope for this specification.
 - The patient search at the targeted data holder is still performed using the BSN as parameter, in order to obtain the
   data holder's internal technical identifier for the patient:
 
-````
-http request
-POST /fhir/Patient/_search
-Content-Type: application/x-www-form-urlencoded
+```
+POST {fhir_base}/Patient/_search
 
-identifier = http://fhir.nl/fhir/NamingSystem/bsn|618359710 &
-_elements = id
-````
+Header: Content-Type = x-www-form-urlencoded
+
+Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
+```
 
 ### Authorisation
 
