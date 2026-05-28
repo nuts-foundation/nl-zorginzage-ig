@@ -273,7 +273,7 @@ The following guidelines **MUST** be taken into account when designing new polic
       field).
 - For data requests that require explicit consent, patient consent **MUST** be checked in a local system **OR** in Mitz before
   returning the data.
-- An active treatment relation must be checked, optionally in the context of a specific use case.
+- An active treatment relation between the patient that is referenced in the request and the data holder **MAY** be checked, optionally in the context of a specific use case.
 
 For data requests in which explicit consent is not checked, one of the following is **mandatory**:
 
