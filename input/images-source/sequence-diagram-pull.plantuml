@@ -3,14 +3,14 @@ hide footbox
 autonumber
 skinparam BoxPadding 20
 
-box Requesting organization \n(HIS or ECD)
+box Data user organisation `A`\n
 actor "Healthcare professional" as User
 participant XIS as req
 participant "Nuts-node" as rn
 end box
 
 
-box Custodian organization 'Y'\n(HIS or ECD)
+box Data holder organisation `B`\n
 participant "Nuts-node" as cn
 boundary PEP
 participant Fhir
@@ -20,45 +20,59 @@ req -> req : Create User session, \nUser info needed for NutsEmployeeCredential 
 
 == Later in User session ==
 
-User -> req: request information for Patient at Custodian Y
-    req -> req: Resolve Patient BSN, and Custodian_URA for patient if it is known
+User -> req: request information for Patient
+    req -> req: Resolve Patient BSN, and array of data_holder_URA's for patient if it is known
+    note right of rn: Array of data_holder_URA's can be found via a (local) index (e.g. user-input and/or a CareTeam-resource)
 
-    req -> rn++: Search for custodian in discovery \nGet /internal/discovery/v1/{serviceID}
-        note right of rn: Exact search is up to the implementer. \nPossible options:\n - Return everything from the service and let User pick\n - Let Nuts-node filter on Custodian_URA of the patient
-        rn --> req --: Found Organization Y (authz_url, fhir_url)
-    |||
+    loop For each data_holder_URA
 
-    req -> rn++: Get access token \nPOST /internal/auth/v2/{subjectID}/request-service-access-token
-        rn <--> cn : nuts-nodes handle access token request
-        note right of rn : uses X509Credential and NutsEmployeeCredential
-        rn --> req-- : Access token
-    |||
+        ==get addresses of data holder organisation==
 
-    note right of req: Search based on BSN in body of request
-    req -> PEP++: POST /fhir/Patient/_search
-    PEP -> cn++ : introspect access token\nPOST /internal/auth/v2/accesstoken/introspect
-    PEP <-- cn-- : valid token + requesting_URA + USER{name,userRole,identifier}
-    PEP -> PEP: Authorization \n(Consent, Care relationship etc..)
-    PEP -> Fhir++: POST /fhir/Patient?search
-    return: Patient Fhir resource (with id)
-    return: Patient Fhir resource (with id)
+        req -> rn++: Look up data holder organisation in discovery \nGET /internal/discovery/v1/{serviceID}?organization_ura={URA}
+            note right of rn: The Zorginzage requires iunderlying use cases to include elements with id "organization_ura", "authorization_server_url" and "fhir_base_url" in the discovery-service-presentation-definitions 
+            rn --> req --: Found Organization B (authorization_server_url, fhir_base_url)
+        |||
 
-    |||
-   == Retrieve other resources ==
+        ==get access token==
 
-    note right of req
-     - Other resources are gathered based on internal patient id of custodian
-     - access token from step 7 can be reused in loop below
-    end note
-    loop For each resource except Patient
-        req -> PEP++: GET /fhir/{resource}?patient={id}
-            PEP -> cn++ : introspect access token\nPOST /internal/auth/v2/accesstoken/introspect
-                PEP <-- cn-- : valid token + requesting_URA + USER{name,userRole,identifier}
-            PEP -> PEP: Authorization \n(Consent, Care relationship etc..)
-            PEP -> Fhir++: GET /fhir/{resource}?patient={id}
-            return: Fhir resource
-            return: Fhir Resource
+        req -> rn++: Get access token \nPOST /internal/auth/v2/{subjectID of Data user organisation}/request-service-access-token
+            rn <--> cn : nuts-nodes handle access token request, reqjuest is forwarded using value of "authorization_server" element in body
+            note right of rn : uses X509Credential and NutsEmployeeCredential
+            rn --> req-- : Access token
+        |||
+
+        ==get Patient resource including patient-id==
+
+        note right of req: POST-based Patient search on BSN
+        req -> PEP++: POST /fhir/Patient/_search
+        PEP -> cn++ : introspect access token\nPOST /internal/auth/v2/accesstoken/introspect
+        PEP <-- cn-- : valid token + requesting_URA + USER{name,userRole,identifier}
+        PEP -> PEP: Authorization \n(Legal basis to be determined by use case, e.g. patient consent and/or treatment relationship)
+        PEP -> Fhir++: POST /fhir/Patient?search
+        return: Patient Fhir resource (with patient-id)
+        return: Patient Fhir resource (with patient-id)
+
+        |||
+        == Retrieve other resources ==
+
+        note right of req
+        - Other resources are gathered based on internal patient-id of data holder organisation (received in step 16)
+        - access token received in step 9 can be reused in loop below
+        end note
+        loop For each resource except Patient
+            req -> PEP++: GET /fhir/{resource}?patient={patient-id}
+                PEP -> cn++ : introspect access token\nPOST /internal/auth/v2/accesstoken/introspect
+                    PEP <-- cn-- : valid token + requesting_URA + USER{name,userRole,identifier}
+                PEP -> PEP: Authorization \n(Legal basis to be determined by use case, e.g. patient consent and/or treatment relationship)
+                PEP -> Fhir++: GET /fhir/{resource}?patient={patient-id}
+                return: Fhir resource
+                return: Fhir Resource
+        end loop
+
     end loop
+
+    ==Data user XIS displays data received from data holder(s)==
+
     User <- req --: Display external Patient information
 
 @enduml
