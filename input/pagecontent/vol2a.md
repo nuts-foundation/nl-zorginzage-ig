@@ -267,7 +267,7 @@ See also Authorisation.
 
 #### Actors & responsibilities
 
-- **Data holder** — decides whether to use explicit consent and/or another legal basis when authorising an incoming
+- **Data holder** — decides whether to use explicit consent, implicit consent and/or another legal basis when authorising an incoming
   data request; when using explicit consent, decides whether to use a local consent or an OTV-consent (e.g. Mitz); when
   using implicit consent, decides how to implement it (e.g. by expressing it in a FHIR Consent resource or not); and
   performs the consent check.
