@@ -265,7 +265,7 @@ solution follows the exact same rules as specified in the Rego policy file for t
 
 The following guidelines **MUST** be taken into account when designing new policies:
 
-- The URA identifier of the requesting organisation is mandatory.
+- Presence of the URA identifier of the requesting organisation *MUST* be checked.
 - When the request is for a FHIR endpoint, conformance to a capability statement **MUST** be evaluated.
 - Patient context is mandatory for accessing patient data:
     - for search interactions, either a patient id or patient bsn **MUST** be derivable from the query;
