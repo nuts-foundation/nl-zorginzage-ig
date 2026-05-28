@@ -280,7 +280,7 @@ For data requests in which explicit consent is not checked, one of the following
 - The treatment relation of the data user organisation with the patient **MUST** be checked technically by the data holder
   organisation (e.g. using a PatientEnrollmentCredential). This treatment relation can be scoped to a specific context
   (e.g. a use case).
-- A legal basis has been created in which explicit consent is not necessary. This is not checked technically.
+- A legal basis *MUST* be present in which explicit consent is not necessary. This is not checked technically.
 
 The treatment relation of the data holder organisation with the patient **MAY** be checked technically by the data
 holder organisation.
