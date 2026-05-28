@@ -17,4 +17,5 @@ req -> rn: /internal/discovery/v1/{serviceID}/{subjectID of Data user organisati
 rn <--> dn : nuts-nodes handle registration request
 dn <--> disco: registration
 rn -> req: 200
-@enduml 
+@enduml
+ 
