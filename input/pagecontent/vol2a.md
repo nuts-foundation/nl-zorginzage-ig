@@ -191,7 +191,7 @@ Localisation is the process of finding out which organisations have data on a pa
 #### Interaction
 
 This specification does **not** implement a localisation mechanism. Instead, data users perform **targeted querying** (
-"gericht bevragen"): the data user only queries data holders where the patient is already known to be in treatment.
+"gericht bevragen"): the data user only queries possible data holders that are already known by the data user.
 
 This means the data user is responsible for maintaining its own list of healthcare providers with whom the patient has
 a treatment relation. The way in which this list is built up and kept current (e.g. patient-supplied, referral-based,
