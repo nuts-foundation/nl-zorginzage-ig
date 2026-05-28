@@ -110,8 +110,8 @@ menu:
     Network security: vol2a.html#network-security
     Registering a new use case: vol2a.html#registering-a-new-use-case
   Volume 2b:
+    Registration at discovery service: vol2b.html#registration-at-discovery-service
     Pull: vol2b.html#pull
-    Indexed pull: vol2b.html#indexed-pull
   Volume 3:
     Data set definitions: vol3.html#data-set-definitions
     Individual resource requests: vol3.html#individual-resource-requests
