@@ -8,17 +8,17 @@ In short this means that fetching data globally consists of the following steps:
 1. Addressing: The data user finds the addresses of the FHIR- and OAuth-endpoints of each (possible) data holder.
 2. Authentication: The data user authenticates (organisation and person level)
 3. Localisation: This specification does not implement a localisation mechanism. Instead, the data user performs
-   targeted querying ("gericht bevragen") at the data holder(s) that are already known to have a treatment relation
-   with the patient. Maintaining this list of data holders is the responsibility of the data user and is out of scope
+   targeted querying ("gericht bevragen") at the possible data holder(s) that are already known.
+   Maintaining this list of data holders is the responsibility of the data user and is out of scope
    for this specification.
     1. Patient search request: The data user performs a patient search at each targeted data holder, using bsn as
-       parameter.
+       parameter. This step verifies whether this possible data holder actually holds data about the given patient.
     2. Patient search response: When the data holder has data about the requested patient, it returns the internal
        technical identifier of the requested patient.
 4. Data request: The data user performs data requests at each targeted data holder, using the technical identifier of
    the requested patient as a parameter.
 5. Authorisation: The data holder authorizes the incoming data request.
-    1. Check consent: As part of the authorization process, the data holder can check the presence of patient consent,
+    1. Check consent: As part of the authorization process, the data holder **MAY** check the presence of patient consent,
        locally or at Mitz.
 
 ### Principles
@@ -191,9 +191,9 @@ Localisation is the process of finding out which organisations have data on a pa
 #### Interaction
 
 This specification does **not** implement a localisation mechanism. Instead, data users perform **targeted querying** (
-"gericht bevragen"): the data user only queries data holders where the patient is already known to be in treatment.
+"gericht bevragen"): the data user only queries possible data holders that are already known by the data user.
 
-This means the data user is responsible for maintaining its own list of healthcare providers with whom the patient has
+This means the data user is responsible for maintaining its own list of healthcare providers that are possible data holder for a specific patient.
 a treatment relation. The way in which this list is built up and kept current (e.g. patient-supplied, referral-based,
 sourced from an EHR, or otherwise) is out of scope for this specification.
 
@@ -203,14 +203,14 @@ sourced from an EHR, or otherwise) is out of scope for this specification.
   function will be trial ready for the next version of this specification.
 - BSN broadcasting (sending the BSN to a wide set of possible data holders to discover where data exists) requires an
   appropriate legal basis that is not generally in place for the use cases covered by this specification.
-- Targeted querying avoids unnecessary BSN distribution and limits data requests to organisations with a known
-  treatment relation, which is consistent with the principles of data minimisation and purpose limitation.
+- Targeted querying avoids unnecessary BSN distribution and limits data requests to organisations already known by the data user to possible hold data about a specific patient, 
+  which is consistent with the principles of data minimisation and purpose limitation required by the GDPR.
 
 ### Conformance
 
 - The data user **MUST NOT** use the Nuts Discovery Service to broadcast a BSN across all registered data holders for a
   use case (see also the Addressing conformance rules).
-- The data user **MUST** resolve locally, for each patient, the specific data holder(s) it wants to query before initiating any
+- The data user **MUST** resolve locally, for each patient, the specific (possible) data holder(s) it wants to query before initiating
   patient search.
 - The patient search at the targeted data holder is still performed using the BSN as parameter, in order to obtain the
   data holder's internal technical identifier for the patient:
