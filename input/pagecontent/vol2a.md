@@ -94,8 +94,7 @@ Organisation- and professional-level authentication is performed via the standar
 #### Preconditions
 
 - Vendor organisations on both sides hold a PKIoverheid certificate suitable for mTLS (see Network Security).
-- The data user has a UZI servercertificate (containing the URA) available for issuing an
-  X509Credential.
+- The data user has a UZI servercertificate (containing the URA) available for issuing an X509Credential.
 - The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type(s).
 - The data user operates a Nuts node with a did:web identifier and an equivalent set of credentials.
 - The data holder has loaded the applicable Nuts policy its Nuts Node.
