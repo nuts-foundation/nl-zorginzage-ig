@@ -125,7 +125,7 @@ Vendor organisation authentication is performed at the transport layer through m
 
 - Data users **MUST** authenticate the URA using an X509Credential derived from a UZI
   servercertificate, in line with Nuts RFC023.
-- Data users **MUST** present a self-issued HealthcareProviderRoleTypeCredential expressing their
+- Data users **MUST** present a self-issued [HealthcareProviderRoleTypeCredential](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-HealthcareProviderRoleTypeCredential.html) expressing their
   organisation type(s).
 - Data users **MUST** federate healthcare professional identity using a NutsEmployeeCredential.
 - Nuts nodes **MUST** follow the standard did:web-based access token, introspect, and jwt-based data request flows as
