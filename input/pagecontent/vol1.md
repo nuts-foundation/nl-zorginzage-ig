@@ -1,10 +1,10 @@
 ### Inleiding
 
-Deze implementatiegids Zorginzage bevat de generieke afspraken en specificaties die nodig zijn voor use cases die gebruikmaken van de [communicatiepatronen](https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws) 'Gericht bevragen' en 'Geïndexeerd bevragen'. Het doel van deze implementatiegids is het versnellen van de realisatie van use cases. Deze implementatiegids draagt hieraan bij door het hergebruik van afspraken en specifcaties te vereenvoudigen.
+Deze implementatiegids Zorginzage bevat de generieke afspraken en specificaties die nodig zijn voor use cases die gebruikmaken van de [communicatiepatronen](https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws) 'Gericht bevragen' en 'Geïndexeerd bevragen'. Het doel van deze implementatiegids is het versnellen van de realisatie van use cases. Deze implementatiegids draagt hieraan bij door het hergebruik van afspraken en specificaties te vereenvoudigen.
 
 ### Procesbeschrijving
 
-Met deze bolt ondersteunen we het proces van Zorginzage. Dat proces bestaat enerzijds uit het interoperabel, toegankelijk, vindbaar en herbruikbaar (FAIR) maken van dossiergegevens door een bronhouder ('publiceren') en anderzijds uit het daadwerkelijk inzien van dossiergegevens door een afnemer ('raadplegen'). Door Zorginzage zijn zorgverleners in staat het voor hen relevante deel van het zorgtraject van de betrokkene te volgen dat zich bij andere zorgaanbieders afspeelt.
+Met deze bolt ondersteunen we het proces van Zorginzage. Dat proces bestaat enerzijds uit het vindbaar (findable), toegankelijk (accesible), interoperabel (interoperable) en herbruikbaar (reusable) maken (FAIR) van dossiergegevens door een datahouder en anderzijds uit het daadwerkelijk inzien van dossiergegevens door een datagebruiker. Door Zorginzage zijn zorgverleners in staat het voor hen relevante deel van het zorgtraject van de betrokkene te volgen dat zich bij andere zorgaanbieders afspeelt.
 
 Voorbeelden:
 - Een thuiszorgdossier dat wordt bijgehouden door de thuiszorgorganisatie en wordt ingezien door de huisarts. Observaties en metingen worden verricht door verplegend en verzorgend personeel van de thuiszorgorganisatie en deze kunnen specifiek en gericht worden ingezien door de betrokken huisarts.
@@ -15,31 +15,31 @@ Voorbeelden:
 ### Principes
 
 1. Deze specificatie heeft als scope het door een datagebruiker inzien van data die bij andere zorgorganisaties is opgeslagen en het hiervoor benodigde door een datahouder beschikbaar stellen van data aan andere zorgorganisaties.
-2. Deze specificatie bevat alleen afhankelijkheden van afspraken, specifcaties en systemen die beschikbaar zijn in productie-omgevingen.
-3. Deze specificatie ontwikkelt incrementeel en iterarief door. 
-4. Deze specificatie adopteert incrementeel en iterarief de door het Ministerie van VWS beheerde landelijke afspraken en specifcaties voor generieke functies. Deze landelijke afspraken en specificaties vervangen incremenenteel en iteratief alle zorginzage-specifieke afspraken en specificaties.
+2. Deze specificatie bevat alleen afhankelijkheden van afspraken, specificaties en systemen die beschikbaar zijn in productie-omgevingen.
+3. Deze specificatie ontwikkelt incrementeel en iteratief door. 
+4. Deze specificatie adopteert incrementeel en iteratief de door het Ministerie van VWS beheerde landelijke afspraken en specificaties voor generieke functies. Deze landelijke afspraken en specificaties vervangen incrementeel en iteratief alle Zorginzage-specifieke afspraken en specificaties zodra de eigenaar en de deelnemers van de Zorginzage-specificatie beoordelen dat deze implementatieklaar zijn.
 5. Van deze specificatie zullen maximaal twee release per jaar uitkomen die invloed hebben op de functionaliteit.
-6. Wederkerigheid. Deelnemers aan zorginzage stellen alleen data beschikbaar aan partijen die ook conform deze specificatie data beschikbaar stellen. 
-7. Commitment. De zorginzage-specificatie wordt de komende jaren doorontwikkeld. Deelnemers committeren zich aan de implementatie van volgende versies. 
+6. Wederkerigheid. Deelnemers aan Zorginzage stellen alleen data beschikbaar aan partijen die ook conform deze specificatie data beschikbaar stellen. 
+7. Commitment. De Zorginzage-specificatie wordt de komende jaren doorontwikkeld. Deelnemers committeren zich aan de implementatie van volgende versies. 
 
 ### Use cases
 
 Deze specificatie vormt de basis voor een aantal verschillende use cases.
 
-Use case | Specficatie | Opmerking
+Use case | Specificatie | Opmerking
 ---------|-------------|----------
-360-graden cliëntbeeld | n.t.b. | De specficatie van deze use case maakt gebruik van Zorginzage 2026
-Geboortezorg | [link](https://babyconnect.atlassian.net/wiki/spaces/VBC/pages/906166273/Zorgtoepassingprofiel+Geboortezorg)  | De specficatie van deze use case maakt nog geen gebruik van Zorginzage 2026
-Huisartsinzage | [link](https://wiki.nuts.nl/books/samenwerken-huisarts-en-thuiszorg/page/zorgtoepassing-ha-vvt-inzage-dossier-v10) | De specficatie van deze use case maakt nog geen gebruik van Zorginzage 2026
-PZP | [link](https://wiki.nuts.nl/books/pzp) | De specficatie van deze use case maakt nog geen gebruik van Zorginzage 2026
+360-graden cliëntbeeld | n.t.b. | De specificatie van deze use case maakt gebruik van Zorginzage 2026
+Geboortezorg | [link](https://babyconnect.atlassian.net/wiki/spaces/VBC/pages/906166273/Zorgtoepassingprofiel+Geboortezorg)  | De specificatie van deze use case maakt nog geen gebruik van Zorginzage 2026
+Huisartsinzage | [link](https://wiki.nuts.nl/books/samenwerken-huisarts-en-thuiszorg/page/zorgtoepassing-ha-vvt-inzage-dossier-v10) | De specificatie van deze use case maakt nog geen gebruik van Zorginzage 2026
+PZP | [link](https://wiki.nuts.nl/books/pzp) | De specificatie van deze use case maakt nog geen gebruik van Zorginzage 2026
 
 ### Wederkerigheid
 
-Deelnemers aan zorginzage stellen alleen data beschikbaar aan partijen die ook conform deze specificatie data beschikbaar stellen. Om dit te bereiken dienen deelnemers aan zorginzage naast de rol datagebruiker (data user) ook de rol datahouder (data holder) te implementeren.
+Deelnemers aan Zorginzage stellen alleen data beschikbaar aan partijen die ook conform deze specificatie data beschikbaar stellen. Om dit te bereiken dienen deelnemers aan Zorginzage naast de rol datagebruiker (data user) ook de rol datahouder (data holder) te implementeren.
 
 ### Commitment
 
-De zorginzage-specificatie wordt de komende jaren doorontwikkeld. Deelnemers aan zorginzage committeren zich aan de tijdige implementatie van de versies die in 2026, 2027 en 2028 zullen worden gepubliceerd.
+De Zorginzage-specificatie wordt de komende jaren doorontwikkeld. Deelnemers aan Zorginzage committeren zich aan de tijdige implementatie van de versies die in 2026, 2027 en 2028 zullen worden gepubliceerd.
 
 ### Rollen en verantwoordelijkheden
 
@@ -55,7 +55,7 @@ De zorginzage-specificatie wordt de komende jaren doorontwikkeld. Deelnemers aan
 
 #### Deelnemer
 
-- technische implementatie van de specifcatie
+- technische implementatie van de specificatie
 - leveren input voor inhoud en planning releases
 
 #### Eigenaar Discovery Service
@@ -72,26 +72,26 @@ Eigenaar Discovery Service | ActiZ
 
 ### Roadmap
 
-Release zorginzage-specificatie | juni 2026 | najaar 2026 | voorjaar 2027                            | najaar 2027
------|------|------|------------------------------------------|------
-adressering | zorginzage-specifiek | generieke functie adressering (trial-use) | generieke functie adressering | generieke functie adressering
-lokalisatie | zorginzage-specifiek | generieke functie adressering (trial-use) | generieke functie lokalisatie            | generieke functie lokalisatie 
-authenticatie van organisaties | zorginzage-specifiek | zorginzage-specifiek | generieke functie adressering (trial-use)                     | generieke functie authenticatie
-toestemming | zorginzage-specifiek | zorginzage-specifiek | generieke functie toestemming (trial-use) | generieke functie toestemming
-authenticatie van personen | zorginzage-specifiek | zorginzage-specifiek | dezi                                     | dezi
-autorisatie | zorginzage-specifiek | zorginzage-specifiek | generieke functie adressering (trial-use)                     | generieke functie autorisatie
+Voor de doorontwikkeling van deze Zorginzage-specificatie wordt de volgende roadmap gehanteerd. 
 
+Release Zorginzage-specificatie | juni 2026 | najaar 2026 | voorjaar 2027                            | najaar 2027
+-----|------|------|------------------------------------------|------
+adressering | Zorginzage-specifiek | generieke functie adressering (trial-use) | generieke functie adressering | generieke functie adressering
+lokalisatie | geen onderdeel van Zorginzage-specificatie | generieke functie lokalisatie (trial-use) | generieke functie lokalisatie            | generieke functie lokalisatie 
+authenticatie van organisaties | Zorginzage-specifiek | Zorginzage-specifiek | generieke functie adressering (trial-use)                     | generieke functie authenticatie
+toestemming | Zorginzage-specifiek | Zorginzage-specifiek | generieke functie toestemming (trial-use) | generieke functie toestemming
+authenticatie van personen | Zorginzage-specifiek | Zorginzage-specifiek | dezi                                     | dezi
+autorisatie | Zorginzage-specifiek | Zorginzage-specifiek | generieke functie adressering (trial-use)                     | generieke functie autorisatie
+
+De roadmap wordt bepaald op basis van input van de egenaar en de deelnemers van de Zorginzage-specificatie. De roadmap is afhankelijk van externe factoren waarop de eigenaar en de deelnemers van de Zorginzage-specificatie slechts in beperkte mate invloed hebben. De roadmap kan per release van de Zorginzage-specficatie worden aangepast.
 
 ### Releasebeleid
 
-De zorginzage-specificatie zal zich de komende jaren doorontwikkelen. Ontwikkelingen binnen en rondom zorginzage, zoals
-de ontwikkelingen aangaande generieke functies, kunnen aanleiding geven om afspraken en specificaties te wijzigen. De
-eigenaar van de specificatie spant zich ervoor in om te borgen dat ontwikkelingen zo goed mogelijk worden verwerkt in de
-zorginzage-specificatie door middel van het uitbrengen van nieuwe releases.
+De Zorginzage-specificatie zal zich de komende jaren doorontwikkelen. Ontwikkelingen binnen en rondom Zorginzage, zoals de ontwikkelingen aangaande generieke functies, kunnen aanleiding geven om afspraken en specificaties te wijzigen. De eigenaar van de specificatie spant zich ervoor in om te borgen dat ontwikkelingen zo goed mogelijk worden verwerkt in de Zorginzage-specificatie door middel van het uitbrengen van nieuwe releases.
 
 #### Releasecriteria
 
-Releases voor de specficatie worden als volgt aangeduid:
+Releases van de specificatie worden als volgt aangeduid:
 
 - Major: Wijzigingen die invloed hebben op de functionaliteit en niet backwards compatible zijn.
 - Minor: Wijzigingen die invloed hebben op de functionaliteit en backwards compatible zijn.
@@ -106,7 +106,7 @@ Releases voor de specficatie worden als volgt aangeduid:
 
 #### Geldigheid
 
-De actuele release is altijd geldig. Voor de voorlaatste release (ook wel n-1 genoemd) geldt:
+De actuele release is altijd geldig. Voor de voorlaatste release (ook wel n-1 release genoemd) geldt:
 
 - Na een **major release** blijft de n-1 release nog zes (6) maanden na publicatie van de
   actuele release geldig. Deelnemers gebruiken deze periode om over te stappen. Na afloop is
@@ -116,9 +116,7 @@ De actuele release is altijd geldig. Voor de voorlaatste release (ook wel n-1 ge
   zijn overgestapt.
 - Een **patch release** verandert de geldigheidstermijn van n-1 niet.
 
-Deelnemers die op een release ouder dan n-1 zitten, voldoen niet aan de specificatie. De
-eigenaar van de specificatie kan in overleg met deelnemers afwijkende afspraken maken wanneer
-een specifieke major release aantoonbaar meer migratietijd vraagt.
+Deelnemers die op een release ouder dan n-1 zitten, voldoen niet aan de specificatie. De eigenaar van de specificatie kan in overleg met deelnemers afwijkende afspraken maken wanneer een specifieke major release aantoonbaar meer migratietijd vraagt.
 
 #### Pilot en definitieve elementen
 
@@ -150,5 +148,5 @@ gescheiden (x.y.z waarbij x de majorrelease is, y de minor en z de patch).
 
 #### Besluitvorming
 
-De eigenaar van de specificatie besluit na overleg met de deelnemers aan zorginzage over het vaststellen van een nieuwe
-release en over de ‘Release roadmap’ met de onderwerpen voor een eerstvolgende release.
+De eigenaar van de specificatie besluit na overleg met de deelnemers aan Zorginzage over het vaststellen van een nieuwe release en over de ‘Release roadmap’ met de onderwerpen voor een eerstvolgende release.
+
