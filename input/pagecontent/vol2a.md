@@ -7,15 +7,18 @@ In short this means that fetching data globally consists of the following steps:
 
 1. Addressing: The data user finds the addresses of the FHIR- and OAuth-endpoints of each (possible) data holder.
 2. Authentication: The data user authenticates (organisation and person level)
-3. Localisation: The data user finds the data holders that have data about a patient (in a specific context)
-    1. Patient search request: The data user performs a patient search at each possible data holder, using bsn as
-       parameter.
-    2. Patient search reponse: When the data user has data about the requested patient, it returns the internal
+3. Localisation: This specification does not implement a localisation mechanism. Instead, the data user performs
+   targeted querying ("gericht bevragen") at the possible data holder(s) that are already known.
+   Maintaining this list of data holders is the responsibility of the data user and is out of scope
+   for this specification.
+    1. Patient search request: The data user performs a patient search at each targeted data holder, using bsn as
+       parameter. This step verifies whether this possible data holder actually holds data about the given patient.
+    2. Patient search response: When the data holder has data about the requested patient, it returns the internal
        technical identifier of the requested patient.
-4. Data request: The data user performs data requests at each possible data holder, using the technical identifier of
-   the requested patient as parameter.
+4. Data request: The data user performs data requests at each targeted data holder, using the technical identifier of
+   the requested patient as a parameter.
 5. Authorisation: The data holder authorizes the incoming data request.
-    1. Check consent: As part of the authorization process the data holder can check the presence of patient consent,
+    1. Check consent: As part of the authorization process, the data holder **MAY** check the presence of patient consent,
        locally or at Mitz.
 
 ### Principles
@@ -181,16 +184,36 @@ Registration is covered in a separate sequence diagram outside the common reques
 
 ### Localisation
 
+#### Function
+
 Localisation is the process of finding out which organisations have data on a patient.
 
-The generic function localisation is not yet available in production environments. This specification uses bsn
-broadcasting using the Nuts Discovery Service for indexed pull scenarios. This means that organisations that implement
-this specification perform bsn broadcasting and accept incoming bsn-based patient searches and matches.
+#### Interaction
 
-This method is the only viable way to localise without external dependencies, however it requires an appropriate legal
-basis to be in place.
+This specification does **not** implement a localisation mechanism. Instead, data users perform **targeted querying** (
+"gericht bevragen"): the data user only queries possible data holders that are already known by the data user.
 
-In practice the BSN broadcast is realised by searching for a patient record with an identifier.
+This means the data user is responsible for maintaining its own list of healthcare providers that are possible data holder for a specific patient.
+a treatment relation. The way in which this list is built up and kept current (e.g. patient-supplied, referral-based,
+sourced from an EHR, or otherwise) is out of scope for this specification.
+
+#### Rationale
+
+- The generic function localisation is not yet available in production environments. It is very likely that generic
+  function will be trial ready for the next version of this specification.
+- BSN broadcasting (sending the BSN to a wide set of possible data holders to discover where data exists) requires an
+  appropriate legal basis that is not generally in place for the use cases covered by this specification.
+- Targeted querying avoids unnecessary BSN distribution and limits data requests to organisations already known by the data user to possible hold data about a specific patient, 
+  which is consistent with the principles of data minimisation and purpose limitation required by the GDPR.
+
+### Conformance
+
+- The data user **MUST NOT** use the Nuts Discovery Service to broadcast a BSN across all registered data holders for a
+  use case (see also the Addressing conformance rules).
+- The data user **MUST** resolve locally, for each patient, the specific (possible) data holder(s) it wants to query before initiating
+  patient search.
+- The patient search at the targeted data holder is still performed using the BSN as parameter, in order to obtain the
+  data holder's internal technical identifier for the patient:
 
 ```http request
 POST /fhir/Patient/_search
@@ -199,14 +222,6 @@ Content-Type: application/x-www-form-urlencoded
 identifier = http://fhir.nl/fhir/NamingSystem/bsn|618359710 &
 _elements = id
 ```
-
-- Requestor must pre-filter resources servers that the BSN is broadcasted to by use case and organisation type during
-  addressing
-- Requestor must provide the `_elements` & `identifier=` query parameters when searching the patient
-- Data holder must only return patient ID's when there is data available for the specific use case
-
-The aim is to replace localisation in the next version of this spec with either pseudonym broadcasting or the GF
-localisation. **Always make sure to check the legal basis before broadcasting any BSN's.**
 
 ### Authorisation
 
