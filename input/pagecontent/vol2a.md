@@ -8,7 +8,7 @@ In short this means that fetching data globally consists of the following steps:
 1. Addressing: The data user finds the addresses of the FHIR- and OAuth-endpoints of each (possible) data holder.
 2. Authentication: The data user authenticates (organisation and person level)
 3. Localisation: This specification does not implement a localisation mechanism. Instead, the data user performs
-   targeted querying ("gericht bevragen") at the data holder(s) that are already known to have a treatment relation
+   targeted querying ("gericht bevragen") at the possible data holder(s) that are already known.
    with the patient. Maintaining this list of data holders is the responsibility of the data user and is out of scope
    for this specification.
     1. Patient search request: The data user performs a patient search at each targeted data holder, using bsn as
