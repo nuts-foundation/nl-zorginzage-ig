@@ -284,7 +284,7 @@ consent mechanism (explicit local, explicit OTV, or implicit) is left to the dat
 
 The data holder can use one or more of the following attributes for the consent check:
 
-- URA of data user organisation — sourced from the X509Credential based on UZI server certificate.
+- URA of data user organisation — sourced from the X509Credential based on UZI server certificate. Required for OTV-consent.
 - Organisation type — sourced from the HealthcareProviderRoleTypeCredential.
 - BSN of client/patient — sourced from the incoming FHIR query or other patient context.
 - A use case identifier — sourced from the authorization scope.
