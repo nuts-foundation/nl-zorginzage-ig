@@ -105,7 +105,7 @@ Organisation- and professional-level authentication is performed via the standar
   requests; issues a NutsEmployeeCredential for the healthcare professional acting on its behalf during access token requests.
 - **Healthcare professional** — represented by a NutsEmployeeCredential issued by the data user organisation;
   identified by a local employee identifier, with local employee name and role as non-identifying attributes.
-- **Nuts node (both sides)** — performs the standard Nuts authentication flows (access token requests, introspects and
+- **Nuts node (both sides)** — performs the standard Nuts authentication flows (a.o. access token requests and introspects)
   jwt-based data requests) on behalf of the organisation it serves.
 
 #### Interaction
