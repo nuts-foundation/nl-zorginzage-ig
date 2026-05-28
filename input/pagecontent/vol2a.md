@@ -123,7 +123,7 @@ Vendor organisation authentication is performed at the transport layer through m
 
 #### Conformance
 
-- Data users **MUST** authenticate the URA using an X509Credential derived from a UZI
+- Data users **MUST** authenticate the URA using an [X509Credential derived from a UZI server certificate](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-X509Credential.html) 
   servercertificate, in line with Nuts RFC023.
 - Data users **MUST** present a self-issued [HealthcareProviderRoleTypeCredential](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-HealthcareProviderRoleTypeCredential.html) expressing their
   organisation type(s).
