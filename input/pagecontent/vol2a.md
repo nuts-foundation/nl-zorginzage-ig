@@ -233,7 +233,7 @@ whether the request passes the access policies of the source (data holder).
 
 #### Preconditions
 
-- Authentication has completed, so the data holder knows the URA of the requesting organisation and, where applicable,
+- Authentication has completed, so the data holder knows the URA and HealthcareProviderRoleType of the requesting organisation and, where applicable,
   the federated professional identity (see Authentication).
 - A use case scope is present from the authentication process; a single name connects this scope to its Nuts policy and
   authentication policy.
