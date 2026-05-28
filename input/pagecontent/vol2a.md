@@ -12,7 +12,7 @@ In short this means that fetching data globally consists of the following steps:
    Maintaining this list of data holders is the responsibility of the data user and is out of scope
    for this specification.
     1. Patient search request: The data user performs a patient search at each targeted data holder, using bsn as
-       parameter.
+       parameter. This step verifies whether this possible data holder actually holds data about the given patient.
     2. Patient search response: When the data holder has data about the requested patient, it returns the internal
        technical identifier of the requested patient.
 4. Data request: The data user performs data requests at each targeted data holder, using the technical identifier of
