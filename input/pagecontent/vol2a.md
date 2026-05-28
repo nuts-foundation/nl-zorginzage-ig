@@ -288,7 +288,7 @@ The data holder can use one or more of the following attributes for the consent 
 - Organisation type of data user organisation— sourced from the HealthcareProviderRoleTypeCredential. Required for OTV-consent.
 - URA of data holder organisation. Required for OTV-consent.
 - Organisation type of data holder organisation. Required for OTV-consent.
-- BSN of client/patient — sourced from the incoming FHIR query or other patient context.
+- BSN of client/patient — sourced from the incoming FHIR query or other patient context. Required for OTV-consent.
 - A use case identifier — sourced from the authorization scope.
 
 ### Network security
