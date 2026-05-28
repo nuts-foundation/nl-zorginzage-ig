@@ -271,7 +271,7 @@ The following guidelines **MUST** be taken into account when designing new polic
     - for search interactions, either a patient id or patient bsn **MUST** be derivable from the query;
     - for read interactions, the requested resource must have a direct link to a patient (for example through a patient
       field).
-- For data requests that require explicit consent, patient consent must be checked in a local system or in Mitz before
+- For data requests that require explicit consent, patient consent **MUST** be checked in a local system **OR** in Mitz before
   returning the data.
 - An active treatment relation must be checked, optionally in the context of a specific use case.
 
