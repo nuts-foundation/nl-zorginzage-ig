@@ -18,7 +18,7 @@ In short this means that fetching data globally consists of the following steps:
 4. Data request: The data user performs data requests at each targeted data holder, using the technical identifier of
    the requested patient as a parameter.
 5. Authorisation: The data holder authorizes the incoming data request.
-    1. Check consent: As part of the authorization process, the data holder can check the presence of patient consent,
+    1. Check consent: As part of the authorization process, the data holder **MAY** check the presence of patient consent,
        locally or at Mitz.
 
 ### Principles
