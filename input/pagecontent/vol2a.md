@@ -245,7 +245,7 @@ whether the request passes the access policies of the source (data holder).
 
 - **Data holder** — defines and enforces the access policies for its data, runs the policy enforcement
   point, and checks consent and/or treatment relation as part of the decision.
-- **Data user** — submits data requests carrying the context required for evaluation (organisation URA, patient
+- **Data user** — submits data requests carrying the context required for evaluation (a.o. organisation URA, patient
   context, use case scope).
 - **Policy decision point** — evaluates the selected policy against the request input; the PDP functionality in the
   Nuts Knooppunt can be integrated with any policy enforcement point.
