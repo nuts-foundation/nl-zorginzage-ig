@@ -24,7 +24,7 @@ The body of the request to the internal API of the Nuts-node **MUST** contain th
 }
 ```
 
-The following credentials have to be available in the Nuts node organisation wallet:
+The following credentials **MUST** be available in the Nuts node organisation wallet:
 1. X509Credential based on UZI server certificate
 2. HealthcareProviderRoleTypeCredential
 
