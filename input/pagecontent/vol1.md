@@ -74,7 +74,7 @@ Eigenaar Discovery Service | ActiZ
 
 Voor de doorontwikkeling van deze Zorginzage-specificatie wordt de volgende roadmap gehanteerd. 
 
-Release Zorginzage-specificatie | juni 2026 | najaar 2026 | voorjaar 2027                            | najaar 2027
+Release Zorginzage-specificatie | juni 2026 (versie 1.x) | najaar 2026 | voorjaar 2027                            | najaar 2027
 -----|------|------|------------------------------------------|------
 adressering | Zorginzage-specifiek | generieke functie adressering (trial-use) | generieke functie adressering | generieke functie adressering
 lokalisatie | geen onderdeel van Zorginzage-specificatie | generieke functie lokalisatie (trial-use) | generieke functie lokalisatie            | generieke functie lokalisatie 
