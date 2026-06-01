@@ -82,7 +82,7 @@ authenticatie van organisaties | Zorginzage-specifiek | Zorginzage-specifiek | g
 toestemming | Zorginzage-specifiek | Zorginzage-specifiek | generieke functie toestemming (trial-use) | generieke functie toestemming
 authenticatie van personen | Zorginzage-specifiek | Zorginzage-specifiek | dezi                                     | dezi
 autorisatie | Zorginzage-specifiek | Zorginzage-specifiek | generieke functie adressering (trial-use)                     | generieke functie autorisatie
-netwerkbeveiliging | Zorginzage-specifiek | landelijke specificaties Veilig Netwerk (trial use) | landelijke specificaties Veilig Netwerk | landelijke specificaties Veilig Netwerk
+netwerkbeveiliging | Zorginzage-specifiek | landelijke specificaties Veilig Netwerk (trial-use) | landelijke specificaties Veilig Netwerk | landelijke specificaties Veilig Netwerk
 
 De roadmap wordt bepaald op basis van input van de egenaar en de deelnemers van de Zorginzage-specificatie. De roadmap is afhankelijk van externe factoren waarop de eigenaar en de deelnemers van de Zorginzage-specificatie slechts in beperkte mate invloed hebben. De roadmap kan per release van de Zorginzage-specficatie worden aangepast.
 
