@@ -368,12 +368,20 @@ When a data holder wants to use OTV-consent during authorisation, it **MUST** im
 
 ### Network security
 
-1. Production environments: Vendor organizations use server- and client-authentication (mutual TLS) based on
+#### Conformance
+
+1. Production environments: Vendor organizations **MUST** use server- and client-authentication (mutual TLS) based on
    PKIoverheid-certificates.
-2. Acceptance environments: Vendor organizations use server- and client-authentication (mutual TLS) based on
+2. Acceptance environments: Vendor organizations **MUST** use server- and client-authentication (mutual TLS) based on
    PKIoverheid-certificates.
-3. Test environments: Vendor organizations use server- and client-authentication (mutual TLS) based on
+3. Test environments: Vendor organizations **MUST** use server- and client-authentication (mutual TLS) based on
    PKIoverheid-certificates or any public trust certificates.
+
+#### Rationale
+
+- National specifications for network security, commonly referred to as "Veilig Netwerk" are not yet finalized.
+- The current concept version of the national specifications prescribes the use of PKIoverheid-certificates
+- PKIoverheid-certificates are already widely in use by vendors
 
 ### Registering a new use case
 
