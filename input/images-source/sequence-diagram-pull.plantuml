@@ -37,7 +37,7 @@ User -> req: request information for Patient
 
         req -> rn++: Get access token \nPOST /internal/auth/v2/{subjectID of Data user organisation}/request-service-access-token
             rn <--> cn : nuts-nodes handle access token request, reqjuest is forwarded using value of "authorization_server" element in body
-            note right of rn : uses X509Credential and NutsEmployeeCredential
+            note right of rn : uses X509Credential, HealthcareProviderRoleTypeCredential and NutsEmployeeCredential
             rn --> req-- : Access token
         |||
 
