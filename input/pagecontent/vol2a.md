@@ -291,7 +291,7 @@ solution follows the exact same rules as specified in the Rego policy file for t
 #### Conformance
 
 - The data holder organisation **MUST** enforce the rules as described in the commonly defined rego policy for this use case
-- The data holder organisation **MAY** implement a rego-interpreter as pasrt of its policy decision point.
+- The data holder organisation **MAY** implement a rego-interpreter.
 
 The following guidelines **MUST** be taken into account when designing new policies:
 
