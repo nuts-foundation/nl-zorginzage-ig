@@ -17,7 +17,7 @@ Voorbeelden:
 1. Deze specificatie heeft als scope het door een datagebruiker inzien van data die bij andere zorgorganisaties is opgeslagen en het hiervoor benodigde door een datahouder beschikbaar stellen van data aan andere zorgorganisaties.
 2. Deze specificatie bevat alleen afhankelijkheden van afspraken, specificaties en systemen die beschikbaar zijn in productie-omgevingen.
 3. Deze specificatie ontwikkelt incrementeel en iteratief door. 
-4. Deze specificatie adopteert incrementeel en iteratief de door het Ministerie van VWS beheerde landelijke afspraken en specificaties voor generieke functies. Deze landelijke afspraken en specificaties vervangen incrementeel en iteratief alle Zorginzage-specifieke afspraken en specificaties zodra de eigenaar en de deelnemers van de Zorginzage-specificatie beoordelen dat deze implementatieklaar zijn.
+4. Deze specificatie adopteert incrementeel en iteratief de door het Ministerie van VWS beheerde landelijke afspraken en specificaties voor generieke functies en de andere elementen van de doelarchitectuur voor het Gezondheidsinformatiestelsel (GIS). Deze landelijke afspraken en specificaties vervangen incrementeel en iteratief alle Zorginzage-specifieke afspraken en specificaties zodra de eigenaar en de deelnemers van de Zorginzage-specificatie beoordelen dat deze implementatieklaar zijn.
 5. Van deze specificatie zullen maximaal twee release per jaar uitkomen die invloed hebben op de functionaliteit.
 6. Wederkerigheid. Deelnemers aan Zorginzage stellen alleen data beschikbaar aan partijen die ook conform deze specificatie data beschikbaar stellen. 
 7. Commitment. De Zorginzage-specificatie wordt de komende jaren doorontwikkeld. Deelnemers committeren zich aan de implementatie van volgende versies. 
@@ -82,12 +82,13 @@ authenticatie van organisaties | Zorginzage-specifiek | Zorginzage-specifiek | g
 toestemming | Zorginzage-specifiek | Zorginzage-specifiek | generieke functie toestemming (trial-use) | generieke functie toestemming
 authenticatie van personen | Zorginzage-specifiek | Zorginzage-specifiek | dezi                                     | dezi
 autorisatie | Zorginzage-specifiek | Zorginzage-specifiek | generieke functie adressering (trial-use)                     | generieke functie autorisatie
+netwerkbeveiliging | Zorginzage-specifiek | landelijke specificaties Veilig Netwerk (trial use) | landelijke specificaties Veilig Netwerk | landelijke specificaties Veilig Netwerk
 
 De roadmap wordt bepaald op basis van input van de egenaar en de deelnemers van de Zorginzage-specificatie. De roadmap is afhankelijk van externe factoren waarop de eigenaar en de deelnemers van de Zorginzage-specificatie slechts in beperkte mate invloed hebben. De roadmap kan per release van de Zorginzage-specficatie worden aangepast.
 
 ### Releasebeleid
 
-De Zorginzage-specificatie zal zich de komende jaren doorontwikkelen. Ontwikkelingen binnen en rondom Zorginzage, zoals de ontwikkelingen aangaande generieke functies, kunnen aanleiding geven om afspraken en specificaties te wijzigen. De eigenaar van de specificatie spant zich ervoor in om te borgen dat ontwikkelingen zo goed mogelijk worden verwerkt in de Zorginzage-specificatie door middel van het uitbrengen van nieuwe releases.
+De Zorginzage-specificatie zal zich de komende jaren doorontwikkelen. Ontwikkelingen binnen en rondom Zorginzage, zoals de ontwikkelingen aangaande generieke functies en de doelarchitectuur voor het Gezondheidsinformatiestelsel (GIS), kunnen aanleiding geven om afspraken en specificaties te wijzigen. De eigenaar van de specificatie spant zich ervoor in om te borgen dat ontwikkelingen zo goed mogelijk worden verwerkt in de Zorginzage-specificatie door middel van het uitbrengen van nieuwe releases.
 
 #### Releasecriteria
 
