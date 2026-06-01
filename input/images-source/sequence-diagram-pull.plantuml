@@ -29,14 +29,14 @@ User -> req: request information for Patient
         ==get addresses of data holder organisation==
 
         req -> rn++: Look up data holder organisation in discovery \nGET /internal/discovery/v1/{serviceID}?organization_ura={URA}
-            note right of rn: The Zorginzage requires iunderlying use cases to include elements with id "organization_ura", "authorization_server_url" and "fhir_base_url" in the discovery-service-presentation-definitions 
+            note right of rn: The Zorginzage requires underlying use cases to include elements with id "organization_ura", "authorization_server_url" and "fhir_base_url" in the discovery-service-presentation-definitions 
             rn --> req --: Found Organization B (authorization_server_url, fhir_base_url)
         |||
 
         ==get access token==
 
         req -> rn++: Get access token \nPOST /internal/auth/v2/{subjectID of Data user organisation}/request-service-access-token
-            rn <--> cn : nuts-nodes handle access token request, reqjuest is forwarded using value of "authorization_server" element in body
+            rn <--> cn : nuts-nodes handle access token request, request is forwarded using value of "authorization_server_url" element in body
             note right of rn : uses X509Credential, HealthcareProviderRoleTypeCredential and NutsEmployeeCredential
             rn --> req-- : Access token
         |||

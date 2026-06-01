@@ -13,7 +13,7 @@ In short this means that fetching data globally consists of the following steps:
        technical identifier of the requested patient.
 4. Data request: The data user performs data requests at each targeted data holder, using the technical identifier of the requested patient as a parameter.
 5. Authorisation: The data holder authorizes the incoming data request.
-    1. Check consent: As part of the authorization process, the data holder **MAY** check the presence of patient consent, locally or at Mitz.
+    1. Check consent: As part of the authorisation process, the data holder **MAY** check the presence of patient consent, locally or at Mitz.
 
 ### Principles
 
@@ -233,7 +233,7 @@ sourced from an EHR, or otherwise) is out of scope for this specification.
 - Targeted querying avoids unnecessary BSN distribution and limits data requests to organisations already known by the data user to possible hold data about a specific patient, 
   which is consistent with the principles of data minimisation and purpose limitation required by the GDPR.
 
-### Conformance
+#### Conformance
 
 - The data user **MUST NOT** use the Nuts Discovery Service to broadcast a BSN across all registered data holders for a
   use case (see also the Addressing conformance rules).
@@ -275,20 +275,23 @@ whether the request passes the access policies of the source (data holder).
 - **Data user** — submits data requests carrying the context required for evaluation (a.o. organisation URA, patient
   context, use case scope).
 - **Policy decision point** — evaluates the selected policy against the request input; the PDP functionality in the
-  Nuts Knooppunt can be integrated with any policy enforcement point.
+  Nuts Knooppunt can be integrated with any policy enforcement point. For more info, see the [NIST-definition of PDP](https://csrc.nist.rip/glossary/term/policy_decision_point) and the [Wikipedia-page on XACML](https://en.wikipedia.org/wiki/XACML).
+- **Policy enforcement point** - carries out or enforces policy decisions (made by a PDP). For more info, see the [NIST-definition of PEP](https://csrc.nist.rip/glossary/term/pep) and the [Wikipedia-page on XACML](https://en.wikipedia.org/wiki/XACML).
 - **Nuts Foundation** — maintains the version-controlled policies in Git.
 
 #### Interaction
 
-The policy is selected based on the use case scope provided by the Nuts access token as part of the authentication process. The
-input for evaluating the policy is a commonly agreed upon information model; the model is described in the
-[this proposal for the generic function authorization](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/authorization.html).
+The policy is selected based on the use case scope provided by the Nuts access token as part of the authentication process. The input for evaluating the policy is a commonly agreed upon information model; the model is described in the
+[this proposal for the generic function authorisation](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/authorization.html).
 
 Policies are expressed in a domain specific language called Rego so that everyone uses the same rulesets. Implementors
 are free not to implement a Rego interpreter as part of their authorisation solution, as long as the implemented
-solution follows the exact same rules as specified in the Rego policy file for that use case.
+solution follows the exact same rules as specified in the Rego policy file for that use case. 
 
 #### Conformance
+
+- The data holder organisation **MUST** enforce the rules as described in the commonly defined rego policy for this use case
+- The data holder organisation **MAY** implement a rego-interpreter.
 
 The following guidelines **MUST** be taken into account when designing new policies:
 
@@ -304,10 +307,11 @@ The following guidelines **MUST** be taken into account when designing new polic
 
 For data requests in which explicit consent is not checked, one of the following is **mandatory**:
 
-- The treatment relation of the data user organisation with the patient **MUST** be checked technically by the data holder
-  organisation (e.g. using a PatientEnrollmentCredential). This treatment relation can be scoped to a specific context
+- A legal basis **MUST** be present in which explicit consent is not necessary, e.g. a referral or handoff of a patient from data holder to data user.
+- The treatment relation of the data user organisation with the patient **SHOULD** be checked technically by the data holder
+  organisation (e.g. using a [PatientEnrollmentCredential](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-PatientEnrollmentCredential.html)). This treatment relation can be scoped to a specific context
   (e.g. a use case).
-- A legal basis *MUST* be present in which explicit consent is not necessary. This is not checked technically.
+
 
 The treatment relation of the data holder organisation with the patient **MAY** be checked technically by the data
 holder organisation.
@@ -321,7 +325,7 @@ holder organisation.
 
 #### References
 
-- [Generic function authorization (nl-generic-functions-ig)](https://nuts-foundation.github.io/nl-generic-functions-ig/authorization.html)
+- [Generic function authorisation (nl-generic-functions-ig)](https://nuts-foundation.github.io/nl-generic-functions-ig/authorization.html)
 
 ### Consent
 
@@ -362,7 +366,7 @@ The data holder can use one or more of the following attributes for the consent 
 - URA of data holder organisation. Required for OTV-consent.
 - Organisation type of data holder organisation. Required for OTV-consent.
 - BSN of client/patient — sourced from the incoming FHIR query or other patient context. Required for OTV-consent.
-- A use case identifier — sourced from the authorization scope.
+- A use case identifier — sourced from the authorisation scope.
 
 When a data holder wants to use OTV-consent during authorisation, it **MUST** implement the 'Gesloten Autorisatievraag' as specified in ["Implementatiehandleiding_OpenGesloten"](https://vzvz.atlassian.net/wiki/spaces/MA11/pages/828314367/Bijlage+Architectuurdocumenten).
 
@@ -391,7 +395,7 @@ the [nl-zorginzage-resources repository](https://github.com/nuts-foundation/nl-z
 A complete use case contains:
 
 - The Nuts policy
-- An authorization policy
+- An authorisation policy
 - Discover service presentation definition
 
 Use cases are scoped to a version of this implementation guide and reviewed by Actiz.
