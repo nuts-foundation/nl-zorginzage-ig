@@ -381,7 +381,7 @@ When a data holder wants to use OTV-consent during authorisation, it **MUST** im
 
 - National specifications for network security, commonly referred to as "Veilig Netwerk" are not yet finalized.
 - The current concept version of the national specifications prescribes the use of PKIoverheid-certificates
-- PKIoverheid-certificates are already in use by vendors in most Nuts use cases
+- PKIoverheid-certificates are already widely in use by vendors
 
 ### Registering a new use case
 
