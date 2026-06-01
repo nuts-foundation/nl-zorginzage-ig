@@ -275,20 +275,23 @@ whether the request passes the access policies of the source (data holder).
 - **Data user** — submits data requests carrying the context required for evaluation (a.o. organisation URA, patient
   context, use case scope).
 - **Policy decision point** — evaluates the selected policy against the request input; the PDP functionality in the
-  Nuts Knooppunt can be integrated with any policy enforcement point.
+  Nuts Knooppunt can be integrated with any policy enforcement point. For more info, see the [NIST-definition of PDP](https://csrc.nist.rip/glossary/term/policy_decision_point) and the [Wikipedia-page on XACML](https://en.wikipedia.org/wiki/XACML).
+- **Policy enforcement point** - carries out or enforces policy decisions (made by a PDP). For more info, see the [NIST-definition of PEP](https://csrc.nist.rip/glossary/term/pep) and the [Wikipedia-page on XACML](https://en.wikipedia.org/wiki/XACML).
 - **Nuts Foundation** — maintains the version-controlled policies in Git.
 
 #### Interaction
 
-The policy is selected based on the use case scope provided by the Nuts access token as part of the authentication process. The
-input for evaluating the policy is a commonly agreed upon information model; the model is described in the
+The policy is selected based on the use case scope provided by the Nuts access token as part of the authentication process. The input for evaluating the policy is a commonly agreed upon information model; the model is described in the
 [this proposal for the generic function authorization](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/authorization.html).
 
 Policies are expressed in a domain specific language called Rego so that everyone uses the same rulesets. Implementors
 are free not to implement a Rego interpreter as part of their authorisation solution, as long as the implemented
-solution follows the exact same rules as specified in the Rego policy file for that use case.
+solution follows the exact same rules as specified in the Rego policy file for that use case. 
 
 #### Conformance
+
+- The data holder organisation **MUST** implement the functionality of a policy decision point
+- The data holder organisation **MAY** implement a rego-interpreter as pasrt of its policy decision point.
 
 The following guidelines **MUST** be taken into account when designing new policies:
 
@@ -304,10 +307,11 @@ The following guidelines **MUST** be taken into account when designing new polic
 
 For data requests in which explicit consent is not checked, one of the following is **mandatory**:
 
+- A legal basis **MUST** be present in which explicit consent is not necessary, e.g. a referral or handoff of a patient from data holder to data user. This is not checked technically.
 - The treatment relation of the data user organisation with the patient **MUST** be checked technically by the data holder
-  organisation (e.g. using a PatientEnrollmentCredential). This treatment relation can be scoped to a specific context
+  organisation (e.g. using a [PatientEnrollmentCredential](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-PatientEnrollmentCredential.html)). This treatment relation can be scoped to a specific context
   (e.g. a use case).
-- A legal basis *MUST* be present in which explicit consent is not necessary. This is not checked technically.
+
 
 The treatment relation of the data holder organisation with the patient **MAY** be checked technically by the data
 holder organisation.
