@@ -307,7 +307,7 @@ The following guidelines **MUST** be taken into account when designing new polic
 
 For data requests in which explicit consent is not checked, one of the following is **mandatory**:
 
-- A legal basis **MUST** be present in which explicit consent is not necessary, e.g. a referral or handoff of a patient from data holder to data user. This is not checked technically.
+- A legal basis **MUST** be present in which explicit consent is not necessary, e.g. a referral or handoff of a patient from data holder to data user.
 - The treatment relation of the data user organisation with the patient **SHOULD** be checked technically by the data holder
   organisation (e.g. using a [PatientEnrollmentCredential](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-PatientEnrollmentCredential.html)). This treatment relation can be scoped to a specific context
   (e.g. a use case).
