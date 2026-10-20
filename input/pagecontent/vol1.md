@@ -141,6 +141,12 @@ Voor pilot-elementen geldt:
   ingetrokken. Wijzigingen aan een pilot-element gelden niet als breaking change voor de
   versienummering van de specificatie als geheel.
 
+Deze release bevat de volgende pilot-elementen:
+
+- Adressering via de generieke functie adressering (Care Service Directory), zie
+  [Volume 2a](vol2a.html) en [Volume 2b](vol2b.html). Adressering via de Nuts Discovery Service blijft het
+  definitieve element voor adressering.
+
 #### Versiebeheer
 
 De eigenaar van de specificatie hanteert de Semantic Versioning-specificatie voor het versiebeheer,
