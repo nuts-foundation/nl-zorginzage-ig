@@ -234,6 +234,7 @@ this specification.
 - The data holder organisation, or a vendor organisation it has authorised through an OrganizationAffiliation, acts as
   CSD Data Source and publishes Endpoints to the LRZa using ITI-130-NL.
 - The data user maintains a local replica of the LRZa using ITI-90-NL (initial load) and ITI-91-NL (incremental sync).
+- The data user already knows the URA of the data holder organisation it wants to query (see Localisation).
 - The data user operates a Nuts node to request access tokens.
 
 #### Actors & responsibilities
@@ -262,7 +263,8 @@ this specification.
 Data holders:
 
 - Data holders **MUST** register their organisation in the LRZa as an Organization conforming to NL-GF-Organization,
-  with an identifier of system `urn:oid:2.16.528.1.1007.3.3` (URA).
+  with an identifier of system `urn:oid:2.16.528.1.1007.3.3` (URA). This specification places no requirements on
+  `Organization.type` beyond those of NL-GF-Organization.
 - Data holders **MUST** refer from `Organization.endpoint` to at least one Endpoint conforming to
   [NL-GF-Endpoint](https://minvws.github.io/generiekefuncties-docs/en/StructureDefinition-nl-gf-endpoint.html) with:
     - `connectionType` = `http://fhir.generiekefuncties.nl/csd/CodeSystem/nl-gf-authorization-server-cs#oauth-nuts`;
@@ -272,7 +274,8 @@ Data holders:
   Patient search, with:
     - `connectionType` = `http://terminology.hl7.org/CodeSystem/endpoint-connection-type#hl7-fhir-rest`;
     - `payloadType` containing `http://fhir.generiekefuncties.nl/csd/CodeSystem/nl-gf-data-categories-cs#Patient`;
-    - `payloadMimeType` containing `application/fhir+json; fhirVersion=4.0`;
+    - `payloadMimeType` containing `application/fhir+json; fhirversion=4.0` (MIME parameter names are
+      case-insensitive, so data users match `fhirVersion=4.0` as well);
     - `address` = the FHIR base URL of the organisation (the value registered as `fhir_base_url` at the Nuts Discovery
       Service).
 - Data holders **SHOULD NOT** register separate Endpoints per use case, or express use case information in Endpoints.
@@ -280,6 +283,7 @@ Data holders:
 
 Data users:
 
+- Data users **MUST** look up data holder organisations in their local replica by URA.
 - Data users **MUST** select Endpoints from their local replica and **MUST NOT** query the LRZa during a data exchange.
 - Data users **MUST** only use Endpoints with `status` = `active` and, when `period` is present, whose `period`
   includes the current time.
@@ -293,7 +297,8 @@ Data users:
   holders above.
 - When the addressing information in the LRZa differs from the registration at the Nuts Discovery Service, the
   registration at the Nuts Discovery Service prevails.
-- Data users **MUST NOT** use the local replica for localisation or BSN broadcasting.
+- Data users **MUST NOT** use the local replica for localisation, such as finding possible data holders by
+  organisation type or location, or for BSN broadcasting.
 
 #### Rationale
 
@@ -303,9 +308,15 @@ Data users:
   follows from the access token request with the use case scope.
 - In Nuts use cases, access tokens are requested per healthcare provider organisation. Organisations with more than one
   `oauth-nuts` Endpoint are rare and the addressing specification has no way currently to define which authorisation
-  server should be used for which endpoint. 
+  server should be used for which endpoint.
 - An access token obtained at one authorisation server is not necessarily accepted by a resource server associated
   with another authorisation server; hence the retry on HTTP 401.
+- For addressing, the type of a data holder organisation is not relevant. We know it concerns a healthcare provider if
+  there is a known URA.
+- The organisation type used for consent is obtained from the HealthcareProviderRoleTypeCredential during
+  authentication, not from the LRZa, because the code systems used by Mitz and the LRZa do not align.
+- This version of the specification does not implement localisation (see Localisation), so the local replica is only
+  used to find the addressing information of data holder organisations that are already known to the data user.
 - The Patient search is part of this specification, so this specification defines how its FHIR endpoint is found. The
   `Patient` data category and the FHIR version in `payloadMimeType` are the CSD selection criteria for this endpoint.
 
