@@ -1,0 +1,99 @@
+@startuml
+hide footbox
+autonumber
+skinparam BoxPadding 20
+
+box LRZa\n
+participant "LRZa Directory" as lrza
+end box
+
+box Data user organisation `A`\n
+actor "Healthcare professional" as User
+participant XIS as req
+participant "Local replica" as rep
+participant "Nuts-node" as rn
+end box
+
+
+box Data holder organisation `B`\n
+participant "Nuts-node" as cn
+boundary PEP
+participant Fhir
+end box
+
+== Independent of user sessions: maintain local replica ==
+
+rep -> lrza++: Initial load (ITI-90-NL)\nGET [base]/{resourceType}, following Bundle.link next
+return: Organizations, Locations, HealthcareServices, Endpoints, OrganizationAffiliations
+loop Periodically (e.g. every 15 minutes), per resource type
+    rep -> lrza++: Incremental sync (ITI-91-NL)\nGET [base]/{resourceType}/_history?_since={sync timestamp}
+    return: Changed resources
+end loop
+
+== User session ==
+
+User -> req++ : Log in
+req -> req : Create User session, \nUser info needed for NutsEmployeeCredential
+
+User -> req: request information for Patient
+    req -> req: Resolve Patient BSN, and array of data_holder_URA's for patient if it is known
+    note right of req: Array of data_holder_URA's can be found via a (local) index (e.g. user-input and/or a CareTeam-resource)
+
+    loop For each data_holder_URA
+
+        ==get addresses of data holder organisation==
+
+        req -> rep++: Look up data holder organisation by URA, including its Endpoints\nGET Organization?identifier=urn:oid:2.16.528.1.1007.3.3|{URA}&_include=Organization:endpoint
+            rep --> req --: Organization B and its Endpoints
+        req -> req: Select active Endpoints (status and period):\n- oauth-nuts Endpoint(s)\n- hl7-fhir-rest Endpoint with payloadType Patient and fhirversion=4.0
+        |||
+
+        ==get access token==
+
+        loop For each oauth-nuts Endpoint, until an access token is obtained
+            req -> rn++: Get access token \nPOST /internal/auth/v2/{subjectID of Data user organisation}/request-service-access-token
+                note right of rn: "authorization_server" in the request body = address of the oauth-nuts Endpoint
+                rn <--> cn : nuts-nodes handle access token request
+                note right of rn : uses X509Credential, HealthcareProviderRoleTypeCredential and NutsEmployeeCredential
+                rn --> req-- : Access token
+        end loop
+        |||
+
+        ==get Patient resource including patient-id==
+
+        note right of req
+        - POST-based Patient search on BSN, at the address of the selected hl7-fhir-rest Endpoint
+        - When the access token is rejected (HTTP 401), retry with an access token from the next oauth-nuts Endpoint
+        end note
+        req -> PEP++: POST {fhir_base}/Patient/_search
+        PEP -> cn++ : introspect access token\nPOST /internal/auth/v2/accesstoken/introspect
+        PEP <-- cn-- : valid token + requesting_URA + USER{name,userRole,identifier}
+        PEP -> PEP: Authorization \n(Legal basis to be determined by use case, e.g. patient consent and/or treatment relationship)
+        PEP -> Fhir++: POST /fhir/Patient?search
+        return: Patient Fhir resource (with patient-id)
+        return: Patient Fhir resource (with patient-id)
+
+        |||
+        == Retrieve other resources ==
+
+        note right of req
+        - The resource servers used for other resources are defined by the use case specification
+        - Other resources are gathered based on internal patient-id of data holder organisation
+        end note
+        loop For each resource except Patient
+            req -> PEP++: GET /fhir/{resource}?patient={patient-id}
+                PEP -> cn++ : introspect access token\nPOST /internal/auth/v2/accesstoken/introspect
+                    PEP <-- cn-- : valid token + requesting_URA + USER{name,userRole,identifier}
+                PEP -> PEP: Authorization \n(Legal basis to be determined by use case, e.g. patient consent and/or treatment relationship)
+                PEP -> Fhir++: GET /fhir/{resource}?patient={patient-id}
+                return: Fhir resource
+                return: Fhir Resource
+        end loop
+
+    end loop
+
+    ==Data user XIS displays data received from data holder(s)==
+
+    User <- req --: Display external Patient information
+
+@enduml

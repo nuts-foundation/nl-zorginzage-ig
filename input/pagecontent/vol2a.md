@@ -232,7 +232,8 @@ this specification.
 - The data holder organisation has a URA and is registered in the LRZa as an Organization conforming to
   [NL-GF-Organization](https://minvws.github.io/generiekefuncties-docs/en/StructureDefinition-nl-gf-organization.html).
 - The data holder organisation, or a vendor organisation it has authorised through an OrganizationAffiliation, acts as
-  CSD Data Source and publishes Endpoints to the LRZa using ITI-130-NL.
+  CSD Data Source and publishes Endpoints to the LRZa using ITI-130-NL (see
+  [CSD Use Case #1](https://minvws.github.io/generiekefuncties-docs/en/csd.html#use-case-1-admin-registers-affiliation-service-provider-publishes-resources)).
 - The data user maintains a local replica of the LRZa using ITI-90-NL (initial load) and ITI-91-NL (incremental sync).
 - The data user already knows the URA of the data holder organisation it wants to query (see Localisation).
 - The data user operates a Nuts node to request access tokens.
@@ -257,6 +258,9 @@ this specification.
    token.
 4. The data user performs the other resource requests at the resource servers as defined by the use case
    specification.
+
+See the sequence diagram "Pull with addressing via the generic function Care Service Directory (trial-use)" in
+Volume 2b.
 
 #### Conformance
 
