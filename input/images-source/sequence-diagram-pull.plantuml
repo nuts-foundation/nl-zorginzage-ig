@@ -48,7 +48,7 @@ User -> req: request information for Patient
         PEP -> cn++ : introspect access token\nPOST /internal/auth/v2/accesstoken/introspect
         PEP <-- cn-- : valid token + requesting_URA +\nUSER{name,userRole,identifier}
         PEP -> PEP: Authorization\n(Legal basis to be determined by use case,\ne.g. patient consent and/or treatment relationship)
-        PEP -> Fhir++: POST /fhir/Patient?search
+        PEP -> Fhir++: POST /fhir/Patient/_search
         return: Patient Fhir resource\n(with patient-id)
         return: Patient Fhir resource\n(with patient-id)
 
