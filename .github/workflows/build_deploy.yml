@@ -1,18 +1,25 @@
 name: Build and Deploy static content to Pages with Docker
 
 on:
-  # Runs on pushes targeting the default branch
   push:
+    # Pushes to main are published to /current/
     branches: ["main"]
+    # Release tags are published to /<version>/, /<major>/ and, for the latest release, the root
+    tags: ["v*.*.*"]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Allows you to run this workflow manually from the Actions tab, e.g. to (re)publish an older release tag
   workflow_dispatch:
+    inputs:
+      ref:
+        description: "Branch or release tag to publish (e.g. main or v1.0.0)"
+        required: false
 
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# and pushing the published versions to the gh-pages branch
 permissions:
   id-token: write
-  contents: read
+  contents: write
   packages: write
   pages: write
 
@@ -48,6 +55,45 @@ jobs:
           tags: localhost:5000/nuts-foundation/publisher:latest
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.ref }}
+          # Release tags are needed to determine the latest release
+          fetch-depth: 0
+      - name: Determine publication paths
+        id: paths
+        env:
+          REF: ${{ inputs.ref || github.ref }}
+        run: |
+          ref="${REF#refs/tags/}"
+          ref="${ref#refs/heads/}"
+          releases=$(git tag -l 'v*' | sed 's/^v//' | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V || true)
+          if [[ "$ref" =~ ^v([0-9]+)\.[0-9]+\.[0-9]+$ ]]; then
+            version="${ref#v}"
+            major="${BASH_REMATCH[1]}"
+            ig_version=$(sed -n 's/^version: *\([^ #]*\).*/\1/p' sushi-config.yaml)
+            if [ "$version" != "$ig_version" ]; then
+              echo "::error::Tag $ref does not match version $ig_version in sushi-config.yaml"
+              exit 1
+            fi
+            paths="$version"
+            if [ "$version" = "$(grep "^$major\." <<< "$releases" | tail -1)" ]; then
+              paths="$paths $major"
+            fi
+            if [ "$version" = "$(tail -1 <<< "$releases")" ]; then
+              paths="$paths ."
+            fi
+          elif [ "$ref" = "main" ]; then
+            paths="current"
+            # Until the first release is published, the root shows main
+            if [ -z "$releases" ]; then
+              paths="$paths ."
+            fi
+          else
+            echo "::error::Only main and release tags (vX.Y.Z) are published, not $ref"
+            exit 1
+          fi
+          echo "Publishing $ref to: $paths"
+          echo "paths=$paths" >> "$GITHUB_OUTPUT"
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build
@@ -59,11 +105,39 @@ jobs:
             -v ${{ github.workspace }}/ig.ini:/app/ig.ini \
             -v ${{ github.workspace }}/sushi-config.yaml:/app/sushi-config.yaml \
             localhost:5000/nuts-foundation/publisher:latest
+      - name: Update published versions
+        # The gh-pages branch keeps all published versions, as each deployment replaces the whole site
+        env:
+          PATHS: ${{ steps.paths.outputs.paths }}
+          REF: ${{ inputs.ref || github.ref_name }}
+        run: |
+          if git ls-remote --exit-code --heads origin gh-pages > /dev/null; then
+            git fetch origin gh-pages:gh-pages
+            git worktree add site gh-pages
+          else
+            git worktree add --detach site
+            git -C site checkout --orphan gh-pages
+            git -C site rm -rf --quiet .
+          fi
+          for path in $PATHS; do
+            if [ "$path" = "." ]; then
+              # Replace the root, but keep the version directories next to it
+              rsync -a --checksum --delete --exclude '/.git' --exclude '/current/' --exclude '/[0-9]*/' output/ site/
+            else
+              mkdir -p "site/$path"
+              rsync -a --checksum --delete output/ "site/$path/"
+            fi
+          done
+          cd site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit --quiet -m "Publish ${REF#refs/tags/} to: $PATHS" || echo "No changes to publish"
+          git push origin gh-pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: './output'
+          path: './site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
