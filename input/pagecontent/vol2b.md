@@ -45,7 +45,7 @@ Number | Remarks
 2 | XIS creates user sessions and stores the user info needed for the NutsEmployeeCredential (step 7)
 3 | 
 4 |
-5 | Search data holder organisation by URA-identifier 
+5 | Search data holder organisation by URA-identifier. The search API of the Nuts node takes JSON paths to fields in the registered credentials. The URA is part of `credentialSubject.san.otherName` in the X509Credential, so a wildcard search is used: `?credentialSubject.san.otherName=*-S-{URA}-*`
 6 |
 7 | Include NutsEmployeeCredential, example request below
 8 |

@@ -28,7 +28,7 @@ User -> req: request information for Patient
 
         ==get addresses of data holder organisation==
 
-        req -> rn++: Look up data holder organisation in discovery \nGET /internal/discovery/v1/{serviceID}?organization_ura={URA}
+        req -> rn++: Look up data holder organisation in discovery \nGET /internal/discovery/v1/{serviceID}\n?credentialSubject.san.otherName=*-S-{URA}-*
             note right of rn: The Zorginzage requires underlying use cases to include\nelements with id "organization_ura", "authorization_server_url"\nand "fhir_base_url" in the discovery-service-presentation-definitions
             rn --> req --: Found Organization B\n(authorization_server_url, fhir_base_url)
         |||
