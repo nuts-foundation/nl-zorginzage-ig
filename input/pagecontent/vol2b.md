@@ -1,3 +1,7 @@
+The sequence diagrams in this volume are normative for the flow between the organisations. The calls between the XIS
+and the Nuts node use the internal API of the Nuts node reference implementation. These calls are non-normative
+examples: any system that supports the Nuts protocols may be used, and the internal API may change.
+
 ### Registration at discovery service
 
 All data holders have to register themselves at the Discovery Service. This registration takes place in the implementation-phase.
@@ -13,7 +17,8 @@ Number | Remarks
 4 |
 
 #### Step 1 details
-The body of the request to the internal API of the Nuts-node **MUST** contain the following registration parameters:
+The registration **MUST** contain the following registration parameters. Non-normative example of the request body for
+the internal API of the Nuts node:
 
 ```
 {
@@ -64,7 +69,8 @@ Number | Remarks
 
 #### Step 7 details
 
-The body of the request **MUST** contain a NutsEmployeeCredential CredentialSubject:
+The access token request **MUST** contain a NutsEmployeeCredential CredentialSubject. Non-normative example of the
+request to the internal API of the Nuts node:
 
 ```
 POST <internal Nuts interface>/internal/auth/v2/<subjectID>/request-service-access-token
