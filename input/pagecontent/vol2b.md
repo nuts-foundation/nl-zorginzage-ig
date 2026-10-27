@@ -13,7 +13,6 @@ Number | Remarks
 -------|--------
 1 | Registration request to local Nuts-node (see below)
 2 | The Discovery Service is part of the Nuts node of the Discovery Service organisation
-3 |
 
 #### Step 1 details
 The registration **MUST** contain the following registration parameters. Non-normative example of the request body for
@@ -43,28 +42,9 @@ Number | Remarks
 -------|--------
 1 | Local login
 2 | XIS creates user sessions and stores the user info needed for the NutsEmployeeCredential (step 7)
-3 | 
-4 |
 5 | Search data holder organisation by URA-identifier. The search API of the Nuts node takes JSON paths to fields in the registered credentials. The URA is part of `credentialSubject.san.otherName` in the X509Credential, so a wildcard search is used: `?credentialSubject.san.otherName=*-S-{URA}-*`
-6 |
 7 | Include NutsEmployeeCredential, example request below
-8 |
-9 |
 10| See [section Patient Context in Volume 3](https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/vol3.html#patient-context) for more details
-11|
-12|
-13|
-14|
-15|
-16|
-17|
-18|
-19|
-20|
-21|
-22|
-23|
-24|
 
 #### Step 7 details
 
