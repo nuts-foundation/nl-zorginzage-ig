@@ -371,10 +371,11 @@ consent mechanism (explicit local, explicit OTV, or implicit) is left to the dat
 
 #### Conformance
 
-The data holder can use one or more of the following attributes for the consent check:
+The data holder can use one or more of the following attributes for the consent check. The attributes of the data user
+organisation are established during authentication (see Authentication):
 
-- URA of data user organisation — sourced from the X509Credential based on UZI server certificate. Required for OTV-consent.
-- Organisation type of data user organisation— sourced from the HealthcareProviderRoleTypeCredential. Required for OTV-consent.
+- URA of data user organisation. Required for OTV-consent.
+- Organisation type of data user organisation. Required for OTV-consent.
 - URA of data holder organisation. Required for OTV-consent.
 - Organisation type of data holder organisation. Required for OTV-consent.
 - BSN of client/patient — sourced from the incoming FHIR query or other patient context. Required for OTV-consent.
