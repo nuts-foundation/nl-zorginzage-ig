@@ -134,8 +134,9 @@ Voor pilot-elementen geldt:
   status-aanduiding bij het betreffende element. Het betreft de aanduiding 'trial-use'.
 - Pilot-elementen mogen door deelnemers in productie worden geïmplementeerd; daarmee dragen
   zij bij aan de beproeving.
-- Een pilot-element wordt in een volgende release definitief gemaakt wanneer er ten minste
-  één succesvolle productie-implementatie is en de eigenaar van de specificatie en de
+- Een pilot-element wordt in een volgende release definitief gemaakt wanneer ten minste
+  één implementatie als datagebruiker en één implementatie als datahouder in productie
+  succesvol gegevens met elkaar uitwisselen en de eigenaar van de specificatie en de
   deelnemers geen blokkerende bezwaren meer hebben.
 - Een pilot-element kan op basis van bevindingen uit de pilot worden gewijzigd of
   ingetrokken. Wijzigingen aan een pilot-element gelden niet als breaking change voor de
