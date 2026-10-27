@@ -165,7 +165,8 @@ during a data exchange. All other described functions depend on this addressing 
 - The data holder organisation has a UZI server certificate and the URA contained in it.
 - The data holder operates a Nuts node that has registered with the Nuts Discovery Service hosted by Actiz, presenting:
     - an **X509Credential** carrying the URA presented as `organization_ura` (per Nuts RFC023);
-    - a self-issued **HealthcareProviderRoleTypeCredential** stating its organisation type(s);
+    - a self-issued **HealthcareProviderRoleTypeCredential** stating its organisation type(s), presented as
+      `organization_facility_type`;
     - a **DiscoveryRegistrationCredential** carrying the `fhir_base_url` and `authorization_server_url` of the data
       holder.
 - The data user operates a Nuts node configured to consume the same discovery service and use case.
