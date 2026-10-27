@@ -11,12 +11,11 @@ All data holders have to register themselves at the Discovery Service. This regi
 
 Number | Remarks
 -------|--------
-1 | Registration request to local Nuts-node, see step 1 details below. Non-normative example: `POST /internal/discovery/v1/{serviceID}/{subjectID of data holder organisation}`
+1 | Registration request to local Nuts-node: `POST /internal/discovery/v1/{serviceID}/{subjectID of data holder organisation}`. See step 1 details below
 2 | The Discovery Service is part of the Nuts node of the Discovery Service organisation
 
 #### Step 1 details
-The registration **MUST** contain the following registration parameters. Non-normative example of the request body for
-the internal API of the Nuts node:
+The registration **MUST** contain the following registration parameters:
 
 ```
 {
@@ -43,20 +42,19 @@ Number | Remarks
 1 | Local login
 2 | XIS creates user sessions and stores the user info needed for the NutsEmployeeCredential (step 7)
 4 | The data_holder_URA's for the patient can be found via a (local) index (e.g. user-input and/or a CareTeam-resource)
-5 | Search data holder organisation by URA-identifier. The search API of the Nuts node takes JSON paths to fields in the registered credentials. The URA is part of `credentialSubject.san.otherName` in the X509Credential, so a wildcard search is used. Non-normative example: `GET /internal/discovery/v1/{serviceID}?credentialSubject.san.otherName=*-S-{URA}-*`
+5 | Search data holder organisation by URA-identifier. The search API of the Nuts node takes JSON paths to fields in the registered credentials. The URA is part of `credentialSubject.san.otherName` in the X509Credential, so a wildcard search is used: `GET /internal/discovery/v1/{serviceID}?credentialSubject.san.otherName=*-S-{URA}-*`
 6 | The discovery service presentation definition of the use case contains the fields listed in Addressing (volume 2a)
-7 | Include NutsEmployeeCredential, see step 7 details below. Non-normative example: `POST /internal/auth/v2/{subjectID of data user organisation}/request-service-access-token`
+7 | Include NutsEmployeeCredential: `POST /internal/auth/v2/{subjectID of data user organisation}/request-service-access-token`. See step 7 details below
 8 | The Nuts nodes handle the access token request, which is sent to the `authorization_server_url` of step 6. The data user organisation presents the X509Credential, HealthcareProviderRoleTypeCredential and NutsEmployeeCredential
 10| POST-based Patient search on BSN: `POST /fhir/Patient/_search`. See [section Patient Context in Volume 3](https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/vol3.html#patient-context) for more details
-11| Non-normative example: `POST /internal/auth/v2/accesstoken/introspect`
+11| Introspection of the access token: `POST /internal/auth/v2/accesstoken/introspect`
 12| The introspection returns a valid token, the URA of the requesting organisation and the user info (name, role, identifier)
 13| Legal basis to be determined by use case, e.g. patient consent and/or treatment relationship
 17| Other resources are requested with the patient-id of the data holder organisation (step 16): `GET /fhir/{resource}?patient=Patient/{patient-id}`. The access token of step 9 can be reused. Steps 18 to 20 are the same as steps 11 to 13
 
 #### Step 7 details
 
-The access token request **MUST** contain a NutsEmployeeCredential CredentialSubject. Non-normative example of the
-request to the internal API of the Nuts node:
+The access token request **MUST** contain a NutsEmployeeCredential CredentialSubject:
 
 ```
 POST <internal Nuts interface>/internal/auth/v2/<subjectID>/request-service-access-token
