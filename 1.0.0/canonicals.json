@@ -1,0 +1,7 @@
+[{
+  "id" : "fhir.nl.zorginzage",
+  "type" : "ImplementationGuide",
+  "url" : "http://nuts-foundation.github.io/nl-zorginzage-ig/ImplementationGuide/fhir.nl.zorginzage",
+  "version" : "1.0.0",
+  "name" : "NlZorginzageIG"
+}]

@@ -3,7 +3,7 @@ NlZorginzageIG : Validation Results
 
 err = 5, warn = 17, info = 2, broken links = 0
 IG Publisher Version: 3.0.1
-Generated Tue Oct 27 15:51:49 UTC 2026. FHIR version 4.0.1 for fhir.nl.zorginzage#1.0.0 (canonical = http://nuts-foundation.github.io/nl-zorginzage-ig)
+Generated Tue Oct 27 16:00:29 UTC 2026. FHIR version 4.0.1 for fhir.nl.zorginzage#1.0.0 (canonical = http://nuts-foundation.github.io/nl-zorginzage-ig)
  Build Errors : 1 / 13 / 0
  /app/fsh-generated/resources/ImplementationGuide-fhir.nl.zorginzage : 0 / 2 / 2
  /app/fsh-generated/resources/Patient-PatientExample : 4 / 2 / 2

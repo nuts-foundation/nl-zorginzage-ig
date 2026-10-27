@@ -1,0 +1,42 @@
+{
+  "resourceType" : "Patient",
+  "id" : "PatientExample",
+  "meta" : {
+    "profile" : ["http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Patient PatientExample</b></p><a name=\"PatientExample\"> </a><a name=\"hcPatientExample\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.12.0-beta.4&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient\">nl core Patient</a></p></div><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Maria Anna van den Berg (official) Female, DoB: 1985-03-15 ( http://fhir.nl/fhir/NamingSystem/bsn#123456789\u00a0(use:\u00a0official))</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Record is active\">Active:</td><td colspan=\"3\">true</td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Ways to contact the Patient\">Contact Detail</td><td colspan=\"3\"><ul><li><a href=\"tel:+31612345678\">+31612345678</a></li><li><a href=\"mailto:maria.vandenberg@example.nl\">maria.vandenberg@example.nl</a></li><li>Hoofdstraat 123 Amsterdam 1011 AB NL (home)</li></ul></td></tr></table></div>"
+  },
+  "identifier" : [{
+    "use" : "official",
+    "system" : "http://fhir.nl/fhir/NamingSystem/bsn",
+    "value" : "123456789"
+  }],
+  "active" : true,
+  "name" : [{
+    "use" : "official",
+    "family" : "van den Berg",
+    "given" : ["Maria",
+    "Anna"]
+  }],
+  "telecom" : [{
+    "system" : "phone",
+    "value" : "+31612345678",
+    "use" : "mobile"
+  },
+  {
+    "system" : "email",
+    "value" : "maria.vandenberg@example.nl",
+    "use" : "home"
+  }],
+  "gender" : "female",
+  "birthDate" : "1985-03-15",
+  "address" : [{
+    "use" : "home",
+    "line" : ["Hoofdstraat 123"],
+    "city" : "Amsterdam",
+    "postalCode" : "1011 AB",
+    "country" : "NL"
+  }]
+}

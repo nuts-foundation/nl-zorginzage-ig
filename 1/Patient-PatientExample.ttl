@@ -1,0 +1,72 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://nuts-foundation.github.io/nl-zorginzage-ig/Patient/PatientExample> a fhir:Patient ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "PatientExample"] ;
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient" ;
+       fhir:index 0 ;
+       fhir:link <http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient>
+     ]
+  ] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Patient PatientExample</b></p><a name=\"PatientExample\"> </a><a name=\"hcPatientExample\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.12.0-beta.4&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient\">nl core Patient</a></p></div><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Maria Anna van den Berg (official) Female, DoB: 1985-03-15 ( http://fhir.nl/fhir/NamingSystem/bsn#123456789 (use: official))</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Record is active\">Active:</td><td colspan=\"3\">true</td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Ways to contact the Patient\">Contact Detail</td><td colspan=\"3\"><ul><li><a href=\"tel:+31612345678\">+31612345678</a></li><li><a href=\"mailto:maria.vandenberg@example.nl\">maria.vandenberg@example.nl</a></li><li>Hoofdstraat 123 Amsterdam 1011 AB NL (home)</li></ul></td></tr></table></div>"
+  ] ;
+  fhir:Patient.identifier [
+     fhir:index 0 ;
+     fhir:Identifier.use [ fhir:value "official" ] ;
+     fhir:Identifier.system [ fhir:value "http://fhir.nl/fhir/NamingSystem/bsn" ] ;
+     fhir:Identifier.value [ fhir:value "123456789" ]
+  ] ;
+  fhir:Patient.active [ fhir:value "true"^^xsd:boolean] ;
+  fhir:Patient.name [
+     fhir:index 0 ;
+     fhir:HumanName.use [ fhir:value "official" ] ;
+     fhir:HumanName.family [ fhir:value "van den Berg" ] ;
+     fhir:HumanName.given [
+       fhir:value "Maria" ;
+       fhir:index 0
+     ], [
+       fhir:value "Anna" ;
+       fhir:index 1
+     ]
+  ] ;
+  fhir:Patient.telecom [
+     fhir:index 0 ;
+     fhir:ContactPoint.system [ fhir:value "phone" ] ;
+     fhir:ContactPoint.value [ fhir:value "+31612345678" ] ;
+     fhir:ContactPoint.use [ fhir:value "mobile" ]
+  ], [
+     fhir:index 1 ;
+     fhir:ContactPoint.system [ fhir:value "email" ] ;
+     fhir:ContactPoint.value [ fhir:value "maria.vandenberg@example.nl" ] ;
+     fhir:ContactPoint.use [ fhir:value "home" ]
+  ] ;
+  fhir:Patient.gender [ fhir:value "female"] ;
+  fhir:Patient.birthDate [ fhir:value "1985-03-15"^^xsd:date] ;
+  fhir:Patient.address [
+     fhir:index 0 ;
+     fhir:Address.use [ fhir:value "home" ] ;
+     fhir:Address.line [
+       fhir:value "Hoofdstraat 123" ;
+       fhir:index 0
+     ] ;
+     fhir:Address.city [ fhir:value "Amsterdam" ] ;
+     fhir:Address.postalCode [ fhir:value "1011 AB" ] ;
+     fhir:Address.country [ fhir:value "NL" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://nuts-foundation.github.io/nl-zorginzage-ig/Patient/PatientExample.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,44 @@
+NlZorginzageIG : Validation Results
+=========================================
+
+err = 5, warn = 17, info = 2, broken links = 0
+$--
+Generated $--. FHIR version $-- for fhir.nl.zorginzage#$-- (canonical = http://nuts-foundation.github.io/nl-zorginzage-ig)
+ Build Errors : 1 / 13 / 0
+ /app/fsh-generated/resources/ImplementationGuide-fhir.nl.zorginzage : 0 / 2 / 2
+ /app/fsh-generated/resources/Patient-PatientExample : 4 / 2 / 2
+</table>
+
+== n/a ==
+ERROR: ImplementationGuide.definition.parameter[24].value: Supressed messages file not found
+WARNING: /app/output/history.html: This IG generates a page named 'history.html'. That file name is reserved by the publication process, which replaces it with the directory of published versions when the IG is published, so the content generated here will be overwritten and lost. Rename the page to something else (e.g. test-history.html).
+WARNING: /app/output/searchform.html: The html source is not well formed: Found "</a>" expecting "</img>" at line 34 column 177
+WARNING: /app/output/searchform.html: The html source is not well formed: Found "</div>" expecting "</body>" at line 79 column 10
+WARNING: /app/output/searchform.html: The html source is not well formed: Found "</div>" expecting "</body>" at line 80 column 9
+WARNING: /app/output/searchform.html: The html source is not well formed: Found "</div>" expecting "</body>" at line 109 column 8
+WARNING: /app/output/searchform.html: The html source is not well formed: Found "</div>" expecting "</body>" at line 111 column 12
+WARNING: /app/output/searchform.html: The html source is not well formed: Found "</div>" expecting "</body>" at line 112 column 20
+WARNING: /app/output/searchform.html: The html source is not well formed: Found "</div>" expecting "</body>" at line 113 column 16
+WARNING: /app/output/searchform.html: The html source is not well formed: Found "</div>" expecting "</body>" at line 115 column 12
+WARNING: 1: The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide
+WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
+WARNING: 3: An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide
+WARNING: 4: The HTML fragment 'globals-table.xhtml' is not included anywhere in the produced implementation guide
+
+
+== fsh-generated/resources/ImplementationGuide-fhir.nl.zorginzage.json ==
+WARNING: ImplementationGuide/fhir.nl.zorginzage: ImplementationGuide.dependsOn[2].uri: A definition could not be found for Canonical URL 'http://fhir.org/packages/nictiz.fhir.nl.r4.nl-core/ImplementationGuide/nictiz.fhir.nl.r4.nl-core'
+WARNING: ImplementationGuide/fhir.nl.zorginzage: ImplementationGuide.dependsOn[2]: The canonical URL http://fhir.org/packages/nictiz.fhir.nl.r4.nl-core/ImplementationGuide/nictiz.fhir.nl.r4.nl-core doesn't point to an actual ImplementationGuide resource
+INFORMATION: Resource: The resource ImplementationGuide/fhir.nl.zorginzage could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
+
+
+== fsh-generated/resources/Patient-PatientExample.json ==
+INFORMATION: Patient/PatientExample: Patient.telecom[0]: This element does not match any known slice defined in the profile http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient (this may not be a problem, but you should check that it's not intended to match a slice)
+WARNING: Patient/PatientExample: Patient.identifier[0].system: No definition could be found for URL value 'http://fhir.nl/fhir/NamingSystem/bsn'
+WARNING: Patient/PatientExample: Patient.name[0]: Constraint failed: nl-core-NameInformation-01: 'If parts of the name are specified using one or more of the structured elements, the `.text` element SHOULD be populated with a rendered version of the full name. This ensures compatibility with common FHIR usage. ((family.exists() or given.extension.where(url = 'http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier').where(value != 'IN').exists()) implies text.hasValue())' (defined in http://nictiz.nl/fhir/StructureDefinition/nl-core-NameInformation)
+ERROR: Patient/PatientExample: Patient.name[0].given[0]: HumanName.given.extension: minimum required = 1, but only found 0 (from http://nictiz.nl/fhir/StructureDefinition/nl-core-NameInformation)
+ERROR: Patient/PatientExample: Patient.name[0].given[0]: Slice 'HumanName.given.extension:givenOrInitial' for extension 'http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier': a matching slice is required, but not found (from http://nictiz.nl/fhir/StructureDefinition/nl-core-NameInformation). Note that other slices are allowed in addition to this required slice
+ERROR: Patient/PatientExample: Patient.name[0].given[1]: HumanName.given.extension: minimum required = 1, but only found 0 (from http://nictiz.nl/fhir/StructureDefinition/nl-core-NameInformation)
+ERROR: Patient/PatientExample: Patient.name[0].given[1]: Slice 'HumanName.given.extension:givenOrInitial' for extension 'http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier': a matching slice is required, but not found (from http://nictiz.nl/fhir/StructureDefinition/nl-core-NameInformation). Note that other slices are allowed in addition to this required slice
+
+

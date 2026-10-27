@@ -1,7 +1,7 @@
 {
   "version" : "1.0.0",
   "fhirVersion" : ["4.0.1"],
-  "date" : "20261027155031",
+  "date" : "20261027155928",
   "name" : "fhir.nl.zorginzage",
   "jurisdiction" : "urn:iso:std:iso:3166#NL"
 }
