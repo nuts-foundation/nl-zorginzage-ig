@@ -147,6 +147,32 @@ De eigenaar van de specificatie hanteert de Semantic Versioning-specificatie voo
 zie https://semver.org. Dit betekent dat het versienummer wordt weergegeven door 3 nummers die met een punt zijn
 gescheiden (x.y.z waarbij x de majorrelease is, y de minor en z de patch).
 
+#### Verwijzen naar een versie
+
+Elke release van de specificatie wordt gepubliceerd onder een eigen, vaste URL. Daarnaast zijn er URL's die
+meebewegen met nieuwe releases:
+
+URL | Inhoud
+----|-------
+[`https://nuts-foundation.github.io/nl-zorginzage-ig/1.0.0/`](https://nuts-foundation.github.io/nl-zorginzage-ig/1.0.0/) | Precies release 1.0.0. Deze inhoud verandert niet meer.
+[`https://nuts-foundation.github.io/nl-zorginzage-ig/1/`](https://nuts-foundation.github.io/nl-zorginzage-ig/1/) | De laatste release binnen majorversie 1.
+[`https://nuts-foundation.github.io/nl-zorginzage-ig/`](https://nuts-foundation.github.io/nl-zorginzage-ig/) | De laatste release.
+[`https://nuts-foundation.github.io/nl-zorginzage-ig/current/`](https://nuts-foundation.github.io/nl-zorginzage-ig/current/) | De versie die in ontwikkeling is. Dit is geen release.
+
+Een overzicht van alle gepubliceerde releases staat in de [historie](history.html).
+
+Een toepassing die gebruikmaakt van deze specificatie verwijst naar een majorversie of naar een specifieke release:
+
+- Een toepassing die naar een majorversie verwijst, bijvoorbeeld `/1/`, groeit mee met de minor- en patchreleases
+  binnen die majorversie. Deze releases zijn backwards compatible (zie Releasecriteria). Bij de overstap naar een
+  nieuwe majorversie past de toepassing haar verwijzing aan.
+- Een toepassing die naar een specifieke release verwijst, bijvoorbeeld `/1.0.0/`, verwijst naar inhoud die niet meer
+  verandert. Bij de overstap naar een nieuwere release past de toepassing haar verwijzing aan.
+- Een toepassing verwijst niet naar de laatste release of naar de versie in ontwikkeling, omdat de inhoud daarvan kan
+  veranderen zonder dat de toepassing haar verwijzing aanpast.
+
+Welke release of majorversie een toepassing gebruikt en wanneer zij overstapt, wordt per toepassing afgesproken.
+
 #### Besluitvorming
 
 De eigenaar van de specificatie besluit na overleg met de deelnemers aan Zorginzage over het vaststellen van een nieuwe release en over de ‘Release roadmap’ met de onderwerpen voor een eerstvolgende release.
