@@ -131,6 +131,7 @@ Vendor organisation authentication is performed at the transport layer through m
 - Nuts nodes **MUST** follow the standard did:web-based access token, introspect, and jwt-based data request flows as
   specified in volume 2b.
 - Vendor organisations **MUST** authenticate connections using mTLS as specified in Network Security.
+- The credentials above are the minimum set. A use case **MAY** require additional credentials in its Nuts policy.
 
 #### Rationale
 
@@ -205,6 +206,8 @@ Registration is covered in a separate sequence diagram outside the common reques
 - Data holders **MUST** publish the above fields during registration.
 - Data holders **MUST** present a valid X509Credential derived from a UZI server certificate and a self-issued
   HealthcareProviderRoleTypeCredential at registration.
+- The fields and credentials above are the minimum set. A use case **MAY** require additional fields or credentials in
+  its discovery service presentation definition.
 - Data users **SHOULD** resolve endpoints through the discovery service rather than hard-coding them.
 - Data users **MAY NOT** use discovery service for localization or BSN broadcasting
 
