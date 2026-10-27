@@ -410,5 +410,7 @@ A complete use case contains:
 - The Nuts policy
 - An authorisation policy
 - Discover service presentation definition
+- A use case specification (e.g. an implementation guide) that specifies the relevant data set (see volume 3)
+- A FHIR CapabilityStatement that the authorisation policy evaluates requests against (see Authorisation)
 
 Use cases are scoped to a version of this implementation guide and reviewed by Actiz.
