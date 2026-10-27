@@ -8,14 +8,11 @@ participant XIS as req
 participant "Nuts-node" as rn
 end box
 
-box Disovery Service organisation
-participant "Nuts-node" as dn
-participant "Discovery service" as disco
+box Discovery Service organisation
+participant "Nuts-node\n(Discovery Service)" as dn
 end box
 
-req -> rn: /internal/discovery/v1/{serviceID}/{subjectID of Data user organisation}
+req -> rn: POST /internal/discovery/v1/{serviceID}/{subjectID of Data holder organisation}
 rn <--> dn : nuts-nodes handle registration request
-dn <--> disco: registration
 rn -> req: 200
 @enduml
- 

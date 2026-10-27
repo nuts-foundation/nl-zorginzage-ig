@@ -12,9 +12,8 @@ All data holders have to register themselves at the Discovery Service. This regi
 Number | Remarks
 -------|--------
 1 | Registration request to local Nuts-node (see below)
-2 | 
+2 | The Discovery Service is part of the Nuts node of the Discovery Service organisation
 3 |
-4 |
 
 #### Step 1 details
 The registration **MUST** contain the following registration parameters. Non-normative example of the request body for
