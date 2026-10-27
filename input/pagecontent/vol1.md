@@ -20,11 +20,10 @@ Voorbeelden:
 4. Deze specificatie adopteert incrementeel en iteratief de door het Ministerie van VWS beheerde landelijke afspraken en specificaties voor generieke functies en de andere elementen van de doelarchitectuur voor het Gezondheidsinformatiestelsel (GIS). Deze landelijke afspraken en specificaties vervangen incrementeel en iteratief alle Zorginzage-specifieke afspraken en specificaties zodra de eigenaar en de deelnemers van de Zorginzage-specificatie beoordelen dat deze implementatieklaar zijn.
 5. Van deze specificatie zullen maximaal twee release per jaar uitkomen die invloed hebben op de functionaliteit.
 6. Wederkerigheid. Deelnemers aan Zorginzage stellen alleen data beschikbaar aan partijen die ook conform deze specificatie data beschikbaar stellen. 
-7. Commitment. De Zorginzage-specificatie wordt de komende jaren doorontwikkeld. Deelnemers committeren zich aan de implementatie van volgende versies. 
 
 ### Use cases
 
-Deze specificatie vormt de basis voor een aantal verschillende use cases.
+Deze specificatie vormt de basis voor een aantal verschillende use cases. Afspraken over welke versies van deze specificatie deelnemers implementeren en wanneer, worden per use case gemaakt, in de specificatie of het implementatieplan van die use case.
 
 Use case | Specificatie | Opmerking
 ---------|-------------|----------
@@ -36,10 +35,6 @@ PZP | [link](https://wiki.nuts.nl/books/pzp) | De specificatie van deze use case
 ### Wederkerigheid
 
 Deelnemers aan Zorginzage stellen alleen data beschikbaar aan partijen die ook conform deze specificatie data beschikbaar stellen. Om dit te bereiken dienen deelnemers aan Zorginzage naast de rol datagebruiker (data user) ook de rol datahouder (data holder) te implementeren.
-
-### Commitment
-
-De Zorginzage-specificatie wordt de komende jaren doorontwikkeld. Deelnemers aan Zorginzage committeren zich aan de tijdige implementatie van de versies die in 2026, 2027 en 2028 zullen worden gepubliceerd.
 
 ### Rollen en verantwoordelijkheden
 
@@ -85,6 +80,8 @@ autorisatie | Zorginzage-specifiek | Zorginzage-specifiek | generieke functie au
 netwerkbeveiliging | Zorginzage-specifiek | landelijke specificaties Veilig Netwerk (trial-use) | landelijke specificaties Veilig Netwerk | landelijke specificaties Veilig Netwerk
 
 De roadmap wordt bepaald op basis van input van de egenaar en de deelnemers van de Zorginzage-specificatie. De roadmap is afhankelijk van externe factoren waarop de eigenaar en de deelnemers van de Zorginzage-specificatie slechts in beperkte mate invloed hebben. De roadmap kan per release van de Zorginzage-specficatie worden aangepast.
+
+De roadmap beschrijft wanneer releases van de Zorginzage-specificatie verschijnen en wat ze bevatten. Wanneer deelnemers een release implementeren, wordt per use case afgesproken, zie de paragraaf Use cases.
 
 ### Releasebeleid
 
