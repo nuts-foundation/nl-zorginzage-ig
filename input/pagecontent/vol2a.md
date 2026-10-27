@@ -163,7 +163,7 @@ during a data exchange. All other described functions depend on this addressing 
 #### Preconditions
 
 - The data holder organisation has a UZI server certificate and the URA contained in it.
-- The data holder operates a Nuts node that has registered with the Nuts Discovery Service hosted by Actiz, presenting:
+- The data holder operates a Nuts node that has registered with the Nuts Discovery Service of the use case, presenting:
     - an **X509Credential** carrying the URA presented as `organization_ura` (per Nuts RFC023);
     - a self-issued **HealthcareProviderRoleTypeCredential** stating its organisation type(s);
     - a **DiscoveryRegistrationCredential** carrying the `fhir_base_url` and `authorization_server_url` of the data
@@ -172,8 +172,8 @@ during a data exchange. All other described functions depend on this addressing 
 
 #### Actors & responsibilities
 
-- **Discovery service operator (Actiz)** — hosts a single shared Nuts Discovery Service for all use cases built on
-  Zorginzage.
+- **Discovery service operator** — hosts the Nuts Discovery Service for a use case. Zorginzage is a generic building
+  block for use cases; the operator is determined per use case and is not necessarily the owner of this specification.
 - **Data holder** — registers its endpoints and credentials, and keeps the registration current.
 - **Data user** — queries the discovery service for the targeted data holder.
 - **Nuts node (both sides)** — performs registration, presentation verification, and credential exchange on behalf of
@@ -397,5 +397,6 @@ A complete use case contains:
 - The Nuts policy
 - An authorisation policy
 - Discover service presentation definition
+- The discovery service operator for the use case, and the discovery service endpoint (URL) and service ID
 
 Use cases are scoped to a version of this implementation guide and reviewed by Actiz.
