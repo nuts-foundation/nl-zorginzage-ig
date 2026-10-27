@@ -12,7 +12,7 @@ box Discovery Service organisation
 participant "Nuts-node\n(Discovery Service)" as dn
 end box
 
-req -> rn: POST /internal/discovery/v1/{serviceID}/{subjectID of Data holder organisation}
-rn <--> dn : nuts-nodes handle registration request
+req -> rn: Register at\nDiscovery Service
+rn <--> dn : Registration request
 rn -> req: 200
 @enduml
