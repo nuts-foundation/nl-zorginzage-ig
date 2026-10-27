@@ -93,7 +93,7 @@ Organisation- and professional-level authentication is performed via the standar
 
 - Vendor organisations on both sides hold a PKIoverheid certificate suitable for mTLS (see Network Security).
 - The data user has a UZI server certificate (containing the URA) and has issued the corresponding X500Credential by
-  following [this manual](https://wiki.nuts.nl/books/implementing-a-nuts-use-case/page/2-issue-x509credential).
+  following [this manual](https://wiki.nuts.nl/books/implementing-a-nuts-use-case/page/2-issue-x509credential) (accessed 2026-10-27).
 - The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type(s).
 - The data user operates a Nuts node with a did:web identifier and an equivalent set of credentials.
 - The data holder has loaded the applicable Nuts policy its Nuts Node.
@@ -142,10 +142,10 @@ Vendor organisation authentication is performed at the transport layer through m
 
 #### References
 
-- [Nuts RFC023 — X509Credential with UZI server certificates](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023)
+- [Nuts RFC023 — X509Credential with UZI server certificates](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023) (accessed 2026-10-27)
 - [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main) · [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java/)
 - [UZI servercertificate CPS](https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement)
-- [Nuts RFC019 - Nuts Employeed Identity](https://nuts-foundation.gitbook.io/drafts/rfc/rfc019-employee-identity-means)
+- [Nuts RFC019 - Nuts Employeed Identity](https://nuts-foundation.gitbook.io/drafts/rfc/rfc019-employee-identity-means) (accessed 2026-10-27)
 - Volume 2b — Nuts process specifications and sequences
 
 ### Addressing
@@ -204,10 +204,10 @@ Registration is covered in a separate sequence diagram outside the common reques
 
 #### References
 
-- [Nuts Discovery Service — overview](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery)
-- [Nuts RFC023 — X509Credential with UZI server certificates](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023)
+- [Nuts Discovery Service — overview](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery) (accessed 2026-10-27)
+- [Nuts RFC023 — X509Credential with UZI server certificates](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023) (accessed 2026-10-27)
 - [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main) · [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java/)
-- [Nuts Service Discovery — DiscoveryRegistrationCredential](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration)
+- [Nuts Service Discovery — DiscoveryRegistrationCredential](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration) (accessed 2026-10-27)
 
 ### Localisation
 
@@ -368,7 +368,7 @@ The data holder can use one or more of the following attributes for the consent 
 - BSN of client/patient — sourced from the incoming FHIR query or other patient context. Required for OTV-consent.
 - A use case identifier — sourced from the authorisation scope.
 
-When a data holder wants to use OTV-consent during authorisation, it **MUST** implement the 'Gesloten Autorisatievraag' as specified in ["Implementatiehandleiding_OpenGesloten"](https://vzvz.atlassian.net/wiki/spaces/MA11/pages/828314367/Bijlage+Architectuurdocumenten).
+When a data holder wants to use OTV-consent during authorisation, it **MUST** implement the 'Gesloten Autorisatievraag' as specified in ["Implementatiehandleiding_OpenGesloten"](https://vzvz.atlassian.net/wiki/spaces/MA11/pages/828314367/Bijlage+Architectuurdocumenten) (accessed 2026-10-27).
 
 ### Network security
 
