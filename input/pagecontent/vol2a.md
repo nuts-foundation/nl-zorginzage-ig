@@ -40,8 +40,9 @@ Rationale
 
 ##### HealthcareProviderRoleType
 
-Healthcare organisations use a HealthcareProviderRoleType attribute to express which type(s) of healthcare organisations
-they are.
+Healthcare organisations use a HealthcareProviderRoleType attribute to express which type of healthcare organisation
+they are. Although an organisation can fulfil multiple roles in practice, an organisation uses exactly one
+HealthcareProviderRoleType within a use case.
 
 Rationale
 
@@ -51,6 +52,8 @@ Rationale
 - The type of healthcare organisation is a useful attribute in authorisation and localisation processes.
 - The HealthcareProviderRoleType is self-issued by each healthcare organisation. No trusted third party issuer is active
   at the moment.
+- The Nuts Discovery Service cannot select a specific credential when multiple credentials of the same type match, so
+  an organisation can present only one HealthcareProviderRoleTypeCredential per use case.
 
 #### Vendor organisations
 
@@ -94,7 +97,7 @@ Organisation- and professional-level authentication is performed via the standar
 - Vendor organisations on both sides hold a PKIoverheid certificate suitable for mTLS (see Network Security).
 - The data user has a UZI server certificate (containing the URA) and has issued the corresponding X500Credential by
   following [this manual](https://wiki.nuts.nl/books/implementing-a-nuts-use-case/page/2-issue-x509credential).
-- The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type(s).
+- The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type.
 - The data user operates a Nuts node with a did:web identifier and an equivalent set of credentials.
 - The data holder has loaded the applicable Nuts policy its Nuts Node.
 
@@ -123,7 +126,7 @@ Vendor organisation authentication is performed at the transport layer through m
 - Data users **MUST** authenticate the URA using an [X509Credential derived from a UZI server certificate](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-X509Credential.html) 
   servercertificate, in line with Nuts RFC023.
 - Data users **MUST** present a self-issued [HealthcareProviderRoleTypeCredential](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-HealthcareProviderRoleTypeCredential.html) expressing their
-  organisation type(s).
+  organisation type.
 - Data users **MUST** federate healthcare professional identity using a NutsEmployeeCredential.
 - Nuts nodes **MUST** follow the standard did:web-based access token, introspect, and jwt-based data request flows as
   specified in volume 2b.
@@ -165,7 +168,7 @@ during a data exchange. All other described functions depend on this addressing 
 - The data holder organisation has a UZI server certificate and the URA contained in it.
 - The data holder operates a Nuts node that has registered with the Nuts Discovery Service hosted by Actiz, presenting:
     - an **X509Credential** carrying the URA presented as `organization_ura` (per Nuts RFC023);
-    - a self-issued **HealthcareProviderRoleTypeCredential** stating its organisation type(s), presented as
+    - a self-issued **HealthcareProviderRoleTypeCredential** stating its organisation type, presented as
       `organization_facility_type`;
     - a **DiscoveryRegistrationCredential** carrying the `fhir_base_url` and `authorization_server_url` of the data
       holder.
