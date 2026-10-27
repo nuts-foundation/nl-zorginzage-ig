@@ -147,6 +147,23 @@ De eigenaar van de specificatie hanteert de Semantic Versioning-specificatie voo
 zie https://semver.org. Dit betekent dat het versienummer wordt weergegeven door 3 nummers die met een punt zijn
 gescheiden (x.y.z waarbij x de majorrelease is, y de minor en z de patch).
 
+#### Verwijzen naar andere specificaties
+
+Voor verwijzingen vanuit deze specificatie naar andere specificaties geldt:
+
+- Normatieve verwijzingen, zoals naar de generieke functies van VWS, Nuts RFC's, IHE-profielen, Mitz en het
+  afsprakenstelsel van Twiin, verwijzen naar een vaste versie en noemen het versienummer. Publiceert de bron versies
+  onder een eigen URL, dan verwijst deze specificatie naar die URL.
+- Publiceert de bron geen vaste versie, zoals bij een wiki, dan vermeldt de verwijzing de datum van raadpleging.
+- Informatieve verwijzingen, zoals naar Wikipedia, begrippenlijsten of tools, mogen naar de actuele versie verwijzen.
+- Verwijzingen binnen deze specificatie zijn relatief, zodat elke gepubliceerde versie naar haar eigen onderdelen
+  verwijst.
+- De eigenaar van de specificatie controleert de uitgaande verwijzingen bij elke release.
+
+Sommige specificaties, zoals de generieke functies van VWS, publiceren hun versies alleen op build.fhir.org. Builds
+daar worden na 90 dagen zonder activiteit verwijderd. Deze specificatie verwijst naar zo'n versie met het
+versienummer in de URL en in de tekst, maar de beschikbaarheid van de build ligt bij de eigenaar van die specificatie.
+
 #### Besluitvorming
 
 De eigenaar van de specificatie besluit na overleg met de deelnemers aan Zorginzage over het vaststellen van een nieuwe release en over de ‘Release roadmap’ met de onderwerpen voor een eerstvolgende release.
