@@ -56,6 +56,29 @@ Before rebuilding, you may want to clean the output directory:
 rm -rf ./output/*
 ```
 
+## Publishing on GitHub Pages
+
+The IG is published on GitHub Pages at the canonical URL https://nuts-foundation.github.io/nl-zorginzage-ig/ by the
+workflow `.github/workflows/build_deploy.yml`:
+
+Path | Content | Published on
+-----|---------|-------------
+`/` | Latest release | Push of the release tag with the highest version
+`/<major>/`, e.g. `/1/` | Latest release within a major version | Push of the release tag with the highest version within that major version
+`/<version>/`, e.g. `/1.0.0/` | A specific release, never changed afterwards | Push of the release tag `v<version>`
+`/current/` | The main branch | Push to main
+
+The `gh-pages` branch keeps all published versions; each deployment publishes the complete branch.
+
+To publish a release:
+
+1. Set `version` in `sushi-config.yaml` to the new version, e.g. `1.1.0`, and merge this to main.
+2. Tag the commit on main with `v<version>`, e.g. `git tag v1.1.0 && git push origin v1.1.0`.
+
+The workflow refuses a tag that does not match the `version` in `sushi-config.yaml`. A release tag on a commit that
+predates this workflow does not start it; publish such a tag by running the workflow manually from the Actions tab
+with the tag (e.g. `v1.0.0`) as input.
+
 ## FHIR Implementation Guide Auto-Builder
 
 This FHIR IG is setup to auto-build to https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig or https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/branches/<your-branch>
