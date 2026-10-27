@@ -61,11 +61,11 @@ User -> req: request information for Patient
         - access token received in step 9 can be reused in loop below
         end note
         loop For each resource except Patient
-            req -> PEP++: GET /fhir/{resource}?patient={patient-id}
+            req -> PEP++: GET /fhir/{resource}?patient=Patient/{patient-id}
                 PEP -> cn++ : introspect access token\nPOST /internal/auth/v2/accesstoken/introspect
                     PEP <-- cn-- : valid token + requesting_URA +\nUSER{name,userRole,identifier}
                 PEP -> PEP: Authorization\n(Legal basis to be determined by use case,\ne.g. patient consent and/or treatment relationship)
-                PEP -> Fhir++: GET /fhir/{resource}?patient={patient-id}
+                PEP -> Fhir++: GET /fhir/{resource}?patient=Patient/{patient-id}
                 return: Fhir resource
                 return: Fhir Resource
         end loop
