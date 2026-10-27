@@ -14,7 +14,7 @@ Volume 3 of this specifcation describes the agreements and specifications about 
 
 All queries that are performed in the context of Zorginzage are patient-specific. The data user needs to know the logical ID of the patient and include it in every query (e.g., patient=123 or subject=Patient/123). The method for obtaining the patient's logical ID is part of the Zorginzage specifcation and must take place as follows:
 - an initial search request on the Patient endpoint using the BSN as patient identifier
-  - search request must follow [IHE PDQm ITI-78](https://profiles.ihe.net/ITI/PDQm/ITI-78.html) plus the following extra agreements and specifications:
+  - search request must follow [IHE PDQm 3.2.0 ITI-78](https://profiles.ihe.net/ITI/PDQm/3.2.0/ITI-78.html) plus the following extra agreements and specifications:
     - Search must be performed on bsn (`identifier.system` = `http://fhir.nl/fhir/NamingSystem/bsn`)
     - Only POST-based search is allowed, GET-based search is not allowed
     - The template of POST-based Patient search is included below
