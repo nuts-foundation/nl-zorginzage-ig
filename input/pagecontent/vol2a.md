@@ -256,8 +256,11 @@ POST {fhir_base}/Patient/_search
 
 Header: Content-Type = x-www-form-urlencoded
 
-Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
+Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}&_elements=id
 ```
+
+- The data user **MAY** add the `_elements=id` parameter to the patient search, so that only the technical identifier
+  of the patient is returned. The data holder **SHOULD** support the `_elements` parameter.
 
 ### Authorisation
 
