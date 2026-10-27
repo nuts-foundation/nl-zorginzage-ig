@@ -1,6 +1,6 @@
 ### Inleiding
 
-Deze implementatiegids Zorginzage bevat de generieke afspraken en specificaties die nodig zijn voor use cases die gebruikmaken van de [communicatiepatronen](https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws) 'Gericht bevragen' en 'Geïndexeerd bevragen'. Het doel van deze implementatiegids is het versnellen van de realisatie van use cases. Deze implementatiegids draagt hieraan bij door het hergebruik van afspraken en specificaties te vereenvoudigen.
+Deze implementatiegids Zorginzage bevat de generieke afspraken en specificaties die nodig zijn voor toepassingen die gebruikmaken van de [communicatiepatronen](https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws) 'Gericht bevragen' en 'Geïndexeerd bevragen'. Het doel van deze implementatiegids is het versnellen van de realisatie van toepassingen. Deze implementatiegids draagt hieraan bij door het hergebruik van afspraken en specificaties te vereenvoudigen.
 
 ### Procesbeschrijving
 
@@ -21,16 +21,16 @@ Voorbeelden:
 5. Van deze specificatie zullen maximaal twee release per jaar uitkomen die invloed hebben op de functionaliteit.
 6. Wederkerigheid. Deelnemers aan Zorginzage stellen alleen data beschikbaar aan partijen die ook conform deze specificatie data beschikbaar stellen. 
 
-### Use cases
+### Toepassingen
 
-Deze specificatie vormt de basis voor een aantal verschillende use cases. Afspraken over welke versies van deze specificatie deelnemers implementeren en wanneer, worden per use case gemaakt, in de specificatie of het implementatieplan van die use case.
+Deze specificatie vormt de basis voor een aantal verschillende toepassingen. Afspraken over welke versies van deze specificatie deelnemers implementeren en wanneer, worden per toepassing gemaakt, in de specificatie of het implementatieplan van die toepassing.
 
-Use case | Specificatie | Opmerking
+Toepassing | Specificatie | Opmerking
 ---------|-------------|----------
-360-graden cliëntbeeld | n.t.b. | De specificatie van deze use case maakt gebruik van Zorginzage 2026
-Geboortezorg | [link](https://babyconnect.atlassian.net/wiki/spaces/VBC/pages/906166273/Zorgtoepassingprofiel+Geboortezorg)  | De specificatie van deze use case maakt nog geen gebruik van Zorginzage 2026
-Huisartsinzage | [link](https://wiki.nuts.nl/books/samenwerken-huisarts-en-thuiszorg/page/zorgtoepassing-ha-vvt-inzage-dossier-v10) | De specificatie van deze use case maakt nog geen gebruik van Zorginzage 2026
-PZP | [link](https://wiki.nuts.nl/books/pzp) | De specificatie van deze use case maakt nog geen gebruik van Zorginzage 2026
+360-graden cliëntbeeld | n.t.b. | De specificatie van deze toepassing maakt gebruik van Zorginzage 2026
+Geboortezorg | [link](https://babyconnect.atlassian.net/wiki/spaces/VBC/pages/906166273/Zorgtoepassingprofiel+Geboortezorg)  | De specificatie van deze toepassing maakt nog geen gebruik van Zorginzage 2026
+Huisartsinzage | [link](https://wiki.nuts.nl/books/samenwerken-huisarts-en-thuiszorg/page/zorgtoepassing-ha-vvt-inzage-dossier-v10) | De specificatie van deze toepassing maakt nog geen gebruik van Zorginzage 2026
+PZP | [link](https://wiki.nuts.nl/books/pzp) | De specificatie van deze toepassing maakt nog geen gebruik van Zorginzage 2026
 
 ### Wederkerigheid
 
@@ -79,9 +79,9 @@ authenticatie van personen | Zorginzage-specifiek | Zorginzage-specifiek | dezi 
 autorisatie | Zorginzage-specifiek | Zorginzage-specifiek | generieke functie autorisatie (trial-use)                     | generieke functie autorisatie
 netwerkbeveiliging | Zorginzage-specifiek | landelijke specificaties Veilig Netwerk (trial-use) | landelijke specificaties Veilig Netwerk | landelijke specificaties Veilig Netwerk
 
-De roadmap wordt bepaald op basis van input van de egenaar en de deelnemers van de Zorginzage-specificatie. De roadmap is afhankelijk van externe factoren waarop de eigenaar en de deelnemers van de Zorginzage-specificatie slechts in beperkte mate invloed hebben. De roadmap kan per release van de Zorginzage-specficatie worden aangepast.
+De roadmap wordt bepaald op basis van input van de eigenaar en de deelnemers van de Zorginzage-specificatie. De roadmap is afhankelijk van externe factoren waarop de eigenaar en de deelnemers van de Zorginzage-specificatie slechts in beperkte mate invloed hebben. De roadmap kan per release van de Zorginzage-specificatie worden aangepast.
 
-De roadmap beschrijft wanneer releases van de Zorginzage-specificatie verschijnen en wat ze bevatten. Wanneer deelnemers een release implementeren, wordt per use case afgesproken, zie de paragraaf Use cases.
+De roadmap beschrijft wanneer releases van de Zorginzage-specificatie verschijnen en wat ze bevatten. Wanneer deelnemers een release implementeren, wordt per toepassing afgesproken, zie de paragraaf Toepassingen.
 
 ### Releasebeleid
 
