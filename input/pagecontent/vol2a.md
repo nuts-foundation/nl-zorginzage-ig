@@ -185,8 +185,10 @@ during a data exchange. All other described functions depend on this addressing 
 
 #### Interaction
 
-See the pull sequence diagram, step 3 (`GET /internal/discovery/v1/{serviceID}`) and the accompanying note: the data
-user's Nuts node returns the matching organisations and their addressing information. Searches can be performed by
+See the pull sequence diagram, step 3, and the accompanying note: the data user's Nuts node returns the matching
+organisations and their addressing information. The call shown there (`GET /internal/discovery/v1/{serviceID}`) is an
+internal API of the Nuts node reference implementation and is non-normative; any system that supports the Nuts
+discovery protocol may be used. Searches can be performed by
 organisation URA, organisation type, and use case; the exact filtering strategy is left to the implementer (return
 everything for the user to pick, or filter on URA / role type inside the Nuts node).
 
