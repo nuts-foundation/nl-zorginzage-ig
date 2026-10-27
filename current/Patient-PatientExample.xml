@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patient xmlns="http://hl7.org/fhir">
+  <id value="PatientExample"/>
+  <meta>
+    <profile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"/>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: Patient PatientExample</b></p><a name="PatientExample"> </a><a name="hcPatientExample"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profile: <a href="https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.12.0-beta.4&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient">nl core Patient</a></p></div><p style="border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;">Maria Anna van den Berg (official) Female, DoB: 1985-03-15 ( http://fhir.nl/fhir/NamingSystem/bsn#123456789 (use: official))</p><hr/><table class="grid"><tr><td style="background-color: #f3f5da" title="Record is active">Active:</td><td colspan="3">true</td></tr><tr><td style="background-color: #f3f5da" title="Ways to contact the Patient">Contact Detail</td><td colspan="3"><ul><li><a href="tel:+31612345678">+31612345678</a></li><li><a href="mailto:maria.vandenberg@example.nl">maria.vandenberg@example.nl</a></li><li>Hoofdstraat 123 Amsterdam 1011 AB NL (home)</li></ul></td></tr></table></div>
+  </text>
+  <identifier>
+    <use value="official"/>
+    <system value="http://fhir.nl/fhir/NamingSystem/bsn"/>
+    <value value="123456789"/>
+  </identifier>
+  <active value="true"/>
+  <name>
+    <use value="official"/>
+    <family value="van den Berg"/>
+    <given value="Maria"/>
+    <given value="Anna"/>
+  </name>
+  <telecom>
+    <system value="phone"/>
+    <value value="+31612345678"/>
+    <use value="mobile"/>
+  </telecom>
+  <telecom>
+    <system value="email"/>
+    <value value="maria.vandenberg@example.nl"/>
+    <use value="home"/>
+  </telecom>
+  <gender value="female"/>
+  <birthDate value="1985-03-15"/>
+  <address>
+    <use value="home"/>
+    <line value="Hoofdstraat 123"/>
+    <city value="Amsterdam"/>
+    <postalCode value="1011 AB"/>
+    <country value="NL"/>
+  </address>
+</Patient>

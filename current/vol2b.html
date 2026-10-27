@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Volume 2b - Netherlands - Zorginzage Implementation Guide v1.0.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"4"}
+    h3,h4,h5,h6{--heading-prefix:"4"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Netherlands - Zorginzage Implementation Guide</span>
+            <br/>
+            <span style="display:inline-block;">1.0.0 - release
+
+
+
+  <img alt="Netherlands flag" src="assets/images/nld.svg" height="16" title="Netherlands"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 1
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="vol1.html">Inleiding</a>
+      </li>
+      <li>
+        <a href="vol1.html#procesbeschrijving">Procesbeschrijving</a>
+      </li>
+      <li>
+        <a href="vol1.html#principes">Principes</a>
+      </li>
+      <li>
+        <a href="vol1.html#use-cases">Use cases</a>
+      </li>
+      <li>
+        <a href="vol1.html#rollen-en-verantwoordelijkheden">Rollen en verantwoordelijkheden</a>
+      </li>
+      <li>
+        <a href="vol1.html#rollen-en-uitvoerders">Rollen en uitvoerders</a>
+      </li>
+      <li>
+        <a href="vol1.html#roadmap">Roadmap</a>
+      </li>
+      <li>
+        <a href="vol1.html#releasebeleid">Releasebeleid</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 2a
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="vol2a.html">Exchange patterns</a>
+      </li>
+      <li>
+        <a href="vol2a.html#principles">Principles</a>
+      </li>
+      <li>
+        <a href="vol2a.html#identification">Identification</a>
+      </li>
+      <li>
+        <a href="vol2a.html#authentication">Authentication</a>
+      </li>
+      <li>
+        <a href="vol2a.html#addressing">Addressing</a>
+      </li>
+      <li>
+        <a href="vol2a.html#localisation">Localisation</a>
+      </li>
+      <li>
+        <a href="vol2a.html#authorisation">Authorisation</a>
+      </li>
+      <li>
+        <a href="vol2a.html#consent">Consent</a>
+      </li>
+      <li>
+        <a href="vol2a.html#network-security">Network security</a>
+      </li>
+      <li>
+        <a href="vol2a.html#registering-a-new-use-case">Registering a new use case</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 2b
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="vol2b.html#registration-at-discovery-service">Registration at discovery service</a>
+      </li>
+      <li>
+        <a href="vol2b.html#pull">Pull</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Volume 3
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="vol3.html#data-set-definitions">Data set definitions</a>
+      </li>
+      <li>
+        <a href="vol3.html#individual-resource-requests">Individual resource requests</a>
+      </li>
+      <li>
+        <a href="vol3.html#patient-context">Patient context</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="history.html">History</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Volume 2b</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Netherlands - Zorginzage Implementation Guide - Local Development build (v1.0.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://nuts-foundation.github.io/nl-zorginzage-ig/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Volume 2b</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#registration-at-discovery-service" id="markdown-toc-registration-at-discovery-service">Registration at discovery service</a></li>
+  <li><a href="#pull" id="markdown-toc-pull">Pull</a></li>
+</ul>
+
+</div>
+<h3 id="registration-at-discovery-service">Registration at discovery service</h3>
+
+<p>All data holders have to register themselves at the Discovery Service. This registration takes place in the implementation-phase.</p>
+
+<div width="90%" style="width: 90vw;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="SEQUENCE" height="199px" preserveAspectRatio="none" style="width:1046px;height:199px;background:#FFFFFF;" version="1.1" viewBox="0 0 1046 199" width="1046px" zoomAndPan="magnify"><defs /><g><rect fill="#DDDDDD" height="180.9609" style="stroke:#181818;stroke-width:0.5;" width="580.7686" x="21" y="6" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="183.2759" x="219.7463" y="18.0669">Data holder organisation</text><rect fill="#DDDDDD" height="180.9609" style="stroke:#181818;stroke-width:0.5;" width="241.8838" x="798.6455" y="6" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="219.686" x="809.7444" y="18.0669">Disovery Service organisation</text><g><title>XIS</title><rect fill="#000000" fill-opacity="0.00000" height="136.5313" width="8" x="39.3032" y="56.4297" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="43" x2="43" y1="56.4297" y2="192.9609" /></g><g><title>Nuts-node</title><rect fill="#000000" fill-opacity="0.00000" height="136.5313" width="8" x="550.709" y="56.4297" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="554.6494" x2="554.6494" y1="56.4297" y2="192.9609" /></g><g><title>Nuts-node</title><rect fill="#000000" fill-opacity="0.00000" height="136.5313" width="8" x="841.7051" y="56.4297" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="845.6455" x2="845.6455" y1="56.4297" y2="192.9609" /></g><g><title>Discovery service</title><rect fill="#000000" fill-opacity="0.00000" height="136.5313" width="8" x="963.647" y="56.4297" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="966.7646" x2="966.7646" y1="56.4297" y2="192.9609" /></g><g class="participant participant-head" data-participant="req"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="36.6064" x="25" y="25.1328" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="22.6064" x="32" y="45.1279">XIS</text></g><g class="participant participant-head" data-participant="rn"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="86.1191" x="511.6494" y="25.1328" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72.1191" x="518.6494" y="45.1279">Nuts-node</text></g><g class="participant participant-head" data-participant="dn"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="86.1191" x="802.6455" y="25.1328" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72.1191" x="809.6455" y="45.1279">Nuts-node</text></g><g class="participant participant-head" data-participant="disco"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="137.7646" x="898.7646" y="25.1328" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123.7646" x="905.7646" y="45.1279">Discovery service</text></g><g class="message" data-participant-1="req" data-participant-2="rn"><polygon fill="#181818" points="542.709,83.5625,552.709,87.5625,542.709,91.5625,546.709,87.5625" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="43.3032" x2="548.709" y1="87.5625" y2="87.5625" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9.0454" x="50.3032" y="82.4966">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="474.3604" x="63.3486" y="82.4966">/internal/discovery/v1/{serviceID}/{subjectID of Data user organisation}</text></g><g class="message" data-participant-1="rn" data-participant-2="dn"><polygon fill="#181818" points="565.709,112.6953,555.709,116.6953,565.709,120.6953,561.709,116.6953" style="stroke:#181818;stroke-width:1;" /><polygon fill="#181818" points="833.7051,112.6953,843.7051,116.6953,833.7051,120.6953,837.7051,116.6953" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;stroke-dasharray:2.0,2.0;" x1="559.709" x2="839.7051" y1="116.6953" y2="116.6953" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9.0454" x="571.709" y="111.6294">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="253.9507" x="584.7544" y="111.6294">nuts-nodes handle registration request</text></g><g class="message" data-participant-1="dn" data-participant-2="disco"><polygon fill="#181818" points="856.7051,141.8281,846.7051,145.8281,856.7051,149.8281,852.7051,145.8281" style="stroke:#181818;stroke-width:1;" /><polygon fill="#181818" points="955.647,141.8281,965.647,145.8281,955.647,149.8281,959.647,145.8281" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;stroke-dasharray:2.0,2.0;" x1="850.7051" x2="961.647" y1="145.8281" y2="145.8281" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9.0454" x="862.7051" y="140.7622">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="75.2896" x="875.7505" y="140.7622">registration</text></g><g class="message" data-participant-1="rn" data-participant-2="req"><polygon fill="#181818" points="54.3032,170.9609,44.3032,174.9609,54.3032,178.9609,50.3032,174.9609" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="48.3032" x2="553.709" y1="174.9609" y2="174.9609" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9.0454" x="60.3032" y="169.895">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="24.813" x="73.3486" y="169.895">200</text></g></g></svg></div>
+<p><br clear="all" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Remarks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Registration request to local Nuts-node (see below)</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="step-1-details">Step 1 details</h4>
+<p>The body of the request to the internal API of the Nuts-node <strong>MUST</strong> contain the following registration parameters:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "registrationParameters": {
+    "authorization_server_url": "https://example.com/some-endpoint",
+    "fhir_base_url": "https://example.com/some-endpoint",
+  }
+}
+</code></pre></div></div>
+
+<p>The following credentials <strong>MUST</strong> be available in the Nuts node organisation wallet:</p>
+<ol>
+  <li>X509Credential based on UZI server certificate</li>
+  <li>HealthcareProviderRoleTypeCredential</li>
+</ol>
+
+<h3 id="pull">Pull</h3>
+
+<p>The sequence for pull scenarios is the following. The numbered transactions are specified in more detail in the table below the sequence diagram.</p>
+
+<div width="90%" style="width: 90vw;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="SEQUENCE" height="1587px" preserveAspectRatio="none" style="width:3073px;height:1587px;background:#FFFFFF;" version="1.1" viewBox="0 0 3073 1587" width="3073px" zoomAndPan="magnify"><defs /><g><rect fill="#DDDDDD" height="1568.5391" style="stroke:#181818;stroke-width:0.5;" width="1059.5103" x="21" y="6" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="195.9077" x="452.8013" y="18.0669">Data user organisation `A`</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="4.5259" x="452.8013" y="33.1997">&#160;</text><rect fill="#DDDDDD" height="1568.5391" style="stroke:#181818;stroke-width:0.5;" width="1226.25" x="1813.9272" y="6" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="210.7104" x="2321.697" y="18.0669">Data holder organisation `B`</text><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="4.5259" x="2321.697" y="33.1997">&#160;</text><g><title>XIS</title><rect fill="#FFFFFF" height="1414.8438" style="stroke:#181818;stroke-width:1;" width="10" x="392.563" y="147.6953" /></g><g><title>Nuts-node</title><rect fill="#FFFFFF" height="64.2656" style="stroke:#181818;stroke-width:1;" width="10" x="1028.4507" y="466.0234" /></g><g><title>Nuts-node</title><rect fill="#FFFFFF" height="93.3984" style="stroke:#181818;stroke-width:1;" width="10" x="1028.4507" y="642.6875" /></g><g><title>Nuts-node</title><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="1855.9868" y="912.75" /></g><g><title>Nuts-node</title><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="1855.9868" y="1302.4766" /></g><g><title>PEP</title><rect fill="#FFFFFF" height="218.0625" style="stroke:#181818;stroke-width:1;" width="10" x="2338.2021" y="868.4844" /></g><g><title>PEP</title><rect fill="#FFFFFF" height="218.0625" style="stroke:#181818;stroke-width:1;" width="10" x="2338.2021" y="1258.2109" /></g><g><title>Fhir</title><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="3010.8916" y="1028.2813" /></g><g><title>Fhir</title><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="3010.8916" y="1418.0078" /></g><rect fill="none" height="1121.7813" style="stroke:#000000;stroke-width:1.5;" width="2696.9175" x="359.2598" y="369.4922" /><rect fill="none" height="264.3281" style="stroke:#000000;stroke-width:1.5;" width="2676.9175" x="369.2598" y="1219.9453" /><g><title>Healthcare professional</title><rect fill="#000000" fill-opacity="0.00000" height="1463.9766" width="8" x="107.1011" y="116.5625" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="111" x2="111" y1="116.5625" y2="1580.5391" /></g><g><title>XIS</title><rect fill="#000000" fill-opacity="0.00000" height="1463.9766" width="8" x="393.563" y="116.5625" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="397.2598" x2="397.2598" y1="116.5625" y2="1580.5391" /></g><g><title>Nuts-node</title><rect fill="#000000" fill-opacity="0.00000" height="1463.9766" width="8" x="1029.4507" y="116.5625" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1033.3911" x2="1033.3911" y1="116.5625" y2="1580.5391" /></g><g><title>Nuts-node</title><rect fill="#000000" fill-opacity="0.00000" height="1463.9766" width="8" x="1856.9868" y="116.5625" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1860.9272" x2="1860.9272" y1="116.5625" y2="1580.5391" /></g><g><title>PEP</title><rect fill="#000000" fill-opacity="0.00000" height="1463.9766" width="8" x="2339.2021" y="116.5625" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="2342.7021" x2="2342.7021" y1="116.5625" y2="1580.5391" /></g><g><title>Fhir</title><rect fill="#000000" fill-opacity="0.00000" height="1463.9766" width="8" x="3011.8916" y="116.5625" /><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="3015.606" x2="3015.606" y1="116.5625" y2="1580.5391" /></g><g class="participant participant-head" data-participant="User"><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166.2021" x="25" y="113.2607">Healthcare professional</text><ellipse cx="111.1011" cy="48.7656" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;" /><path d="M111.1011,56.7656 L111.1011,83.7656 M98.1011,64.7656 L124.1011,64.7656 M111.1011,83.7656 L98.1011,98.7656 M111.1011,83.7656 L124.1011,98.7656" fill="none" style="stroke:#181818;stroke-width:0.5;" /></g><g class="participant participant-head" data-participant="req"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="36.6064" x="379.2598" y="85.2656" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="22.6064" x="386.2598" y="105.2607">XIS</text></g><g class="participant participant-head" data-participant="rn"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="86.1191" x="990.3911" y="85.2656" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72.1191" x="997.3911" y="105.2607">Nuts-node</text></g><g class="participant participant-head" data-participant="cn"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="86.1191" x="1817.9272" y="85.2656" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72.1191" x="1824.9272" y="105.2607">Nuts-node</text></g><g class="participant participant-head" data-participant="PEP"><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="25.7305" x="2327.3369" y="113.2607">PEP</text><path d="M2322.7021,72.2656 L2322.7021,96.2656 M2322.7021,84.2656 L2339.7021,84.2656" fill="none" style="stroke:#181818;stroke-width:0.5;" /><ellipse cx="2351.7021" cy="84.2656" fill="#E2E2F0" rx="12" ry="12" style="stroke:#181818;stroke-width:0.5;" /></g><g class="participant participant-head" data-participant="Fhir"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="40.5713" x="2995.606" y="85.2656" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="26.5713" x="3002.606" y="105.2607">Fhir</text></g><g><title>XIS</title><rect fill="#FFFFFF" height="1414.8438" style="stroke:#181818;stroke-width:1;" width="10" x="392.563" y="147.6953" /></g><g><title>Nuts-node</title><rect fill="#FFFFFF" height="64.2656" style="stroke:#181818;stroke-width:1;" width="10" x="1028.4507" y="466.0234" /></g><g><title>Nuts-node</title><rect fill="#FFFFFF" height="93.3984" style="stroke:#181818;stroke-width:1;" width="10" x="1028.4507" y="642.6875" /></g><g><title>Nuts-node</title><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="1855.9868" y="912.75" /></g><g><title>Nuts-node</title><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="1855.9868" y="1302.4766" /></g><g><title>PEP</title><rect fill="#FFFFFF" height="218.0625" style="stroke:#181818;stroke-width:1;" width="10" x="2338.2021" y="868.4844" /></g><g><title>PEP</title><rect fill="#FFFFFF" height="218.0625" style="stroke:#181818;stroke-width:1;" width="10" x="2338.2021" y="1258.2109" /></g><g><title>Fhir</title><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="3010.8916" y="1028.2813" /></g><g><title>Fhir</title><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="3010.8916" y="1418.0078" /></g><g class="message" data-participant-1="User" data-participant-2="req"><polygon fill="#181818" points="380.563,143.6953,390.563,147.6953,380.563,151.6953,384.563,147.6953" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="111.1011" x2="386.563" y1="147.6953" y2="147.6953" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9.0454" x="118.1011" y="142.6294">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="39.4316" x="131.1465" y="142.6294">Log in</text></g><g class="message" data-participant-1="req" data-participant-2="req"><line style="stroke:#181818;stroke-width:1;" x1="402.563" x2="444.563" y1="191.9609" y2="191.9609" /><line style="stroke:#181818;stroke-width:1;" x1="444.563" x2="444.563" y1="191.9609" y2="204.9609" /><line style="stroke:#181818;stroke-width:1;" x1="403.563" x2="444.563" y1="204.9609" y2="204.9609" /><polygon fill="#181818" points="413.563,200.9609,403.563,204.9609,413.563,208.9609,409.563,204.9609" style="stroke:#181818;stroke-width:1;" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9.0454" x="409.563" y="179.3286">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="133.6309" x="422.6084" y="171.7622">Create User session,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="353.3677" x="422.6084" y="186.895">User info needed for NutsEmployeeCredential (step 7)</text></g><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1;" width="3066.1772" x="0" y="233.5273" /><line style="stroke:#000000;stroke-width:1;" x1="0" x2="3066.1772" y1="233.5273" y2="233.5273" /><line style="stroke:#000000;stroke-width:1;" x1="0" x2="3066.1772" y1="236.5273" y2="236.5273" /><rect fill="#EEEEEE" height="23.1328" style="stroke:#000000;stroke-width:2;" width="172.5073" x="1446.835" y="222.9609" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="153.9814" x="1452.835" y="239.0278">Later in User session</text><g class="message" data-participant-1="User" data-participant-2="req"><polygon fill="#181818" points="380.563,273.2266,390.563,277.2266,380.563,281.2266,384.563,277.2266" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="111.1011" x2="386.563" y1="277.2266" y2="277.2266" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9.0454" x="118.1011" y="272.1606">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="201.0811" x="131.1465" y="272.1606">request information for Patient</text></g><g class="message" data-participant-1="req" data-participant-2="req"><line style="stroke:#181818;stroke-width:1;" x1="402.563" x2="444.563" y1="306.3594" y2="306.3594" /><line style="stroke:#181818;stroke-width:1;" x1="444.563" x2="444.563" y1="306.3594" y2="319.3594" /><line style="stroke:#181818;stroke-width:1;" x1="403.563" x2="444.563" y1="319.3594" y2="319.3594" /><polygon fill="#181818" points="413.563,315.3594,403.563,319.3594,413.563,323.3594,409.563,319.3594" style="stroke:#181818;stroke-width:1;" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9.0454" x="409.563" y="301.2935">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="504.3086" x="422.6084" y="301.2935">Resolve Patient BSN, and array of data_holder_URA's for patient if it is known</text></g><path d="M1038,332.3594 L1038,357.3594 L1746,357.3594 L1746,342.3594 L1736,332.3594 L1038,332.3594" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M1736,332.3594 L1736,342.3594 L1746,342.3594 L1736,332.3594" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="687.1147" x="1044" y="349.4263">Array of data_holder_URA's can be found via a (local) index (e.g. user-input and/or a CareTeam-resource)</text><path d="M359.2598,369.4922 L435.8838,369.4922 L435.8838,376.625 L425.8838,386.625 L359.2598,386.625 L359.2598,369.4922" fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;" /><rect fill="none" height="1121.7813" style="stroke:#000000;stroke-width:1.5;" width="2696.9175" x="359.2598" y="369.4922" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31.624" x="374.2598" y="382.5591">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="172.2563" x="450.8838" y="381.7026">[For each data_holder_URA]</text><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1;" width="3066.1772" x="0" y="407.1914" /><line style="stroke:#000000;stroke-width:1;" x1="0" x2="3066.1772" y1="407.1914" y2="407.1914" /><line style="stroke:#000000;stroke-width:1;" x1="0" x2="3066.1772" y1="410.1914" y2="410.1914" /><rect fill="#EEEEEE" height="23.1328" style="stroke:#000000;stroke-width:2;" width="322.9341" x="1371.6216" y="396.625" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="308.9341" x="1377.6216" y="412.6919">get addresses of data holder organisation</text><g class="message" data-participant-1="req" data-participant-2="rn"><polygon fill="#181818" points="1016.4507,462.0234,1026.4507,466.0234,1016.4507,470.0234,1020.4507,466.0234" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="402.563" x2="1022.4507" y1="466.0234" y2="466.0234" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9.0454" x="409.563" y="453.3911">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="297.9717" x="422.6084" y="445.8247">Look up data holder organisation in discovery</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="424.2583" x="422.6084" y="460.9575">GET /internal/discovery/v1/{serviceID}?organization_ura={URA}</text></g><path d="M1043,479.0234 L1043,504.0234 L2295,504.0234 L2295,489.0234 L2285,479.0234 L1043,479.0234" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M2285,479.0234 L2285,489.0234 L2295,489.0234 L2285,479.0234" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="1231.312" x="1049" y="496.0903">The Zorginzage requires underlying use cases to include elements with id "organization_ura", "authorization_server_url" and "fhir_base_url" in the discovery-service-presentation-definitions</text><g class="message" data-participant-1="rn" data-participant-2="req"><polygon fill="#181818" points="413.563,526.2891,403.563,530.2891,413.563,534.2891,409.563,530.2891" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;stroke-dasharray:2.0,2.0;" x1="407.563" x2="1032.4507" y1="530.2891" y2="530.2891" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9.0454" x="419.563" y="525.2231">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="403.6729" x="432.6084" y="525.2231">Found Organization B (authorization_server_url, fhir_base_url)</text></g><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1;" width="3066.1772" x="0" y="583.8555" /><line style="stroke:#000000;stroke-width:1;" x1="0" x2="3066.1772" y1="583.8555" y2="583.8555" /><line style="stroke:#000000;stroke-width:1;" x1="0" x2="3066.1772" y1="586.8555" y2="586.8555" /><rect fill="#EEEEEE" height="23.1328" style="stroke:#000000;stroke-width:2;" width="137.7285" x="1464.2244" y="573.2891" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="123.7285" x="1470.2244" y="589.356">get access token</text><g class="message" data-participant-1="req" data-participant-2="rn"><polygon fill="#181818" points="1016.4507,638.6875,1026.4507,642.6875,1016.4507,646.6875,1020.4507,642.6875" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="402.563" x2="1022.4507" y1="642.6875" y2="642.6875" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9.0454" x="409.563" y="630.0552">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="112.0552" x="422.6084" y="622.4888">Get access token</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="593.8423" x="422.6084" y="637.6216">POST /internal/auth/v2/{subjectID of Data user organisation}/request-service-access-token</text></g><g class="message" data-participant-1="rn" data-participant-2="cn"><polygon fill="#181818" points="1049.4507,667.8203,1039.4507,671.8203,1049.4507,675.8203,1045.4507,671.8203" style="stroke:#181818;stroke-width:1;" /><polygon fill="#181818" points="1848.9868,667.8203,1858.9868,671.8203,1848.9868,675.8203,1852.9868,671.8203" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;stroke-dasharray:2.0,2.0;" x1="1043.4507" x2="1854.9868" y1="671.8203" y2="671.8203" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9.0454" x="1055.4507" y="666.7544">8</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="785.4907" x="1068.4961" y="666.7544">nuts-nodes handle access token request, request is forwarded using value of "authorization_server_url" element in body</text></g><path d="M1043,684.8203 L1043,709.8203 L1654,709.8203 L1654,694.8203 L1644,684.8203 L1043,684.8203" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M1644,684.8203 L1644,694.8203 L1654,694.8203 L1644,684.8203" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="590.0908" x="1049" y="701.8872">uses X509Credential, HealthcareProviderRoleTypeCredential and NutsEmployeeCredential</text><g class="message" data-participant-1="rn" data-participant-2="req"><polygon fill="#181818" points="413.563,732.0859,403.563,736.0859,413.563,740.0859,409.563,736.0859" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;stroke-dasharray:2.0,2.0;" x1="407.563" x2="1032.4507" y1="736.0859" y2="736.0859" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="9.0454" x="419.563" y="731.02">9</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="85.6807" x="432.6084" y="731.02">Access token</text></g><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1;" width="3066.1772" x="0" y="789.6523" /><line style="stroke:#000000;stroke-width:1;" x1="0" x2="3066.1772" y1="789.6523" y2="789.6523" /><line style="stroke:#000000;stroke-width:1;" x1="0" x2="3066.1772" y1="792.6523" y2="792.6523" /><rect fill="#EEEEEE" height="23.1328" style="stroke:#000000;stroke-width:2;" width="313.4253" x="1376.376" y="779.0859" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="299.4253" x="1382.376" y="795.1528">get Patient resource including patient-id</text><path d="M407,817.2188 L407,842.2188 L655,842.2188 L655,827.2188 L645,817.2188 L407,817.2188" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M645,817.2188 L645,827.2188 L655,827.2188 L645,817.2188" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="227.1318" x="413" y="834.2856">POST-based Patient search on BSN</text><g class="message" data-participant-1="req" data-participant-2="PEP"><polygon fill="#181818" points="2326.2021,864.4844,2336.2021,868.4844,2326.2021,872.4844,2330.2021,868.4844" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="402.563" x2="2332.2021" y1="868.4844" y2="868.4844" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18.0908" x="409.563" y="863.4185">10</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="169.127" x="431.6538" y="863.4185">POST /fhir/Patient/_search</text></g><g class="message" data-participant-1="PEP" data-participant-2="cn"><polygon fill="#181818" points="1876.9868,908.75,1866.9868,912.75,1876.9868,916.75,1872.9868,912.75" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="1870.9868" x2="2337.2021" y1="912.75" y2="912.75" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18.0908" x="1882.9868" y="900.1177">11</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="154.4004" x="1905.0776" y="892.5513">introspect access token</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="302.0469" x="1905.0776" y="907.6841">POST /internal/auth/v2/accesstoken/introspect</text></g><g class="message" data-participant-1="cn" data-participant-2="PEP"><polygon fill="#181818" points="2326.2021,937.8828,2336.2021,941.8828,2326.2021,945.8828,2330.2021,941.8828" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;stroke-dasharray:2.0,2.0;" x1="1860.9868" x2="2332.2021" y1="941.8828" y2="941.8828" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18.0908" x="1867.9868" y="936.8169">12</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="426.1245" x="1890.0776" y="936.8169">valid token + requesting_URA + USER{name,userRole,identifier}</text></g><g class="message" data-participant-1="PEP" data-participant-2="PEP"><line style="stroke:#181818;stroke-width:1;" x1="2348.2021" x2="2390.2021" y1="986.1484" y2="986.1484" /><line style="stroke:#181818;stroke-width:1;" x1="2390.2021" x2="2390.2021" y1="986.1484" y2="999.1484" /><line style="stroke:#181818;stroke-width:1;" x1="2349.2021" x2="2390.2021" y1="999.1484" y2="999.1484" /><polygon fill="#181818" points="2359.2021,995.1484,2349.2021,999.1484,2359.2021,1003.1484,2355.2021,999.1484" style="stroke:#181818;stroke-width:1;" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18.0908" x="2355.2021" y="973.5161">13</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="87.0708" x="2377.293" y="965.9497">Authorization</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="616.5986" x="2377.293" y="981.0825">(Legal basis to be determined by use case, e.g. patient consent and/or treatment relationship)</text></g><g class="message" data-participant-1="PEP" data-participant-2="Fhir"><polygon fill="#181818" points="2998.8916,1024.2813,3008.8916,1028.2813,2998.8916,1032.2813,3002.8916,1028.2813" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="2348.2021" x2="3004.8916" y1="1028.2813" y2="1028.2813" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18.0908" x="2355.2021" y="1023.2153">14</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="165.147" x="2377.293" y="1023.2153">POST /fhir/Patient?search</text></g><g class="message" data-participant-1="Fhir" data-participant-2="PEP"><polygon fill="#181818" points="2359.2021,1053.4141,2349.2021,1057.4141,2359.2021,1061.4141,2355.2021,1057.4141" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;stroke-dasharray:2.0,2.0;" x1="2353.2021" x2="3014.8916" y1="1057.4141" y2="1057.4141" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18.0908" x="2365.2021" y="1052.3481">15</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="252.9033" x="2387.293" y="1052.3481">: Patient Fhir resource (with patient-id)</text></g><g class="message" data-participant-1="PEP" data-participant-2="req"><polygon fill="#181818" points="413.563,1082.5469,403.563,1086.5469,413.563,1090.5469,409.563,1086.5469" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;stroke-dasharray:2.0,2.0;" x1="407.563" x2="2342.2021" y1="1086.5469" y2="1086.5469" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18.0908" x="419.563" y="1081.481">16</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="252.9033" x="441.6538" y="1081.481">: Patient Fhir resource (with patient-id)</text></g><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1;" width="3066.1772" x="0" y="1140.1133" /><line style="stroke:#000000;stroke-width:1;" x1="0" x2="3066.1772" y1="1140.1133" y2="1140.1133" /><line style="stroke:#000000;stroke-width:1;" x1="0" x2="3066.1772" y1="1143.1133" y2="1143.1133" /><rect fill="#EEEEEE" height="23.1328" style="stroke:#000000;stroke-width:2;" width="201.0464" x="1432.5654" y="1129.5469" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="182.5205" x="1438.5654" y="1145.6138">Retrieve other resources</text><path d="M407,1167.6797 L407,1207.6797 L1135,1207.6797 L1135,1177.6797 L1125,1167.6797 L407,1167.6797" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><path d="M1125,1167.6797 L1125,1177.6797 L1135,1177.6797 L1125,1167.6797" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="707.0273" x="413" y="1184.7466">- Other resources are gathered based on internal patient-id of data holder organisation (received in step 16)</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="401.4639" x="413" y="1199.8794">- access token received in step 9 can be reused in loop below</text><path d="M369.2598,1219.9453 L445.8838,1219.9453 L445.8838,1227.0781 L435.8838,1237.0781 L369.2598,1237.0781 L369.2598,1219.9453" fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;" /><rect fill="none" height="264.3281" style="stroke:#000000;stroke-width:1.5;" width="2676.9175" x="369.2598" y="1219.9453" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31.624" x="384.2598" y="1233.0122">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="216.063" x="460.8838" y="1232.1558">[For each resource except Patient]</text><g class="message" data-participant-1="req" data-participant-2="PEP"><polygon fill="#181818" points="2326.2021,1254.2109,2336.2021,1258.2109,2326.2021,1262.2109,2330.2021,1258.2109" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="402.563" x2="2332.2021" y1="1258.2109" y2="1258.2109" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18.0908" x="409.563" y="1253.145">17</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="277.6465" x="431.6538" y="1253.145">GET /fhir/{resource}?patient={patient-id}</text></g><g class="message" data-participant-1="PEP" data-participant-2="cn"><polygon fill="#181818" points="1876.9868,1298.4766,1866.9868,1302.4766,1876.9868,1306.4766,1872.9868,1302.4766" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="1870.9868" x2="2337.2021" y1="1302.4766" y2="1302.4766" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18.0908" x="1882.9868" y="1289.8442">18</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="154.4004" x="1905.0776" y="1282.2778">introspect access token</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="302.0469" x="1905.0776" y="1297.4106">POST /internal/auth/v2/accesstoken/introspect</text></g><g class="message" data-participant-1="cn" data-participant-2="PEP"><polygon fill="#181818" points="2326.2021,1327.6094,2336.2021,1331.6094,2326.2021,1335.6094,2330.2021,1331.6094" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;stroke-dasharray:2.0,2.0;" x1="1860.9868" x2="2332.2021" y1="1331.6094" y2="1331.6094" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18.0908" x="1867.9868" y="1326.5435">19</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="426.1245" x="1890.0776" y="1326.5435">valid token + requesting_URA + USER{name,userRole,identifier}</text></g><g class="message" data-participant-1="PEP" data-participant-2="PEP"><line style="stroke:#181818;stroke-width:1;" x1="2348.2021" x2="2390.2021" y1="1375.875" y2="1375.875" /><line style="stroke:#181818;stroke-width:1;" x1="2390.2021" x2="2390.2021" y1="1375.875" y2="1388.875" /><line style="stroke:#181818;stroke-width:1;" x1="2349.2021" x2="2390.2021" y1="1388.875" y2="1388.875" /><polygon fill="#181818" points="2359.2021,1384.875,2349.2021,1388.875,2359.2021,1392.875,2355.2021,1388.875" style="stroke:#181818;stroke-width:1;" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18.0908" x="2355.2021" y="1363.2427">20</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="87.0708" x="2377.293" y="1355.6763">Authorization</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="616.5986" x="2377.293" y="1370.8091">(Legal basis to be determined by use case, e.g. patient consent and/or treatment relationship)</text></g><g class="message" data-participant-1="PEP" data-participant-2="Fhir"><polygon fill="#181818" points="2998.8916,1414.0078,3008.8916,1418.0078,2998.8916,1422.0078,3002.8916,1418.0078" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="2348.2021" x2="3004.8916" y1="1418.0078" y2="1418.0078" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18.0908" x="2355.2021" y="1412.9419">21</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="277.6465" x="2377.293" y="1412.9419">GET /fhir/{resource}?patient={patient-id}</text></g><g class="message" data-participant-1="Fhir" data-participant-2="PEP"><polygon fill="#181818" points="2359.2021,1443.1406,2349.2021,1447.1406,2359.2021,1451.1406,2355.2021,1447.1406" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;stroke-dasharray:2.0,2.0;" x1="2353.2021" x2="3014.8916" y1="1447.1406" y2="1447.1406" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18.0908" x="2365.2021" y="1442.0747">22</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="94.1167" x="2387.293" y="1442.0747">: Fhir resource</text></g><g class="message" data-participant-1="PEP" data-participant-2="req"><polygon fill="#181818" points="413.563,1472.2734,403.563,1476.2734,413.563,1480.2734,409.563,1476.2734" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;stroke-dasharray:2.0,2.0;" x1="407.563" x2="2342.2021" y1="1476.2734" y2="1476.2734" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18.0908" x="419.563" y="1471.2075">23</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="97.8047" x="441.6538" y="1471.2075">: Fhir Resource</text></g><rect fill="#EEEEEE" height="3" style="stroke:#EEEEEE;stroke-width:1;" width="3066.1772" x="0" y="1518.8398" /><line style="stroke:#000000;stroke-width:1;" x1="0" x2="3066.1772" y1="1518.8398" y2="1518.8398" /><line style="stroke:#000000;stroke-width:1;" x1="0" x2="3066.1772" y1="1521.8398" y2="1521.8398" /><rect fill="#EEEEEE" height="23.1328" style="stroke:#000000;stroke-width:2;" width="431.7202" x="1317.2285" y="1508.2734" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="417.7202" x="1323.2285" y="1524.3403">Data user XIS displays data received from data holder(s)</text><g class="message" data-participant-1="req" data-participant-2="User"><polygon fill="#181818" points="122.1011,1558.5391,112.1011,1562.5391,122.1011,1566.5391,118.1011,1562.5391" style="stroke:#181818;stroke-width:1;" /><line style="stroke:#181818;stroke-width:1;" x1="116.1011" x2="396.563" y1="1562.5391" y2="1562.5391" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18.0908" x="128.1011" y="1557.4731">24</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="235.3711" x="150.1919" y="1557.4731">Display external Patient information</text></g></g></svg></div>
+<p><br clear="all" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Remarks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Local login</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>XIS creates user sessions and stores the user info needed for the NutsEmployeeCredential (step 7)</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Search data holder organisation by URA-identifier</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Include NutsEmployeeCredential, example request below</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>See <a href="https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/vol3.html#patient-context">section Patient Context in Volume 3</a> for more details</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="step-7-details">Step 7 details</h4>
+
+<p>The body of the request <strong>MUST</strong> contain a NutsEmployeeCredential CredentialSubject:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST &lt;internal Nuts interface&gt;/internal/auth/v2/&lt;subjectID&gt;/request-service-access-token
+Content-Type: application/json
+
+{
+  "authorization_server": "&lt;authorization_server_url&gt;",
+  "scope": "&lt;use-case-identfiier&gt;",
+  "credentials": [
+    {
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        "https://nuts.nl/credentials/v1"
+      ],
+      "type": ["VerifiableCredential", "NutsEmployeeCredential"],
+      "credentialSubject": {
+        "name": "John Doe",
+        "roleName": "Nurse",
+        "identifier": "123456"
+      }
+    }
+  ]
+}
+</code></pre></div></div>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.actiz.nl">Stichting ActiZ</a>.  Package fhir.nl.zorginzage#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 27, 2026 15:50+0000">2026-10-27</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+
