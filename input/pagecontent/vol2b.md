@@ -46,7 +46,7 @@ Number | Remarks
 7 | Include NutsEmployeeCredential, example request below
 8 |
 9 |
-10| See [section Patient Context in Volume 3](https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/vol3.html#patient-context) for more details
+10| See [section Patient Context in Volume 3](vol3.html#patient-context) for more details
 11|
 12|
 13|
