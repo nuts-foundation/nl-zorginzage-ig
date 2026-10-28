@@ -428,9 +428,21 @@ in ["Implementatiehandleiding_OpenGesloten"](https://vzvz.atlassian.net/wiki/spa
 
 #### Rationale
 
-- National specifications for network security, commonly referred to as "Veilig Netwerk" are not yet finalized.
-- The current concept version of the national specifications prescribes the use of PKIoverheid-certificates
-- PKIoverheid-certificates are already widely in use by vendors
+- The national agreement on network security ("Veilig Netwerk") is published in the register of the Twiin Landelijk
+  afsprakenstelsel as TW-LA-TA-001 "Netwerkbeveiliging (mTLS 1.3)", version 1.0 of 2026-04-09. This version of the
+  specification refers to it for information only and does not adopt it.
+- Differences with the conformance rules above: TW-LA-TA-001 requires TLS 1.3 only, requires revocation checking via
+  CRL or OCSP at least every hour, and does not distinguish test environments.
+- The national agreement prescribes the use of PKIoverheid-certificates.
+- PKIoverheid-certificates are already widely in use by vendors.
+
+#### References
+
+- [TW-LA-TA-001 Netwerkbeveiliging (mTLS 1.3)](https://register.twiin.nl/la/tw-la-ta-001/), version 1.0, status
+  Normatief in the register
+  (accessed 2026-10-28; the register publishes no URL per version)
+- [Twiin Afsprakenstelsel 1.5.0, 10.4.7 Network level security: mTLS 1.3](https://afsprakenstelsel.twiin.nl/normatief/ta150/10-2-10-netwerk-level-security-mtls-1-3#Network-level-security:-mTLS-1.3)
+- [Twiin Afsprakenstelsel 1.5.0, PvE Netwerkbeveiliging: mTLS](https://afsprakenstelsel.twiin.nl/normatief/ta150/pve-netwerkbeveiliging#mTLS)
 
 ### Registering a new use case
 
