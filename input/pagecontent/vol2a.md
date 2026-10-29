@@ -432,9 +432,9 @@ in ["Implementatiehandleiding_OpenGesloten"](https://vzvz.atlassian.net/wiki/spa
   afsprakenstelsel as TW-LA-TA-001 "Netwerkbeveiliging (mTLS 1.3)", version 1.0 of 2026-04-09. This version of the
   specification refers to it for information only and does not adopt it.
 - Differences with the conformance rules above:
-    - <span style="color: red;">TW-LA-TA-001 requires TLS 1.3 only (not met by this specification);</span>
-    - <span style="color: red;">TW-LA-TA-001 requires revocation checking via CRL or OCSP at least every hour (not met
-      by this specification);</span>
+    - TW-LA-TA-001 requires TLS 1.3 only (<span style="color: red;">not met by this specification</span>);
+    - TW-LA-TA-001 requires revocation checking via CRL or OCSP at least every hour
+      (<span style="color: red;">not met by this specification</span>);
     - TW-LA-TA-001 does not distinguish test environments.
 - The national agreement prescribes the use of PKIoverheid-certificates.
 - PKIoverheid-certificates are already widely in use by vendors.
