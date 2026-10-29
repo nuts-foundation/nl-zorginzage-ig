@@ -431,8 +431,10 @@ in ["Implementatiehandleiding_OpenGesloten"](https://vzvz.atlassian.net/wiki/spa
 - The national agreement on network security ("Veilig Netwerk") is published in the register of the Twiin Landelijk
   afsprakenstelsel as TW-LA-TA-001 "Netwerkbeveiliging (mTLS 1.3)", version 1.0 of 2026-04-09. This version of the
   specification refers to it for information only and does not adopt it.
-- Differences with the conformance rules above: TW-LA-TA-001 requires TLS 1.3 only, requires revocation checking via
-  CRL or OCSP at least every hour, and does not distinguish test environments.
+- Differences with the conformance rules above:
+    - TW-LA-TA-001 requires TLS 1.3 only;
+    - TW-LA-TA-001 requires revocation checking via CRL or OCSP at least every hour;
+    - TW-LA-TA-001 does not distinguish test environments.
 - The national agreement prescribes the use of PKIoverheid-certificates.
 - PKIoverheid-certificates are already widely in use by vendors.
 
