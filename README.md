@@ -128,14 +128,8 @@ curl -X POST  "https://us-central1-fhir-org-starter-project.cloudfunctions.net/i
 SUSHI generates FHIR resources from the FSH files. It downloads the dependencies listed in `sushi-config.yaml`, such
 as the Dutch nl-core profiles, by itself.
 
-[Install NodeJS & Sushi](https://fshschool.org/docs/sushi/installation/):
-```
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
-sudo apt-get install -y nodejs
-sudo npm install -g npm@latest 
-sudo npm install -g fsh-sushi
-```
-now you should be able to generate fhir resources from fsh-files using
+Install Node.js and SUSHI as described in the [SUSHI installation guide](https://fshschool.org/docs/sushi/installation/).
+Then generate the FHIR resources from the FSH files with:
 ```
 sushi .
 ```
