@@ -320,7 +320,7 @@ Data users:
 - The organisation type used for consent is obtained from the HealthcareProviderRoleTypeCredential during
   authentication, not from the LRZa, because the code systems used by Mitz and the LRZa do not align.
 - This version of the specification does not implement localisation (see Localisation), so the local replica is only
-  used to find the addressing information of data holder organisations that are already known to the data user.
+  used to find the addressing information of data holder organisations that are already known to the data user organisation.
 - The Patient search is part of this specification, so this specification defines how its FHIR endpoint is found. The
   `Patient` data category and the FHIR version in `payloadMimeType` are the CSD selection criteria for this endpoint.
 
