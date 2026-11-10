@@ -68,7 +68,7 @@ This command:
 - Mounts the `ig.ini` and `sushi-config.yaml` configuration files
 - Runs the IG publisher to generate the output
 
-`make ig` runs the same command, and also mounts `build-cache/` as the IG publisher's `input-cache/`.
+`make ig` runs the same command.
 
 #### View the Results
 
