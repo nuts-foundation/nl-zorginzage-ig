@@ -47,7 +47,7 @@ First, build the Docker image that contains all necessary tools (FHIR IG Publish
 docker build . -t ig-builder
 ```
 
-This creates a Docker image named `ig-builder` with all the required dependencies.
+This creates a Docker image named `ig-builder` with all the required dependencies. `make builder` does the same.
 
 #### Run the Build
 
@@ -67,6 +67,8 @@ This command:
 - Mounts the `output/` directory where the built IG will be placed
 - Mounts the `ig.ini` and `sushi-config.yaml` configuration files
 - Runs the IG publisher to generate the output
+
+`make ig` runs the same command, and also mounts `build-cache/` as the IG publisher's `input-cache/`.
 
 #### View the Results
 
