@@ -1,5 +1,33 @@
-# nuts-knooppunt-specs
-Specifications of the Nuts Knooppunt
+# Zorginzage Implementation Guide
+
+This repository contains the source of the Zorginzage Implementation Guide (IG), a FHIR R4 implementation guide
+published by [ActiZ](https://www.actiz.nl).
+
+- Latest release: https://nuts-foundation.github.io/nl-zorginzage-ig/
+- Current development version (main): https://nuts-foundation.github.io/nl-zorginzage-ig/current/
+
+## What is Zorginzage?
+
+Zorginzage ("care insight") lets healthcare professionals view patient data that is stored at other healthcare
+organisations, in a way that is user-friendly, secure and scalable. Think of a general practitioner viewing the
+observations recorded by a home care organisation, or care providers in maternity care viewing each other's records.
+
+Zorginzage is not a use case in itself. It provides the generic building blocks that a use case needs:
+identification, authentication, addressing, localisation, authorisation, consent, network security, and the FHIR
+transactions to fetch the data. To design a use case, you build on these blocks and specify only what is particular
+to it, such as which data is exchanged, between which organisations, and under which conditions. Use cases that
+share the same building blocks don't each have to define their own, and are realised faster.
+
+The building blocks support the exchange patterns "pull" (*gericht bevragen*) and "indexed pull"
+(*geïndexeerd bevragen*), as described in the
+[Whitepaper Communicatiepatronen](https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws)
+of the Dutch Ministry of Health (VWS).
+
+Participants take on two roles: the *data holder organisation* makes its data available to other organisations, and the *data user organisation*
+views data held elsewhere. Participation is reciprocal: participants only make data available to parties that do the
+same according to this specification. The specification adopts the national generic functions of the
+Gezondheidsinformatiestelsel (GIS), such as addressing and localisation, step by step as they become ready for
+implementation.
 
 ## Local Development
 
@@ -83,7 +111,7 @@ with the tag (e.g. `v1.0.0`) as input.
 
 This FHIR IG is setup to auto-build to https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig or https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/branches/<your-branch>
 
-The build-logs of this auto-build ae published on https://chat.fhir.org/#narrow/stream/179297-committers.2Fnotification/topic/ig-build (could take 2-3 minutes after a commit to the repo)
+The build-logs of this auto-build are published on https://chat.fhir.org/#narrow/stream/179297-committers.2Fnotification/topic/ig-build (could take 2-3 minutes after a commit to the repo)
 In the ./build.log you can find the build log. Validation tests are in ./output/qa.html
 
 This IG can also be triggered manually using the FHIR Implementation Guide Auto-Builder. To trigger a build, use this curl statement (change to branchname 'main' to whatever branch you're trying to build):
@@ -92,7 +120,7 @@ curl -X POST  "https://us-central1-fhir-org-starter-project.cloudfunctions.net/i
 -H "Content-Type:application/json" \
 --data '{"ref": "refs/heads/main", "repository": {"full_name": "nuts-foundation/nl-zorginzage-ig"}}'
 
-# Generating FSH-FHIR-resources on your desktop
+## Generating FSH-FHIR-resources on your desktop
 
 If you want to generate FSH FHIR-resources based on Simplifier-FHIR-profiles (like the Dutch 'nl-core' profiles) on your local desktop, you have to [install Dotnet & Firely Terminal](https://docs.fire.ly/projects/Firely-Terminal/getting_started/InstallingFirelyTerminal.html):
 ```
