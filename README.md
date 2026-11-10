@@ -74,7 +74,7 @@ After the build completes:
 - The generated IG will be in the `output/` directory
 - Open `output/index.html` in a web browser to view the IG
 - Check `output/qa.html` for validation results and quality checks
-- Review `build.log` for detailed build information
+- The build log is printed to the console while the container runs
 
 #### Clean Output Directory
 
@@ -112,7 +112,8 @@ with the tag (e.g. `v1.0.0`) as input.
 This FHIR IG is setup to auto-build to https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig or https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/branches/<your-branch>
 
 The build-logs of this auto-build are published on https://chat.fhir.org/#narrow/stream/179297-committers.2Fnotification/topic/ig-build (could take 2-3 minutes after a commit to the repo)
-In the ./build.log you can find the build log. Validation tests are in ./output/qa.html
+The build log of a branch is at https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/branches/<your-branch>/build.log
+and its validation results are at https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/branches/<your-branch>/qa.html
 
 This IG can also be triggered manually using the FHIR Implementation Guide Auto-Builder. To trigger a build, use this curl statement (change to branchname 'main' to whatever branch you're trying to build):
 
