@@ -310,7 +310,7 @@ Data users:
 - The CSD deliberately carries no use case or trust framework information: Endpoints are registered once and are
   discoverable across trust frameworks and use cases. Whether a data holder organisation takes part in a use case
   follows from the access token request with the use case scope.
-- In Nuts use cases, access tokens are requested per healthcare provider organisation. Organisations with more than one
+- In Nuts use cases, access tokens are requested per Data holder organisation (begin a healthcare provider organisation). Organisations with more than one
   `oauth-nuts` Endpoint are rare and the addressing specification has no way currently to define which authorisation
   server should be used for which endpoint.
 - An access token obtained at one authorisation server is not necessarily accepted by a resource server associated
