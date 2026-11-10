@@ -36,8 +36,7 @@ implementation.
 You can build and test the Implementation Guide locally using Docker. This is useful for development and testing before pushing changes.
 
 #### Prerequisites
-- Docker installed on your system
-- All source files in the `input/` directory
+- Docker installed and running on your system
 
 #### Build the Docker Image
 
@@ -111,19 +110,21 @@ with the tag (e.g. `v1.0.0`) as input.
 
 ## FHIR Implementation Guide Auto-Builder
 
-This FHIR IG is setup to auto-build to https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig or https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/branches/<your-branch>
+This FHIR IG is set up to auto-build to https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig or https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/branches/<your-branch>
 
-The build-logs of this auto-build are published on https://chat.fhir.org/#narrow/stream/179297-committers.2Fnotification/topic/ig-build (could take 2-3 minutes after a commit to the repo)
+Notifications of these builds are posted on https://chat.fhir.org/#narrow/stream/179297-committers.2Fnotification/topic/ig-build (this can take 2-3 minutes after a commit to the repo).
 The build log of a branch is at https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/branches/<your-branch>/build.log
 and its validation results are at https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/branches/<your-branch>/qa.html
 
-This IG can also be triggered manually using the FHIR Implementation Guide Auto-Builder. To trigger a build, use this curl statement (change to branchname 'main' to whatever branch you're trying to build):
+You can also trigger a build manually. Use this curl command, and change the branch name `main` to the branch you want to build:
 
-curl -X POST  "https://us-central1-fhir-org-starter-project.cloudfunctions.net/ig-commit-trigger" \
--H "Content-Type:application/json" \
---data '{"ref": "refs/heads/main", "repository": {"full_name": "nuts-foundation/nl-zorginzage-ig"}}'
+```bash
+curl -X POST "https://us-central1-fhir-org-starter-project.cloudfunctions.net/ig-commit-trigger" \
+  -H "Content-Type:application/json" \
+  --data '{"ref": "refs/heads/main", "repository": {"full_name": "nuts-foundation/nl-zorginzage-ig"}}'
+```
 
-## Generating FSH-FHIR-resources on your desktop
+## Generating FHIR resources from FSH on your desktop
 
 SUSHI generates FHIR resources from the FSH files. It downloads the dependencies listed in `sushi-config.yaml`, such
 as the Dutch nl-core profiles, by itself.
