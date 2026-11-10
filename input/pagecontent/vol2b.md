@@ -94,7 +94,7 @@ Content-Type: application/json
 
 **Status: trial-use.** This sequence shows the pull scenario when the data user uses the generic function addressing,
 as described in Volume 2a, section "Addressing via the generic function Care Service Directory (trial-use)". Steps
-that are the same as in the pull scenario above are not described again. How data holders publish their addressing
+that are the same as in the pull scenario above are not described again. How data holder organisations publish their addressing
 information in the LRZa is described in [CSD Use Case #1](https://minvws.github.io/generiekefuncties-docs/en/csd.html#use-case-1-admin-registers-affiliation-service-provider-publishes-resources).
 
 <div width="90%" style="width: 90vw;">{% include sequence-diagram-pull-csd.svg %}</div>
