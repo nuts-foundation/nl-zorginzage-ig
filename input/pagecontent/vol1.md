@@ -151,16 +151,13 @@ Voor verwijzingen vanuit deze specificatie naar andere specificaties geldt:
 
 - Normatieve verwijzingen, zoals naar de generieke functies van VWS, Nuts RFC's, IHE-profielen, Mitz en het
   afsprakenstelsel van Twiin, verwijzen naar een vaste versie en noemen het versienummer. Publiceert de bron versies
-  onder een eigen URL, dan verwijst deze specificatie naar die URL.
+  onder een eigen URL, zoals de generieke functies van VWS op https://fhir.generiekefuncties.nl, dan verwijst deze
+  specificatie naar die URL.
 - Publiceert de bron geen vaste versie, zoals bij een wiki, dan vermeldt de verwijzing de datum van raadpleging.
 - Informatieve verwijzingen, zoals naar Wikipedia, begrippenlijsten of tools, mogen naar de actuele versie verwijzen.
 - Verwijzingen binnen deze specificatie zijn relatief, zodat elke gepubliceerde versie naar haar eigen onderdelen
   verwijst.
 - De eigenaar van de specificatie controleert de uitgaande verwijzingen bij elke release.
-
-Sommige specificaties, zoals de generieke functies van VWS, publiceren hun versies alleen op build.fhir.org. Builds
-daar worden na 90 dagen zonder activiteit verwijderd. Deze specificatie verwijst naar zo'n versie met het
-versienummer in de URL en in de tekst, maar de beschikbaarheid van de build ligt bij de eigenaar van die specificatie.
 
 #### Besluitvorming
 
