@@ -46,7 +46,7 @@ POST {fhir_base}/Patient/_search
 
 Header: Content-Type = x-www-form-urlencoded
 
-Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
+Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}&_elements=id
 
 ```
 

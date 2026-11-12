@@ -44,13 +44,14 @@ Rationale
 
 ##### HealthcareProviderRoleType
 
-Healthcare organisations use a HealthcareProviderRoleType attribute to express which type(s) of healthcare organisations they are.
+Healthcare organisations use a HealthcareProviderRoleType attribute to express which type of healthcare organisation they are. Although an organisation can fulfil multiple roles in practice, an organisation uses exactly one HealthcareProviderRoleType within one use case.
 
 Rationale
 
 * In indexed pull scenarios, OTV-consents (online toestemmingsvoorziening, Mitz) are relevant. The use of OTV-consents requires uniform communication of the type of healthcare organisation of both data user organisation and data holder organisation.
 * The type of healthcare organisation is a useful attribute in authorisation and localisation processes.
 * The HealthcareProviderRoleType is self-issued by each healthcare organisation. No trusted third party issuer is active at the moment.
+* The Nuts Discovery Service cannot select a specific credential when multiple credentials of the same type match, so an organisation can present only one HealthcareProviderRoleTypeCredential per use case.
 
 #### Vendor organisations
 
@@ -87,7 +88,7 @@ Organisation- and professional-level authentication is performed via the standar
 
 * Vendor organisations on both sides hold a PKIoverheid certificate suitable for mTLS (see Network Security).
 * The data user has a UZI server certificate (containing the URA) and has issued the corresponding X500Credential by following [this manual](https://wiki.nuts.nl/books/implementing-a-nuts-use-case/page/2-issue-x509credential).
-* The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type(s).
+* The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type.
 * The data user operates a Nuts node with a did:web identifier and an equivalent set of credentials.
 * The data holder has loaded the applicable Nuts policy its Nuts Node.
 
@@ -108,10 +109,11 @@ Vendor organisation authentication is performed at the transport layer through m
 #### Conformance
 
 * Data users **MUST** authenticate the URA using an [X509Credential derived from a UZI server certificate](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-X509Credential.html) servercertificate, in line with Nuts RFC023.
-* Data users **MUST** present a self-issued [HealthcareProviderRoleTypeCredential](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-HealthcareProviderRoleTypeCredential.html) expressing their organisation type(s).
+* Data users **MUST** present a self-issued [HealthcareProviderRoleTypeCredential](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-HealthcareProviderRoleTypeCredential.html) expressing their organisation type.
 * Data users **MUST** federate healthcare professional identity using a NutsEmployeeCredential.
 * Nuts nodes **MUST** follow the standard did:web-based access token, introspect, and jwt-based data request flows as specified in volume 2b.
 * Vendor organisations **MUST** authenticate connections using mTLS as specified in Network Security.
+* The credentials above are the minimum set. A use case **MAY** require additional credentials in its specification (discovery service presentation definition).
 
 #### Rationale
 
@@ -141,7 +143,7 @@ Practically addressing is used to register and find the FHIR base URL and author
 * The data holder organisation has a UZI server certificate and the URA contained in it.
 * The data holder operates a Nuts node that has registered with the Nuts Discovery Service hosted by Actiz, presenting: 
 * an **X509Credential** carrying the URA presented as `organization_ura` (per Nuts RFC023);
-* a self-issued **HealthcareProviderRoleTypeCredential** stating its organisation type(s);
+* a self-issued **HealthcareProviderRoleTypeCredential** stating its organisation type, presented as `organization_facility_type`;
 * a **DiscoveryRegistrationCredential** carrying the `fhir_base_url` and `authorization_server_url` of the data holder.
  
 * The data user operates a Nuts node configured to consume the same discovery service and use case.
@@ -155,7 +157,7 @@ Practically addressing is used to register and find the FHIR base URL and author
 
 #### Interaction
 
-See the pull sequence diagram, step 3 (`GET /internal/discovery/v1/{serviceID}`) and the accompanying note: the data user's Nuts node returns the matching organisations and their addressing information. Searches can be performed by organisation URA, organisation type, and use case; the exact filtering strategy is left to the implementer (return everything for the user to pick, or filter on URA / role type inside the Nuts node).
+See the pull sequence diagram, step 3, and the accompanying note: the data user's Nuts node returns the matching organisations and their addressing information. The call shown there (`GET /internal/discovery/v1/{serviceID}`) is an internal API of the Nuts node reference implementation and is non-normative; any system that supports the Nuts discovery protocol may be used. Searches can be performed by organisation URA, organisation type, and use case; the exact filtering strategy is left to the implementer (return everything for the user to pick, or filter on URA / role type inside the Nuts node).
 
 Registration is covered in a separate sequence diagram outside the common request flow `sequence-diagram-disco.plantuml`.
 
@@ -169,6 +171,7 @@ Registration is covered in a separate sequence diagram outside the common reques
  
 * Data holders **MUST** publish the above fields during registration.
 * Data holders **MUST** present a valid X509Credential derived from a UZI server certificate and a self-issued HealthcareProviderRoleTypeCredential at registration.
+* The fields and credentials above are the minimum set. A use case **MAY** require additional fields or credentials in its discovery service presentation definition.
 * Data users **SHOULD** resolve endpoints through the discovery service rather than hard-coding them.
 * Data users **MAY NOT** use discovery service for localization or BSN broadcasting
 
@@ -208,9 +211,11 @@ POST {fhir_base}/Patient/_search
 
 Header: Content-Type = x-www-form-urlencoded
 
-Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
+Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}&_elements=id
 
 ```
+
+* The data user **MAY** add the `_elements=id` parameter to the patient search, so that only the technical identifier of the patient is returned. The data holder **SHOULD** support the `_elements` parameter.
 
 ### Authorisation
 
@@ -295,10 +300,10 @@ The consent check is performed by the data holder as part of authorising an inco
 
 #### Conformance
 
-The data holder can use one or more of the following attributes for the consent check:
+The data holder can use one or more of the following attributes for the consent check. The attributes of the data user organisation are established during authentication (see Authentication):
 
-* URA of data user organisation — sourced from the X509Credential based on UZI server certificate. Required for OTV-consent.
-* Organisation type of data user organisation— sourced from the HealthcareProviderRoleTypeCredential. Required for OTV-consent.
+* URA of data user organisation. Required for OTV-consent.
+* Organisation type of data user organisation. Required for OTV-consent.
 * URA of data holder organisation. Required for OTV-consent.
 * Organisation type of data holder organisation. Required for OTV-consent.
 * BSN of client/patient — sourced from the incoming FHIR query or other patient context. Required for OTV-consent.
@@ -329,6 +334,8 @@ A complete use case contains:
 * The Nuts policy
 * An authorisation policy
 * Discover service presentation definition
+* A use case specification (e.g. an implementation guide) that specifies the relevant data set (see volume 3)
+* A FHIR CapabilityStatement that the authorisation policy evaluates requests against (see Authorisation)
 
 Use cases are scoped to a version of this implementation guide and reviewed by Actiz.
 

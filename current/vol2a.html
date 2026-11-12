@@ -303,8 +303,9 @@ CPS: see <a href="https://www.uziregister.nl/over-het-register/certificeringsbel
 
 <h5 id="healthcareproviderroletype">HealthcareProviderRoleType</h5>
 
-<p>Healthcare organisations use a HealthcareProviderRoleType attribute to express which type(s) of healthcare organisations
-they are.</p>
+<p>Healthcare organisations use a HealthcareProviderRoleType attribute to express which type of healthcare organisation
+they are. Although an organisation can fulfil multiple roles in practice, an organisation uses exactly one
+HealthcareProviderRoleType within one use case.</p>
 
 <p>Rationale</p>
 
@@ -315,6 +316,8 @@ organisation.</li>
   <li>The type of healthcare organisation is a useful attribute in authorisation and localisation processes.</li>
   <li>The HealthcareProviderRoleType is self-issued by each healthcare organisation. No trusted third party issuer is active
 at the moment.</li>
+  <li>The Nuts Discovery Service cannot select a specific credential when multiple credentials of the same type match, so
+an organisation can present only one HealthcareProviderRoleTypeCredential per use case.</li>
 </ul>
 
 <h4 id="vendor-organisations">Vendor organisations</h4>
@@ -366,7 +369,7 @@ organisation.</li>
   <li>Vendor organisations on both sides hold a PKIoverheid certificate suitable for mTLS (see Network Security).</li>
   <li>The data user has a UZI server certificate (containing the URA) and has issued the corresponding X500Credential by
 following <a href="https://wiki.nuts.nl/books/implementing-a-nuts-use-case/page/2-issue-x509credential">this manual</a>.</li>
-  <li>The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type(s).</li>
+  <li>The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type.</li>
   <li>The data user operates a Nuts node with a did:web identifier and an equivalent set of credentials.</li>
   <li>The data holder has loaded the applicable Nuts policy its Nuts Node.</li>
 </ul>
@@ -399,11 +402,12 @@ the data holder receives the verified professional identity attributes alongside
   <li>Data users <strong>MUST</strong> authenticate the URA using an <a href="https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-X509Credential.html">X509Credential derived from a UZI server certificate</a> 
 servercertificate, in line with Nuts RFC023.</li>
   <li>Data users <strong>MUST</strong> present a self-issued <a href="https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-HealthcareProviderRoleTypeCredential.html">HealthcareProviderRoleTypeCredential</a> expressing their
-organisation type(s).</li>
+organisation type.</li>
   <li>Data users <strong>MUST</strong> federate healthcare professional identity using a NutsEmployeeCredential.</li>
   <li>Nuts nodes <strong>MUST</strong> follow the standard did:web-based access token, introspect, and jwt-based data request flows as
 specified in volume 2b.</li>
   <li>Vendor organisations <strong>MUST</strong> authenticate connections using mTLS as specified in Network Security.</li>
+  <li>The credentials above are the minimum set. A use case <strong>MAY</strong> require additional credentials in its specification (discovery service presentation definition).</li>
 </ul>
 
 <h4 id="rationale">Rationale</h4>
@@ -448,7 +452,8 @@ during a data exchange. All other described functions depend on this addressing 
   <li>The data holder operates a Nuts node that has registered with the Nuts Discovery Service hosted by Actiz, presenting:
     <ul>
       <li>an <strong>X509Credential</strong> carrying the URA presented as <code class="language-plaintext highlighter-rouge">organization_ura</code> (per Nuts RFC023);</li>
-      <li>a self-issued <strong>HealthcareProviderRoleTypeCredential</strong> stating its organisation type(s);</li>
+      <li>a self-issued <strong>HealthcareProviderRoleTypeCredential</strong> stating its organisation type, presented as
+<code class="language-plaintext highlighter-rouge">organization_facility_type</code>;</li>
       <li>a <strong>DiscoveryRegistrationCredential</strong> carrying the <code class="language-plaintext highlighter-rouge">fhir_base_url</code> and <code class="language-plaintext highlighter-rouge">authorization_server_url</code> of the data
 holder.</li>
     </ul>
@@ -469,8 +474,10 @@ the organisation it serves.</li>
 
 <h4 id="interaction-1">Interaction</h4>
 
-<p>See the pull sequence diagram, step 3 (<code class="language-plaintext highlighter-rouge">GET /internal/discovery/v1/{serviceID}</code>) and the accompanying note: the data
-user's Nuts node returns the matching organisations and their addressing information. Searches can be performed by
+<p>See the pull sequence diagram, step 3, and the accompanying note: the data user's Nuts node returns the matching
+organisations and their addressing information. The call shown there (<code class="language-plaintext highlighter-rouge">GET /internal/discovery/v1/{serviceID}</code>) is an
+internal API of the Nuts node reference implementation and is non-normative; any system that supports the Nuts
+discovery protocol may be used. Searches can be performed by
 organisation URA, organisation type, and use case; the exact filtering strategy is left to the implementer (return
 everything for the user to pick, or filter on URA / role type inside the Nuts node).</p>
 
@@ -491,6 +498,8 @@ everything for the user to pick, or filter on URA / role type inside the Nuts no
   <li>Data holders <strong>MUST</strong> publish the above fields during registration.</li>
   <li>Data holders <strong>MUST</strong> present a valid X509Credential derived from a UZI server certificate and a self-issued
 HealthcareProviderRoleTypeCredential at registration.</li>
+  <li>The fields and credentials above are the minimum set. A use case <strong>MAY</strong> require additional fields or credentials in
+its discovery service presentation definition.</li>
   <li>Data users <strong>SHOULD</strong> resolve endpoints through the discovery service rather than hard-coding them.</li>
   <li>Data users <strong>MAY NOT</strong> use discovery service for localization or BSN broadcasting</li>
 </ul>
@@ -545,8 +554,13 @@ data holder's internal technical identifier for the patient:</li>
 
 Header: Content-Type = x-www-form-urlencoded
 
-Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
+Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}&amp;_elements=id
 </code></pre></div></div>
+
+<ul>
+  <li>The data user <strong>MAY</strong> add the <code class="language-plaintext highlighter-rouge">_elements=id</code> parameter to the patient search, so that only the technical identifier
+of the patient is returned. The data holder <strong>SHOULD</strong> support the <code class="language-plaintext highlighter-rouge">_elements</code> parameter.</li>
+</ul>
 
 <h3 id="authorisation">Authorisation</h3>
 
@@ -677,11 +691,12 @@ consent mechanism (explicit local, explicit OTV, or implicit) is left to the dat
 
 <h4 id="conformance-4">Conformance</h4>
 
-<p>The data holder can use one or more of the following attributes for the consent check:</p>
+<p>The data holder can use one or more of the following attributes for the consent check. The attributes of the data user
+organisation are established during authentication (see Authentication):</p>
 
 <ul>
-  <li>URA of data user organisation — sourced from the X509Credential based on UZI server certificate. Required for OTV-consent.</li>
-  <li>Organisation type of data user organisation— sourced from the HealthcareProviderRoleTypeCredential. Required for OTV-consent.</li>
+  <li>URA of data user organisation. Required for OTV-consent.</li>
+  <li>Organisation type of data user organisation. Required for OTV-consent.</li>
   <li>URA of data holder organisation. Required for OTV-consent.</li>
   <li>Organisation type of data holder organisation. Required for OTV-consent.</li>
   <li>BSN of client/patient — sourced from the incoming FHIR query or other patient context. Required for OTV-consent.</li>
@@ -722,6 +737,8 @@ the <a href="https://github.com/nuts-foundation/nl-zorginzage-resources">nl-zorg
   <li>The Nuts policy</li>
   <li>An authorisation policy</li>
   <li>Discover service presentation definition</li>
+  <li>A use case specification (e.g. an implementation guide) that specifies the relevant data set (see volume 3)</li>
+  <li>A FHIR CapabilityStatement that the authorisation policy evaluates requests against (see Authorisation)</li>
 </ul>
 
 <p>Use cases are scoped to a version of this implementation guide and reviewed by Actiz.</p>
@@ -745,7 +762,7 @@ the <a href="https://github.com/nuts-foundation/nl-zorginzage-resources">nl-zorg
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.actiz.nl">Stichting ActiZ</a>.  Package fhir.nl.zorginzage#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Nov 12, 2026 09:34+0000">2026-11-12</span>
+          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.actiz.nl">Stichting ActiZ</a>.  Package fhir.nl.zorginzage#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Nov 12, 2026 09:42+0000">2026-11-12</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
