@@ -42,7 +42,7 @@ Rationale
 
 Healthcare organisations use a HealthcareProviderRoleType attribute to express which type of healthcare organisation
 they are. Although an organisation can fulfil multiple roles in practice, an organisation uses exactly one
-HealthcareProviderRoleType within a use case.
+HealthcareProviderRoleType within one use case.
 
 Rationale
 
