@@ -27,4 +27,4 @@ Generic: line 0, col 0, Warning - The HTML fragment 'globals-table.xhtml' is not
 /app/fsh-generated/resources/Patient-PatientExample.json: line 20, col 15, Error - Slice 'HumanName.given.extension:givenOrInitial' for extension 'http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier': a matching slice is required, but not found (from http://nictiz.nl/fhir/StructureDefinition/nl-core-NameInformation). Note that other slices are allowed in addition to this required slice (STRUCTURE)
 
 err = 5, warn = 17, info = 2, broken links = 0
-IG Publisher Version: 3.0.1
+IG Publisher Version: 3.0.3
