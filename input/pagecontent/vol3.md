@@ -10,9 +10,18 @@ Volume 3 of this specifcation describes the agreements and specifications about 
 - Read-requests are only allowed on individual resource types, excluding List-, Composition- and Bundle-resources.
 - Search-requests are only allowed on individual resource types, excluding List-, Composition- and Bundle-resources.
 
+### References
+
+- References between resources of the data holder **MUST** be literal references.
+- Literal references **MUST** be relative (e.g. `Patient/123`) and refer to resources on the same FHIR server. They
+  resolve against the `fhir_base_url` of the data holder.
+- Absolute references to resources on other FHIR servers **MUST NOT** be used, as the data user has no access token
+  for those servers.
+- A reference **MAY** contain an identifier in addition to the literal reference.
+
 ### Patient Context
 
-All queries that are performed in the context of Zorginzage are patient-specific. The data user needs to know the logical ID of the patient and include it in every query (e.g., patient=123 or subject=Patient/123). The method for obtaining the patient's logical ID is part of the Zorginzage specifcation and must take place as follows:
+All queries that are performed in the context of Zorginzage are patient-specific. The data user needs to know the logical ID of the patient and include it in every query (e.g., patient=Patient/123 or subject=Patient/123). The method for obtaining the patient's logical ID is part of the Zorginzage specifcation and must take place as follows:
 - an initial search request on the Patient endpoint using the BSN as patient identifier
   - search request must follow [IHE PDQm ITI-78](https://profiles.ihe.net/ITI/PDQm/ITI-78.html) plus the following extra agreements and specifications:
     - Search must be performed on bsn (`identifier.system` = `http://fhir.nl/fhir/NamingSystem/bsn`)
