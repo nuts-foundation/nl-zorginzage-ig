@@ -1,7 +1,7 @@
 # Zorginzage Implementation Guide
 
 This repository contains the source of the Zorginzage Implementation Guide (IG), a FHIR R4 implementation guide
-published by [ActiZ](https://www.actiz.nl).
+published by the [Nuts community](https://nuts.nl).
 
 - Latest release: https://nuts-foundation.github.io/nl-zorginzage-ig/
 - Current development version (main): https://nuts-foundation.github.io/nl-zorginzage-ig/current/
