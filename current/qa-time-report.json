@@ -1,47 +1,47 @@
 {
-  "date" : "Thu, 12 Nov, 2026 09:42:42 +0000",
+  "date" : "Thu, 12 Nov, 2026 09:47:06 +0000",
   "doco" : "For each file: start is seconds after start activity occurred. Length = milliseconds activity took",
   "files" : [{
     "name" : "/fsh-generated/resources/ImplementationGuide-fhir.nl.zorginzage.json",
     "size" : 2631,
     "processes" : [{
       "activity" : "load",
-      "start" : 36,
-      "length" : 12
+      "start" : 37,
+      "length" : 10
     },
     {
       "activity" : "checkR4R4B",
-      "start" : 37,
-      "length" : 7
+      "start" : 38,
+      "length" : 5
     },
     {
       "activity" : "generateNarratives",
-      "start" : 37,
-      "length" : 40
+      "start" : 38,
+      "length" : 32
     },
     {
       "activity" : "validate",
-      "start" : 37,
-      "length" : 3208
+      "start" : 38,
+      "length" : 2686
     },
     {
       "activity" : "generate1",
-      "start" : 40,
-      "length" : 36
+      "start" : 41,
+      "length" : 31
     },
     {
       "activity" : "generate2",
-      "start" : 43,
-      "length" : 36
+      "start" : 42,
+      "length" : 29
     },
     {
       "activity" : "generateValidationPack",
-      "start" : 46,
+      "start" : 45,
       "length" : 1
     },
     {
       "activity" : "scanExamplesForR5",
-      "start" : 48,
+      "start" : 46,
       "length" : 1
     }]
   },
@@ -50,53 +50,43 @@
     "size" : 917,
     "processes" : [{
       "activity" : "loadResources",
-      "start" : 36,
+      "start" : 37,
       "length" : 3
     },
     {
       "activity" : "load-configure",
-      "start" : 37,
+      "start" : 38,
       "length" : 2
     },
     {
       "activity" : "checkR4R4B",
-      "start" : 37,
+      "start" : 38,
       "length" : 1
     },
     {
       "activity" : "generateNarratives",
-      "start" : 37,
-      "length" : 159
+      "start" : 38,
+      "length" : 106
     },
     {
       "activity" : "validate",
       "start" : 40,
-      "length" : 64
+      "length" : 51
     },
     {
       "activity" : "generate1",
-      "start" : 40,
-      "length" : 6
+      "start" : 41,
+      "length" : 5
     },
     {
       "activity" : "generate2",
-      "start" : 43,
-      "length" : 16
-    },
-    {
-      "activity" : "generateExampleZip",
-      "start" : 46,
-      "length" : 1
+      "start" : 42,
+      "length" : 12
     }]
   },
   {
     "name" : "/fsh-generated/includes/fsh-link-references.md",
-    "size" : 45,
-    "processes" : [{
-      "activity" : "generate2",
-      "start" : 43,
-      "length" : 1
-    }]
+    "size" : 45
   },
   {
     "name" : "/fsh-generated/includes/menu.xml",
@@ -106,13 +96,8 @@
     "name" : "/input/pagecontent/vol3.md",
     "size" : 2353,
     "processes" : [{
-      "activity" : "scan",
-      "start" : 37,
-      "length" : 1
-    },
-    {
       "activity" : "generate2",
-      "start" : 43,
+      "start" : 42,
       "length" : 1
     }]
   },
@@ -121,44 +106,49 @@
     "size" : 4140,
     "processes" : [{
       "activity" : "generate2",
-      "start" : 43,
+      "start" : 42,
       "length" : 1
     }]
   },
   {
     "name" : "/input/pagecontent/history.md",
-    "size" : 542
+    "size" : 542,
+    "processes" : [{
+      "activity" : "validate",
+      "start" : 38,
+      "length" : 1
+    }]
   },
   {
     "name" : "/input/pagecontent/vol2a.md",
     "size" : 25055,
     "processes" : [{
       "activity" : "generate2",
-      "start" : 43,
-      "length" : 6
+      "start" : 42,
+      "length" : 4
     }]
   },
   {
     "name" : "/input/pagecontent/vol1.md",
-    "size" : 11532,
+    "size" : 11622,
     "processes" : [{
       "activity" : "generate2",
-      "start" : 43,
+      "start" : 42,
       "length" : 2
     }]
   },
   {
     "name" : "/input/pagecontent/index.md",
-    "size" : 943,
-    "processes" : [{
-      "activity" : "generate2",
-      "start" : 43,
-      "length" : 1
-    }]
+    "size" : 943
   },
   {
     "name" : "/template/config",
-    "size" : 0
+    "size" : 0,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 42,
+      "length" : 1
+    }]
   },
   {
     "name" : "/template/config/_config.yml",
