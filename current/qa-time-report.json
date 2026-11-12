@@ -1,52 +1,52 @@
 {
-  "date" : "Thu, 12 Nov, 2026 09:30:31 +0000",
+  "date" : "Thu, 12 Nov, 2026 09:34:25 +0000",
   "doco" : "For each file: start is seconds after start activity occurred. Length = milliseconds activity took",
   "files" : [{
     "name" : "/fsh-generated/resources/ImplementationGuide-fhir.nl.zorginzage.json",
     "size" : 2631,
     "processes" : [{
       "activity" : "load",
-      "start" : 46,
-      "length" : 15
-    },
-    {
-      "activity" : "checkR4R4B",
-      "start" : 46,
+      "start" : 36,
       "length" : 10
     },
     {
+      "activity" : "checkR4R4B",
+      "start" : 36,
+      "length" : 6
+    },
+    {
       "activity" : "generateNarratives",
-      "start" : 46,
-      "length" : 45
+      "start" : 36,
+      "length" : 38
     },
     {
       "activity" : "validate",
-      "start" : 46,
-      "length" : 4653
+      "start" : 37,
+      "length" : 3045
     },
     {
       "activity" : "scanForUsageStats",
-      "start" : 51,
+      "start" : 40,
       "length" : 1
     },
     {
       "activity" : "generate1",
-      "start" : 51,
-      "length" : 55
+      "start" : 40,
+      "length" : 38
     },
     {
       "activity" : "generate2",
-      "start" : 55,
-      "length" : 50
+      "start" : 42,
+      "length" : 37
     },
     {
       "activity" : "generateValidationPack",
-      "start" : 59,
+      "start" : 46,
       "length" : 1
     },
     {
       "activity" : "scanExamplesForR5",
-      "start" : 61,
+      "start" : 47,
       "length" : 1
     }]
   },
@@ -55,33 +55,38 @@
     "size" : 917,
     "processes" : [{
       "activity" : "loadResources",
-      "start" : 46,
-      "length" : 4
+      "start" : 36,
+      "length" : 6
     },
     {
       "activity" : "load-configure",
-      "start" : 46,
+      "start" : 36,
       "length" : 2
     },
     {
       "activity" : "generateNarratives",
-      "start" : 46,
-      "length" : 222
+      "start" : 36,
+      "length" : 217
     },
     {
       "activity" : "validate",
-      "start" : 51,
-      "length" : 77
+      "start" : 40,
+      "length" : 1
+    },
+    {
+      "activity" : "validate",
+      "start" : 40,
+      "length" : 55
     },
     {
       "activity" : "generate1",
-      "start" : 51,
-      "length" : 7
+      "start" : 40,
+      "length" : 5
     },
     {
       "activity" : "generate2",
-      "start" : 55,
-      "length" : 21
+      "start" : 42,
+      "length" : 15
     }]
   },
   {
@@ -90,20 +95,15 @@
   },
   {
     "name" : "/fsh-generated/includes/menu.xml",
-    "size" : 3776,
-    "processes" : [{
-      "activity" : "generate2",
-      "start" : 55,
-      "length" : 1
-    }]
+    "size" : 3776
   },
   {
     "name" : "/input/pagecontent/vol3.md",
     "size" : 2340,
     "processes" : [{
       "activity" : "generate2",
-      "start" : 55,
-      "length" : 1
+      "start" : 42,
+      "length" : 2
     }]
   },
   {
@@ -111,7 +111,7 @@
     "size" : 4140,
     "processes" : [{
       "activity" : "generate2",
-      "start" : 55,
+      "start" : 42,
       "length" : 1
     }]
   },
@@ -124,27 +124,22 @@
     "size" : 23746,
     "processes" : [{
       "activity" : "generate2",
-      "start" : 55,
-      "length" : 8
+      "start" : 42,
+      "length" : 5
     }]
   },
   {
     "name" : "/input/pagecontent/vol1.md",
-    "size" : 11452,
+    "size" : 11532,
     "processes" : [{
       "activity" : "generate2",
-      "start" : 55,
+      "start" : 42,
       "length" : 3
     }]
   },
   {
     "name" : "/input/pagecontent/index.md",
-    "size" : 943,
-    "processes" : [{
-      "activity" : "generate2",
-      "start" : 55,
-      "length" : 1
-    }]
+    "size" : 943
   },
   {
     "name" : "/template/config",
