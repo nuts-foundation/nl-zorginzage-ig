@@ -27,7 +27,7 @@ Deze specificatie vormt de basis voor een aantal verschillende toepassingen. Afs
 
 Toepassing | Specificatie | Opmerking
 ---------|-------------|----------
-360-graden cliëntbeeld | n.t.b. | De specificatie van deze toepassing maakt gebruik van Zorginzage 2026
+360-graden cliëntbeeld | [link](https://nuts-foundation.github.io/nl-360-ig/) | De specificatie van deze toepassing maakt gebruik van Zorginzage 2026
 Geboortezorg | [link](https://babyconnect.atlassian.net/wiki/spaces/VBC/pages/906166273/Zorgtoepassingprofiel+Geboortezorg)  | De specificatie van deze toepassing maakt nog geen gebruik van Zorginzage 2026
 Huisartsinzage | [link](https://wiki.nuts.nl/books/samenwerken-huisarts-en-thuiszorg/page/zorgtoepassing-ha-vvt-inzage-dossier-v10) | De specificatie van deze toepassing maakt nog geen gebruik van Zorginzage 2026
 PZP | [link](https://wiki.nuts.nl/books/pzp) | De specificatie van deze toepassing maakt nog geen gebruik van Zorginzage 2026
