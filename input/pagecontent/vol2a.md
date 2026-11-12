@@ -131,7 +131,7 @@ Vendor organisation authentication is performed at the transport layer through m
 - Nuts nodes **MUST** follow the standard did:web-based access token, introspect, and jwt-based data request flows as
   specified in volume 2b.
 - Vendor organisations **MUST** authenticate connections using mTLS as specified in Network Security.
-- The credentials above are the minimum set. A use case **MAY** require additional credentials in its Nuts policy.
+- The credentials above are the minimum set. A use case **MAY** require additional credentials in its specification (discovery service presentation definition).
 
 #### Rationale
 
