@@ -1,5 +1,33 @@
-# nuts-knooppunt-specs
-Specifications of the Nuts Knooppunt
+# Zorginzage Implementation Guide
+
+This repository contains the source of the Zorginzage Implementation Guide (IG), a FHIR R4 implementation guide
+published by the [Nuts community](https://nuts.nl).
+
+- Latest release: https://nuts-foundation.github.io/nl-zorginzage-ig/
+- Current development version (main): https://nuts-foundation.github.io/nl-zorginzage-ig/current/
+
+## What is Zorginzage?
+
+Zorginzage ("care insight") lets healthcare professionals view patient data that is stored at other healthcare
+organisations, in a way that is user-friendly, secure and scalable. Think of a general practitioner viewing the
+observations recorded by a home care organisation, or care providers in maternity care viewing each other's records.
+
+Zorginzage is not a use case in itself. It provides the generic building blocks that a use case needs:
+identification, authentication, addressing, localisation, authorisation, consent, network security, and the FHIR
+transactions to fetch the data. To design a use case, you build on these blocks and specify only what is particular
+to it, such as which data is exchanged, between which organisations, and under which conditions. Use cases that
+share the same building blocks don't each have to define their own, and are realised faster.
+
+The building blocks support the exchange patterns "pull" (*gericht bevragen*) and "indexed pull"
+(*geïndexeerd bevragen*), as described in the
+[Whitepaper Communicatiepatronen](https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws)
+of the Dutch Ministry of Health (VWS).
+
+Participants take on two roles: the *data holder organisation* makes its data available to other organisations, and the *data user organisation*
+views data held elsewhere. Participation is reciprocal: participants only make data available to parties that do the
+same according to this specification. The specification adopts the national generic functions of the
+Gezondheidsinformatiestelsel (GIS), such as addressing and localisation, step by step as they become ready for
+implementation.
 
 ## Local Development
 
@@ -8,8 +36,7 @@ Specifications of the Nuts Knooppunt
 You can build and test the Implementation Guide locally using Docker. This is useful for development and testing before pushing changes.
 
 #### Prerequisites
-- Docker installed on your system
-- All source files in the `input/` directory
+- Docker installed and running on your system
 
 #### Build the Docker Image
 
@@ -19,7 +46,7 @@ First, build the Docker image that contains all necessary tools (FHIR IG Publish
 docker build . -t ig-builder
 ```
 
-This creates a Docker image named `ig-builder` with all the required dependencies.
+This creates a Docker image named `ig-builder` with all the required dependencies. `make builder` does the same.
 
 #### Run the Build
 
@@ -40,13 +67,15 @@ This command:
 - Mounts the `ig.ini` and `sushi-config.yaml` configuration files
 - Runs the IG publisher to generate the output
 
+`make ig` runs the same command.
+
 #### View the Results
 
 After the build completes:
 - The generated IG will be in the `output/` directory
 - Open `output/index.html` in a web browser to view the IG
 - Check `output/qa.html` for validation results and quality checks
-- Review `build.log` for detailed build information
+- The build log is printed to the console while the container runs
 
 #### Clean Output Directory
 
@@ -81,39 +110,27 @@ with the tag (e.g. `v1.0.0`) as input.
 
 ## FHIR Implementation Guide Auto-Builder
 
-This FHIR IG is setup to auto-build to https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig or https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/branches/<your-branch>
+This FHIR IG is set up to auto-build to https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig or https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/branches/<your-branch>
 
-The build-logs of this auto-build ae published on https://chat.fhir.org/#narrow/stream/179297-committers.2Fnotification/topic/ig-build (could take 2-3 minutes after a commit to the repo)
-In the ./build.log you can find the build log. Validation tests are in ./output/qa.html
+Notifications of these builds are posted on https://chat.fhir.org/#narrow/stream/179297-committers.2Fnotification/topic/ig-build (this can take 2-3 minutes after a commit to the repo).
+The build log of a branch is at https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/branches/<your-branch>/build.log
+and its validation results are at https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/branches/<your-branch>/qa.html
 
-This IG can also be triggered manually using the FHIR Implementation Guide Auto-Builder. To trigger a build, use this curl statement (change to branchname 'main' to whatever branch you're trying to build):
+You can also trigger a build manually. Use this curl command, and change the branch name `main` to the branch you want to build:
 
-curl -X POST  "https://us-central1-fhir-org-starter-project.cloudfunctions.net/ig-commit-trigger" \
--H "Content-Type:application/json" \
---data '{"ref": "refs/heads/main", "repository": {"full_name": "nuts-foundation/nl-zorginzage-ig"}}'
-
-# Generating FSH-FHIR-resources on your desktop
-
-If you want to generate FSH FHIR-resources based on Simplifier-FHIR-profiles (like the Dutch 'nl-core' profiles) on your local desktop, you have to [install Dotnet & Firely Terminal](https://docs.fire.ly/projects/Firely-Terminal/getting_started/InstallingFirelyTerminal.html):
-```
-sudo apt-get install -y dotnet-sdk-8.0
-echo 'export PATH=$PATH:~/.dotnet/tools' >> ~/.bashrc
-echo "-----reload bash configuration file"
-source ~/.bashrc
-```
-create a snapshot of the Dutch profiles using 
-```
-fhir install nictiz.fhir.nl.r4.nl-core 0.12.0-beta.1
+```bash
+curl -X POST "https://us-central1-fhir-org-starter-project.cloudfunctions.net/ig-commit-trigger" \
+  -H "Content-Type:application/json" \
+  --data '{"ref": "refs/heads/main", "repository": {"full_name": "nuts-foundation/nl-zorginzage-ig"}}'
 ```
 
-[Install NodeJS & Sushi](https://fshschool.org/docs/sushi/installation/) to generate FHIR-resource from FSH-files (it will need the snapshots you've just created):
-```
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
-sudo apt-get install -y nodejs
-sudo npm install -g npm@latest 
-sudo npm install -g fsh-sushi
-```
-now you should be able to generate fhir resources from fsh-files using
+## Generating FHIR resources from FSH on your desktop
+
+SUSHI generates FHIR resources from the FSH files. It downloads the dependencies listed in `sushi-config.yaml`, such
+as the Dutch nl-core profiles, by itself.
+
+Install Node.js and SUSHI as described in the [SUSHI installation guide](https://fshschool.org/docs/sushi/installation/).
+Then generate the FHIR resources from the FSH files with:
 ```
 sushi .
 ```
