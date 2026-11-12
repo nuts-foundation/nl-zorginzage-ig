@@ -137,7 +137,7 @@ Voor pilot-elementen geldt:
 - Een pilot-element wordt in een volgende release definitief gemaakt wanneer ten minste
   één implementatie als datagebruiker en één implementatie als datahouder in productie
   succesvol gegevens met elkaar uitwisselen en de eigenaar van de specificatie en de
-  deelnemers geen blokkerende bezwaren meer hebben.
+  deelnemers geen blokkerende bezwaren hebben.
 - Een pilot-element kan op basis van bevindingen uit de pilot worden gewijzigd of
   ingetrokken. Wijzigingen aan een pilot-element gelden niet als breaking change voor de
   versienummering van de specificatie als geheel.
