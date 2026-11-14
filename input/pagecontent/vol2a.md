@@ -173,7 +173,7 @@ during a data exchange. All other described functions depend on this addressing 
 #### Actors & responsibilities
 
 - **Discovery service operator** — hosts the Nuts Discovery Service for a use case. Zorginzage is a generic building
-  block for use cases; the operator is determined per use case and is not necessarily the owner of this specification.
+  block for use cases; the operator is determined per use case and is not necessarily the same as the owner of the use case specification.
 - **Data holder** — registers its endpoints and credentials, and keeps the registration current.
 - **Data user** — queries the discovery service for the targeted data holder.
 - **Nuts node (both sides)** — performs registration, presentation verification, and credential exchange on behalf of
