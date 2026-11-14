@@ -13,7 +13,7 @@ In short this means that fetching data globally consists of the following steps:
 
 1. Addressing: The data user finds the addresses of the FHIR- and OAuth-endpoints of each (possible) data holder.
 1. Authentication: The data user authenticates (organisation and person level)
-1. Localisation: This version of the Zorginzage-specification does not implement a localisation mechanism. Instead, the data user performs targeted querying ("gericht bevragen") at the possible data holder(s) that are already known. Maintaining this list of data holders is the responsibility of the data user and is out of scope for this specification.
+1. Localisation: This version of the Zorginzage-specification does not implement a localisation mechanism. Instead, the data user performs targeted querying ("gericht bevragen") at the possible data holder (s) that are already known. Maintaining this list of data holders is the responsibility of the data user and is out of scope for this specification.
 1. Patient search request: The data user performs a patient search at each targeted data holder, using bsn as parameter. This step verifies whether this possible data holder actually holds data about the given patient.
 1. Patient search response: When the data holder has data about the requested patient, it returns the internal technical identifier of the requested patient.
 
@@ -38,7 +38,7 @@ Healthcare organisations are identified using URA-number (UZI-Register Abonneenu
 
 Rationale
 
-* Identification of healthcare organisations by URA conforms to the national information model for health orgnizations ( Zorginformatiebouwsteen Zorgaanbieder: see [zibs.nl](https://zibs.nl/wiki/Zorgaanbieder-v3.6(2024NL)))
+* Identification of healthcare organisations by URA conforms to the national information model for health orgnizations (Zorginformatiebouwsteen Zorgaanbieder: see [zibs.nl](https://zibs.nl/wiki/Zorgaanbieder-v3.6(2024NL)))
 * The URA-number is issued by a public organization (CIBG)
 * The URA-number is cryptographically verifiable because it is contained in a PKI-certificate (UZI-servercertificaat, CPS: see [uziregister.nl](https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement))
 
@@ -87,8 +87,8 @@ Organisation- and professional-level authentication is performed via the standar
 #### Preconditions
 
 * Vendor organisations on both sides hold a PKIoverheid certificate suitable for mTLS (see Network Security).
-* The data user has a UZI server certificate (containing the URA) and has issued the corresponding X500Credential by following [this manual](https://wiki.nuts.nl/books/implementing-a-nuts-use-case/page/2-issue-x509credential).
-* The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type.
+* The data user has a UZI server certificate (containing the URA) and has issued the corresponding X500Credential by following [this manual](https://wiki.nuts.nl/books/implementing-a-nuts-v2-use-case/page/get-an-x509credential-from-a-uzi-certificate) (accessed 2026-10-28).
+* The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type .
 * The data user operates a Nuts node with a did:web identifier and an equivalent set of credentials.
 * The data holder has loaded the applicable Nuts policy its Nuts Node.
 
@@ -109,7 +109,7 @@ Vendor organisation authentication is performed at the transport layer through m
 #### Conformance
 
 * Data users **MUST** authenticate the URA using an [X509Credential derived from a UZI server certificate](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-X509Credential.html) servercertificate, in line with Nuts RFC023.
-* Data users **MUST** present a self-issued [HealthcareProviderRoleTypeCredential](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-HealthcareProviderRoleTypeCredential.html) expressing their organisation type.
+* Data users **MUST** present a self-issued [HealthcareProviderRoleTypeCredential](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-HealthcareProviderRoleTypeCredential.html) expressing their organisation type .
 * Data users **MUST** federate healthcare professional identity using a NutsEmployeeCredential.
 * Nuts nodes **MUST** follow the standard did:web-based access token, introspect, and jwt-based data request flows as specified in volume 2b.
 * Vendor organisations **MUST** authenticate connections using mTLS as specified in Network Security.
@@ -124,10 +124,10 @@ Vendor organisation authentication is performed at the transport layer through m
 
 #### References
 
-* [Nuts RFC023 — X509Credential with UZI server certificates](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023)
+* [Nuts RFC023 — X509Credential with UZI server certificates](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023) (accessed 2026-10-27)
 * [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main) · [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java/)
 * [UZI servercertificate CPS](https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement)
-* [Nuts RFC019 - Nuts Employeed Identity](https://nuts-foundation.gitbook.io/drafts/rfc/rfc019-employee-identity-means)
+* [Nuts RFC019 - Nuts Employeed Identity](https://nuts-foundation.gitbook.io/drafts/rfc/rfc019-employee-identity-means) (accessed 2026-10-27)
 * Volume 2b — Nuts process specifications and sequences
 
 ### Addressing
@@ -177,10 +177,10 @@ Registration is covered in a separate sequence diagram outside the common reques
 
 #### References
 
-* [Nuts Discovery Service — overview](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery)
-* [Nuts RFC023 — X509Credential with UZI server certificates](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023)
+* [Nuts Discovery Service — overview](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery) (accessed 2026-10-27)
+* [Nuts RFC023 — X509Credential with UZI server certificates](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023) (accessed 2026-10-27)
 * [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main) · [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java/)
-* [Nuts Service Discovery — DiscoveryRegistrationCredential](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration)
+* [Nuts Service Discovery — DiscoveryRegistrationCredential](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration) (accessed 2026-10-27)
 
 ### Localisation
 
@@ -203,7 +203,7 @@ This means the data user is responsible for maintaining its own list of healthca
 #### Conformance
 
 * The data user **MUST NOT** use the Nuts Discovery Service to broadcast a BSN across all registered data holders for a use case (see also the Addressing conformance rules).
-* The data user **MUST** resolve locally, for each patient, the specific (possible) data holder(s) it wants to query before initiating patient search.
+* The data user **MUST** resolve locally, for each patient, the specific (possible) data holder (s) it wants to query before initiating patient search.
 * The patient search at the targeted data holder is still performed using the BSN as parameter, in order to obtain the data holder's internal technical identifier for the patient:
 
 ```
@@ -309,7 +309,7 @@ The data holder can use one or more of the following attributes for the consent 
 * BSN of client/patient — sourced from the incoming FHIR query or other patient context. Required for OTV-consent.
 * A use case identifier — sourced from the authorisation scope.
 
-When a data holder wants to use OTV-consent during authorisation, it **MUST** implement the 'Gesloten Autorisatievraag' as specified in ["Implementatiehandleiding_OpenGesloten"](https://vzvz.atlassian.net/wiki/spaces/MA11/pages/828314367/Bijlage+Architectuurdocumenten).
+When a data holder wants to use OTV-consent during authorisation, it **MUST** implement the 'Gesloten Autorisatievraag' as specified in ["Implementatiehandleiding_OpenGesloten"](https://vzvz.atlassian.net/wiki/spaces/MA11/pages/828314367/Bijlage+Architectuurdocumenten) (accessed 2026-10-27).
 
 ### Network security
 

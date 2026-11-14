@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://nuts-foundation.github.io/nl-zorginzage-ig/ImplementationGuide/fhir.nl.zorginzage | *Version*:1.0.0 |
-| Active as of 2026-11-12 | *Computable Name*:NlZorginzageIG |
+| Active as of 2026-11-14 | *Computable Name*:NlZorginzageIG |
 
 ### Overview
 
@@ -41,7 +41,7 @@ Voor ondersteuning bij de interpretatie en implementatie van deze specificatie k
   "name" : "NlZorginzageIG",
   "title" : "Netherlands - Zorginzage Implementation Guide",
   "status" : "active",
-  "date" : "2026-11-12T09:47:06+00:00",
+  "date" : "2026-11-14T08:49:00+00:00",
   "publisher" : "Stichting ActiZ",
   "contact" : [{
     "name" : "Stichting ActiZ",

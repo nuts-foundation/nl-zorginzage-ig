@@ -22,7 +22,7 @@
     <ul>
       <li>
 
-          IG &copy; 2026+ Stichting ActiZ.  Package fhir.nl.zorginzage#1.0.0 based on FHIR 4.0.1. Generated 2026-11-12
+          IG &copy; 2026+ Stichting ActiZ.  Package fhir.nl.zorginzage#1.0.0 based on FHIR 4.0.1. Generated 2026-11-14
           
           
                       Links: Table of Contents |
@@ -81,7 +81,7 @@ Netherlands - Zorginzage Implementation Guide - Local Development build (v1.0.0)
 
           IG &copy; 2026+           <a style="color:var(--footer-hyperlink-text-color)" href="https://www.actiz.nl">Stichting ActiZ</a>
 .  Package fhir.nl.zorginzage#1.0.0 based on           <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>
-. Generated           <span title="Thu, Nov 12, 2026 09:47+0000">2026-11-12</span>
+. Generated           <span title="Sat, Nov 14, 2026 08:49+0000">2026-11-14</span>
 
                     <br/>
 
@@ -227,8 +227,11 @@ Deze implementatiegids Zorginzage bevat de generieke afspraken en specificaties 
           <a href="https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws">www.datavoorgezondheid.nl</a>
         </td>
         <td>
-The Zorginzage-specification describes data exchanges that use the exchange pattern "pull" or the exchange pattern "indexed pull". See           <a href="https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws">Whitepaper Communicatiepatronen</a>
- by the Ministry of Health (in Dutch).
+The Zorginzage-specification describes data exchanges that use the exchange pattern "pull" or the exchange pattern
+"indexed pull".
+See           <a href="https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws">Whitepaper Communicatiepatronen</a>
+
+by the Ministry of Health (in Dutch).
         </td>
       </tr>
       <tr>
@@ -239,8 +242,8 @@ The Zorginzage-specification describes data exchanges that use the exchange patt
           <a href="https://zibs.nl/wiki/Zorgaanbieder-v3.6(2024NL)">zibs.nl</a>
         </td>
         <td>
-Identification of healthcare organisations by URA conforms to the national information model for health orgnizations (
-Zorginformatiebouwsteen Zorgaanbieder: see           <a href="https://zibs.nl/wiki/Zorgaanbieder-v3.6(2024NL)">zibs.nl</a>
+Identification of healthcare organisations by URA conforms to the national information model for health orgnizations
+(Zorginformatiebouwsteen Zorgaanbieder: see           <a href="https://zibs.nl/wiki/Zorgaanbieder-v3.6(2024NL)">zibs.nl</a>
 )
         </td>
       </tr>
@@ -253,7 +256,8 @@ Zorginformatiebouwsteen Zorgaanbieder: see           <a href="https://zibs.nl/wi
         </td>
         <td>
 The URA-number is cryptographically verifiable because it is contained in a PKI-certificate (UZI-servercertificaat,
-CPS: see           <a href="https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement">uziregister.nl</a>
+CPS:
+see           <a href="https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement">uziregister.nl</a>
 )
         </td>
       </tr>
@@ -262,12 +266,13 @@ CPS: see           <a href="https://www.uziregister.nl/over-het-register/certifi
           <a href="vol2a.html">web</a>
         </td>
         <td>
-          <a href="https://wiki.nuts.nl/books/implementing-a-nuts-use-case/page/2-issue-x509credential">wiki.nuts.nl</a>
+          <a href="https://wiki.nuts.nl/books/implementing-a-nuts-v2-use-case/page/get-an-x509credential-from-a-uzi-certificate">wiki.nuts.nl</a>
         </td>
         <td>
 The data user has a UZI server certificate (containing the URA) and has issued the corresponding X500Credential by
-following           <a href="https://wiki.nuts.nl/books/implementing-a-nuts-use-case/page/2-issue-x509credential">this manual</a>
-.
+following           <a href="https://wiki.nuts.nl/books/implementing-a-nuts-v2-use-case/page/get-an-x509credential-from-a-uzi-certificate">this manual</a>
+
+(accessed 2026-10-28).
         </td>
       </tr>
       <tr>
@@ -279,6 +284,8 @@ following           <a href="https://wiki.nuts.nl/books/implementing-a-nuts-use-
         </td>
         <td>
           <a href="https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023">Nuts RFC023 — X509Credential with UZI server certificates</a>
+
+(accessed 2026-10-27)
         </td>
       </tr>
       <tr>
@@ -325,6 +332,8 @@ following           <a href="https://wiki.nuts.nl/books/implementing-a-nuts-use-
         </td>
         <td>
           <a href="https://nuts-foundation.gitbook.io/drafts/rfc/rfc019-employee-identity-means">Nuts RFC019 - Nuts Employeed Identity</a>
+
+(accessed 2026-10-27)
         </td>
       </tr>
       <tr>
@@ -336,6 +345,8 @@ following           <a href="https://wiki.nuts.nl/books/implementing-a-nuts-use-
         </td>
         <td>
           <a href="https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery">Nuts Discovery Service — overview</a>
+
+(accessed 2026-10-27)
         </td>
       </tr>
       <tr>
@@ -347,6 +358,8 @@ following           <a href="https://wiki.nuts.nl/books/implementing-a-nuts-use-
         </td>
         <td>
           <a href="https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration">Nuts Service Discovery — DiscoveryRegistrationCredential</a>
+
+(accessed 2026-10-27)
         </td>
       </tr>
       <tr>
@@ -357,8 +370,10 @@ following           <a href="https://wiki.nuts.nl/books/implementing-a-nuts-use-
           <a href="https://github.com/nuts-foundation/nl-zorginzage-resources">github.com</a>
         </td>
         <td>
-The applicable policies are available, version controlled in the Git repository           <a href="https://github.com/nuts-foundation/nl-zorginzage-resources">nl-zorginzage-resources</a>
- that is controlled by the Nuts Foundation.
+The applicable policies are available, version controlled in the Git
+repository           <a href="https://github.com/nuts-foundation/nl-zorginzage-resources">nl-zorginzage-resources</a>
+ that is controlled by
+the Nuts Foundation.
         </td>
       </tr>
       <tr>
@@ -371,8 +386,10 @@ The applicable policies are available, version controlled in the Git repository 
         <td>
           <strong>Policy decision point</strong>
  — evaluates the selected policy against the request input; the PDP functionality in the
-Nuts Knooppunt can be integrated with any policy enforcement point. For more info, see the           <a href="https://csrc.nist.rip/glossary/term/policy_decision_point">NIST-definition of PDP</a>
- and the           <a href="https://en.wikipedia.org/wiki/XACML">Wikipedia-page on XACML</a>
+Nuts Knooppunt can be integrated with any policy enforcement point. For more info, see
+the           <a href="https://csrc.nist.rip/glossary/term/policy_decision_point">NIST-definition of PDP</a>
+ and
+the           <a href="https://en.wikipedia.org/wiki/XACML">Wikipedia-page on XACML</a>
 .
         </td>
       </tr>
@@ -386,8 +403,10 @@ Nuts Knooppunt can be integrated with any policy enforcement point. For more inf
         <td>
           <strong>Policy decision point</strong>
  — evaluates the selected policy against the request input; the PDP functionality in the
-Nuts Knooppunt can be integrated with any policy enforcement point. For more info, see the           <a href="https://csrc.nist.rip/glossary/term/policy_decision_point">NIST-definition of PDP</a>
- and the           <a href="https://en.wikipedia.org/wiki/XACML">Wikipedia-page on XACML</a>
+Nuts Knooppunt can be integrated with any policy enforcement point. For more info, see
+the           <a href="https://csrc.nist.rip/glossary/term/policy_decision_point">NIST-definition of PDP</a>
+ and
+the           <a href="https://en.wikipedia.org/wiki/XACML">Wikipedia-page on XACML</a>
 .
         </td>
       </tr>
@@ -400,8 +419,10 @@ Nuts Knooppunt can be integrated with any policy enforcement point. For more inf
         </td>
         <td>
           <strong>Policy enforcement point</strong>
- - carries out or enforces policy decisions (made by a PDP). For more info, see the           <a href="https://csrc.nist.rip/glossary/term/pep">NIST-definition of PEP</a>
- and the           <a href="https://en.wikipedia.org/wiki/XACML">Wikipedia-page on XACML</a>
+ - carries out or enforces policy decisions (made by a PDP). For more info, see
+the           <a href="https://csrc.nist.rip/glossary/term/pep">NIST-definition of PEP</a>
+ and
+the           <a href="https://en.wikipedia.org/wiki/XACML">Wikipedia-page on XACML</a>
 .
         </td>
       </tr>
@@ -414,8 +435,10 @@ Nuts Knooppunt can be integrated with any policy enforcement point. For more inf
         </td>
         <td>
           <strong>Policy enforcement point</strong>
- - carries out or enforces policy decisions (made by a PDP). For more info, see the           <a href="https://csrc.nist.rip/glossary/term/pep">NIST-definition of PEP</a>
- and the           <a href="https://en.wikipedia.org/wiki/XACML">Wikipedia-page on XACML</a>
+ - carries out or enforces policy decisions (made by a PDP). For more info, see
+the           <a href="https://csrc.nist.rip/glossary/term/pep">NIST-definition of PEP</a>
+ and
+the           <a href="https://en.wikipedia.org/wiki/XACML">Wikipedia-page on XACML</a>
 .
         </td>
       </tr>
@@ -439,8 +462,11 @@ Nuts Knooppunt can be integrated with any policy enforcement point. For more inf
         </td>
         <td>
 When a data holder wants to use OTV-consent during authorisation, it           <strong>MUST</strong>
- implement the 'Gesloten Autorisatievraag' as specified in           <a href="https://vzvz.atlassian.net/wiki/spaces/MA11/pages/828314367/Bijlage+Architectuurdocumenten">"Implementatiehandleiding_OpenGesloten"</a>
-.
+ implement the 'Gesloten Autorisatievraag'
+as specified
+in           <a href="https://vzvz.atlassian.net/wiki/spaces/MA11/pages/828314367/Bijlage+Architectuurdocumenten">"Implementatiehandleiding_OpenGesloten"</a>
+
+(accessed 2026-10-27).
         </td>
       </tr>
       <tr>
@@ -461,10 +487,10 @@ the           <a href="https://github.com/nuts-foundation/nl-zorginzage-resource
           <a href="vol3.html">web</a>
         </td>
         <td>
-          <a href="https://profiles.ihe.net/ITI/PDQm/ITI-78.html">profiles.ihe.net</a>
+          <a href="https://profiles.ihe.net/ITI/PDQm/3.2.0/ITI-78.html">profiles.ihe.net</a>
         </td>
         <td>
-search request must follow           <a href="https://profiles.ihe.net/ITI/PDQm/ITI-78.html">IHE PDQm ITI-78</a>
+search request must follow           <a href="https://profiles.ihe.net/ITI/PDQm/3.2.0/ITI-78.html">IHE PDQm 3.2.0 ITI-78</a>
  plus the following extra agreements and specifications:
                   <ul>
 

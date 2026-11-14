@@ -251,14 +251,20 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <h3 id="exchange-patterns-pull-and-indexed-pull">Exchange patterns: pull and indexed pull</h3>
 
-<p>The Zorginzage-specification describes data exchanges that use the exchange pattern "pull" or the exchange pattern "indexed pull". See <a href="https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws">Whitepaper Communicatiepatronen</a> by the Ministry of Health (in Dutch).</p>
+<p>The Zorginzage-specification describes data exchanges that use the exchange pattern "pull" or the exchange pattern
+"indexed pull".
+See <a href="https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws">Whitepaper Communicatiepatronen</a>
+by the Ministry of Health (in Dutch).</p>
 
 <p>In short this means that fetching data globally consists of the following steps:</p>
 
 <ol>
   <li>Addressing: The data user finds the addresses of the FHIR- and OAuth-endpoints of each (possible) data holder.</li>
   <li>Authentication: The data user authenticates (organisation and person level)</li>
-  <li>Localisation: This version of the Zorginzage-specification does not implement a localisation mechanism. Instead, the data user performs targeted querying ("gericht bevragen") at the possible data holder(s) that are already known. Maintaining this list of data holders is the responsibility of the data user and is out of scope for this specification.
+  <li>Localisation: This version of the Zorginzage-specification does not implement a localisation mechanism. Instead, the
+data user performs targeted querying ("gericht bevragen") at the possible data holder (s) that are already known.
+Maintaining this list of data holders is the responsibility of the data user and is out of scope for this
+specification.
     <ol>
       <li>Patient search request: The data user performs a patient search at each targeted data holder, using bsn as
 parameter. This step verifies whether this possible data holder actually holds data about the given patient.</li>
@@ -266,10 +272,12 @@ parameter. This step verifies whether this possible data holder actually holds d
 technical identifier of the requested patient.</li>
     </ol>
   </li>
-  <li>Data request: The data user performs data requests at each targeted data holder, using the technical identifier of the requested patient as a parameter.</li>
+  <li>Data request: The data user performs data requests at each targeted data holder, using the technical identifier of
+the requested patient as a parameter.</li>
   <li>Authorisation: The data holder authorizes the incoming data request.
     <ol>
-      <li>Check consent: As part of the authorisation process, the data holder <strong>MAY</strong> check the presence of patient consent, locally or at Mitz.</li>
+      <li>Check consent: As part of the authorisation process, the data holder <strong>MAY</strong> check the presence of patient
+consent, locally or at Mitz.</li>
     </ol>
   </li>
 </ol>
@@ -294,11 +302,12 @@ technical identifier of the requested patient.</li>
 <p>Rationale</p>
 
 <ul>
-  <li>Identification of healthcare organisations by URA conforms to the national information model for health orgnizations (
-Zorginformatiebouwsteen Zorgaanbieder: see <a href="https://zibs.nl/wiki/Zorgaanbieder-v3.6(2024NL)">zibs.nl</a>)</li>
+  <li>Identification of healthcare organisations by URA conforms to the national information model for health orgnizations
+(Zorginformatiebouwsteen Zorgaanbieder: see <a href="https://zibs.nl/wiki/Zorgaanbieder-v3.6(2024NL)">zibs.nl</a>)</li>
   <li>The URA-number is issued by a public organization (CIBG)</li>
   <li>The URA-number is cryptographically verifiable because it is contained in a PKI-certificate (UZI-servercertificaat,
-CPS: see <a href="https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement">uziregister.nl</a>)</li>
+CPS:
+see <a href="https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement">uziregister.nl</a>)</li>
 </ul>
 
 <h5 id="healthcareproviderroletype">HealthcareProviderRoleType</h5>
@@ -368,8 +377,9 @@ organisation.</li>
 <ul>
   <li>Vendor organisations on both sides hold a PKIoverheid certificate suitable for mTLS (see Network Security).</li>
   <li>The data user has a UZI server certificate (containing the URA) and has issued the corresponding X500Credential by
-following <a href="https://wiki.nuts.nl/books/implementing-a-nuts-use-case/page/2-issue-x509credential">this manual</a>.</li>
-  <li>The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type.</li>
+following <a href="https://wiki.nuts.nl/books/implementing-a-nuts-v2-use-case/page/get-an-x509credential-from-a-uzi-certificate">this manual</a>
+(accessed 2026-10-28).</li>
+  <li>The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type .</li>
   <li>The data user operates a Nuts node with a did:web identifier and an equivalent set of credentials.</li>
   <li>The data holder has loaded the applicable Nuts policy its Nuts Node.</li>
 </ul>
@@ -399,10 +409,11 @@ the data holder receives the verified professional identity attributes alongside
 <h4 id="conformance">Conformance</h4>
 
 <ul>
-  <li>Data users <strong>MUST</strong> authenticate the URA using an <a href="https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-X509Credential.html">X509Credential derived from a UZI server certificate</a> 
+  <li>Data users <strong>MUST</strong> authenticate the URA using
+an <a href="https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-X509Credential.html">X509Credential derived from a UZI server certificate</a>
 servercertificate, in line with Nuts RFC023.</li>
-  <li>Data users <strong>MUST</strong> present a self-issued <a href="https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-HealthcareProviderRoleTypeCredential.html">HealthcareProviderRoleTypeCredential</a> expressing their
-organisation type.</li>
+  <li>Data users <strong>MUST</strong> present a self-issued <a href="https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-HealthcareProviderRoleTypeCredential.html">HealthcareProviderRoleTypeCredential</a>
+expressing their organisation type .</li>
   <li>Data users <strong>MUST</strong> federate healthcare professional identity using a NutsEmployeeCredential.</li>
   <li>Nuts nodes <strong>MUST</strong> follow the standard did:web-based access token, introspect, and jwt-based data request flows as
 specified in volume 2b.</li>
@@ -426,10 +437,12 @@ employee identifier with local name and role attributes is used.</li>
 <h4 id="references">References</h4>
 
 <ul>
-  <li><a href="https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023">Nuts RFC023 — X509Credential with UZI server certificates</a></li>
+  <li><a href="https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023">Nuts RFC023 — X509Credential with UZI server certificates</a>
+(accessed 2026-10-27)</li>
   <li><a href="https://github.com/nuts-foundation/go-didx509-toolkit/tree/main">go-didx509-toolkit</a> · <a href="https://github.com/nuts-foundation/uzi-did-x509-issuer-java/">Java library</a></li>
   <li><a href="https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement">UZI servercertificate CPS</a></li>
-  <li><a href="https://nuts-foundation.gitbook.io/drafts/rfc/rfc019-employee-identity-means">Nuts RFC019 - Nuts Employeed Identity</a></li>
+  <li><a href="https://nuts-foundation.gitbook.io/drafts/rfc/rfc019-employee-identity-means">Nuts RFC019 - Nuts Employeed Identity</a>
+(accessed 2026-10-27)</li>
   <li>Volume 2b — Nuts process specifications and sequences</li>
 </ul>
 
@@ -507,10 +520,13 @@ its discovery service presentation definition.</li>
 <h4 id="references-1">References</h4>
 
 <ul>
-  <li><a href="https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery">Nuts Discovery Service — overview</a></li>
-  <li><a href="https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023">Nuts RFC023 — X509Credential with UZI server certificates</a></li>
+  <li><a href="https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery">Nuts Discovery Service — overview</a>
+(accessed 2026-10-27)</li>
+  <li><a href="https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023">Nuts RFC023 — X509Credential with UZI server certificates</a>
+(accessed 2026-10-27)</li>
   <li><a href="https://github.com/nuts-foundation/go-didx509-toolkit/tree/main">go-didx509-toolkit</a> · <a href="https://github.com/nuts-foundation/uzi-did-x509-issuer-java/">Java library</a></li>
-  <li><a href="https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration">Nuts Service Discovery — DiscoveryRegistrationCredential</a></li>
+  <li><a href="https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration">Nuts Service Discovery — DiscoveryRegistrationCredential</a>
+(accessed 2026-10-27)</li>
 </ul>
 
 <h3 id="localisation">Localisation</h3>
@@ -521,10 +537,12 @@ its discovery service presentation definition.</li>
 
 <h4 id="interaction-2">Interaction</h4>
 
-<p>This version of the specification does <strong>not</strong> implement a localisation mechanism. Instead, data users perform <strong>targeted querying</strong> (
+<p>This version of the specification does <strong>not</strong> implement a localisation mechanism. Instead, data users perform
+<strong>targeted querying</strong> (
 "gericht bevragen"): the data user only queries possible data holders that are already known by the data user.</p>
 
-<p>This means the data user is responsible for maintaining its own list of healthcare providers that are possible data holder for a specific patient.
+<p>This means the data user is responsible for maintaining its own list of healthcare providers that are possible data
+holder for a specific patient.
 a treatment relation. The way in which this list is built up and kept current (e.g. patient-supplied, referral-based,
 sourced from an EHR, or otherwise) is out of scope for this specification.</p>
 
@@ -535,7 +553,8 @@ sourced from an EHR, or otherwise) is out of scope for this specification.</p>
 function will be trial ready for the next version of this specification.</li>
   <li>BSN broadcasting (sending the BSN to a wide set of possible data holders to discover where data exists) requires an
 appropriate legal basis that is not generally in place for the use cases covered by this specification.</li>
-  <li>Targeted querying avoids unnecessary BSN distribution and limits data requests to organisations already known by the data user to possible hold data about a specific patient, 
+  <li>Targeted querying avoids unnecessary BSN distribution and limits data requests to organisations already known by the
+data user to possible hold data about a specific patient,
 which is consistent with the principles of data minimisation and purpose limitation required by the GDPR.</li>
 </ul>
 
@@ -544,7 +563,8 @@ which is consistent with the principles of data minimisation and purpose limitat
 <ul>
   <li>The data user <strong>MUST NOT</strong> use the Nuts Discovery Service to broadcast a BSN across all registered data holders for a
 use case (see also the Addressing conformance rules).</li>
-  <li>The data user <strong>MUST</strong> resolve locally, for each patient, the specific (possible) data holder(s) it wants to query before initiating
+  <li>The data user <strong>MUST</strong> resolve locally, for each patient, the specific (possible) data holder (s) it wants to query
+before initiating
 patient search.</li>
   <li>The patient search at the targeted data holder is still performed using the BSN as parameter, in order to obtain the
 data holder's internal technical identifier for the patient:</li>
@@ -573,11 +593,15 @@ whether the request passes the access policies of the source (data holder).</p>
 <h4 id="preconditions-2">Preconditions</h4>
 
 <ul>
-  <li>Authentication has completed, so the data holder knows the URA and HealthcareProviderRoleType of the requesting organisation and, where applicable,
+  <li>Authentication has completed, so the data holder knows the URA and HealthcareProviderRoleType of the requesting
+organisation and, where applicable,
 the federated professional identity (see Authentication).</li>
-  <li>A use case scope is present from the authentication process; a use-case-identifier connects this scope to the corresponding access policy and
+  <li>A use case scope is present from the authentication process; a use-case-identifier connects this scope to the
+corresponding access policy and
 authentication policy.</li>
-  <li>The applicable policies are available, version controlled in the Git repository <a href="https://github.com/nuts-foundation/nl-zorginzage-resources">nl-zorginzage-resources</a> that is controlled by the Nuts Foundation.</li>
+  <li>The applicable policies are available, version controlled in the Git
+repository <a href="https://github.com/nuts-foundation/nl-zorginzage-resources">nl-zorginzage-resources</a> that is controlled by
+the Nuts Foundation.</li>
   <li>The data holder operates a policy enforcement point and has access to a policy decision point (e.g. the PDP
 functionality in the Nuts Knooppunt).</li>
 </ul>
@@ -590,14 +614,19 @@ point, and checks consent and/or treatment relation as part of the decision.</li
   <li><strong>Data user</strong> — submits data requests carrying the context required for evaluation (a.o. organisation URA, patient
 context, use case scope).</li>
   <li><strong>Policy decision point</strong> — evaluates the selected policy against the request input; the PDP functionality in the
-Nuts Knooppunt can be integrated with any policy enforcement point. For more info, see the <a href="https://csrc.nist.rip/glossary/term/policy_decision_point">NIST-definition of PDP</a> and the <a href="https://en.wikipedia.org/wiki/XACML">Wikipedia-page on XACML</a>.</li>
-  <li><strong>Policy enforcement point</strong> - carries out or enforces policy decisions (made by a PDP). For more info, see the <a href="https://csrc.nist.rip/glossary/term/pep">NIST-definition of PEP</a> and the <a href="https://en.wikipedia.org/wiki/XACML">Wikipedia-page on XACML</a>.</li>
+Nuts Knooppunt can be integrated with any policy enforcement point. For more info, see
+the <a href="https://csrc.nist.rip/glossary/term/policy_decision_point">NIST-definition of PDP</a> and
+the <a href="https://en.wikipedia.org/wiki/XACML">Wikipedia-page on XACML</a>.</li>
+  <li><strong>Policy enforcement point</strong> - carries out or enforces policy decisions (made by a PDP). For more info, see
+the <a href="https://csrc.nist.rip/glossary/term/pep">NIST-definition of PEP</a> and
+the <a href="https://en.wikipedia.org/wiki/XACML">Wikipedia-page on XACML</a>.</li>
   <li><strong>Nuts Foundation</strong> — maintains the version-controlled policies in Git.</li>
 </ul>
 
 <h4 id="interaction-3">Interaction</h4>
 
-<p>The policy is selected based on the use case scope provided by the Nuts access token as part of the authentication process. The input for evaluating the policy is a commonly agreed upon information model; the model is described in the
+<p>The policy is selected based on the use case scope provided by the Nuts access token as part of the authentication
+process. The input for evaluating the policy is a commonly agreed upon information model; the model is described in the
 <a href="https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/authorization.html">this proposal for the generic function authorisation</a>.</p>
 
 <p>Policies are expressed in a domain specific language called Rego so that everyone uses the same rulesets. Implementors
@@ -607,7 +636,8 @@ solution follows the exact same rules as specified in the Rego policy file for t
 <h4 id="conformance-3">Conformance</h4>
 
 <ul>
-  <li>The data holder organisation <strong>MUST</strong> enforce the rules as described in the commonly defined rego policy for this use case</li>
+  <li>The data holder organisation <strong>MUST</strong> enforce the rules as described in the commonly defined rego policy for this use
+case</li>
   <li>The data holder organisation <strong>MAY</strong> implement a rego-interpreter.</li>
 </ul>
 
@@ -619,22 +649,28 @@ solution follows the exact same rules as specified in the Rego policy file for t
   <li>Patient context is mandatory for accessing patient data:
     <ul>
       <li>for search interactions, either a patient id or patient bsn <strong>MUST</strong> be derivable from the query;</li>
-      <li>for read interactions, the requested resource <strong>MUST</strong> have a direct link to a patient (for example through a patient- or subject-
+      <li>for read interactions, the requested resource <strong>MUST</strong> have a direct link to a patient (for example through a
+patient- or subject-
 field).</li>
     </ul>
   </li>
-  <li>For data requests that require explicit consent, patient consent <strong>MUST</strong> be checked in a local system <strong>OR</strong> in Mitz before
+  <li>For data requests that require explicit consent, patient consent <strong>MUST</strong> be checked in a local system <strong>OR</strong> in Mitz
+before
 returning the data.</li>
-  <li>An active treatment relation between the patient that is referenced in the request and the data holder <strong>MAY</strong> be checked, optionally in the context of a specific use case.</li>
+  <li>An active treatment relation between the patient that is referenced in the request and the data holder <strong>MAY</strong> be
+checked, optionally in the context of a specific use case.</li>
 </ul>
 
 <p>For data requests in which explicit consent is not checked, one of the following is <strong>mandatory</strong>:</p>
 
 <ul>
-  <li>A legal basis <strong>MUST</strong> be present in which explicit consent is not necessary, e.g. a referral or handoff of a patient from data holder to data user.</li>
-  <li>The treatment relation of the data user organisation with the patient <strong>SHOULD</strong> be checked technically by the data holder
-organisation (e.g. using a <a href="https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-PatientEnrollmentCredential.html">PatientEnrollmentCredential</a>). This treatment relation can be scoped to a specific context
-(e.g. a use case).</li>
+  <li>A legal basis <strong>MUST</strong> be present in which explicit consent is not necessary, e.g. a referral or handoff of a patient
+from data holder to data user.</li>
+  <li>The treatment relation of the data user organisation with the patient <strong>SHOULD</strong> be checked technically by the data
+holder
+organisation (e.g. using
+a <a href="https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-PatientEnrollmentCredential.html">PatientEnrollmentCredential</a>).
+This treatment relation can be scoped to a specific context (e.g. a use case).</li>
 </ul>
 
 <p>The treatment relation of the data holder organisation with the patient <strong>MAY</strong> be checked technically by the data
@@ -675,11 +711,13 @@ are available (see Authentication).</li>
 <h4 id="actors--responsibilities-3">Actors &amp; responsibilities</h4>
 
 <ul>
-  <li><strong>Data holder</strong> — decides whether to use explicit consent, implicit consent and/or another legal basis when authorising an incoming
+  <li><strong>Data holder</strong> — decides whether to use explicit consent, implicit consent and/or another legal basis when
+authorising an incoming
 data request; when using explicit consent, decides whether to use a local consent or an OTV-consent (e.g. Mitz); when
 using implicit consent, decides how to implement it (e.g. by expressing it in a FHIR Consent resource or not); and
 performs the consent check.</li>
-  <li><strong>OTV (e.g. Mitz)</strong> — provides online consent registration that is accessible to data holders that use OTV-consent during authorisation.</li>
+  <li><strong>OTV (e.g. Mitz)</strong> — provides online consent registration that is accessible to data holders that use OTV-consent
+during authorisation.</li>
   <li><strong>Data user</strong> — supplies, through authentication and the FHIR query, the attributes the data holder uses for the
 consent check.</li>
 </ul>
@@ -703,7 +741,10 @@ organisation are established during authentication (see Authentication):</p>
   <li>A use case identifier — sourced from the authorisation scope.</li>
 </ul>
 
-<p>When a data holder wants to use OTV-consent during authorisation, it <strong>MUST</strong> implement the 'Gesloten Autorisatievraag' as specified in <a href="https://vzvz.atlassian.net/wiki/spaces/MA11/pages/828314367/Bijlage+Architectuurdocumenten">"Implementatiehandleiding_OpenGesloten"</a>.</p>
+<p>When a data holder wants to use OTV-consent during authorisation, it <strong>MUST</strong> implement the 'Gesloten Autorisatievraag'
+as specified
+in <a href="https://vzvz.atlassian.net/wiki/spaces/MA11/pages/828314367/Bijlage+Architectuurdocumenten">"Implementatiehandleiding_OpenGesloten"</a>
+(accessed 2026-10-27).</p>
 
 <h3 id="network-security">Network security</h3>
 
@@ -762,7 +803,7 @@ the <a href="https://github.com/nuts-foundation/nl-zorginzage-resources">nl-zorg
 
       <div class="inner-wrapper">
         <p>
-          IG &copy; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.actiz.nl">Stichting ActiZ</a>.  Package fhir.nl.zorginzage#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Nov 12, 2026 09:47+0000">2026-11-12</span>
+          IG &copy; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.actiz.nl">Stichting ActiZ</a>.  Package fhir.nl.zorginzage#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Nov 14, 2026 08:49+0000">2026-11-14</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
