@@ -221,7 +221,7 @@ The generic function Addressing ([Care Service Directory, CSD](https://minvws.gi
 makes the addressing information of healthcare organisations available through the national directory (LRZa) and local
 replicas of that directory. Within Zorginzage, it is used to find:
 
-- the authorisation server(s) at which the data user requests an access token for a data holder organisation;
+- the authorisation server(s) at which the data user requests an access token for access to FHIR-data of a data holder organisation;
 - the FHIR endpoint at which the data user performs the Patient search (see Volume 3).
 
 Which resource servers are used for the other resource requests is defined by the use case specification, not by
