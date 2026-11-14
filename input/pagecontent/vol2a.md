@@ -399,4 +399,4 @@ A complete use case contains:
 - Discover service presentation definition
 - The discovery service operator for the use case, and the discovery service endpoint (URL) and service ID
 
-Use cases are scoped to a version of this implementation guide and reviewed by Actiz.
+Use cases are scoped to a version of this implementation guide and reviewed by the Nuts community (Kring Toepassingen and Kring Techniek).
