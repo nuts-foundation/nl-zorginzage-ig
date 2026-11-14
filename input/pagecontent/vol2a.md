@@ -238,7 +238,8 @@ Registration is covered in a separate sequence diagram outside the common reques
 
 **Status: trial-use.** This section is a pilot element as described in the release policy in Volume 1. Addressing via
 the Nuts Discovery Service, as described in the previous section, remains the definitive addressing mechanism of this
-version of the specification.
+version of the specification. A new use case **MAY** nevertheless use addressing via the generic function addressing
+instead of the Nuts Discovery Service. The use case specification states which addressing mechanism applies.
 
 #### Function
 
@@ -324,14 +325,18 @@ Data users:
   from the next `oauth-nuts` Endpoint of the data holder organisation.
 - Data users **MUST** perform the Patient search at an Endpoint that meets the Patient search requirements for data
   holders above.
-- When the addressing information in the LRZa differs from the registration at the Nuts Discovery Service, the
-  registration at the Nuts Discovery Service prevails.
+- When a use case uses both addressing mechanisms and the addressing information in the LRZa differs from the
+  registration at the Nuts Discovery Service, the registration at the Nuts Discovery Service prevails.
 - Data users **MUST NOT** use the local replica for localisation, such as finding possible data holders by
   organisation type or location, or for BSN broadcasting.
 
 #### Rationale
 
 - The roadmap in Volume 1 introduces the generic function addressing as trial-use in this release.
+- The Nuts Discovery Service remains the definitive addressing mechanism. A new use case that is still to build its
+  addressing would, if bound to the Nuts Discovery Service, implement it now only to migrate to the generic function
+  addressing later. To avoid that double work, the use case decides whether it uses the generic function addressing
+  immediatly, accepting that a pilot element may change based on findings from the pilot.
 - The CSD deliberately carries no use case or trust framework information: Endpoints are registered once and are
   discoverable across trust frameworks and use cases. Whether a data holder organisation takes part in a use case
   follows from the access token request with the use case scope.
