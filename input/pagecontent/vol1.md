@@ -149,7 +149,7 @@ gescheiden (x.y.z waarbij x de majorrelease is, y de minor en z de patch).
 
 #### Verwijzen naar een versie
 
-Elke release van de specificatie wordt gepubliceerd onder een eigen, vaste URL. Daarnaast zijn er URL's die
+Elke release van de Zorginzage-specificatie wordt gepubliceerd onder een eigen, vaste URL. Daarnaast zijn er URL's die
 meebewegen met nieuwe releases:
 
 URL | Inhoud
