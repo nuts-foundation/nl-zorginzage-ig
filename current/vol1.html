@@ -510,6 +510,54 @@ versienummering van de specificatie als geheel.</li>
 zie https://semver.org. Dit betekent dat het versienummer wordt weergegeven door 3 nummers die met een punt zijn
 gescheiden (x.y.z waarbij x de majorrelease is, y de minor en z de patch).</p>
 
+<h4 id="verwijzen-naar-een-versie">Verwijzen naar een versie</h4>
+
+<p>Elke release van de Zorginzage-specificatie wordt gepubliceerd onder een eigen, vaste URL. Daarnaast zijn er URL's die
+meebewegen met nieuwe releases:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>URL</th>
+      <th>Inhoud</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://nuts-foundation.github.io/nl-zorginzage-ig/1.0.0/"><code class="language-plaintext highlighter-rouge">https://nuts-foundation.github.io/nl-zorginzage-ig/1.0.0/</code></a></td>
+      <td>Precies release 1.0.0. Deze inhoud verandert niet meer.</td>
+    </tr>
+    <tr>
+      <td><a href="https://nuts-foundation.github.io/nl-zorginzage-ig/1/"><code class="language-plaintext highlighter-rouge">https://nuts-foundation.github.io/nl-zorginzage-ig/1/</code></a></td>
+      <td>De laatste release binnen majorversie 1.</td>
+    </tr>
+    <tr>
+      <td><a href="https://nuts-foundation.github.io/nl-zorginzage-ig/"><code class="language-plaintext highlighter-rouge">https://nuts-foundation.github.io/nl-zorginzage-ig/</code></a></td>
+      <td>De laatste release.</td>
+    </tr>
+    <tr>
+      <td><a href="https://nuts-foundation.github.io/nl-zorginzage-ig/current/"><code class="language-plaintext highlighter-rouge">https://nuts-foundation.github.io/nl-zorginzage-ig/current/</code></a></td>
+      <td>De versie die in ontwikkeling is. Dit is geen release.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Een overzicht van alle gepubliceerde releases staat in de <a href="history.html">historie</a>.</p>
+
+<p>Een toepassing die gebruikmaakt van deze specificatie verwijst naar een majorversie of naar een specifieke release:</p>
+
+<ul>
+  <li>Een toepassing die naar een majorversie verwijst, bijvoorbeeld <code class="language-plaintext highlighter-rouge">/1/</code>, groeit mee met de minor- en patchreleases
+binnen die majorversie. Deze releases zijn backwards compatible (zie Releasecriteria). Bij de overstap naar een
+nieuwe majorversie past de toepassing haar verwijzing aan.</li>
+  <li>Een toepassing die naar een specifieke release verwijst, bijvoorbeeld <code class="language-plaintext highlighter-rouge">/1.0.0/</code>, verwijst naar inhoud die niet meer
+verandert. Bij de overstap naar een nieuwere release past de toepassing haar verwijzing aan.</li>
+  <li>Een toepassing verwijst niet naar de laatste release of naar de versie in ontwikkeling, omdat de inhoud daarvan kan
+veranderen zonder dat de toepassing haar verwijzing aanpast.</li>
+</ul>
+
+<p>Welke release of majorversie een toepassing gebruikt en wanneer zij overstapt, wordt per toepassing afgesproken.</p>
+
 <h4 id="verwijzen-naar-andere-specificaties">Verwijzen naar andere specificaties</h4>
 
 <p>Voor verwijzingen vanuit deze specificatie naar andere specificaties geldt:</p>
@@ -549,7 +597,7 @@ verwijst.</li>
 
       <div class="inner-wrapper">
         <p>
-          IG &copy; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.actiz.nl">Stichting ActiZ</a>.  Package fhir.nl.zorginzage#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Nov 14, 2026 08:49+0000">2026-11-14</span>
+          IG &copy; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.actiz.nl">Stichting ActiZ</a>.  Package fhir.nl.zorginzage#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Nov 14, 2026 09:07+0000">2026-11-14</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

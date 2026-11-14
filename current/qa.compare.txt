@@ -11,15 +11,15 @@ Generated $--. FHIR version $-- for fhir.nl.zorginzage#$-- (canonical = http://n
 
 == n/a ==
 ERROR: ImplementationGuide.definition.parameter[24].value: Supressed messages file not found
-ERROR: Patient-PatientExample.change.history.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 108, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 41 targets)
-ERROR: Patient-PatientExample.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 41 targets)
-ERROR: Patient-PatientExample.json.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 106, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 41 targets)
-ERROR: Patient-PatientExample.ttl.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 106, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 41 targets)
-ERROR: Patient-PatientExample.xml.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 106, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 41 targets)
-ERROR: artifacts.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 41 targets)
+ERROR: Patient-PatientExample.change.history.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 108, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 42 targets)
+ERROR: Patient-PatientExample.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 42 targets)
+ERROR: Patient-PatientExample.json.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 106, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 42 targets)
+ERROR: Patient-PatientExample.ttl.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 106, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 42 targets)
+ERROR: Patient-PatientExample.xml.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 106, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 42 targets)
+ERROR: artifacts.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 42 targets)
 WARNING: /app/output/history.html: This IG generates a page named 'history.html'. That file name is reserved by the publication process, which replaces it with the directory of published versions when the IG is published, so the content generated here will be overwritten and lost. Rename the page to something else (e.g. test-history.html).
-ERROR: history.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 41 targets)
-ERROR: index.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 41 targets)
+ERROR: history.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 42 targets)
+ERROR: index.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 42 targets)
 WARNING: /app/output/searchform.html: The html source is not well formed: Found "</a>" expecting "</img>" at line 34 column 177
 WARNING: /app/output/searchform.html: The html source is not well formed: Found "</div>" expecting "</body>" at line 79 column 10
 WARNING: /app/output/searchform.html: The html source is not well formed: Found "</div>" expecting "</body>" at line 80 column 9
@@ -28,11 +28,11 @@ WARNING: /app/output/searchform.html: The html source is not well formed: Found 
 WARNING: /app/output/searchform.html: The html source is not well formed: Found "</div>" expecting "</body>" at line 112 column 20
 WARNING: /app/output/searchform.html: The html source is not well formed: Found "</div>" expecting "</body>" at line 113 column 16
 WARNING: /app/output/searchform.html: The html source is not well formed: Found "</div>" expecting "</body>" at line 115 column 12
-ERROR: toc.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 41 targets)
-ERROR: vol1.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 41 targets)
-ERROR: vol2a.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 41 targets)
-ERROR: vol2b.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 41 targets)
-ERROR: vol3.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 41 targets)
+ERROR: toc.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 42 targets)
+ERROR: vol1.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 42 targets)
+ERROR: vol2a.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 42 targets)
+ERROR: vol2b.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 42 targets)
+ERROR: vol3.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 104, column 10: The link 'vol1.html#use-cases' for "Use cases" cannot be resolved (valid targets: 42 targets)
 WARNING: 1: The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide
 WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 3: An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide

@@ -41,7 +41,7 @@ Voor ondersteuning bij de interpretatie en implementatie van deze specificatie k
   "name" : "NlZorginzageIG",
   "title" : "Netherlands - Zorginzage Implementation Guide",
   "status" : "active",
-  "date" : "2026-11-14T08:49:00+00:00",
+  "date" : "2026-11-14T09:07:48+00:00",
   "publisher" : "Stichting ActiZ",
   "contact" : [{
     "name" : "Stichting ActiZ",
