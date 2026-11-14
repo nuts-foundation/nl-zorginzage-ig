@@ -217,7 +217,7 @@ version of the specification.
 
 #### Function
 
-The generic function addressing ([Care Service Directory, CSD](https://minvws.github.io/generiekefuncties-docs/en/csd.html))
+The generic function Addressing ([Care Service Directory, CSD](https://minvws.github.io/generiekefuncties-docs/en/csd.html))
 makes the addressing information of healthcare organisations available through the national directory (LRZa) and local
 replicas of that directory. Within Zorginzage, it is used to find:
 
