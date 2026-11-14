@@ -234,7 +234,7 @@ this specification.
 - The data holder organisation, or a vendor organisation it has authorised through an OrganizationAffiliation, acts as
   CSD Data Source and publishes Endpoints to the LRZa using ITI-130-NL (see
   [CSD Use Case #1](https://minvws.github.io/generiekefuncties-docs/en/csd.html#use-case-1-admin-registers-affiliation-service-provider-publishes-resources)).
-- The data user maintains a local replica of the LRZa using ITI-90-NL (initial load) and ITI-91-NL (incremental sync).
+- The data user organisation maintains a local replica of the LRZa using ITI-90-NL (initial load) and ITI-91-NL (incremental sync).
 - The data user already knows the URA of the data holder organisation it wants to query (see Localisation).
 - The data user operates a Nuts node to request access tokens.
 
