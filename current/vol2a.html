@@ -462,7 +462,7 @@ during a data exchange. All other described functions depend on this addressing 
 
 <ul>
   <li>The data holder organisation has a UZI server certificate and the URA contained in it.</li>
-  <li>The data holder operates a Nuts node that has registered with the Nuts Discovery Service hosted by Actiz, presenting:
+  <li>The data holder operates a Nuts node that has registered with the Nuts Discovery Service of the use case, presenting:
     <ul>
       <li>an <strong>X509Credential</strong> carrying the URA presented as <code class="language-plaintext highlighter-rouge">organization_ura</code> (per Nuts RFC023);</li>
       <li>a self-issued <strong>HealthcareProviderRoleTypeCredential</strong> stating its organisation type, presented as
@@ -477,8 +477,8 @@ holder.</li>
 <h4 id="actors--responsibilities-1">Actors &amp; responsibilities</h4>
 
 <ul>
-  <li><strong>Discovery service operator (Actiz)</strong> — hosts a single shared Nuts Discovery Service for all use cases built on
-Zorginzage.</li>
+  <li><strong>Discovery service operator</strong> — hosts the Nuts Discovery Service for a use case. Zorginzage is a generic building
+block for use cases; the operator is determined per use case and is not necessarily the same as the owner of the use case specification.</li>
   <li><strong>Data holder</strong> — registers its endpoints and credentials, and keeps the registration current.</li>
   <li><strong>Data user</strong> — queries the discovery service for the targeted data holder.</li>
   <li><strong>Nuts node (both sides)</strong> — performs registration, presentation verification, and credential exchange on behalf of
@@ -777,12 +777,13 @@ the <a href="https://github.com/nuts-foundation/nl-zorginzage-resources">nl-zorg
 <ul>
   <li>The Nuts policy</li>
   <li>An authorisation policy</li>
-  <li>Discover service presentation definition</li>
   <li>A use case specification (e.g. an implementation guide) that specifies the relevant data set (see volume 3)</li>
   <li>A FHIR CapabilityStatement that the authorisation policy evaluates requests against (see Authorisation)</li>
+  <li>The discovery service operator for the use case, and the discovery service endpoint (URL) and service ID</li>
+  <li>Discover service presentation definition</li>
 </ul>
 
-<p>Use cases are scoped to a version of this implementation guide and reviewed by Actiz.</p>
+<p>Use cases are scoped to a version of this implementation guide and reviewed by the Nuts community (Kring Toepassingen and Kring Techniek).</p>
 
 
 
@@ -803,7 +804,7 @@ the <a href="https://github.com/nuts-foundation/nl-zorginzage-resources">nl-zorg
 
       <div class="inner-wrapper">
         <p>
-          IG &copy; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.actiz.nl">Stichting ActiZ</a>.  Package fhir.nl.zorginzage#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Nov 14, 2026 09:07+0000">2026-11-14</span>
+          IG &copy; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.actiz.nl">Stichting ActiZ</a>.  Package fhir.nl.zorginzage#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sat, Nov 14, 2026 09:13+0000">2026-11-14</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

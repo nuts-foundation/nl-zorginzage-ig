@@ -141,7 +141,7 @@ Practically addressing is used to register and find the FHIR base URL and author
 #### Preconditions
 
 * The data holder organisation has a UZI server certificate and the URA contained in it.
-* The data holder operates a Nuts node that has registered with the Nuts Discovery Service hosted by Actiz, presenting: 
+* The data holder operates a Nuts node that has registered with the Nuts Discovery Service of the use case, presenting: 
 * an **X509Credential** carrying the URA presented as `organization_ura` (per Nuts RFC023);
 * a self-issued **HealthcareProviderRoleTypeCredential** stating its organisation type, presented as `organization_facility_type`;
 * a **DiscoveryRegistrationCredential** carrying the `fhir_base_url` and `authorization_server_url` of the data holder.
@@ -150,7 +150,7 @@ Practically addressing is used to register and find the FHIR base URL and author
 
 #### Actors & responsibilities
 
-* **Discovery service operator (Actiz)** — hosts a single shared Nuts Discovery Service for all use cases built on Zorginzage.
+* **Discovery service operator** — hosts the Nuts Discovery Service for a use case. Zorginzage is a generic building block for use cases; the operator is determined per use case and is not necessarily the same as the owner of the use case specification.
 * **Data holder** — registers its endpoints and credentials, and keeps the registration current.
 * **Data user** — queries the discovery service for the targeted data holder.
 * **Nuts node (both sides)** — performs registration, presentation verification, and credential exchange on behalf of the organisation it serves.
@@ -333,9 +333,10 @@ A complete use case contains:
 
 * The Nuts policy
 * An authorisation policy
-* Discover service presentation definition
 * A use case specification (e.g. an implementation guide) that specifies the relevant data set (see volume 3)
 * A FHIR CapabilityStatement that the authorisation policy evaluates requests against (see Authorisation)
+* The discovery service operator for the use case, and the discovery service endpoint (URL) and service ID
+* Discover service presentation definition
 
-Use cases are scoped to a version of this implementation guide and reviewed by Actiz.
+Use cases are scoped to a version of this implementation guide and reviewed by the Nuts community (Kring Toepassingen and Kring Techniek).
 
