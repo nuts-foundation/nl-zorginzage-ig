@@ -212,7 +212,7 @@ Registration is covered in a separate sequence diagram outside the common reques
 ### Addressing via the generic function Care Service Directory (trial-use)
 
 **Status: trial-use.** This section is a pilot element as described in the release policy in Volume 1. Addressing via
-the Nuts Discovery Service, as described in the previous section, remains the definitive addressing mechanism of this
+the Nuts Discovery Service, as described in the previous section, remains the addressing mechanism for production situations in this
 version of the specification.
 
 #### Function
