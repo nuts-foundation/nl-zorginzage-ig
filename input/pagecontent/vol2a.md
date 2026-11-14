@@ -234,6 +234,133 @@ Registration is covered in a separate sequence diagram outside the common reques
 - [Nuts Service Discovery — DiscoveryRegistrationCredential](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration)
   (accessed 2026-10-27)
 
+### Addressing via the generic function Care Service Directory (trial-use)
+
+**Status: trial-use.** This section is a pilot element as described in the release policy in Volume 1. Addressing via
+the Nuts Discovery Service, as described in the previous section, remains the addressing mechanism for production situations in this
+version of the specification. A new use case **MAY** nevertheless use addressing via the generic function addressing
+instead of the Nuts Discovery Service. The use case specification states which addressing mechanism applies.
+
+#### Function
+
+The generic function Addressing ([Care Service Directory, CSD](https://minvws.github.io/generiekefuncties-docs/en/csd.html))
+makes the addressing information of healthcare organisations available through the national directory (LRZa) and local
+replicas of that directory. Within Zorginzage, it is used to find:
+
+- the authorisation server(s) at which the data user requests an access token for access to FHIR-data of a data holder organisation;
+- the FHIR endpoint at which the data user performs the Patient search (see Volume 3).
+
+Which resource servers are used for the other resource requests is defined by the use case specification, not by
+this specification.
+
+#### Preconditions
+
+- The data holder organisation has a URA and is registered in the LRZa as an Organization conforming to
+  [NL-GF-Organization](https://minvws.github.io/generiekefuncties-docs/en/StructureDefinition-nl-gf-organization.html).
+- The data holder organisation, or a vendor organisation it has authorised through an OrganizationAffiliation, acts as
+  CSD Data Source and publishes Endpoints to the LRZa using ITI-130-NL (see
+  [CSD Use Case #1](https://minvws.github.io/generiekefuncties-docs/en/csd.html#use-case-1-admin-registers-affiliation-service-provider-publishes-resources)).
+- The data user organisation maintains a local replica of the LRZa using ITI-90-NL (initial load) and ITI-91-NL (incremental sync).
+- The data user organisation knows the URA of the data holder organisation it wants to query (see Localisation).
+
+#### Actors & responsibilities
+
+- **LRZa** — national directory that consolidates and distributes addressing information. The LRZa is not consulted
+  during a data exchange.
+- **Data holder organisation** — publishes and maintains its Organization and Endpoints in the LRZa.
+- **Data user organisation** — Update Client and Query Client: maintains a local replica of the LRZa and selects
+  Endpoints from that replica.
+- **Nuts node (data user organisation)** — requests access tokens at the selected authorisation server(s).
+- **Nuts node (data holder organisation)** — issues access tokens to requesting data user organisations as an authorisation server.
+
+#### Interaction
+
+1. The data user organisation looks up the data holder organisation by URA in its local replica, including its Endpoints:
+   `GET [replica]/Organization?identifier=urn:oid:2.16.528.1.1007.3.3|{URA}&_include=Organization:endpoint`
+2. The data user organisation selects the Endpoints with connection type `oauth-nuts` and requests an access token with the use case
+   scope, using the `address` of the Endpoint as `authorization_server` in the access token request (see Volume 2b,
+   step 7).
+3. The data user organisation selects the FHIR endpoint for the Patient search and performs the Patient search with the access
+   token.
+4. The data user organisation performs the other resource requests at the resource servers as defined by the use case
+   specification.
+
+See the sequence diagram "Pull with addressing via the generic function Care Service Directory (trial-use)" in
+Volume 2b.
+
+#### Conformance
+
+Data holder organisations:
+
+- Data holder organisations **MUST** register their organisation in the LRZa as an Organization conforming to NL-GF-Organization,
+  with an identifier of system `urn:oid:2.16.528.1.1007.3.3` (URA). This specification places no requirements on
+  `Organization.type` beyond those of NL-GF-Organization.
+- Data holder organisations **MUST** refer from `Organization.endpoint` to at least one Endpoint conforming to
+  [NL-GF-Endpoint](https://minvws.github.io/generiekefuncties-docs/en/StructureDefinition-nl-gf-endpoint.html) with:
+    - `connectionType` = `http://fhir.generiekefuncties.nl/csd/CodeSystem/nl-gf-authorization-server-cs#oauth-nuts`;
+    - `address` = the authorisation server URL of the organisation (the value registered as `authorization_server_url`
+      at the Nuts Discovery Service).
+- Data holder organisations **MUST** refer from `Organization.endpoint` to at least one Endpoint conforming to NL-GF-Endpoint for the
+  Patient search, with:
+    - `connectionType` = `http://terminology.hl7.org/CodeSystem/endpoint-connection-type#hl7-fhir-rest`;
+    - `payloadType` containing `http://fhir.generiekefuncties.nl/csd/CodeSystem/nl-gf-data-categories-cs#Patient`;
+    - `payloadMimeType` containing `application/fhir+json; fhirversion=4.0` (MIME parameter names are
+      case-insensitive, so data users match `fhirVersion=4.0` as well);
+    - `address` = the FHIR base URL of the organisation (the value registered as `fhir_base_url` at the Nuts Discovery
+      Service).
+- Data holder organisations **SHOULD NOT** register separate Endpoints per use case, or express use case information in Endpoints.
+- Data holder organisations **SHOULD** withdraw Endpoints by changing their `status`, not by deleting them.
+
+Data user organisations:
+
+- Data user organisations **MUST** look up data holder organisations in their local replica by URA.
+- Data user organisations **MUST** select Endpoints from their local replica and **MUST NOT** query the LRZa during a data exchange.
+- Data user organisations **MUST** only use Endpoints with `status` = `active` and, when `period` is present, whose `period`
+  includes the current time.
+- Data user organisations **MUST** request access tokens per Data holder organisation, where one Data holder organisation is exactly one healthcare provider organisation (identified by a URA).
+- When a data holder organisation has more than one active `oauth-nuts` Endpoint, data user organisations **MUST** try them in turn
+  until an access token is obtained. When no access token is obtained at any of them, the data holder organisation does
+  not take part in the use case.
+- When a resource server rejects an access token (HTTP 401), data user organisations **SHOULD** retry with an access token obtained
+  from the next `oauth-nuts` Endpoint of the data holder organisation.
+- Data user organisations **MUST** perform the Patient search at an Endpoint that meets the Patient search requirements for data
+  holder organisations (see above).
+- When a use case uses both addressing mechanisms and the addressing information in the LRZa differs from the registration at the Nuts Discovery Service, the
+  registration at the Nuts Discovery Service prevails.
+- Data user organisations **MUST NOT** use the local replica for localisation, such as finding possible data holders by
+  organisation type or location, or for BSN broadcasting.
+
+#### Rationale
+
+- The roadmap in Volume 1 introduces the generic function Addressing as trial-use in this release.
+- The Nuts Discovery Service remains the definitive addressing mechanism. A new use case that is still to build its
+  addressing would, if bound to the Nuts Discovery Service, implement it now only to migrate to the generic function
+  addressing later. To avoid that double work, the use case decides whether it uses the generic function addressing
+  immediately, accepting that a pilot element may change based on findings from the pilot.
+- The CSD deliberately carries no use case or trust framework information: Endpoints are registered once and are
+  discoverable across trust frameworks and use cases. Whether a data holder organisation takes part in a use case
+  follows from the access token request with the use case scope.
+- In Nuts use cases, access tokens are requested per Data holder organisation (begin a healthcare provider organisation). Organisations with more than one
+  `oauth-nuts` Endpoint are rare and the addressing specification has no way currently to define which authorisation
+  server should be used for which endpoint.
+- An access token obtained at one authorisation server is not necessarily accepted by a resource server associated
+  with another authorisation server; hence the retry on HTTP 401.
+- For addressing, the type of a data holder organisation is not relevant. We know it concerns a healthcare provider if
+  there is a known URA.
+- The organisation type used for consent is obtained from the HealthcareProviderRoleTypeCredential during
+  authentication, not from the LRZa, because the code systems used by Mitz and the LRZa do not align.
+- This version of the specification does not implement localisation (see Localisation), so the local replica is only
+  used to find the addressing information of data holder organisations that are already known to the data user organisation.
+- The Patient search is part of this specification, so this specification defines how its FHIR endpoint is found. The
+  `Patient` data category and the FHIR version in `payloadMimeType` are the CSD selection criteria for this endpoint.
+
+#### References
+
+- [Generic function addressing — Care Service Directory](https://minvws.github.io/generiekefuncties-docs/en/csd.html)
+- [NL-GF-Organization](https://minvws.github.io/generiekefuncties-docs/en/StructureDefinition-nl-gf-organization.html) · [NL-GF-Endpoint](https://minvws.github.io/generiekefuncties-docs/en/StructureDefinition-nl-gf-endpoint.html)
+- [NL-GF Connection Types](https://minvws.github.io/generiekefuncties-docs/en/ValueSet-nl-gf-connection-types-vs.html) · [NL-GF Payload Types](https://minvws.github.io/generiekefuncties-docs/en/ValueSet-nl-gf-payload-type-vs.html)
+- [IHE mCSD](https://profiles.ihe.net/ITI/mCSD/)
+
 ### Localisation
 
 #### Function

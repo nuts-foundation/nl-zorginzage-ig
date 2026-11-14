@@ -23,7 +23,6 @@ Thumbs.db
 
 translations/
 
-# editor config #
+# editor configs #
 ################
 .idea
-
