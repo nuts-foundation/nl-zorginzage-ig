@@ -62,7 +62,7 @@ De Zorginzage-specificatie wordt de komende jaren doorontwikkeld. Deelnemers aan
 
 - verzorgen productiewaardige Discovery Service voor een use case
 
-De Zorginzage-specificatie is een generiek bouwblok waarop meerdere toepassingen (use cases) kunnen worden gebouwd. De eigenaar van de Discovery Service wordt daarom per use case bepaald en is niet noodzakelijk dezelfde partij als de eigenaar van de specificatie.
+De Zorginzage-specificatie is een generiek bouwblok waarop meerdere toepassingen (use cases) kunnen worden gebouwd. De eigenaar van de Discovery Service wordt daarom per use case bepaald en is niet noodzakelijkerwijs dezelfde partij als de eigenaar van de specificatie.
 
 ### Rollen en uitvoerders
 
