@@ -55,7 +55,9 @@ Deelnemers aan Zorginzage stellen alleen data beschikbaar aan partijen die ook c
 
 #### Eigenaar Discovery Service
 
-- verzorgen productiewaardige Discovery Service
+- verzorgen productiewaardige Discovery Service voor een use case
+
+De Zorginzage-specificatie is een generiek bouwblok waarop meerdere toepassingen (use cases) kunnen worden gebouwd. De eigenaar van de Discovery Service wordt daarom per use case bepaald en is niet noodzakelijkerwijs dezelfde partij als de eigenaar van de specificatie.
 
 ### Rollen en uitvoerders
 
@@ -63,7 +65,7 @@ Rol | Uitvoerder
 ----|--------
 Eigenaar van de specificatie | ActiZ
 Deelnemer | XIS-leverancier
-Eigenaar Discovery Service | ActiZ
+Eigenaar Discovery Service | per use case bepaald
 
 ### Roadmap
 

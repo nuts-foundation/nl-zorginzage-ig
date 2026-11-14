@@ -22,3 +22,8 @@ Thumbs.db
 *.bkp
 
 translations/
+
+# editor config #
+################
+.idea
+
