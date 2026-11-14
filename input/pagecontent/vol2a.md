@@ -241,7 +241,7 @@ this specification.
 
 - **LRZa** — national directory that consolidates and distributes addressing information. The LRZa is not consulted
   during a data exchange.
-- **Data holder** — publishes and maintains its Organization and Endpoints in the LRZa.
+- **Data holder organisation** — publishes and maintains its Organization and Endpoints in the LRZa.
 - **Data user organisation** — Update Client and Query Client: maintains a local replica of the LRZa and selects
   Endpoints from that replica.
 - **Nuts node (data user organisation)** — requests access tokens at the selected authorisation server(s).
