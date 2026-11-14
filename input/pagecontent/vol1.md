@@ -145,7 +145,7 @@ Deze release bevat de volgende pilot-elementen:
 
 - Adressering via de generieke functie Adressering (Care Service Directory), zie
   [Volume 2a](vol2a.html) en [Volume 2b](vol2b.html). Adressering via de Nuts Discovery Service blijft
-  definitieve element voor adressering.
+  de oplossing voor adressering in productiesituaties.
 
 #### Versiebeheer
 
