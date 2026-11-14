@@ -1,6 +1,6 @@
 ### Inleiding
 
-Deze implementatiegids Zorginzage bevat de generieke afspraken en specificaties die nodig zijn voor use cases die gebruikmaken van de [communicatiepatronen](https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws) 'Gericht bevragen' en 'Geïndexeerd bevragen'. Het doel van deze implementatiegids is het versnellen van de realisatie van use cases. Deze implementatiegids draagt hieraan bij door het hergebruik van afspraken en specificaties te vereenvoudigen.
+Deze implementatiegids Zorginzage bevat de generieke afspraken en specificaties die nodig zijn voor toepassingen die gebruikmaken van de [communicatiepatronen](https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws) 'Gericht bevragen' en 'Geïndexeerd bevragen'. Het doel van deze implementatiegids is het versnellen van de realisatie van toepassingen. Deze implementatiegids draagt hieraan bij door het hergebruik van afspraken en specificaties te vereenvoudigen.
 
 ### Procesbeschrijving
 
@@ -20,26 +20,21 @@ Voorbeelden:
 4. Deze specificatie adopteert incrementeel en iteratief de door het Ministerie van VWS beheerde landelijke afspraken en specificaties voor generieke functies en de andere elementen van de doelarchitectuur voor het Gezondheidsinformatiestelsel (GIS). Deze landelijke afspraken en specificaties vervangen incrementeel en iteratief alle Zorginzage-specifieke afspraken en specificaties zodra de eigenaar en de deelnemers van de Zorginzage-specificatie beoordelen dat deze implementatieklaar zijn.
 5. Van deze specificatie zullen maximaal twee release per jaar uitkomen die invloed hebben op de functionaliteit.
 6. Wederkerigheid. Deelnemers aan Zorginzage stellen alleen data beschikbaar aan partijen die ook conform deze specificatie data beschikbaar stellen. 
-7. Commitment. De Zorginzage-specificatie wordt de komende jaren doorontwikkeld. Deelnemers committeren zich aan de implementatie van volgende versies. 
 
-### Use cases
+### Toepassingen
 
-Deze specificatie vormt de basis voor een aantal verschillende use cases.
+Deze specificatie vormt de basis voor een aantal verschillende toepassingen. Afspraken over welke versies van deze specificatie deelnemers implementeren en wanneer, worden per toepassing gemaakt, in de specificatie of het implementatieplan van die toepassing.
 
-Use case | Specificatie | Opmerking
+Toepassing | Specificatie | Opmerking
 ---------|-------------|----------
-360-graden cliëntbeeld | n.t.b. | De specificatie van deze use case maakt gebruik van Zorginzage 2026
-Geboortezorg | [link](https://babyconnect.atlassian.net/wiki/spaces/VBC/pages/906166273/Zorgtoepassingprofiel+Geboortezorg)  | De specificatie van deze use case maakt nog geen gebruik van Zorginzage 2026
-Huisartsinzage | [link](https://wiki.nuts.nl/books/samenwerken-huisarts-en-thuiszorg/page/zorgtoepassing-ha-vvt-inzage-dossier-v10) | De specificatie van deze use case maakt nog geen gebruik van Zorginzage 2026
-PZP | [link](https://wiki.nuts.nl/books/pzp) | De specificatie van deze use case maakt nog geen gebruik van Zorginzage 2026
+360-graden cliëntbeeld | [link](https://nuts-foundation.github.io/nl-360-ig/) | De specificatie van deze toepassing maakt gebruik van Zorginzage 2026
+Geboortezorg | [link](https://babyconnect.atlassian.net/wiki/spaces/VBC/pages/906166273/Zorgtoepassingprofiel+Geboortezorg)  | De specificatie van deze toepassing maakt nog geen gebruik van Zorginzage 2026
+Huisartsinzage | [link](https://wiki.nuts.nl/books/samenwerken-huisarts-en-thuiszorg/page/zorgtoepassing-ha-vvt-inzage-dossier-v10) | De specificatie van deze toepassing maakt nog geen gebruik van Zorginzage 2026
+PZP | [link](https://wiki.nuts.nl/books/pzp) | De specificatie van deze toepassing maakt nog geen gebruik van Zorginzage 2026
 
 ### Wederkerigheid
 
 Deelnemers aan Zorginzage stellen alleen data beschikbaar aan partijen die ook conform deze specificatie data beschikbaar stellen. Om dit te bereiken dienen deelnemers aan Zorginzage naast de rol datagebruiker (data user) ook de rol datahouder (data holder) te implementeren.
-
-### Commitment
-
-De Zorginzage-specificatie wordt de komende jaren doorontwikkeld. Deelnemers aan Zorginzage committeren zich aan de tijdige implementatie van de versies die in 2026, 2027 en 2028 zullen worden gepubliceerd.
 
 ### Rollen en verantwoordelijkheden
 
@@ -84,7 +79,9 @@ authenticatie van personen | Zorginzage-specifiek | Zorginzage-specifiek | dezi 
 autorisatie | Zorginzage-specifiek | Zorginzage-specifiek | generieke functie autorisatie (trial-use)                     | generieke functie autorisatie
 netwerkbeveiliging | Zorginzage-specifiek | landelijke specificaties Veilig Netwerk (trial-use) | landelijke specificaties Veilig Netwerk | landelijke specificaties Veilig Netwerk
 
-De roadmap wordt bepaald op basis van input van de egenaar en de deelnemers van de Zorginzage-specificatie. De roadmap is afhankelijk van externe factoren waarop de eigenaar en de deelnemers van de Zorginzage-specificatie slechts in beperkte mate invloed hebben. De roadmap kan per release van de Zorginzage-specficatie worden aangepast.
+De roadmap wordt bepaald op basis van input van de eigenaar en de deelnemers van de Zorginzage-specificatie. De roadmap is afhankelijk van externe factoren waarop de eigenaar en de deelnemers van de Zorginzage-specificatie slechts in beperkte mate invloed hebben. De roadmap kan per release van de Zorginzage-specificatie worden aangepast.
+
+De roadmap beschrijft wanneer releases van de Zorginzage-specificatie verschijnen en wat ze bevatten. Wanneer deelnemers een release implementeren, wordt per toepassing afgesproken, zie de paragraaf Toepassingen.
 
 ### Releasebeleid
 
@@ -134,9 +131,10 @@ Voor pilot-elementen geldt:
   status-aanduiding bij het betreffende element. Het betreft de aanduiding 'trial-use'.
 - Pilot-elementen mogen door deelnemers in productie worden geïmplementeerd; daarmee dragen
   zij bij aan de beproeving.
-- Een pilot-element wordt in een volgende release definitief gemaakt wanneer er ten minste
-  één succesvolle productie-implementatie is en de eigenaar van de specificatie en de
-  deelnemers geen blokkerende bezwaren meer hebben.
+- Een pilot-element wordt in een volgende release definitief gemaakt wanneer ten minste
+  één implementatie als datagebruiker en één implementatie als datahouder in productie
+  succesvol gegevens met elkaar uitwisselen en de eigenaar van de specificatie en de
+  deelnemers geen blokkerende bezwaren hebben.
 - Een pilot-element kan op basis van bevindingen uit de pilot worden gewijzigd of
   ingetrokken. Wijzigingen aan een pilot-element gelden niet als breaking change voor de
   versienummering van de specificatie als geheel.
@@ -172,6 +170,20 @@ Een toepassing die gebruikmaakt van deze specificatie verwijst naar een majorver
   veranderen zonder dat de toepassing haar verwijzing aanpast.
 
 Welke release of majorversie een toepassing gebruikt en wanneer zij overstapt, wordt per toepassing afgesproken.
+
+#### Verwijzen naar andere specificaties
+
+Voor verwijzingen vanuit deze specificatie naar andere specificaties geldt:
+
+- Normatieve verwijzingen, zoals naar de generieke functies van VWS, Nuts RFC's, IHE-profielen, Mitz en het
+  afsprakenstelsel van Twiin, verwijzen naar een vaste versie en noemen het versienummer. Publiceert de bron versies
+  onder een eigen URL, zoals de generieke functies van VWS op https://fhir.generiekefuncties.nl, dan verwijst deze
+  specificatie naar die URL.
+- Publiceert de bron geen vaste versie, zoals bij een wiki, dan vermeldt de verwijzing de datum van raadpleging.
+- Informatieve verwijzingen, zoals naar Wikipedia, begrippenlijsten of tools, mogen naar de actuele versie verwijzen.
+- Verwijzingen binnen deze specificatie zijn relatief, zodat elke gepubliceerde versie naar haar eigen onderdelen
+  verwijst.
+- De eigenaar van de specificatie controleert de uitgaande verwijzingen bij elke release.
 
 #### Besluitvorming
 
