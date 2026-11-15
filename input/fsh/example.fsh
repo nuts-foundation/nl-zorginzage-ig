@@ -9,10 +9,13 @@ Description: "Example patient with BSN identifier for Zorginzage scenarios"
 * identifier[bsn].system = "http://fhir.nl/fhir/NamingSystem/bsn"
 * identifier[bsn].value = "123456789"
 
-* name.use = #official
-* name.family = "van den Berg"
-* name.given = "Maria"
-* name.given[+] = "Anna"
+* name[nameInformation].use = #official
+* name[nameInformation].text = "Maria Anna van den Berg"
+* name[nameInformation].family = "van den Berg"
+* name[nameInformation].given[0] = "Maria"
+* name[nameInformation].given[0].extension[givenOrInitial].valueCode = #BR
+* name[nameInformation].given[1] = "Anna"
+* name[nameInformation].given[1].extension[givenOrInitial].valueCode = #BR
 
 * gender = #female
 * birthDate = "1985-03-15"
@@ -23,12 +26,13 @@ Description: "Example patient with BSN identifier for Zorginzage scenarios"
 * address.postalCode = "1011 AB"
 * address.country = "NL"
 
-* telecom[0].system = #phone
-* telecom[0].value = "+31612345678"
-* telecom[0].use = #mobile
+* telecom[telephoneNumbers].system = #phone
+* telecom[telephoneNumbers].system.extension[telecomType].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-AddressUse#MC "mobile contact"
+* telecom[telephoneNumbers].value = "+31612345678"
+* telecom[telephoneNumbers].use = #home
 
-* telecom[1].system = #email
-* telecom[1].value = "maria.vandenberg@example.nl"
-* telecom[1].use = #home
+* telecom[emailAddresses].system = #email
+* telecom[emailAddresses].value = "maria.vandenberg@example.nl"
+* telecom[emailAddresses].use = #home
 
 * active = true

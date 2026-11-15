@@ -1,0 +1,8 @@
+== Suppressed Messages ==
+
+# De BSN-system-URL is voorgeschreven door nl-core, maar de pakketten waar deze IG van afhangt bevatten er geen NamingSystem voor.
+No definition could be found for URL value 'http://fhir.nl/fhir/NamingSystem/bsn'
+
+# De pakketten van nl-core van Nictiz bevatten geen ImplementationGuide-resource en geen canonical. SUSHI vult daarom een plaatshouder in voor dependsOn.uri, die niet op te lossen is.
+A definition could not be found for Canonical URL 'http://fhir.org/packages/nictiz.fhir.nl.r4.nl-core/ImplementationGuide/nictiz.fhir.nl.r4.nl-core'
+The canonical URL http://fhir.org/packages/nictiz.fhir.nl.r4.nl-core/ImplementationGuide/nictiz.fhir.nl.r4.nl-core doesn't point to an actual ImplementationGuide resource

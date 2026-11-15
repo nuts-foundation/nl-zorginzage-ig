@@ -134,9 +134,9 @@ Vendor organisation authentication is performed at the transport layer through m
 #### Conformance
 
 - Data users **MUST** authenticate the URA using
-  an [X509Credential derived from a UZI server certificate](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-X509Credential.html)
+  an [X509Credential derived from a UZI server certificate](https://nuts-foundation.github.io/nl-generic-functions-ig/credential-X509Credential.html) (accessed 2026-11-15)
   servercertificate, in line with Nuts RFC023.
-- Data users **MUST** present a self-issued [HealthcareProviderRoleTypeCredential](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-HealthcareProviderRoleTypeCredential.html)
+- Data users **MUST** present a self-issued [HealthcareProviderRoleTypeCredential](https://nuts-foundation.github.io/nl-generic-functions-ig/credential-HealthcareProviderRoleTypeCredential.html) (accessed 2026-11-15)
   expressing their organisation type .
 - Data users **MUST** federate healthcare professional identity using a NutsEmployeeCredential.
 - Nuts nodes **MUST** follow the standard did:web-based access token, introspect, and jwt-based data request flows as
@@ -323,7 +323,8 @@ whether the request passes the access policies of the source (data holder).
 
 The policy is selected based on the use case scope provided by the Nuts access token as part of the authentication
 process. The input for evaluating the policy is a commonly agreed upon information model; the model is described in the
-[this proposal for the generic function authorisation](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/authorization.html).
+[this proposal for the generic function authorisation](https://nuts-foundation.github.io/nl-generic-functions-ig/authorization.html)
+(accessed 2026-11-15).
 
 Policies are expressed in a domain specific language called Rego so that everyone uses the same rulesets. Implementors
 are free not to implement a Rego interpreter as part of their authorisation solution, as long as the implemented
@@ -357,7 +358,7 @@ For data requests in which explicit consent is not checked, one of the following
 - The treatment relation of the data user organisation with the patient **SHOULD** be checked technically by the data
   holder
   organisation (e.g. using
-  a [PatientEnrollmentCredential](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-PatientEnrollmentCredential.html)).
+  a [PatientEnrollmentCredential](https://nuts-foundation.github.io/nl-generic-functions-ig/credential-PatientEnrollmentCredential.html), accessed 2026-11-15).
   This treatment relation can be scoped to a specific context (e.g. a use case).
 
 The treatment relation of the data holder organisation with the patient **MAY** be checked technically by the data
@@ -372,7 +373,7 @@ holder organisation.
 
 #### References
 
-- [Generic function authorisation (nl-generic-functions-ig)](https://nuts-foundation.github.io/nl-generic-functions-ig/authorization.html)
+- [Generic function authorisation (nl-generic-functions-ig)](https://nuts-foundation.github.io/nl-generic-functions-ig/authorization.html) (accessed 2026-11-15)
 
 ### Consent
 
