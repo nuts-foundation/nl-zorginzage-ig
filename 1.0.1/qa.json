@@ -1,0 +1,20 @@
+{
+  "url" : "http://nuts-foundation.github.io/nl-zorginzage-ig/ImplementationGuide/fhir.nl.zorginzage",
+  "name" : "NlZorginzageIG",
+  "title" : "Netherlands - Zorginzage Implementation Guide",
+  "description" : "",
+  "status" : "active",
+  "package-id" : "fhir.nl.zorginzage",
+  "ig-ver" : "1.0.1",
+  "date" : "Sun, 15 Nov, 2026 12:08:31 +0000",
+  "dateISO8601" : "2026-11-15T12:08:31+00:00",
+  "errs" : 0,
+  "warnings" : 13,
+  "hints" : 1,
+  "broken-links" : 0,
+  "suppressed-hints" : 0,
+  "suppressed-warnings" : 3,
+  "version" : "4.0.1",
+  "tool" : "6.0.0-snapshot1 (3)",
+  "maxMemory" : 893999984
+}

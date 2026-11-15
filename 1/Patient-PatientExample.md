@@ -1,4 +1,4 @@
-# Patient Example - Maria van den Berg - Netherlands - Zorginzage Implementation Guide v1.0.0
+# Patient Example - Maria van den Berg - Netherlands - Zorginzage Implementation Guide v1.0.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 Profile: [nl core Patient](https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.12.0-beta.4&canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient)
 
-Maria Anna van den Berg (official) Female, DoB: 1985-03-15 ( http://fhir.nl/fhir/NamingSystem/bsn#123456789 (use: official))
+Maria Anna van den Berg(official) Female, DoB: 1985-03-15 ( http://fhir.nl/fhir/NamingSystem/bsn#123456789 (use: official))
 
 -------
 
@@ -39,13 +39,38 @@ Maria Anna van den Berg (official) Female, DoB: 1985-03-15 ( http://fhir.nl/fhir
   "active" : true,
   "name" : [{
     "use" : "official",
+    "text" : "Maria Anna van den Berg",
     "family" : "van den Berg",
-    "given" : ["Maria", "Anna"]
+    "given" : ["Maria", "Anna"],
+    "_given" : [{
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+        "valueCode" : "BR"
+      }]
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+        "valueCode" : "BR"
+      }]
+    }]
   }],
   "telecom" : [{
     "system" : "phone",
+    "_system" : {
+      "extension" : [{
+        "url" : "http://nictiz.nl/fhir/StructureDefinition/ext-CodeSpecification",
+        "valueCodeableConcept" : {
+          "coding" : [{
+            "system" : "http://terminology.hl7.org/CodeSystem/v3-AddressUse",
+            "code" : "MC",
+            "display" : "mobile contact"
+          }]
+        }
+      }]
+    },
     "value" : "+31612345678",
-    "use" : "mobile"
+    "use" : "home"
   },
   {
     "system" : "email",

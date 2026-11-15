@@ -1,4 +1,4 @@
-# Volume 2a - Netherlands - Zorginzage Implementation Guide v1.0.0
+# Volume 2a - Netherlands - Zorginzage Implementation Guide v1.0.1
 
 * [**Table of Contents**](toc.md)
 * **Volume 2a**
@@ -13,7 +13,7 @@ In short this means that fetching data globally consists of the following steps:
 
 1. Addressing: The data user finds the addresses of the FHIR- and OAuth-endpoints of each (possible) data holder.
 1. Authentication: The data user authenticates (organisation and person level)
-1. Localisation: This version of the Zorginzage-specification does not implement a localisation mechanism. Instead, the data user performs targeted querying ("gericht bevragen") at the possible data holder(s) that are already known. Maintaining this list of data holders is the responsibility of the data user and is out of scope for this specification.
+1. Localisation: This version of the Zorginzage-specification does not implement a localisation mechanism. Instead, the data user performs targeted querying ("gericht bevragen") at the possible data holder (s) that are already known. Maintaining this list of data holders is the responsibility of the data user and is out of scope for this specification.
 1. Patient search request: The data user performs a patient search at each targeted data holder, using bsn as parameter. This step verifies whether this possible data holder actually holds data about the given patient.
 1. Patient search response: When the data holder has data about the requested patient, it returns the internal technical identifier of the requested patient.
 
@@ -38,19 +38,20 @@ Healthcare organisations are identified using URA-number (UZI-Register Abonneenu
 
 Rationale
 
-* Identification of healthcare organisations by URA conforms to the national information model for health orgnizations ( Zorginformatiebouwsteen Zorgaanbieder: see [zibs.nl](https://zibs.nl/wiki/Zorgaanbieder-v3.6(2024NL)))
+* Identification of healthcare organisations by URA conforms to the national information model for health orgnizations (Zorginformatiebouwsteen Zorgaanbieder: see [zibs.nl](https://zibs.nl/wiki/Zorgaanbieder-v3.6(2024NL)))
 * The URA-number is issued by a public organization (CIBG)
 * The URA-number is cryptographically verifiable because it is contained in a PKI-certificate (UZI-servercertificaat, CPS: see [uziregister.nl](https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement))
 
 ##### HealthcareProviderRoleType
 
-Healthcare organisations use a HealthcareProviderRoleType attribute to express which type(s) of healthcare organisations they are.
+Healthcare organisations use a HealthcareProviderRoleType attribute to express which type of healthcare organisation they are. Although an organisation can fulfil multiple roles in practice, an organisation uses exactly one HealthcareProviderRoleType within one use case.
 
 Rationale
 
 * In indexed pull scenarios, OTV-consents (online toestemmingsvoorziening, Mitz) are relevant. The use of OTV-consents requires uniform communication of the type of healthcare organisation of both data user organisation and data holder organisation.
 * The type of healthcare organisation is a useful attribute in authorisation and localisation processes.
 * The HealthcareProviderRoleType is self-issued by each healthcare organisation. No trusted third party issuer is active at the moment.
+* The Nuts Discovery Service cannot select a specific credential when multiple credentials of the same type match, so an organisation can present only one HealthcareProviderRoleTypeCredential per use case.
 
 #### Vendor organisations
 
@@ -86,8 +87,8 @@ Organisation- and professional-level authentication is performed via the standar
 #### Preconditions
 
 * Vendor organisations on both sides hold a PKIoverheid certificate suitable for mTLS (see Network Security).
-* The data user has a UZI server certificate (containing the URA) and has issued the corresponding X500Credential by following [this manual](https://wiki.nuts.nl/books/implementing-a-nuts-use-case/page/2-issue-x509credential).
-* The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type(s).
+* The data user has a UZI server certificate (containing the URA) and has issued the corresponding X500Credential by following [this manual](https://wiki.nuts.nl/books/implementing-a-nuts-v2-use-case/page/get-an-x509credential-from-a-uzi-certificate) (accessed 2026-10-28).
+* The data user has self-issued a HealthcareProviderRoleTypeCredential expressing its organisation type .
 * The data user operates a Nuts node with a did:web identifier and an equivalent set of credentials.
 * The data holder has loaded the applicable Nuts policy its Nuts Node.
 
@@ -107,11 +108,12 @@ Vendor organisation authentication is performed at the transport layer through m
 
 #### Conformance
 
-* Data users **MUST** authenticate the URA using an [X509Credential derived from a UZI server certificate](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-X509Credential.html) servercertificate, in line with Nuts RFC023.
-* Data users **MUST** present a self-issued [HealthcareProviderRoleTypeCredential](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-HealthcareProviderRoleTypeCredential.html) expressing their organisation type(s).
+* Data users **MUST** authenticate the URA using an [X509Credential derived from a UZI server certificate](https://nuts-foundation.github.io/nl-generic-functions-ig/credential-X509Credential.html) (accessed 2026-11-15) servercertificate, in line with Nuts RFC023.
+* Data users **MUST** present a self-issued [HealthcareProviderRoleTypeCredential](https://nuts-foundation.github.io/nl-generic-functions-ig/credential-HealthcareProviderRoleTypeCredential.html) (accessed 2026-11-15) expressing their organisation type .
 * Data users **MUST** federate healthcare professional identity using a NutsEmployeeCredential.
 * Nuts nodes **MUST** follow the standard did:web-based access token, introspect, and jwt-based data request flows as specified in volume 2b.
 * Vendor organisations **MUST** authenticate connections using mTLS as specified in Network Security.
+* The credentials above are the minimum set. A use case **MAY** require additional credentials in its specification (discovery service presentation definition).
 
 #### Rationale
 
@@ -122,10 +124,10 @@ Vendor organisation authentication is performed at the transport layer through m
 
 #### References
 
-* [Nuts RFC023 — X509Credential with UZI server certificates](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023)
+* [Nuts RFC023 — X509Credential with UZI server certificates](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023) (accessed 2026-10-27)
 * [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main) · [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java/)
 * [UZI servercertificate CPS](https://www.uziregister.nl/over-het-register/certificeringsbeleid/archief-certification-practice-statement)
-* [Nuts RFC019 - Nuts Employeed Identity](https://nuts-foundation.gitbook.io/drafts/rfc/rfc019-employee-identity-means)
+* [Nuts RFC019 - Nuts Employeed Identity](https://nuts-foundation.gitbook.io/drafts/rfc/rfc019-employee-identity-means) (accessed 2026-10-27)
 * Volume 2b — Nuts process specifications and sequences
 
 ### Addressing
@@ -139,23 +141,23 @@ Practically addressing is used to register and find the FHIR base URL and author
 #### Preconditions
 
 * The data holder organisation has a UZI server certificate and the URA contained in it.
-* The data holder operates a Nuts node that has registered with the Nuts Discovery Service hosted by Actiz, presenting: 
+* The data holder operates a Nuts node that has registered with the Nuts Discovery Service of the use case, presenting: 
 * an **X509Credential** carrying the URA presented as `organization_ura` (per Nuts RFC023);
-* a self-issued **HealthcareProviderRoleTypeCredential** stating its organisation type(s);
+* a self-issued **HealthcareProviderRoleTypeCredential** stating its organisation type, presented as `organization_facility_type`;
 * a **DiscoveryRegistrationCredential** carrying the `fhir_base_url` and `authorization_server_url` of the data holder.
  
 * The data user operates a Nuts node configured to consume the same discovery service and use case.
 
 #### Actors & responsibilities
 
-* **Discovery service operator (Actiz)** — hosts a single shared Nuts Discovery Service for all use cases built on Zorginzage.
+* **Discovery service operator** — hosts the Nuts Discovery Service for a use case. Zorginzage is a generic building block for use cases; the operator is determined per use case and is not necessarily the same as the owner of the use case specification.
 * **Data holder** — registers its endpoints and credentials, and keeps the registration current.
 * **Data user** — queries the discovery service for the targeted data holder.
 * **Nuts node (both sides)** — performs registration, presentation verification, and credential exchange on behalf of the organisation it serves.
 
 #### Interaction
 
-See the pull sequence diagram, step 3 (`GET /internal/discovery/v1/{serviceID}`) and the accompanying note: the data user's Nuts node returns the matching organisations and their addressing information. Searches can be performed by organisation URA, organisation type, and use case; the exact filtering strategy is left to the implementer (return everything for the user to pick, or filter on URA / role type inside the Nuts node).
+See the pull sequence diagram, step 3, and the accompanying note: the data user's Nuts node returns the matching organisations and their addressing information. The call shown there (`GET /internal/discovery/v1/{serviceID}`) is an internal API of the Nuts node reference implementation and is non-normative; any system that supports the Nuts discovery protocol may be used. Searches can be performed by organisation URA, organisation type, and use case; the exact filtering strategy is left to the implementer (return everything for the user to pick, or filter on URA / role type inside the Nuts node).
 
 Registration is covered in a separate sequence diagram outside the common request flow `sequence-diagram-disco.plantuml`.
 
@@ -169,15 +171,16 @@ Registration is covered in a separate sequence diagram outside the common reques
  
 * Data holders **MUST** publish the above fields during registration.
 * Data holders **MUST** present a valid X509Credential derived from a UZI server certificate and a self-issued HealthcareProviderRoleTypeCredential at registration.
+* The fields and credentials above are the minimum set. A use case **MAY** require additional fields or credentials in its discovery service presentation definition.
 * Data users **SHOULD** resolve endpoints through the discovery service rather than hard-coding them.
 * Data users **MAY NOT** use discovery service for localization or BSN broadcasting
 
 #### References
 
-* [Nuts Discovery Service — overview](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery)
-* [Nuts RFC023 — X509Credential with UZI server certificates](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023)
+* [Nuts Discovery Service — overview](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery) (accessed 2026-10-27)
+* [Nuts RFC023 — X509Credential with UZI server certificates](https://wiki.nuts.nl/books/x509credential/page/uzi-server-certificates-with-rfc023) (accessed 2026-10-27)
 * [go-didx509-toolkit](https://github.com/nuts-foundation/go-didx509-toolkit/tree/main) · [Java library](https://github.com/nuts-foundation/uzi-did-x509-issuer-java/)
-* [Nuts Service Discovery — DiscoveryRegistrationCredential](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration)
+* [Nuts Service Discovery — DiscoveryRegistrationCredential](https://wiki.nuts.nl/books/designing-a-nuts-use-case/page/service-discovery#bkmrk-require-registration) (accessed 2026-10-27)
 
 ### Localisation
 
@@ -200,7 +203,7 @@ This means the data user is responsible for maintaining its own list of healthca
 #### Conformance
 
 * The data user **MUST NOT** use the Nuts Discovery Service to broadcast a BSN across all registered data holders for a use case (see also the Addressing conformance rules).
-* The data user **MUST** resolve locally, for each patient, the specific (possible) data holder(s) it wants to query before initiating patient search.
+* The data user **MUST** resolve locally, for each patient, the specific (possible) data holder (s) it wants to query before initiating patient search.
 * The patient search at the targeted data holder is still performed using the BSN as parameter, in order to obtain the data holder's internal technical identifier for the patient:
 
 ```
@@ -208,9 +211,11 @@ POST {fhir_base}/Patient/_search
 
 Header: Content-Type = x-www-form-urlencoded
 
-Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}
+Body: identifier=http://fhir.nl/fhir/NamingSystem/bsn|{bsn}&_elements=id
 
 ```
+
+* The data user **MAY** add the `_elements=id` parameter to the patient search, so that only the technical identifier of the patient is returned. The data holder **SHOULD** support the `_elements` parameter.
 
 ### Authorisation
 
@@ -235,7 +240,7 @@ Authorisation determines whether an authenticated requestor may access the data 
 
 #### Interaction
 
-The policy is selected based on the use case scope provided by the Nuts access token as part of the authentication process. The input for evaluating the policy is a commonly agreed upon information model; the model is described in the [this proposal for the generic function authorisation](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/authorization.html).
+The policy is selected based on the use case scope provided by the Nuts access token as part of the authentication process. The input for evaluating the policy is a commonly agreed upon information model; the model is described in the [this proposal for the generic function authorisation](https://nuts-foundation.github.io/nl-generic-functions-ig/authorization.html) (accessed 2026-11-15).
 
 Policies are expressed in a domain specific language called Rego so that everyone uses the same rulesets. Implementors are free not to implement a Rego interpreter as part of their authorisation solution, as long as the implemented solution follows the exact same rules as specified in the Rego policy file for that use case.
 
@@ -258,7 +263,7 @@ The following guidelines **MUST** be taken into account when designing new polic
 For data requests in which explicit consent is not checked, one of the following is **mandatory**:
 
 * A legal basis **MUST** be present in which explicit consent is not necessary, e.g. a referral or handoff of a patient from data holder to data user.
-* The treatment relation of the data user organisation with the patient **SHOULD** be checked technically by the data holder organisation (e.g. using a [PatientEnrollmentCredential](https://build.fhir.org/ig/nuts-foundation/nl-generic-functions-ig/credential-PatientEnrollmentCredential.html)). This treatment relation can be scoped to a specific context (e.g. a use case).
+* The treatment relation of the data user organisation with the patient **SHOULD** be checked technically by the data holder organisation (e.g. using a [PatientEnrollmentCredential](https://nuts-foundation.github.io/nl-generic-functions-ig/credential-PatientEnrollmentCredential.html), accessed 2026-11-15). This treatment relation can be scoped to a specific context (e.g. a use case).
 
 The treatment relation of the data holder organisation with the patient **MAY** be checked technically by the data holder organisation.
 
@@ -269,7 +274,7 @@ The treatment relation of the data holder organisation with the patient **MAY** 
 
 #### References
 
-* [Generic function authorisation (nl-generic-functions-ig)](https://nuts-foundation.github.io/nl-generic-functions-ig/authorization.html)
+* [Generic function authorisation (nl-generic-functions-ig)](https://nuts-foundation.github.io/nl-generic-functions-ig/authorization.html) (accessed 2026-11-15)
 
 ### Consent
 
@@ -295,16 +300,16 @@ The consent check is performed by the data holder as part of authorising an inco
 
 #### Conformance
 
-The data holder can use one or more of the following attributes for the consent check:
+The data holder can use one or more of the following attributes for the consent check. The attributes of the data user organisation are established during authentication (see Authentication):
 
-* URA of data user organisation — sourced from the X509Credential based on UZI server certificate. Required for OTV-consent.
-* Organisation type of data user organisation— sourced from the HealthcareProviderRoleTypeCredential. Required for OTV-consent.
+* URA of data user organisation. Required for OTV-consent.
+* Organisation type of data user organisation. Required for OTV-consent.
 * URA of data holder organisation. Required for OTV-consent.
 * Organisation type of data holder organisation. Required for OTV-consent.
 * BSN of client/patient — sourced from the incoming FHIR query or other patient context. Required for OTV-consent.
 * A use case identifier — sourced from the authorisation scope.
 
-When a data holder wants to use OTV-consent during authorisation, it **MUST** implement the 'Gesloten Autorisatievraag' as specified in ["Implementatiehandleiding_OpenGesloten"](https://vzvz.atlassian.net/wiki/spaces/MA11/pages/828314367/Bijlage+Architectuurdocumenten).
+When a data holder wants to use OTV-consent during authorisation, it **MUST** implement the 'Gesloten Autorisatievraag' as specified in ["Implementatiehandleiding_OpenGesloten"](https://vzvz.atlassian.net/wiki/spaces/MA11/pages/828314367/Bijlage+Architectuurdocumenten) (accessed 2026-10-27).
 
 ### Network security
 
@@ -328,7 +333,10 @@ A complete use case contains:
 
 * The Nuts policy
 * An authorisation policy
+* A use case specification (e.g. an implementation guide) that specifies the relevant data set (see volume 3)
+* A FHIR CapabilityStatement that the authorisation policy evaluates requests against (see Authorisation)
+* The discovery service operator for the use case, and the discovery service endpoint (URL) and service ID
 * Discover service presentation definition
 
-Use cases are scoped to a version of this implementation guide and reviewed by Actiz.
+Use cases are scoped to a version of this implementation guide and reviewed by the Nuts community (Kring Toepassingen and Kring Techniek).
 

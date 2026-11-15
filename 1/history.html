@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>History - Netherlands - Zorginzage Implementation Guide v1.0.0</title>
+    <title>History - Netherlands - Zorginzage Implementation Guide v1.0.1</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -52,7 +52,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Netherlands - Zorginzage Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - release
+            <span style="display:inline-block;">1.0.1 - release
 
 
 
@@ -101,7 +101,7 @@
         <a href="vol1.html#principes">Principes</a>
       </li>
       <li>
-        <a href="vol1.html#use-cases">Use cases</a>
+        <a href="vol1.html#toepassingen">Toepassingen</a>
       </li>
       <li>
         <a href="vol1.html#rollen-en-verantwoordelijkheden">Rollen en verantwoordelijkheden</a>
@@ -218,7 +218,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Netherlands - Zorginzage Implementation Guide - Local Development build (v1.0.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://nuts-foundation.github.io/nl-zorginzage-ig/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Netherlands - Zorginzage Implementation Guide - Local Development build (v1.0.1) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://nuts-foundation.github.io/nl-zorginzage-ig/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>History</h2>
   
 
@@ -236,22 +236,47 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
-  <li><a href="#version-current" id="markdown-toc-version-current">Version: current</a></li>
+  <li><a href="#published-versions" id="markdown-toc-published-versions">Published versions</a></li>
+  <li><a href="#version-101" id="markdown-toc-version-101">Version: 1.0.1</a></li>
+  <li><a href="#version-100" id="markdown-toc-version-100">Version: 1.0.0</a></li>
 </ul>
 
 </div>
-<h3 id="version-current">Version: current</h3>
+<h3 id="published-versions">Published versions</h3>
 <ul>
-  <li><a href="https://nuts-foundation.github.io/nl-zorginzage-ig/">Implementation Guide</a></li>
+  <li><a href="https://nuts-foundation.github.io/nl-zorginzage-ig/">Latest release</a></li>
+  <li><a href="https://nuts-foundation.github.io/nl-zorginzage-ig/1/">Latest release of major version 1</a></li>
+  <li><a href="https://nuts-foundation.github.io/nl-zorginzage-ig/current/">Current development version (main)</a></li>
   <li><a href="https://github.com/nuts-foundation/nl-zorginzage-ig">Source code</a></li>
 </ul>
 
-<!-- - [Compare this version to v0.2.0](https://github.com/nuts-foundation/nl-zorginzage-ig/compare/v0.2.0...main) -->
-<!-- Significant changes/Closed issues: -->
+<h3 id="version-101">Version: 1.0.1</h3>
+<ul>
+  <li><a href="https://nuts-foundation.github.io/nl-zorginzage-ig/1.0.1/">Implementation Guide</a></li>
+  <li><a href="https://github.com/nuts-foundation/nl-zorginzage-ig/tree/v1.0.1">Source code</a></li>
+</ul>
 
-<!-- ### Version: v0.2.0 
-- [Implementation Guide](https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/branches/v0.2.0/)
-- [Source code](https://github.com/nuts-foundation/nl-zorginzage-ig/tree/v0.2.0) -->
+<p>Wijzigingen:</p>
+<ul>
+  <li>Volume 1: afspraken over verwijzen naar een versie van Zorginzage en naar andere specificaties. De eigenaar van de
+Discovery Service wordt per toepassing bepaald. Een pilot-element wordt definitief na een succesvolle uitwisseling
+tussen een datagebruiker en een datahouder.</li>
+  <li>Volume 2a: de voorgeschreven credentials en velden zijn een minimumset. Een organisatie gebruikt precies één
+HealthcareProviderRoleType per toepassing. De datagebruiker mag <code class="language-plaintext highlighter-rouge">_elements=id</code> meegeven bij het zoeken naar een
+patiënt.</li>
+  <li>Volume 2b: de interne API van de Nuts node is aangeduid als niet-normatief voorbeeld. Review-feedback is verwerkt.</li>
+  <li>Volume 3: references tussen resources zijn literal en relatief.</li>
+  <li>Verwijzingen naar andere specificaties gaan naar een vaste versie of vermelden de datum van raadpleging. Gebroken
+links zijn hersteld.</li>
+  <li>De QA van de IG-build meldt geen fouten meer.</li>
+</ul>
+
+<h3 id="version-100">Version: 1.0.0</h3>
+<ul>
+  <li><a href="https://nuts-foundation.github.io/nl-zorginzage-ig/1.0.0/">Implementation Guide</a></li>
+  <li><a href="https://github.com/nuts-foundation/nl-zorginzage-ig/tree/v1.0.0">Source code</a></li>
+</ul>
+
 
 
 
@@ -271,7 +296,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.actiz.nl">Stichting ActiZ</a>.  Package fhir.nl.zorginzage#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 27, 2026 15:59+0000">2026-10-27</span>
+          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.actiz.nl">Stichting ActiZ</a>.  Package fhir.nl.zorginzage#1.0.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sun, Nov 15, 2026 12:08+0000">2026-11-15</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

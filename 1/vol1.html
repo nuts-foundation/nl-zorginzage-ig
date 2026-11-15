@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Volume 1 - Netherlands - Zorginzage Implementation Guide v1.0.0</title>
+    <title>Volume 1 - Netherlands - Zorginzage Implementation Guide v1.0.1</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -52,7 +52,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Netherlands - Zorginzage Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">1.0.0 - release
+            <span style="display:inline-block;">1.0.1 - release
 
 
 
@@ -101,7 +101,7 @@
         <a href="vol1.html#principes">Principes</a>
       </li>
       <li>
-        <a href="vol1.html#use-cases">Use cases</a>
+        <a href="vol1.html#toepassingen">Toepassingen</a>
       </li>
       <li>
         <a href="vol1.html#rollen-en-verantwoordelijkheden">Rollen en verantwoordelijkheden</a>
@@ -218,7 +218,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Netherlands - Zorginzage Implementation Guide - Local Development build (v1.0.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://nuts-foundation.github.io/nl-zorginzage-ig/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Netherlands - Zorginzage Implementation Guide - Local Development build (v1.0.1) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://nuts-foundation.github.io/nl-zorginzage-ig/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
   <h2>Volume 1</h2>
   
 
@@ -239,9 +239,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="#inleiding" id="markdown-toc-inleiding">Inleiding</a></li>
   <li><a href="#procesbeschrijving" id="markdown-toc-procesbeschrijving">Procesbeschrijving</a></li>
   <li><a href="#principes" id="markdown-toc-principes">Principes</a></li>
-  <li><a href="#use-cases" id="markdown-toc-use-cases">Use cases</a></li>
+  <li><a href="#toepassingen" id="markdown-toc-toepassingen">Toepassingen</a></li>
   <li><a href="#wederkerigheid" id="markdown-toc-wederkerigheid">Wederkerigheid</a></li>
-  <li><a href="#commitment" id="markdown-toc-commitment">Commitment</a></li>
   <li><a href="#rollen-en-verantwoordelijkheden" id="markdown-toc-rollen-en-verantwoordelijkheden">Rollen en verantwoordelijkheden</a></li>
   <li><a href="#rollen-en-uitvoerders" id="markdown-toc-rollen-en-uitvoerders">Rollen en uitvoerders</a></li>
   <li><a href="#roadmap" id="markdown-toc-roadmap">Roadmap</a></li>
@@ -251,7 +250,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <h3 id="inleiding">Inleiding</h3>
 
-<p>Deze implementatiegids Zorginzage bevat de generieke afspraken en specificaties die nodig zijn voor use cases die gebruikmaken van de <a href="https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws">communicatiepatronen</a> 'Gericht bevragen' en 'Geïndexeerd bevragen'. Het doel van deze implementatiegids is het versnellen van de realisatie van use cases. Deze implementatiegids draagt hieraan bij door het hergebruik van afspraken en specificaties te vereenvoudigen.</p>
+<p>Deze implementatiegids Zorginzage bevat de generieke afspraken en specificaties die nodig zijn voor toepassingen die gebruikmaken van de <a href="https://www.datavoorgezondheid.nl/documenten/2025/07/14/whitepaper-communicatiepatronen-vws">communicatiepatronen</a> 'Gericht bevragen' en 'Geïndexeerd bevragen'. Het doel van deze implementatiegids is het versnellen van de realisatie van toepassingen. Deze implementatiegids draagt hieraan bij door het hergebruik van afspraken en specificaties te vereenvoudigen.</p>
 
 <h3 id="procesbeschrijving">Procesbeschrijving</h3>
 
@@ -274,17 +273,16 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li>Deze specificatie adopteert incrementeel en iteratief de door het Ministerie van VWS beheerde landelijke afspraken en specificaties voor generieke functies en de andere elementen van de doelarchitectuur voor het Gezondheidsinformatiestelsel (GIS). Deze landelijke afspraken en specificaties vervangen incrementeel en iteratief alle Zorginzage-specifieke afspraken en specificaties zodra de eigenaar en de deelnemers van de Zorginzage-specificatie beoordelen dat deze implementatieklaar zijn.</li>
   <li>Van deze specificatie zullen maximaal twee release per jaar uitkomen die invloed hebben op de functionaliteit.</li>
   <li>Wederkerigheid. Deelnemers aan Zorginzage stellen alleen data beschikbaar aan partijen die ook conform deze specificatie data beschikbaar stellen.</li>
-  <li>Commitment. De Zorginzage-specificatie wordt de komende jaren doorontwikkeld. Deelnemers committeren zich aan de implementatie van volgende versies.</li>
 </ol>
 
-<h3 id="use-cases">Use cases</h3>
+<h3 id="toepassingen">Toepassingen</h3>
 
-<p>Deze specificatie vormt de basis voor een aantal verschillende use cases.</p>
+<p>Deze specificatie vormt de basis voor een aantal verschillende toepassingen. Afspraken over welke versies van deze specificatie deelnemers implementeren en wanneer, worden per toepassing gemaakt, in de specificatie of het implementatieplan van die toepassing.</p>
 
 <table>
   <thead>
     <tr>
-      <th>Use case</th>
+      <th>Toepassing</th>
       <th>Specificatie</th>
       <th>Opmerking</th>
     </tr>
@@ -292,23 +290,23 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <tbody>
     <tr>
       <td>360-graden cliëntbeeld</td>
-      <td>n.t.b.</td>
-      <td>De specificatie van deze use case maakt gebruik van Zorginzage 2026</td>
+      <td><a href="https://nuts-foundation.github.io/nl-360-ig/">link</a></td>
+      <td>De specificatie van deze toepassing maakt gebruik van Zorginzage 2026</td>
     </tr>
     <tr>
       <td>Geboortezorg</td>
       <td><a href="https://babyconnect.atlassian.net/wiki/spaces/VBC/pages/906166273/Zorgtoepassingprofiel+Geboortezorg">link</a></td>
-      <td>De specificatie van deze use case maakt nog geen gebruik van Zorginzage 2026</td>
+      <td>De specificatie van deze toepassing maakt nog geen gebruik van Zorginzage 2026</td>
     </tr>
     <tr>
       <td>Huisartsinzage</td>
       <td><a href="https://wiki.nuts.nl/books/samenwerken-huisarts-en-thuiszorg/page/zorgtoepassing-ha-vvt-inzage-dossier-v10">link</a></td>
-      <td>De specificatie van deze use case maakt nog geen gebruik van Zorginzage 2026</td>
+      <td>De specificatie van deze toepassing maakt nog geen gebruik van Zorginzage 2026</td>
     </tr>
     <tr>
       <td>PZP</td>
       <td><a href="https://wiki.nuts.nl/books/pzp">link</a></td>
-      <td>De specificatie van deze use case maakt nog geen gebruik van Zorginzage 2026</td>
+      <td>De specificatie van deze toepassing maakt nog geen gebruik van Zorginzage 2026</td>
     </tr>
   </tbody>
 </table>
@@ -316,10 +314,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h3 id="wederkerigheid">Wederkerigheid</h3>
 
 <p>Deelnemers aan Zorginzage stellen alleen data beschikbaar aan partijen die ook conform deze specificatie data beschikbaar stellen. Om dit te bereiken dienen deelnemers aan Zorginzage naast de rol datagebruiker (data user) ook de rol datahouder (data holder) te implementeren.</p>
-
-<h3 id="commitment">Commitment</h3>
-
-<p>De Zorginzage-specificatie wordt de komende jaren doorontwikkeld. Deelnemers aan Zorginzage committeren zich aan de tijdige implementatie van de versies die in 2026, 2027 en 2028 zullen worden gepubliceerd.</p>
 
 <h3 id="rollen-en-verantwoordelijkheden">Rollen en verantwoordelijkheden</h3>
 
@@ -345,8 +339,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h4 id="eigenaar-discovery-service">Eigenaar Discovery Service</h4>
 
 <ul>
-  <li>verzorgen productiewaardige Discovery Service</li>
+  <li>verzorgen productiewaardige Discovery Service voor een use case</li>
 </ul>
+
+<p>De Zorginzage-specificatie is een generiek bouwblok waarop meerdere toepassingen (use cases) kunnen worden gebouwd. De eigenaar van de Discovery Service wordt daarom per use case bepaald en is niet noodzakelijkerwijs dezelfde partij als de eigenaar van de specificatie.</p>
 
 <h3 id="rollen-en-uitvoerders">Rollen en uitvoerders</h3>
 
@@ -368,7 +364,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </tr>
     <tr>
       <td>Eigenaar Discovery Service</td>
-      <td>ActiZ</td>
+      <td>per use case bepaald</td>
     </tr>
   </tbody>
 </table>
@@ -440,7 +436,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<p>De roadmap wordt bepaald op basis van input van de egenaar en de deelnemers van de Zorginzage-specificatie. De roadmap is afhankelijk van externe factoren waarop de eigenaar en de deelnemers van de Zorginzage-specificatie slechts in beperkte mate invloed hebben. De roadmap kan per release van de Zorginzage-specficatie worden aangepast.</p>
+<p>De roadmap wordt bepaald op basis van input van de eigenaar en de deelnemers van de Zorginzage-specificatie. De roadmap is afhankelijk van externe factoren waarop de eigenaar en de deelnemers van de Zorginzage-specificatie slechts in beperkte mate invloed hebben. De roadmap kan per release van de Zorginzage-specificatie worden aangepast.</p>
+
+<p>De roadmap beschrijft wanneer releases van de Zorginzage-specificatie verschijnen en wat ze bevatten. Wanneer deelnemers een release implementeren, wordt per toepassing afgesproken, zie de paragraaf Toepassingen.</p>
 
 <h3 id="releasebeleid">Releasebeleid</h3>
 
@@ -499,9 +497,10 @@ in productie te beproeven, maar nog niet definitief zijn vastgesteld.</li>
 status-aanduiding bij het betreffende element. Het betreft de aanduiding 'trial-use'.</li>
   <li>Pilot-elementen mogen door deelnemers in productie worden geïmplementeerd; daarmee dragen
 zij bij aan de beproeving.</li>
-  <li>Een pilot-element wordt in een volgende release definitief gemaakt wanneer er ten minste
-één succesvolle productie-implementatie is en de eigenaar van de specificatie en de
-deelnemers geen blokkerende bezwaren meer hebben.</li>
+  <li>Een pilot-element wordt in een volgende release definitief gemaakt wanneer ten minste
+één implementatie als datagebruiker en één implementatie als datahouder in productie
+succesvol gegevens met elkaar uitwisselen en de eigenaar van de specificatie en de
+deelnemers geen blokkerende bezwaren hebben.</li>
   <li>Een pilot-element kan op basis van bevindingen uit de pilot worden gewijzigd of
 ingetrokken. Wijzigingen aan een pilot-element gelden niet als breaking change voor de
 versienummering van de specificatie als geheel.</li>
@@ -512,6 +511,70 @@ versienummering van de specificatie als geheel.</li>
 <p>De eigenaar van de specificatie hanteert de Semantic Versioning-specificatie voor het versiebeheer,
 zie https://semver.org. Dit betekent dat het versienummer wordt weergegeven door 3 nummers die met een punt zijn
 gescheiden (x.y.z waarbij x de majorrelease is, y de minor en z de patch).</p>
+
+<h4 id="verwijzen-naar-een-versie">Verwijzen naar een versie</h4>
+
+<p>Elke release van de Zorginzage-specificatie wordt gepubliceerd onder een eigen, vaste URL. Daarnaast zijn er URL's die
+meebewegen met nieuwe releases:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>URL</th>
+      <th>Inhoud</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://nuts-foundation.github.io/nl-zorginzage-ig/1.0.0/"><code class="language-plaintext highlighter-rouge">https://nuts-foundation.github.io/nl-zorginzage-ig/1.0.0/</code></a></td>
+      <td>Precies release 1.0.0. Deze inhoud verandert niet meer.</td>
+    </tr>
+    <tr>
+      <td><a href="https://nuts-foundation.github.io/nl-zorginzage-ig/1/"><code class="language-plaintext highlighter-rouge">https://nuts-foundation.github.io/nl-zorginzage-ig/1/</code></a></td>
+      <td>De laatste release binnen majorversie 1.</td>
+    </tr>
+    <tr>
+      <td><a href="https://nuts-foundation.github.io/nl-zorginzage-ig/"><code class="language-plaintext highlighter-rouge">https://nuts-foundation.github.io/nl-zorginzage-ig/</code></a></td>
+      <td>De laatste release.</td>
+    </tr>
+    <tr>
+      <td><a href="https://nuts-foundation.github.io/nl-zorginzage-ig/current/"><code class="language-plaintext highlighter-rouge">https://nuts-foundation.github.io/nl-zorginzage-ig/current/</code></a></td>
+      <td>De versie die in ontwikkeling is. Dit is geen release.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Een overzicht van alle gepubliceerde releases staat in de <a href="history.html">historie</a>.</p>
+
+<p>Een toepassing die gebruikmaakt van deze specificatie verwijst naar een majorversie of naar een specifieke release:</p>
+
+<ul>
+  <li>Een toepassing die naar een majorversie verwijst, bijvoorbeeld <code class="language-plaintext highlighter-rouge">/1/</code>, groeit mee met de minor- en patchreleases
+binnen die majorversie. Deze releases zijn backwards compatible (zie Releasecriteria). Bij de overstap naar een
+nieuwe majorversie past de toepassing haar verwijzing aan.</li>
+  <li>Een toepassing die naar een specifieke release verwijst, bijvoorbeeld <code class="language-plaintext highlighter-rouge">/1.0.0/</code>, verwijst naar inhoud die niet meer
+verandert. Bij de overstap naar een nieuwere release past de toepassing haar verwijzing aan.</li>
+  <li>Een toepassing verwijst niet naar de laatste release of naar de versie in ontwikkeling, omdat de inhoud daarvan kan
+veranderen zonder dat de toepassing haar verwijzing aanpast.</li>
+</ul>
+
+<p>Welke release of majorversie een toepassing gebruikt en wanneer zij overstapt, wordt per toepassing afgesproken.</p>
+
+<h4 id="verwijzen-naar-andere-specificaties">Verwijzen naar andere specificaties</h4>
+
+<p>Voor verwijzingen vanuit deze specificatie naar andere specificaties geldt:</p>
+
+<ul>
+  <li>Normatieve verwijzingen, zoals naar de generieke functies van VWS, Nuts RFC's, IHE-profielen, Mitz en het
+afsprakenstelsel van Twiin, verwijzen naar een vaste versie en noemen het versienummer. Publiceert de bron versies
+onder een eigen URL, zoals de generieke functies van VWS op https://fhir.generiekefuncties.nl, dan verwijst deze
+specificatie naar die URL.</li>
+  <li>Publiceert de bron geen vaste versie, zoals bij een wiki, dan vermeldt de verwijzing de datum van raadpleging.</li>
+  <li>Informatieve verwijzingen, zoals naar Wikipedia, begrippenlijsten of tools, mogen naar de actuele versie verwijzen.</li>
+  <li>Verwijzingen binnen deze specificatie zijn relatief, zodat elke gepubliceerde versie naar haar eigen onderdelen
+verwijst.</li>
+  <li>De eigenaar van de specificatie controleert de uitgaande verwijzingen bij elke release.</li>
+</ul>
 
 <h4 id="besluitvorming">Besluitvorming</h4>
 
@@ -536,7 +599,7 @@ gescheiden (x.y.z waarbij x de majorrelease is, y de minor en z de patch).</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.actiz.nl">Stichting ActiZ</a>.  Package fhir.nl.zorginzage#1.0.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 27, 2026 15:59+0000">2026-10-27</span>
+          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.actiz.nl">Stichting ActiZ</a>.  Package fhir.nl.zorginzage#1.0.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Sun, Nov 15, 2026 12:08+0000">2026-11-15</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
