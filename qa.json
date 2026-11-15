@@ -6,8 +6,8 @@
   "status" : "active",
   "package-id" : "fhir.nl.zorginzage",
   "ig-ver" : "1.0.1",
-  "date" : "Sun, 15 Nov, 2026 12:08:31 +0000",
-  "dateISO8601" : "2026-11-15T12:08:31+00:00",
+  "date" : "Sun, 15 Nov, 2026 12:32:03 +0000",
+  "dateISO8601" : "2026-11-15T12:32:03+00:00",
   "errs" : 0,
   "warnings" : 13,
   "hints" : 1,
@@ -16,5 +16,5 @@
   "suppressed-warnings" : 3,
   "version" : "4.0.1",
   "tool" : "6.0.0-snapshot1 (3)",
-  "maxMemory" : 893999984
+  "maxMemory" : 997195776
 }
