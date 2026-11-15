@@ -128,8 +128,6 @@ jobs:
               rsync -a --checksum --delete output/ "site/$path/"
             fi
           done
-          # Serve the files as they are, without Jekyll converting the Markdown sources next to the HTML pages
-          touch site/.nojekyll
           cd site
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -137,9 +135,48 @@ jobs:
           git commit --quiet -m "Publish ${REF#refs/tags/} to: $PATHS" || echo "No changes to publish"
           git push origin gh-pages
       - name: Upload artifact
+        id: artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './site'
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        # Not actions/deploy-pages: that action uses the commit SHA as build version, and Pages ignores a deployment
+        # with a build version it has already deployed. A release tag usually points to a commit that main has already
+        # deployed, so each deployment gets a unique build version here.
+        uses: actions/github-script@v7
+        env:
+          ARTIFACT_ID: ${{ steps.artifact.outputs.artifact_id }}
+        with:
+          script: |
+            const buildVersion = `${context.sha}-${context.runId}-${process.env.GITHUB_RUN_ATTEMPT}`
+            const { data: deployment } = await github.request('POST /repos/{owner}/{repo}/pages/deployments', {
+              ...context.repo,
+              artifact_id: Number(process.env.ARTIFACT_ID),
+              pages_build_version: buildVersion,
+              oidc_token: await core.getIDToken()
+            })
+            const deploymentId = deployment.id || deployment.status_url.split('/').pop()
+            core.info(`Created Pages deployment ${deploymentId} for build version ${buildVersion}`)
+            core.setOutput('page_url', deployment.page_url)
+
+            const failed = ['deployment_failed', 'deployment_perms_error', 'deployment_content_failed',
+              'deployment_cancelled', 'deployment_lost']
+            const deadline = Date.now() + 10 * 60 * 1000
+            let errors = 0
+            while (Date.now() < deadline) {
+              await new Promise(resolve => setTimeout(resolve, 5000))
+              try {
+                const { data } = await github.request('GET /repos/{owner}/{repo}/pages/deployments/{deployment_id}', {
+                  ...context.repo,
+                  deployment_id: deploymentId
+                })
+                core.info(`Status: ${data.status}`)
+                if (data.status === 'succeed') return
+                if (failed.includes(data.status)) return core.setFailed(`Pages deployment failed: ${data.status}`)
+              } catch (error) {
+                core.warning(`Getting the deployment status failed: ${error.message}`)
+                if (++errors >= 10) return core.setFailed('Getting the deployment status failed 10 times')
+              }
+            }
+            core.setFailed('Pages deployment did not finish within 10 minutes')
