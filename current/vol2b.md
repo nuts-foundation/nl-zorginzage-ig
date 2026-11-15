@@ -1,4 +1,4 @@
-# Volume 2b - Netherlands - Zorginzage Implementation Guide v1.0.0
+# Volume 2b - Netherlands - Zorginzage Implementation Guide v1.0.1
 
 * [**Table of Contents**](toc.md)
 * **Volume 2b**
@@ -48,7 +48,7 @@ The sequence for pull scenarios is the following. The numbered transactions are 
 | 6 | The discovery service presentation definition of the use case contains the fields listed in Addressing (volume 2a) |
 | 7 | Include NutsEmployeeCredential:`POST /internal/auth/v2/{subjectID of data user organisation}/request-service-access-token`. See step 7 details below |
 | 8 | The Nuts nodes handle the access token request, which is sent to the`authorization_server_url`of step 6. The data user organisation presents the X509Credential, HealthcareProviderRoleTypeCredential and NutsEmployeeCredential |
-| 10 | POST-based Patient search on BSN:`POST /fhir/Patient/_search`. See[section Patient Context in Volume 3](https://build.fhir.org/ig/nuts-foundation/nl-zorginzage-ig/vol3.html#patient-context)for more details |
+| 10 | POST-based Patient search on BSN:`POST /fhir/Patient/_search`. See[section Patient Context in Volume 3](vol3.md#patient-context)for more details |
 | 11 | Introspection of the access token:`POST /internal/auth/v2/accesstoken/introspect` |
 | 12 | The introspection returns a valid token, the URA of the requesting organisation and the user info (name, role, identifier) |
 | 13 | Legal basis to be determined by use case, e.g. patient consent and/or treatment relationship |

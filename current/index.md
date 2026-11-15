@@ -1,4 +1,4 @@
-# Home - Netherlands - Zorginzage Implementation Guide v1.0.0
+# Home - Netherlands - Zorginzage Implementation Guide v1.0.1
 
 * [**Table of Contents**](toc.md)
 * **Home**
@@ -7,8 +7,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://nuts-foundation.github.io/nl-zorginzage-ig/ImplementationGuide/fhir.nl.zorginzage | *Version*:1.0.0 |
-| Active as of 2026-11-14 | *Computable Name*:NlZorginzageIG |
+| *Official URL*:http://nuts-foundation.github.io/nl-zorginzage-ig/ImplementationGuide/fhir.nl.zorginzage | *Version*:1.0.1 |
+| Active as of 2026-11-15 | *Computable Name*:NlZorginzageIG |
 
 ### Overview
 
@@ -37,11 +37,11 @@ Voor ondersteuning bij de interpretatie en implementatie van deze specificatie k
   "id" : "fhir.nl.zorginzage",
   "language" : "en-US",
   "url" : "http://nuts-foundation.github.io/nl-zorginzage-ig/ImplementationGuide/fhir.nl.zorginzage",
-  "version" : "1.0.0",
+  "version" : "1.0.1",
   "name" : "NlZorginzageIG",
   "title" : "Netherlands - Zorginzage Implementation Guide",
   "status" : "active",
-  "date" : "2026-11-14T09:13:09+00:00",
+  "date" : "2026-11-15T12:04:39+00:00",
   "publisher" : "Stichting ActiZ",
   "contact" : [{
     "name" : "Stichting ActiZ",

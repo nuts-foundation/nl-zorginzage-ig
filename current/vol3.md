@@ -1,4 +1,4 @@
-# Volume 3 - Netherlands - Zorginzage Implementation Guide v1.0.0
+# Volume 3 - Netherlands - Zorginzage Implementation Guide v1.0.1
 
 * [**Table of Contents**](toc.md)
 * **Volume 3**

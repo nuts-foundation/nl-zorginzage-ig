@@ -1,4 +1,4 @@
-# Artifacts Summary - Netherlands - Zorginzage Implementation Guide v1.0.0
+# Artifacts Summary - Netherlands - Zorginzage Implementation Guide v1.0.1
 
 * [**Table of Contents**](toc.md)
 * **Artifacts Summary**
