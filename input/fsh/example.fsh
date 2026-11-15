@@ -27,7 +27,7 @@ Description: "Example patient with BSN identifier for Zorginzage scenarios"
 * address.country = "NL"
 
 * telecom[telephoneNumbers].system = #phone
-* telecom[telephoneNumbers].system.extension[telecomType].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-AddressUse#MC "Mobile Phone"
+* telecom[telephoneNumbers].system.extension[telecomType].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-AddressUse#MC "mobile contact"
 * telecom[telephoneNumbers].value = "+31612345678"
 * telecom[telephoneNumbers].use = #home
 
