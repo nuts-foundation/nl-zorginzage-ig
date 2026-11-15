@@ -128,6 +128,8 @@ jobs:
               rsync -a --checksum --delete output/ "site/$path/"
             fi
           done
+          # Serve the files as they are, without Jekyll converting the Markdown sources next to the HTML pages
+          touch site/.nojekyll
           cd site
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
