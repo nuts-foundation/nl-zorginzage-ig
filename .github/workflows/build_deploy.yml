@@ -1,22 +1,17 @@
 name: Build and Deploy static content to Pages with Docker
 
 on:
+  # Pushes to main are published to /current/. When the version in sushi-config.yaml is a release (X.Y.Z) that
+  # has not been published yet, the same run also publishes it to /<version>/, /<major>/ and the root, and tags it.
   push:
-    # Pushes to main are published to /current/
     branches: ["main"]
-    # Release tags are published to /<version>/, /<major>/ and, for the latest release, the root
-    tags: ["v*.*.*"]
 
-  # Allows you to run this workflow manually from the Actions tab, e.g. to (re)publish an older release tag
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-    inputs:
-      ref:
-        description: "Branch or release tag to publish (e.g. main or v1.0.0)"
-        required: false
 
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-# and pushing the published versions to the gh-pages branch
+# and pushing the published versions to the gh-pages branch and the release tags
 permissions:
   id-token: write
   contents: write
@@ -32,6 +27,8 @@ concurrency:
 
 jobs:
   build:
+    # Only main is published
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -56,43 +53,46 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.ref || github.ref }}
-          # Release tags are needed to determine the latest release
           fetch-depth: 0
+      - name: Check out published versions
+        # The gh-pages branch keeps all published versions, as each deployment replaces the whole site
+        run: |
+          if git ls-remote --exit-code --heads origin gh-pages > /dev/null; then
+            git fetch origin gh-pages:gh-pages
+            git worktree add site gh-pages
+          else
+            git worktree add --detach site
+            git -C site checkout --orphan gh-pages
+            git -C site rm -rf --quiet .
+          fi
       - name: Determine publication paths
         id: paths
-        env:
-          REF: ${{ inputs.ref || github.ref }}
         run: |
-          ref="${REF#refs/tags/}"
-          ref="${ref#refs/heads/}"
-          releases=$(git tag -l 'v*' | sed 's/^v//' | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V || true)
-          if [[ "$ref" =~ ^v([0-9]+)\.[0-9]+\.[0-9]+$ ]]; then
-            version="${ref#v}"
+          version=$(sed -n 's/^version: *\([^ #]*\).*/\1/p' sushi-config.yaml)
+          published=$(ls site | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V || true)
+          paths="current"
+          # Only X.Y.Z is a release; a version with a suffix, such as 1.1.0-draft, is only published to /current/
+          if [[ "$version" =~ ^([0-9]+)\.[0-9]+\.[0-9]+$ ]]; then
             major="${BASH_REMATCH[1]}"
-            ig_version=$(sed -n 's/^version: *\([^ #]*\).*/\1/p' sushi-config.yaml)
-            if [ "$version" != "$ig_version" ]; then
-              echo "::error::Tag $ref does not match version $ig_version in sushi-config.yaml"
-              exit 1
+            if [ -d "site/$version" ]; then
+              echo "Version $version has already been published"
+            else
+              echo "release=$version" >> "$GITHUB_OUTPUT"
+              paths="$paths $version"
+              releases=$(printf '%s\n%s\n' "$published" "$version" | grep . | sort -V)
+              if [ "$version" = "$(grep "^$major\." <<< "$releases" | tail -1)" ]; then
+                paths="$paths $major"
+              fi
+              if [ "$version" = "$(tail -1 <<< "$releases")" ]; then
+                paths="$paths ."
+              fi
             fi
-            paths="$version"
-            if [ "$version" = "$(grep "^$major\." <<< "$releases" | tail -1)" ]; then
-              paths="$paths $major"
-            fi
-            if [ "$version" = "$(tail -1 <<< "$releases")" ]; then
-              paths="$paths ."
-            fi
-          elif [ "$ref" = "main" ]; then
-            paths="current"
-            # Until the first release is published, the root shows main
-            if [ -z "$releases" ]; then
-              paths="$paths ."
-            fi
-          else
-            echo "::error::Only main and release tags (vX.Y.Z) are published, not $ref"
-            exit 1
           fi
-          echo "Publishing $ref to: $paths"
+          # Until the first release is published, the root shows main
+          if [ -z "$published" ] && [[ "$paths" != *" ." ]]; then
+            paths="$paths ."
+          fi
+          echo "Publishing version $version to: $paths"
           echo "paths=$paths" >> "$GITHUB_OUTPUT"
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -106,19 +106,9 @@ jobs:
             -v ${{ github.workspace }}/sushi-config.yaml:/app/sushi-config.yaml \
             localhost:5000/nuts-foundation/publisher:latest
       - name: Update published versions
-        # The gh-pages branch keeps all published versions, as each deployment replaces the whole site
         env:
           PATHS: ${{ steps.paths.outputs.paths }}
-          REF: ${{ inputs.ref || github.ref_name }}
         run: |
-          if git ls-remote --exit-code --heads origin gh-pages > /dev/null; then
-            git fetch origin gh-pages:gh-pages
-            git worktree add site gh-pages
-          else
-            git worktree add --detach site
-            git -C site checkout --orphan gh-pages
-            git -C site rm -rf --quiet .
-          fi
           for path in $PATHS; do
             if [ "$path" = "." ]; then
               # Replace the root, but keep the version directories next to it
@@ -128,13 +118,11 @@ jobs:
               rsync -a --checksum --delete output/ "site/$path/"
             fi
           done
-          # Serve the files as they are, without Jekyll converting the Markdown sources next to the HTML pages
-          touch site/.nojekyll
           cd site
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit --quiet -m "Publish ${REF#refs/tags/} to: $PATHS" || echo "No changes to publish"
+          git commit --quiet -m "Publish ${GITHUB_SHA::7} to: $PATHS" || echo "No changes to publish"
           git push origin gh-pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -143,3 +131,15 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Tag release
+        # The tag records which commit was published as the release
+        if: steps.paths.outputs.release
+        env:
+          TAG: v${{ steps.paths.outputs.release }}
+        run: |
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" > /dev/null; then
+            echo "::warning::Tag $TAG already exists and has not been changed"
+          else
+            git tag "$TAG" "$GITHUB_SHA"
+            git push origin "$TAG"
+          fi
